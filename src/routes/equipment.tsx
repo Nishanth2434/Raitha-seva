@@ -30,7 +30,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { apiRequest } from "@/lib/api-client";
+import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/equipment")({
@@ -122,13 +122,16 @@ function EquipmentPage() {
   const { data: dbData, isLoading } = useQuery({
     queryKey: ["equipment-page-items"],
     queryFn: async () => {
-      const { data, error } = await apiRequest<DjangoEquipment[]>("/equipment/");
+      const { data, error } = await supabase
+        .from("equipment")
+        .select("*, owner:owner_id (*)")
+        .order("created_at", { ascending: false });
 
       if (error || !data || data.length === 0) {
         return mockEquipmentList;
       }
 
-      return data.map((row) => {
+      return data.map((row: any) => {
         const perDay = Number(row.price_per_day);
         const perHour = row.price_per_hour ? Number(row.price_per_hour) : Math.round(perDay / 6);
         return {
@@ -139,8 +142,8 @@ function EquipmentPage() {
           image_url: row.image_url || mockEquipmentList[0]?.image_url || null,
           price_per_hour: perHour,
           price_per_day: perDay,
-          owner_name: row.owner_detail?.full_name || "Verified Owner",
-          village: row.location || row.owner_detail?.village || "Local Village",
+          owner_name: row.owner?.full_name || "Verified Owner",
+          village: row.location || row.owner?.village || "Local Village",
           is_available: row.is_available,
         };
       });
@@ -179,19 +182,18 @@ function EquipmentPage() {
     const calculatedTotal = hoursNeeded * selectedItem.price_per_hour;
 
     try {
-      const { error } = await apiRequest("/bookings/", {
-        method: "POST",
-        body: JSON.stringify({
-          equipment: selectedItem.id,
-          start_date: bookingDate,
-          end_date: bookingDate,
-          total_price: calculatedTotal,
-          notes: `${hoursNeeded} hours booking. Note: ${notes}`,
-        }),
+      const { error } = await supabase.from("bookings").insert({
+        equipment_id: selectedItem.id,
+        farmer_id: user.id,
+        start_date: bookingDate,
+        end_date: bookingDate,
+        total_price: calculatedTotal,
+        notes: `${hoursNeeded} hours booking. Note: ${notes}`,
+        status: "pending",
       });
 
       if (error) {
-        toast.error(error);
+        toast.error(error.message);
       } else {
         toast.success(`Booking request sent for ${selectedItem.name}!`, {
           description: `Total: ₹${calculatedTotal.toLocaleString("en-IN")} for ${hoursNeeded} hours.`,

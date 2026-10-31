@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { apiRequest, setAuthTokens } from "@/lib/api-client";
+import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/hooks/use-auth";
 
 export const Route = createFileRoute("/login")({
@@ -36,6 +36,12 @@ function LoginPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    if (user) {
+      navigate({ to: "/", replace: true });
+    }
+  }, [user, navigate]);
+
   async function signIn(e: React.FormEvent) {
     e.preventDefault();
     if (!email || !password) {
@@ -45,20 +51,18 @@ function LoginPage() {
 
     setLoading(true);
 
-    const { data, error } = await apiRequest<{ access: string; refresh: string }>("/auth/login/", {
-      method: "POST",
-      body: JSON.stringify({ username: email, password }),
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
     });
 
     setLoading(false);
 
-    if (error || !data) {
-      toast.error(error || "Invalid credentials. Please try again.");
+    if (error || !data.user) {
+      toast.error(error?.message || "Invalid credentials. Please try again.");
       return;
     }
 
-    setAuthTokens(data.access, data.refresh);
-    window.dispatchEvent(new Event("auth-state-changed"));
     toast.success("Welcome back!");
     navigate({ to: "/", replace: true });
   }
@@ -70,48 +74,44 @@ function LoginPage() {
       return;
     }
 
-    if (password.length < 8) {
-      toast.error("Password must be at least 8 characters long.");
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters long.");
       return;
     }
 
     setLoading(true);
 
-    // Call standard registration endpoint
-    const { data: regData, error: regError } = await apiRequest("/auth/register/", {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-        full_name: fullName,
-        is_owner: false,
-      }),
-    });
-
-    if (regError) {
-      setLoading(false);
-      toast.error(regError || "Registration failed. Please try again.");
-      return;
-    }
-
-    // Auto-login after successful registration
-    const { data: loginData, error: loginError } = await apiRequest<{ access: string; refresh: string }>("/auth/login/", {
-      method: "POST",
-      body: JSON.stringify({ username: email, password }),
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          full_name: fullName,
+          username: email.split("@")[0],
+          is_owner: false,
+        },
+      },
     });
 
     setLoading(false);
 
-    if (loginError || !loginData) {
-      toast.error("Account created, but automatic login failed. Please sign in.");
-      // Could switch to signin tab, but let's just let them click it
+    if (error) {
+      toast.error(error.message || "Registration failed. Please try again.");
       return;
     }
 
-    setAuthTokens(loginData.access, loginData.refresh);
-    window.dispatchEvent(new Event("auth-state-changed"));
-
-
+    if (data.user) {
+      // Ensure profile exists in public.profiles table
+      await supabase.from("profiles").upsert({
+        id: data.user.id,
+        email: data.user.email,
+        full_name: fullName,
+        username: email.split("@")[0],
+        is_owner: false,
+        is_admin: false,
+        owner_status: "none",
+      });
+    }
 
     toast.success("Account created successfully! Welcome to KrishiMitra AI!");
     navigate({ to: "/", replace: true });

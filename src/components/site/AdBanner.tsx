@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ExternalLink, Sparkles, Sprout, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { apiRequest } from "@/lib/api-client";
+import { supabase } from "@/lib/supabase";
 
 export interface Advertisement {
   id: string;
@@ -62,11 +62,14 @@ export function AdBanner({ label }: { label?: string; category?: string }) {
   const { data: liveAds } = useQuery<Advertisement[]>({
     queryKey: ["live-advertisements"],
     queryFn: async () => {
-      const { data, error } = await apiRequest<Advertisement[]>("/advertisements/");
+      const { data, error } = await supabase
+        .from("advertisements")
+        .select("*")
+        .eq("is_enabled", true);
       if (error || !data || data.length === 0) {
         return defaultAds;
       }
-      return data.filter((item) => item.is_enabled !== false);
+      return data as Advertisement[];
     },
   });
 

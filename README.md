@@ -15,8 +15,8 @@
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://typescriptlang.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-[![Django](https://img.shields.io/badge/Django-4.2+-092E20?style=flat-square&logo=django&logoColor=white)](https://www.djangoproject.com)
-[![SQLite](https://img.shields.io/badge/SQLite-DB-003B57?style=flat-square&logo=sqlite&logoColor=white)](https://sqlite.org)
+[![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-3ECF8E?style=flat-square&logo=supabase&logoColor=white)](https://supabase.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?style=flat-square&logo=postgresql&logoColor=white)](https://postgresql.org)
 
 </div>
 
@@ -151,13 +151,12 @@
 | Layer               | Technology                                                |
 | :------------------ | :-------------------------------------------------------- |
 | **Frontend**        | React 19 + TanStack Start (SSR) + TanStack Router         |
-| **Backend**         | Python 3.10+ with Django 4.2+ & Django REST Framework     |
-| **Database**        | SQLite (Development)                                      |
-| **Authentication**  | Managed auth — email/password, SimpleJWT                  |
+| **Database**        | PostgreSQL 17 (Supabase Cloud)                            |
+| **Authentication**  | Supabase Auth — email/password, JWT sessions, RLS         |
 | **Hosting (Web)**   | Vercel (Edge deployment + CDN)                            |
 | **UI Framework**    | Tailwind CSS v4 + shadcn/ui + Radix primitives            |
 | **Icons**           | Lucide React                                              |
-| **Data Fetching**   | TanStack Query                                            |
+| **Data Fetching**   | TanStack Query + Supabase JS Client                       |
 | **AI Integration**  | Google Gemini API (Vision & Text models)                  |
 | **External APIs**   | Open-Meteo (Weather Data)                                 |
 
@@ -165,16 +164,16 @@
 
 ## 🏗️ Architecture
 
-The application is built on a decoupled full-stack architecture. The React frontend interacts with the Django REST API backend, utilizing JWTs for secure access. AI processing is handed off to the Gemini API, while external agricultural data is pulled from Open-Meteo.
+The application is built on a modern serverless cloud architecture. The React frontend directly communicates with Supabase for user authentication, row-level security (RLS), and database queries. AI processing is handled by Google Gemini API, while hyperlocal weather data is pulled from Open-Meteo.
 
 ```text
-Frontend (React + TanStack Router)
+Frontend (React 19 + TanStack Router)
         ↓
-Backend API (Django REST Framework)
+Supabase Client (@supabase/supabase-js)
         ↓
-Authentication (SimpleJWT + Session Roles)
+Authentication (Supabase Auth + Session tokens)
         ↓
-Database (SQLite / PostgreSQL in prod)
+Database (Supabase PostgreSQL + Row Level Security)
         ↓
 AI Inference (Google Gemini Vision & Text)
 ```
@@ -182,12 +181,11 @@ AI Inference (Google Gemini Vision & Text)
 ```mermaid
 flowchart TD
     U[Farmer / Owner Browser] --> FE[React + TanStack Router]
-    FE --> BE[Django REST API]
-    BE --> AUTH[SimpleJWT Auth]
-    AUTH --> DB[(SQLite DB)]
+    FE --> SB[Supabase Client]
+    SB --> AUTH[Supabase Auth]
+    SB --> DB[(Supabase PostgreSQL + RLS)]
     FE --> API_W[Open-Meteo API]
-    FE --> API_M[Market Price APIs]
-    BE --> AI[Google Gemini API - Pest & Chat]
+    FE --> AI[Google Gemini API - Pest & Chat]
     AI --> FE
 ```
 

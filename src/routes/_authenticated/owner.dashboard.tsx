@@ -50,7 +50,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { apiRequest, clearAuthTokens } from "@/lib/api-client";
+import { supabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/_authenticated/owner/dashboard")({
   head: () => ({
@@ -203,11 +203,17 @@ function OwnerDashboard() {
   }
 
   const { data: equipmentList = [] } = useQuery<EquipmentItem[]>({
-    queryKey: ["owner-equipment"],
+    queryKey: ["owner-equipment", user?.id],
     queryFn: async () => {
-      const { data, error } = await apiRequest<DjangoEquipment[]>("/equipment/");
+      if (!user?.id) return [];
+      const { data, error } = await supabase
+        .from("equipment")
+        .select("*")
+        .eq("owner_id", user.id)
+        .order("created_at", { ascending: false });
+
       if (error || !data) return [];
-      return data.map((item) => ({
+      return data.map((item: any) => ({
         id: item.id,
         name: item.name,
         category: item.category,
@@ -221,14 +227,19 @@ function OwnerDashboard() {
   });
 
   const { data: bookingsList = [] } = useQuery<BookingItem[]>({
-    queryKey: ["owner-bookings"],
+    queryKey: ["owner-bookings", user?.id],
     queryFn: async () => {
-      const { data, error } = await apiRequest<DjangoBooking[]>("/bookings/");
+      if (!user?.id) return [];
+      const { data, error } = await supabase
+        .from("bookings")
+        .select("*, equipment:equipment_id (*), farmer:farmer_id (*)")
+        .order("created_at", { ascending: false });
+
       if (error || !data) return [];
-      return data.map((row) => ({
+      return data.map((row: any) => ({
         id: row.id,
-        equipment_name: row.equipment_detail?.name || "Farm Machinery",
-        farmer_name: row.farmer_detail?.full_name || row.farmer_detail?.email || "Farmer",
+        equipment_name: row.equipment?.name || "Farm Machinery",
+        farmer_name: row.farmer?.full_name || row.farmer?.email || "Farmer",
         start_date: row.start_date,
         end_date: row.end_date,
         total_price: Number(row.total_price),
@@ -250,22 +261,23 @@ function OwnerDashboard() {
       toast.error("Equipment Name and Price per day are required.");
       return;
     }
+    if (!user?.id) return;
 
     setSaving(true);
-    const { error } = await apiRequest("/equipment/", {
-      method: "POST",
-      body: JSON.stringify({
-        name: form.name,
-        category: form.category,
-        image_url: form.image_url || null,
-        price_per_day: Number(form.price_per_day),
-        location: form.location,
-      }),
+    const { error } = await supabase.from("equipment").insert({
+      owner_id: user.id,
+      name: form.name,
+      category: form.category,
+      image_url: form.image_url || null,
+      price_per_day: Number(form.price_per_day),
+      price_per_hour: Math.round(Number(form.price_per_day) / 6),
+      location: form.location,
+      is_available: true,
     });
     setSaving(false);
 
     if (error) {
-      toast.error(error);
+      toast.error(error.message);
       return;
     }
 
@@ -283,12 +295,13 @@ function OwnerDashboard() {
   }
 
   async function updateBookingStatus(id: string, status: "confirmed" | "rejected") {
-    const { error } = await apiRequest(`/bookings/${id}/`, {
-      method: "PATCH",
-      body: JSON.stringify({ status }),
-    });
+    const { error } = await supabase
+      .from("bookings")
+      .update({ status: status === "confirmed" ? "confirmed" : "cancelled" })
+      .eq("id", id);
+
     if (error) {
-      toast.error(error);
+      toast.error(error.message);
       return;
     }
     toast.success(`Booking ${status === "confirmed" ? "accepted" : "declined"}.`);
@@ -296,11 +309,9 @@ function OwnerDashboard() {
   }
 
   async function handleDeleteEquipment(id: string) {
-    const { error } = await apiRequest(`/equipment/${id}/`, {
-      method: "DELETE",
-    });
+    const { error } = await supabase.from("equipment").delete().eq("id", id);
     if (error) {
-      toast.error(error);
+      toast.error(error.message);
       return;
     }
     toast.success("Equipment listing removed.");
@@ -308,8 +319,7 @@ function OwnerDashboard() {
   }
 
   async function handleSignOut() {
-    clearAuthTokens();
-    window.dispatchEvent(new Event("auth-state-changed"));
+    await supabase.auth.signOut();
     navigate({ to: "/login", replace: true });
   }
 

@@ -40,7 +40,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { apiRequest, clearAuthTokens } from "@/lib/api-client";
+import { supabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/_authenticated/profile")({
   head: () => ({
@@ -179,21 +179,31 @@ function ProfilePage() {
   }
 
   const { data: profile } = useQuery({
-    queryKey: ["profile"],
+    queryKey: ["profile", user?.id],
     queryFn: async () => {
-      const { data, error } = await apiRequest<DjangoProfile>("/auth/me/");
-      if (error || !data) throw new Error(error || "Failed to load profile");
-      return data;
+      if (!user?.id) return null;
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .maybeSingle();
+      if (error) throw new Error(error.message);
+      return data as DjangoProfile;
     },
     initialData: user,
   });
 
   const { data: bookings = [] } = useQuery<BookingItem[]>({
-    queryKey: ["my-bookings"],
+    queryKey: ["my-bookings", user?.id],
     queryFn: async () => {
-      const { data, error } = await apiRequest<BookingItem[]>("/bookings/");
+      if (!user?.id) return [];
+      const { data, error } = await supabase
+        .from("bookings")
+        .select("*, equipment:equipment_id (*)")
+        .eq("farmer_id", user.id)
+        .order("created_at", { ascending: false });
       if (error || !data) return [];
-      return data;
+      return data as unknown as BookingItem[];
     },
   });
 
@@ -211,20 +221,22 @@ function ProfilePage() {
 
   async function handleSaveProfile(e: React.FormEvent) {
     e.preventDefault();
+    if (!user?.id) return;
     setProfileSaving(true);
-    const { error } = await apiRequest("/auth/me/", {
-      method: "PUT",
-      body: JSON.stringify({
+    const { error } = await supabase
+      .from("profiles")
+      .update({
         full_name: profileForm.full_name,
         phone: profileForm.phone,
         village: profileForm.village,
         district: profileForm.district,
-      }),
-    });
+        updated_at: new Date().toISOString(),
+      })
+      .eq("id", user.id);
     setProfileSaving(false);
 
     if (error) {
-      toast.error(error);
+      toast.error(error.message);
       return;
     }
     toast.success("Profile updated successfully!");
@@ -238,25 +250,33 @@ function ProfilePage() {
       toast.error("Equipment Name and Price are required.");
       return;
     }
+    if (!user?.id) return;
 
     setOwnerSubmitting(true);
     try {
-      const { error: eqError } = await apiRequest("/owner-requests/", {
-        method: "POST",
-        body: JSON.stringify({
-          equipment_name: ownerForm.equipment_name,
-          category: ownerForm.category,
-          photos: ownerForm.photos || null,
-          price: Number(ownerForm.price_per_day),
-          location: ownerForm.location || profileForm.village || "Local Village",
-        }),
+      const { error: eqError } = await supabase.from("owner_requests").insert({
+        user_id: user.id,
+        equipment_name: ownerForm.equipment_name,
+        category: ownerForm.category,
+        photos: ownerForm.photos || null,
+        price: Number(ownerForm.price_per_day),
+        location: ownerForm.location || profileForm.village || "Local Village",
+        status: "pending",
       });
 
       if (eqError) {
-        toast.error(eqError);
+        toast.error(eqError.message);
         setOwnerSubmitting(false);
         return;
       }
+
+      await supabase
+        .from("profiles")
+        .update({
+          owner_status: "pending",
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", user.id);
 
       toast.success("Owner Application Submitted!", {
         description: "Your request is now pending admin approval.",
@@ -281,8 +301,7 @@ function ProfilePage() {
   }
 
   async function handleSignOut() {
-    clearAuthTokens();
-    window.dispatchEvent(new Event("auth-state-changed"));
+    await supabase.auth.signOut();
     navigate({ to: "/login", replace: true });
   }
 
