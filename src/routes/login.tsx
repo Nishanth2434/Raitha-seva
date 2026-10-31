@@ -111,6 +111,14 @@ function LoginPage() {
         is_admin: false,
         owner_status: "none",
       });
+
+      // Auto login if session was not returned
+      if (!data.session) {
+        await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+      }
     }
 
     toast.success("Account created successfully! Welcome to KrishiMitra AI!");
