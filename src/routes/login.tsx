@@ -88,7 +88,6 @@ function LoginPage() {
         data: {
           full_name: fullName,
           username: email.split("@")[0],
-          is_owner: false,
         },
       },
     });
@@ -107,9 +106,7 @@ function LoginPage() {
         email: data.user.email,
         full_name: fullName,
         username: email.split("@")[0],
-        is_owner: false,
         is_admin: false,
-        owner_status: "none",
       });
 
       // Auto login if session was not returned
@@ -143,7 +140,7 @@ function LoginPage() {
           <CardHeader className="text-center pb-4">
             <CardTitle className="text-2xl font-bold text-gray-900">Welcome</CardTitle>
             <CardDescription className="text-xs text-gray-500">
-              Sign in to manage your bookings, listings and advisories.
+              Sign in to access weather advisories, pest alerts, and mandi market prices.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">

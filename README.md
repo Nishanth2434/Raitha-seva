@@ -4,7 +4,7 @@
 
 #  KrishiMitra AI
 
-### A modern agricultural intelligence platform — hyperlocal weather, pest AI, live markets, and equipment rentals in one place.
+### A modern agricultural intelligence platform — hyperlocal weather, pest AI, live markets, and expert farmer assistance in one place.
 
 <br/>
 
@@ -37,7 +37,6 @@
 | Area                   | URL                                                  |
 | :--------------------- | :--------------------------------------------------- |
 | 👨‍🌾 Farmer portal     | https://rytha-seva.vercel.app                        |
-| 🚜 Owner Dashboard     | https://rytha-seva.vercel.app/owner/dashboard        |
 | 🔐 Login / Register    | https://rytha-seva.vercel.app/login                  |
 
 </div>
@@ -60,26 +59,14 @@
     <td width="50%"><b>🐛 Pest AI Detection</b><br/><img src="docs/screenshots/pest.png" alt="Pest diagnosis and treatment page" /></td>
   </tr>
   <tr>
-    <td width="50%"><b>🚜 Equipment Rentals</b><br/><img src="docs/screenshots/equipment.png" alt="Equipment marketplace page" /></td>
     <td width="50%"><b>💰 Market Analysis</b><br/><img src="docs/screenshots/market.png" alt="Live market prices" /></td>
-  </tr>
-  <tr>
-    <td width="50%"><b>🔐 Sign In</b><br/><img src="docs/screenshots/signin.png" alt="Sign in page" /></td>
-    <td width="50%"><b>📝 Sign Up</b><br/><img src="docs/screenshots/signup.png" alt="Registration page" /></td>
+    <td width="50%"><b>🔐 User Profile & Auth</b><br/><img src="docs/screenshots/signin.png" alt="Sign in page" /></td>
   </tr>
 </table>
 
 <div align="center">
 
-<b>👨‍🌾 Owner Dashboard — Manage your fleet, approve listings, and track rentals</b>
-
-<img src="docs/screenshots/dashboard.png" alt="Owner dashboard showing bookings and analytics" width="100%" />
-
-</div>
-
-<div align="center">
-
-🔒 The owner dashboard, equipment booking system, and AI diagnostic history live behind login —
+🔒 The user profile, AI diagnostic history, and personalized recommendations live behind login —
 <a href="https://rytha-seva.vercel.app"><b>sign in on the live site</b></a> to see them in action.
 
 </div>
@@ -105,30 +92,16 @@
   </tr>
   <tr>
     <td>
-      <h3>🚜 Equipment Rentals</h3>
-      A marketplace to rent tractors, harvesters, and drones from verified owners with a booking workflow.
-    </td>
-    <td>
       <h3>📱 Krishi Shorts</h3>
-      A TikTok-style short-form video content feed dedicated exclusively to farming tips and education.
+      A short-form video content feed dedicated exclusively to farming tips and modern techniques.
     </td>
     <td>
       <h3>🤖 AI Chatbot</h3>
       Conversational agricultural assistant powered by Google Gemini to answer complex farming queries instantly.
     </td>
-  </tr>
-  <tr>
-    <td>
-      <h3>👨‍🌾 Owner Dashboard</h3>
-      Dedicated portal for equipment owners to manage their fleet, approve listings, and track rental bookings.
-    </td>
     <td>
       <h3>🌐 Multilingual</h3>
       Seamlessly toggle between English, Kannada (ಕನ್ನಡ), and Hindi (हिन्दी) for complete accessibility.
-    </td>
-    <td>
-      <h3>🔐 Secure Authentication</h3>
-      Robust JWT-based authentication using Django REST Framework with secure user sessions.
     </td>
   </tr>
 </table>

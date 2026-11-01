@@ -15,7 +15,6 @@ import {
   Wheat,
   Bug,
   CloudRain,
-  Tractor,
   TrendingUp,
   Mic,
   MicOff,
@@ -34,12 +33,10 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 export type AIAction = {
-  type: "NAVIGATE" | "BOOK_EQUIPMENT" | "OPEN_CALL_SUPPORT";
+  type: "NAVIGATE" | "OPEN_CALL_SUPPORT";
   targetRoute?: string;
   buttonText: string;
   details?: {
-    equipmentName?: string;
-    price?: string;
     location?: string;
   };
 };
@@ -56,16 +53,13 @@ const trilingualData: Record<LanguageCode, {
   welcome: string;
   speechGreeting: string;
   placeholder: string;
-  confirmBookingBtn: string;
-  queryOptions: Array<{ icon: any; label: string; route?: string; actionType: "NAVIGATE" | "BOOK_EQUIPMENT" | "OPEN_CALL_SUPPORT"; queryText: string }>;
+  queryOptions: Array<{ icon: any; label: string; route?: string; actionType: "NAVIGATE" | "OPEN_CALL_SUPPORT"; queryText: string }>;
 }> = {
   en: {
     welcome: "Namaste! 🙏 Welcome to **KrishiMitra AI Assistant**.\n\nHow can I help you today? Please choose an option below or type your query:",
     speechGreeting: "Namaste! Welcome to KrishiMitra AI Assistant. How can I help you today? Please select an option below.",
     placeholder: "Ask in English, Kannada (ಕನ್ನಡ), or Hindi (हिन्दी)...",
-    confirmBookingBtn: "🚜 Confirm Booking Now",
     queryOptions: [
-      { icon: Tractor, label: "Want to Book Tractor / Equipment", route: "/equipment", actionType: "BOOK_EQUIPMENT", queryText: "I want to book a tractor" },
       { icon: TrendingUp, label: "Want Market Prices / Mandi Rates", route: "/market", actionType: "NAVIGATE", queryText: "I want market price" },
       { icon: CloudRain, label: "Check Rain & Weather Forecast", route: "/weather", actionType: "NAVIGATE", queryText: "Check weather forecast" },
       { icon: Bug, label: "Diagnose Crop Disease (Pest AI)", route: "/pest", actionType: "NAVIGATE", queryText: "Diagnose crop pest disease" },
@@ -77,9 +71,7 @@ const trilingualData: Record<LanguageCode, {
     welcome: "ನಮಸ್ಕಾರ! 🙏 **ಕೃಷಿಮಿತ್ರ ಎಐ ಸಹಾಯಕ**ಕ್ಕೆ ಸ್ವಾಗತ.\n\nನಿಮಗೆ ನಾನು ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ? ಕೆಳಗಿನ ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ ಅಥವಾ ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಟೈಪ್ ಮಾಡಿ:",
     speechGreeting: "ನಮಸ್ಕಾರ! ಕೃಷಿಮಿತ್ರ ಎಐ ಸಹಾಯಕ್ಕೆ ಸ್ವಾಗತ. ನಾನು ನಿಮಗೆ ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ? ಕೆಳಗಿನ ಆಯ್ಕೆಯನ್ನು ಆರಿಸಿ.",
     placeholder: "ಕನ್ನಡ (Kannada), English, ಅಥವಾ हिन्दीಯಲ್ಲಿ ಕೇಳಿ...",
-    confirmBookingBtn: "🚜 ಈಗಲೇ ಬುಕಿಂಗ್ ಖಚಿತಪಡಿಸಿ",
     queryOptions: [
-      { icon: Tractor, label: "ಟ್ರ್ಯಾಕ್ಟರ್ / ಯಂತ್ರ ಬುಕ್ ಮಾಡಲು ಬಯಸುವಿರಾ", route: "/equipment", actionType: "BOOK_EQUIPMENT", queryText: "ಟ್ರ್ಯಾಕ್ಟರ್ ಬುಕ್ ಮಾಡಲು ಬಯಸುವಿರಾ" },
       { icon: TrendingUp, label: "ಮಾರುಕಟ್ಟೆ ದರಗಳನ್ನು ನೋಡಲು ಬಯಸುವಿರಾ", route: "/market", actionType: "NAVIGATE", queryText: "ಮಾರುಕಟ್ಟೆ ದರಗಳನ್ನು ತಿಳಿಸಿ" },
       { icon: CloudRain, label: "ಹವಾಮಾನ ಮತ್ತು ಮಳೆ ವರದಿ ನೋಡಲು ಬಯಸುವಿರಾ", route: "/weather", actionType: "NAVIGATE", queryText: "ಹವಾಮಾನ ವರದಿ ತೋರಿಸಿ" },
       { icon: Bug, label: "ಬೆಳೆ ರೋಗ ತಪಾಸಣೆ (ಕ್ರಿಮಿ ವೈದ್ಯ)", route: "/pest", actionType: "NAVIGATE", queryText: "ಕ್ರಿಮಿ ರೋಗ ಪರೀಕ್ಷೆ ಮಾಡಿ" },
@@ -91,9 +83,7 @@ const trilingualData: Record<LanguageCode, {
     welcome: "नमस्ते! 🙏 **कृषि मित्र एआई सहायक** में आपका स्वागत है।\n\nमैं आपकी क्या सहायता कर सकता हूँ? नीचे दिए गए विकल्प को चुनें या अपना प्रश्न पूछें:",
     speechGreeting: "नमस्ते! कृषि मित्र एआई में आपका स्वागत है। मैं आपकी क्या सहायता कर सकता हूँ? कृपया नीचे दिया गया विकल्प चुनें।",
     placeholder: "हिन्दी (Hindi), English, या ಕನ್ನಡ में पूछें...",
-    confirmBookingBtn: "🚜 अभी बुकिंग कन्फर्म करें",
     queryOptions: [
-      { icon: Tractor, label: "ट्रैक्टर / मशीन बुक करना चाहते हैं", route: "/equipment", actionType: "BOOK_EQUIPMENT", queryText: "ट्रैक्टर बुक करना चाहते हैं" },
       { icon: TrendingUp, label: "मंडी भाव और बाजार रेट देखना चाहते हैं", route: "/market", actionType: "NAVIGATE", queryText: "मंडी भाव देखना चाहते हैं" },
       { icon: CloudRain, label: "मौसम और बारिश रिपोर्ट देखना चाहते हैं", route: "/weather", actionType: "NAVIGATE", queryText: "मौसम रिपोर्ट दिखाएं" },
       { icon: Bug, label: "फसल बीमारी जांच (कीट डॉक्टर)", route: "/pest", actionType: "NAVIGATE", queryText: "फसल की बीमारी जांचें" },
@@ -105,58 +95,6 @@ const trilingualData: Record<LanguageCode, {
 
 function detectActionIntent(query: string, lang: LanguageCode = "en"): AIAction | undefined {
   const q = query.toLowerCase().trim();
-  const isBookingWord =
-    q.includes("book") ||
-    q.includes("rent") ||
-    q.includes("hire") ||
-    q.includes("reserve") ||
-    q.includes("need") ||
-    q.includes("want") ||
-    q.includes("ಬುಕ್") ||
-    q.includes("ವಾಹನ") ||
-    q.includes("बुक") ||
-    q.includes("किराया");
-
-  if (
-    isBookingWord &&
-    (q.includes("tractor") ||
-      q.includes("harvester") ||
-      q.includes("drone") ||
-      q.includes("sprayer") ||
-      q.includes("machine") ||
-      q.includes("equipment") ||
-      q.includes("ಟ್ರ್ಯಾಕ್ಟರ್") ||
-      q.includes("ट्रैक्टर"))
-  ) {
-    let eqName = "Mahindra 575 DI Tractor (47 HP)";
-    let price = "₹350/hr (₹1,800/day)";
-
-    if (q.includes("harvester")) {
-      eqName = "John Deere Combine Harvester 5050D";
-      price = "₹950/hr (₹6,500/day)";
-    } else if (q.includes("drone")) {
-      eqName = "Agri Precision Spraying Drone (10L)";
-      price = "₹400/acre";
-    }
-
-    const btnText =
-      lang === "kn"
-        ? "🚜 ಈಗಲೇ ಬುಕಿಂಗ್ ಖಚಿತಪಡಿಸಿ"
-        : lang === "hi"
-        ? "🚜 अभी बुकिंग कन्फर्म करें"
-        : "🚜 Confirm Booking Now";
-
-    return {
-      type: "BOOK_EQUIPMENT",
-      targetRoute: "/equipment",
-      buttonText: btnText,
-      details: {
-        equipmentName: eqName,
-        price,
-        location: "Khed, Nashik (MH)",
-      },
-    };
-  }
 
   if (
     q.includes("weather") ||
@@ -377,7 +315,7 @@ export function GeminiChatbot() {
   }
 
   function executeAction(action: AIAction) {
-    triggerOptionAction(action.targetRoute || "/equipment", action.type);
+    triggerOptionAction(action.targetRoute || "/", action.type);
   }
 
   async function handleSendMessage(customMessage?: string) {

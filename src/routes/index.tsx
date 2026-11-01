@@ -47,8 +47,6 @@ const marketImg =
   "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=800&q=80";
 const voiceImg =
   "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80";
-const equipmentImg =
-  "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -57,13 +55,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "AI-powered farming assistant — hyperlocal weather advice, pest prediction, live mandi prices, voice assistant and equipment booking.",
+          "AI-powered farming assistant — hyperlocal weather advice, pest prediction, live mandi prices, voice assistant and agricultural guidance.",
       },
       { property: "og:title", content: "KrishiMitra AI — Smart Farming Companion" },
       {
         property: "og:description",
         content:
-          "Weather advisories, pest prediction, mandi intelligence, voice AI and equipment rental in one app.",
+          "Weather advisories, pest prediction, mandi intelligence, and voice AI in one unified farmer companion.",
       },
     ],
   }),
@@ -139,18 +137,6 @@ function Index() {
       color: "from-violet-50 to-indigo-50 border-violet-100",
       iconBg: "bg-violet-100 text-violet-600",
     },
-    {
-      to: "/equipment",
-      icon: Tractor,
-      image: equipmentImg,
-      title: t("feat_equipment_title", "Equipment Booking"),
-      text: t(
-        "feat_equipment_desc",
-        "Rent tractors, harvesters, drones and sprayers from verified owners near you.",
-      ),
-      color: "from-orange-50 to-red-50 border-orange-100",
-      iconBg: "bg-orange-100 text-orange-600",
-    },
   ];
 
   return (
@@ -177,7 +163,7 @@ function Index() {
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray-500">
                 {t(
                   "hero_desc",
-                  "Helping farmers make smarter decisions through weather intelligence, pest prediction, market insights and equipment booking.",
+                  "Helping farmers make smarter decisions through weather intelligence, pest prediction, market insights and community guidance.",
                 )}
               </p>
 
@@ -198,7 +184,7 @@ function Index() {
                   variant="outline"
                   className="rounded-full border-gray-200 px-8 text-gray-700 hover:bg-gray-50"
                 >
-                  <Link to="/equipment">{t("hero_book_equipment", "Book Equipment")}</Link>
+                  <Link to="/pest">{t("nav_pest", "Pest AI Diagnosis")}</Link>
                 </Button>
               </div>
 
@@ -825,94 +811,9 @@ function Index() {
             </Card>
           </Link>
         </section>
-
-        {/* ─── 8. EQUIPMENT NEAR YOU ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Tractor className="h-5 w-5 text-orange-600" />
-              <h2 className="text-xl font-bold text-gray-900">Equipment Near You</h2>
-            </div>
-            <Link
-              to="/equipment"
-              className="flex items-center text-xs font-semibold text-green-600 hover:underline"
-            >
-              Browse All Equipment <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                name: "Mahindra 575 DI Tractor (47 HP)",
-                category: "Tractor",
-                priceHr: 350,
-                priceDay: 1800,
-                owner: "Ramesh Patil",
-                village: "Khed, Nashik",
-                img: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80",
-                avail: true,
-              },
-              {
-                name: "John Deere Combine Harvester",
-                category: "Harvester",
-                priceHr: 950,
-                priceDay: 6500,
-                owner: "Iqbal Singh",
-                village: "Karnal, HR",
-                img: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=800&q=80",
-                avail: true,
-              },
-              {
-                name: "DJI Agras T30 Agriculture Drone",
-                category: "Drone",
-                priceHr: 600,
-                priceDay: 3500,
-                owner: "Venkatesh Rao",
-                village: "Guntur, AP",
-                img: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=800&q=80",
-                avail: true,
-              },
-            ].map((eq) => (
-              <Card
-                key={eq.name}
-                className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-100">
-                  <img src={eq.img} alt={eq.name} className="h-full w-full object-cover" />
-                  <Badge className="absolute top-3 left-3 bg-white/90 text-gray-800 border-0 text-xs">
-                    {eq.category}
-                  </Badge>
-                  <Badge className="absolute top-3 right-3 bg-emerald-500 text-white border-0 text-xs font-semibold">
-                    Available Now
-                  </Badge>
-                </div>
-                <CardContent className="p-5">
-                  <h3 className="font-extrabold text-gray-900 text-base">{eq.name}</h3>
-                  <p className="mt-1 text-xs text-gray-500">
-                    📍 {eq.village} · Owner: {eq.owner}
-                  </p>
-                  <div className="mt-4 flex items-center justify-between pt-3 border-t border-gray-100">
-                    <div>
-                      <span className="text-xl font-extrabold text-green-700">₹{eq.priceHr}</span>
-                      <span className="text-xs text-gray-500"> / hr</span>
-                    </div>
-                    <Button
-                      asChild
-                      size="sm"
-                      className="rounded-2xl bg-green-600 font-bold text-white hover:bg-green-700"
-                    >
-                      <Link to="/equipment">{t("book_now", "Book Now")}</Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
       </main>
 
-      {/* ─── 9. FOOTER ─── */}
+      {/* ─── 8. FOOTER ─── */}
       <Footer />
     </div>
   );

@@ -11,14 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
-import { Route as EquipmentRouteImport } from './routes/equipment'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarketRouteImport } from './routes/market'
 import { Route as PestRouteImport } from './routes/pest'
 import { Route as ReelsRouteImport } from './routes/reels'
 import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
-import { Route as AuthenticatedOwnerDashboardRouteImport } from './routes/_authenticated/owner.dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -27,11 +25,6 @@ const IndexRoute = IndexRouteImport.update({
 } as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EquipmentRoute = EquipmentRouteImport.update({
-  id: '/equipment',
-  path: '/equipment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -64,89 +57,57 @@ const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const AuthenticatedOwnerDashboardRoute =
-  AuthenticatedOwnerDashboardRouteImport.update({
-    id: '/owner/dashboard',
-    path: '/owner/dashboard',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/equipment': typeof EquipmentRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
   '/pest': typeof PestRoute
   '/reels': typeof ReelsRoute
   '/weather': typeof WeatherRoute
   '/profile': typeof AuthenticatedProfileRoute
-  '/owner/dashboard': typeof AuthenticatedOwnerDashboardRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/equipment': typeof EquipmentRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
   '/pest': typeof PestRoute
   '/reels': typeof ReelsRoute
   '/weather': typeof WeatherRoute
   '/profile': typeof AuthenticatedProfileRoute
-  '/owner/dashboard': typeof AuthenticatedOwnerDashboardRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
-  '/equipment': typeof EquipmentRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
   '/pest': typeof PestRoute
   '/reels': typeof ReelsRoute
   '/weather': typeof WeatherRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
-  '/_authenticated/owner/dashboard': typeof AuthenticatedOwnerDashboardRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/equipment'
-    | '/login'
-    | '/market'
-    | '/pest'
-    | '/reels'
-    | '/weather'
-    | '/profile'
-    | '/owner/dashboard'
+    '/' | '/login' | '/market' | '/pest' | '/reels' | '/weather' | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/equipment'
-    | '/login'
-    | '/market'
-    | '/pest'
-    | '/reels'
-    | '/weather'
-    | '/profile'
-    | '/owner/dashboard'
+  to: '/' | '/login' | '/market' | '/pest' | '/reels' | '/weather' | '/profile'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
-    | '/equipment'
     | '/login'
     | '/market'
     | '/pest'
     | '/reels'
     | '/weather'
     | '/_authenticated/profile'
-    | '/_authenticated/owner/dashboard'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
-  EquipmentRoute: typeof EquipmentRoute
   LoginRoute: typeof LoginRoute
   MarketRoute: typeof MarketRoute
   PestRoute: typeof PestRoute
@@ -168,13 +129,6 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/equipment': {
-      id: '/equipment'
-      path: '/equipment'
-      fullPath: '/equipment'
-      preLoaderRoute: typeof EquipmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -219,24 +173,15 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProfileRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/owner/dashboard': {
-      id: '/_authenticated/owner/dashboard'
-      path: '/owner/dashboard'
-      fullPath: '/owner/dashboard'
-      preLoaderRoute: typeof AuthenticatedOwnerDashboardRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
-  AuthenticatedOwnerDashboardRoute: typeof AuthenticatedOwnerDashboardRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
-  AuthenticatedOwnerDashboardRoute: AuthenticatedOwnerDashboardRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -245,7 +190,6 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
-  EquipmentRoute: EquipmentRoute,
   LoginRoute: LoginRoute,
   MarketRoute: MarketRoute,
   PestRoute: PestRoute,

@@ -41,11 +41,11 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <h4 className="text-sm font-semibold">{t("nav_equipment", "Community")}</h4>
+          <h4 className="text-sm font-semibold">{t("nav_reels", "Community")}</h4>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li>
-              <Link to="/equipment" className="hover:text-primary">
-                {t("nav_equipment", "Equipment Booking")}
+              <Link to="/reels" className="hover:text-primary">
+                {t("nav_reels", "Agri Reels")}
               </Link>
             </li>
             <li>

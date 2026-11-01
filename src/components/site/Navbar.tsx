@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { Leaf, Menu, X, User as UserIcon, LogOut, Tractor, Globe } from "lucide-react";
+import { Leaf, Menu, X, User as UserIcon, LogOut, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -29,7 +29,6 @@ export function Navbar() {
     { to: "/weather", label: t("nav_weather", "Weather") },
     { to: "/pest", label: t("nav_pest", "Pest AI") },
     { to: "/market", label: t("nav_market", "Market") },
-    { to: "/equipment", label: t("nav_equipment", "Equipment") },
     { to: "/reels", label: t("nav_reels", "Reels") },
   ];
 
@@ -86,14 +85,6 @@ export function Navbar() {
 
           {user ? (
             <div className="ml-2 flex items-center gap-2">
-              {role === "owner" && (
-                <Button asChild variant="outline" className="rounded-full">
-                  <Link to="/owner/dashboard">
-                    <Tractor className="mr-1.5 h-4 w-4" />{" "}
-                    {t("nav_owner_dashboard", "Owner Dashboard")}
-                  </Link>
-                </Button>
-              )}
               <Button asChild variant="outline" className="rounded-full">
                 <Link to="/profile">
                   <UserIcon className="mr-1.5 h-4 w-4" /> {t("nav_profile", "Profile")}
@@ -166,15 +157,6 @@ export function Navbar() {
             ))}
             {user ? (
               <>
-                {role === "owner" && (
-                  <Link
-                    to="/owner/dashboard"
-                    onClick={() => setOpen(false)}
-                    className="rounded-xl px-3 py-2.5 text-sm font-medium"
-                  >
-                    {t("nav_owner_dashboard", "Owner Dashboard")}
-                  </Link>
-                )}
                 <Link
                   to="/profile"
                   onClick={() => setOpen(false)}

@@ -83,13 +83,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "AI weather advisories, pest prediction, mandi prices and equipment booking for Indian farmers.",
+          "AI weather advisories, pest prediction, and live mandi prices for Indian farmers.",
       },
       { name: "author", content: "KrishiMitra AI" },
       { property: "og:title", content: "KrishiMitra AI — Smart Farming Companion" },
       {
         property: "og:description",
-        content: "AI weather advisories, pest prediction, mandi prices and equipment booking.",
+        content: "AI weather advisories, pest prediction, and live mandi prices.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

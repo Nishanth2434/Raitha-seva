@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/lib/supabase";
 import type { User } from "@supabase/supabase-js";
 
-export type AppRole = "admin" | "owner" | "farmer";
+export type AppRole = "admin" | "farmer";
 
 export interface UserProfile {
   id: string;
@@ -14,21 +14,12 @@ export interface UserProfile {
   state?: string;
   district?: string;
   avatar_url?: string;
-  is_owner: boolean;
-  is_admin: boolean;
-  owner_status: "none" | "pending" | "approved" | "rejected";
+  is_admin?: boolean;
 }
 
 /** Returns the redirect path for a given role after login. */
-export function getRedirectPath(role: AppRole | null): string {
-  switch (role) {
-    case "owner":
-      return "/owner/dashboard";
-    case "admin":
-    case "farmer":
-    default:
-      return "/";
-  }
+export function getRedirectPath(_role: AppRole | null): string {
+  return "/";
 }
 
 export function useAuth() {
@@ -51,22 +42,14 @@ export function useAuth() {
 
       if (data) {
         setProfile(data as UserProfile);
-        if (data.is_admin) {
-          setRole("admin");
-        } else if (data.is_owner) {
-          setRole("owner");
-        } else {
-          setRole("farmer");
-        }
+        setRole(data.is_admin ? "admin" : "farmer");
       } else {
         // Fallback profile if row is being created by trigger
         const fallback: UserProfile = {
           id: userId,
           username: userEmail?.split("@")[0] || "farmer",
           email: userEmail || "",
-          is_owner: false,
           is_admin: false,
-          owner_status: "none",
         };
         setProfile(fallback);
         setRole("farmer");
