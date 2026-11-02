@@ -132,6 +132,7 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 import { GeminiChatbot } from "@/components/site/GeminiChatbot";
+import { AgriculturalNotificationPopup } from "@/components/notifications/AgriculturalNotificationPopup";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
@@ -142,6 +143,7 @@ function RootComponent() {
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
         <Toaster />
+        <AgriculturalNotificationPopup />
         <GeminiChatbot />
       </LanguageProvider>
     </QueryClientProvider>

@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/hooks/use-auth";
 import { useLanguage, languages, LanguageCode } from "@/context/language-context";
+import { NotificationBell } from "@/components/notifications/NotificationBell";
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -183,6 +184,9 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
 
+            {/* Agricultural Updates Notification Bell */}
+            <NotificationBell />
+
             {/* Subtle Divider */}
             <div className="h-4 w-px bg-gray-200 mx-1" aria-hidden="true" />
 
@@ -258,8 +262,9 @@ export function Navbar() {
             )}
           </div>
 
-          {/* Mobile Right Controls: Compact Language & Hamburger (Visible on < lg) */}
+          {/* Mobile Right Controls: Notification Bell, Compact Language & Hamburger (Visible on < lg) */}
           <div className="flex items-center gap-1.5 lg:hidden">
+            <NotificationBell />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   CloudSun,
@@ -26,6 +27,7 @@ import {
   FileText,
   IndianRupee,
   ExternalLink,
+  ChevronRight,
 } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -37,6 +39,11 @@ import { useLanguage } from "@/context/language-context";
 import { useWeather } from "@/hooks/use-weather";
 import { useAuth } from "@/hooks/use-auth";
 import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
+import {
+  fetchAgriculturalUpdates,
+  AgriculturalUpdateNotification,
+  BASELINE_AGRICULTURAL_UPDATES,
+} from "@/lib/agricultural-notifications";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -131,26 +138,21 @@ export function Index() {
     },
   ];
 
-  const recentActivities = [
-    {
-      titleKn: "ಮಂಡ್ಯ ವಲಯ 6 ರಾಗಿ ಬ್ಲಾಸ್ಟ್ ನಿರ್ವಹಣಾ ಸಲಹೆ ನವೀಕರಿಸಲಾಗಿದೆ",
-      titleEn: "UASB Zone 6 Ragi Blast advisory updated",
-      source: "UAS Bangalore Package of Practices",
-      time: "2 hours ago",
-    },
-    {
-      titleKn: "ಮಂಡ್ಯ APMC ಭತ್ತ ಮತ್ತು ಬೆಲ್ಲದ ಮಂಡಿ ಬೆಲೆ ನವೀಕರಣಗೊಂಡಿದೆ",
-      titleEn: "Mandya APMC Paddy & Jaggery prices refreshed",
-      source: "AGMARKNET Mandi Intelligence",
-      time: "Today, 11:30 AM",
-    },
-    {
-      titleKn: "ದಕ್ಷಿಣ ಒಣ ವಲಯಕ್ಕೆ 36 ಗಂಟೆಗಳ ಮಳೆ ಮುನ್ಸೂಚನೆ ಎಚ್ಚರಿಕೆ",
-      titleEn: "36-hour rain alert issued for Southern Dry Zone",
-      source: "IMD Mausam / Agro-Met Advisory",
-      time: "Today, 6:00 AM",
-    },
-  ];
+  const [agriculturalUpdates, setAgriculturalUpdates] = useState<AgriculturalUpdateNotification[]>(
+    BASELINE_AGRICULTURAL_UPDATES
+  );
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchAgriculturalUpdates().then((data) => {
+      if (isMounted && data.length > 0) {
+        setAgriculturalUpdates(data);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-50/50 pb-16 xl:pb-0 flex flex-col">
@@ -747,25 +749,87 @@ export function Index() {
 
         {/* ─── 5. RECENT AGRICULTURAL ACTIVITIES & ADVISORIES ─── */}
         <section className="space-y-3">
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-gray-600" />
-            <h2 className="text-sm font-bold uppercase tracking-wider text-gray-700">
-              {language === "kn" ? "ಇತ್ತೀಚಿನ ಕೃಷಿ ನವೀಕರಣಗಳು (Recent Updates)" : "Recent Agricultural Updates"}
-            </h2>
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Clock className="h-4 w-4 text-green-700" />
+              <h2 className="text-sm font-bold uppercase tracking-wider text-gray-700">
+                {language === "kn"
+                  ? "ಇತ್ತೀಚಿನ ಕೃಷಿ ನವೀಕರಣಗಳು (Recent Updates)"
+                  : language === "hi"
+                  ? "हालिया कृषि अपडेट (Recent Updates)"
+                  : "Recent Agricultural Updates"}
+              </h2>
+            </div>
+            <Link
+              to="/help"
+              className="text-xs font-bold text-green-700 hover:underline flex items-center gap-1"
+            >
+              <span>
+                {language === "kn"
+                  ? "ಅಧಿಕೃತ ಮೂಲಗಳು"
+                  : language === "hi"
+                  ? "सत्यापित स्रोत"
+                  : "Official Sources"}
+              </span>
+              <ExternalLink className="h-3 w-3" />
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {recentActivities.map((act, i) => (
-              <Card key={i} className="rounded-2xl border border-gray-200/90 bg-white p-4 space-y-1">
-                <p className="text-xs font-bold text-gray-900 leading-snug">
-                  {language === "kn" ? act.titleKn : act.titleEn}
-                </p>
-                <div className="flex items-center justify-between text-[10px] text-gray-500 pt-1">
-                  <span>{act.source}</span>
-                  <span className="font-medium text-green-700">{act.time}</span>
-                </div>
-              </Card>
-            ))}
+            {agriculturalUpdates.slice(0, 3).map((act) => {
+              const title =
+                language === "kn"
+                  ? act.titleKn
+                  : language === "hi"
+                  ? act.titleHi
+                  : act.titleEn;
+              const time =
+                language === "kn"
+                  ? act.relativeTimeKn
+                  : language === "hi"
+                  ? act.relativeTimeHi
+                  : act.relativeTimeEn;
+
+              return (
+                <Link key={act.id} to={act.internalUrl as any} className="block group">
+                  <Card className="rounded-2xl border border-gray-200/90 bg-white p-4 space-y-2 h-full transition-all group-hover:border-green-300 group-hover:shadow-md">
+                    <div className="flex items-center justify-between gap-1">
+                      <span
+                        className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                          act.priority === "urgent"
+                            ? "border-red-200 bg-red-50 text-red-700"
+                            : "border-green-200 bg-green-50 text-green-700"
+                        }`}
+                      >
+                        {act.priority === "urgent"
+                          ? language === "kn"
+                            ? "ಅತ್ಯಗತ್ಯ"
+                            : language === "hi"
+                            ? "अति आवश्यक"
+                            : "Urgent Alert"
+                          : language === "kn"
+                          ? "ನವೀಕರಣ"
+                          : language === "hi"
+                          ? "अपडेट"
+                          : "Update"}
+                      </span>
+                      <span className="text-[10px] text-gray-400 font-medium">{time}</span>
+                    </div>
+
+                    <p className="text-xs font-bold text-gray-900 leading-snug group-hover:text-green-700 transition-colors line-clamp-2">
+                      {title}
+                    </p>
+
+                    <div className="flex items-center justify-between text-[10px] text-gray-500 pt-1 border-t border-gray-50">
+                      <span className="truncate max-w-[200px]" title={act.source}>
+                        {act.source}
+                      </span>
+                      <ChevronRight className="h-3.5 w-3.5 text-gray-400 group-hover:text-green-600 transition-colors shrink-0 ml-1" />
+                    </div>
+                  </Card>
+                </Link>
+              );
+            })}
           </div>
         </section>
       </main>
