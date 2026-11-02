@@ -1,32 +1,117 @@
 """
 Unit and Integration Tests for Multimodal Plant Disease Vision Doctor.
-Verifies all 8 structured sections, edge cases (clear, ambiguous, healthy, non-plant),
-chemical safety, and fallback engine reliability.
+Verifies all 8 structured sections, edge cases (clear close-up, wide-field, ambiguous/blurry,
+nutrient deficiency, healthy, non-plant, unsupported crops), chemical safety,
+and calculates benchmark metrics (False-Positive Rate, Recall, Inconclusive Rate).
 """
 
+import io
+import math
 import base64
+import numpy as np
+from PIL import Image
 from django.test import TestCase
 from rest_framework.test import APIClient
 from rest_framework import status
-from assistant.vision import PlantDiseaseVisionDoctor, vision_doctor
+from assistant.vision import (
+    PlantDiseaseVisionDoctor,
+    vision_doctor,
+    CATEGORY_APPARENTLY_HEALTHY,
+    CATEGORY_POSSIBLE_DISEASE,
+    CATEGORY_POSSIBLE_PEST,
+    CATEGORY_NUTRIENT_OR_STRESS,
+    CATEGORY_INCONCLUSIVE,
+    CATEGORY_NON_PLANT
+)
+
+
+def create_b64_image(width: int, height: int, pixel_gen) -> str:
+    img = Image.new("RGB", (width, height))
+    pixels = img.load()
+    for y in range(height):
+        for x in range(width):
+            pixels[x, y] = pixel_gen(x, y, width, height)
+    buf = io.BytesIO()
+    img.save(buf, format="JPEG", quality=90)
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode("utf-8")
+
 
 class PlantDiseaseVisionTests(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        # 1. Healthy close-up leaf: high green, leaf-vein variation, high sharpness
+        cls.img_healthy_closeup = create_b64_image(
+            200, 200,
+            lambda x, y, w, h: (
+                int(30 + 15 * math.sin(x / 5.0)),
+                int(145 + 20 * math.cos(y / 5.0)),
+                int(35 + 10 * math.sin((x + y) / 7.0))
+            )
+        )
+
+        # 2. Healthy wide-angle field photo: 400x200 (aspect 2.0), vast green canopy
+        cls.img_healthy_widefield = create_b64_image(
+            400, 200,
+            lambda x, y, w, h: (
+                int(40 + 10 * math.sin(x / 10.0)),
+                int(135 + 15 * math.sin(y / 10.0)),
+                int(45 + 10 * math.cos(x / 10.0))
+            )
+        )
+
+        # 3. Confirmed disease leaf: green background with dark brown necrotic spots
+        def disease_pixels(x, y, w, h):
+            # 3 focal necrotic spots with chlorotic yellow halos
+            centers = [(60, 60), (140, 80), (100, 140)]
+            for cx, cy in centers:
+                dist = math.hypot(x - cx, y - cy)
+                if dist < 12:  # Necrotic brown center
+                    return (105, 50, 30)
+                elif dist < 20:  # Chlorotic halo
+                    return (185, 175, 45)
+            return (
+                int(30 + 10 * math.sin(x / 5.0)),
+                int(140 + 15 * math.cos(y / 5.0)),
+                int(35 + 10 * math.sin(y / 5.0))
+            )
+        cls.img_diseased_leaf = create_b64_image(200, 200, disease_pixels)
+
+        # 4. Nutrient-deficiency leaf: diffuse yellow chlorosis, NO necrotic spots
+        cls.img_nutrient_deficiency = create_b64_image(
+            200, 200,
+            lambda x, y, w, h: (
+                int(180 + 20 * math.sin(x / 8.0)),
+                int(185 + 20 * math.cos(y / 8.0)),
+                int(50 + 15 * math.sin((x + y) / 10.0))
+            )
+        )
+
+        # 5. Blurry / Inconclusive leaf: ambiguous foliage in shadows / low contrast
+        cls.img_blurry_leaf = create_b64_image(
+            200, 200,
+            lambda x, y, w, h: (40, 120, 45) if (x < 70 and y < 70) else (75, 75, 70)
+        )
+
+        # 6. Non-plant image: solid blue-gray indoor surface
+        cls.img_non_plant = create_b64_image(
+            200, 200,
+            lambda x, y, w, h: (50, 60, 140)
+        )
+
     def setUp(self):
         self.client = APIClient()
         self.doctor = PlantDiseaseVisionDoctor()
-        # Generate a minimal valid 1x1 GIF base64 string
-        self.tiny_gif_b64 = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
 
     def test_eight_sections_present_in_diagnosis(self):
         """Verify that all 8 required sections are returned with expected fields."""
         result = self.doctor.analyze_crop_image(
-            image_base64=self.tiny_gif_b64,
+            image_base64=self.img_healthy_closeup,
             crop_hint="tomato",
             region="Mandya",
             language="kn"
         )
         self.assertEqual(result.get("status"), "success")
-        
+
         # 1. Disease Identification
         self.assertIn("disease_identification", result)
         ident = result["disease_identification"]
@@ -37,13 +122,13 @@ class PlantDiseaseVisionTests(TestCase):
         self.assertIn("affected_plant_part", ident)
         self.assertIn("confidence_level", ident)
         self.assertIn("confidence_score", ident)
-        
+
         # 2. What is happening?
         self.assertIn("what_is_happening", result)
         what = result["what_is_happening"]
         self.assertIn("summary_kn", what)
         self.assertIn("summary_en", what)
-        
+
         # 3. Symptoms
         self.assertIn("symptoms", result)
         sym = result["symptoms"]
@@ -82,50 +167,150 @@ class PlantDiseaseVisionTests(TestCase):
         self.assertTrue(len(src["official_sources"]) > 0)
         self.assertIn("uncertainty_warning_kn", src)
 
-    def test_paddy_blast_diagnosis(self):
-        """Verify paddy blast advisory grounded in UAS Bengaluru Zone 6 recommendations."""
+    def test_case_1_healthy_close_up_does_not_invent_disease(self):
+        """Test A1: Healthy close-up foliage must be classified as APPARENTLY_HEALTHY without pesticides."""
         result = self.doctor.analyze_crop_image(
-            image_base64=self.tiny_gif_b64,
+            image_base64=self.img_healthy_closeup,
+            crop_hint="tomato",
+            region="Mandya",
+            language="kn"
+        )
+        self.assertEqual(result["category"], CATEGORY_APPARENTLY_HEALTHY)
+        self.assertTrue(result["is_healthy"])
+        self.assertFalse(result["treatment_and_management"]["treatment_needed"])
+        self.assertIn("ಯಾವುದೇ ರಾಸಾಯನಿಕ ಸಿಂಪಡಿಸಬೇಡಿ", result["treatment_and_management"]["chemical_treatment_kn"])
+
+    def test_case_2_wide_field_photo_limitations(self):
+        """Test A2: Wide field landscape must not hallucinate leaf spot disease and must state limitations."""
+        result = self.doctor.analyze_crop_image(
+            image_base64=self.img_healthy_widefield,
+            crop_hint="tomato",
+            region="Mandya",
+            language="kn"
+        )
+        self.assertEqual(result["category"], CATEGORY_APPARENTLY_HEALTHY)
+        self.assertTrue(result["is_healthy"])
+        # Must mention wide angle view limitation
+        obs = result["visual_observations"]["summary_kn"]
+        self.assertTrue("ವಿಶಾಲ ಕೋನದ" in obs or "wide-angle" in result["visual_observations"]["summary_en"].lower())
+        self.assertIn("ಯಾವುದೇ ರಾಸಾಯನಿಕ ಸಿಂಪಡಿಸಬೇಡಿ", result["treatment_and_management"]["chemical_treatment_kn"])
+
+    def test_case_3_confirmed_disease_diagnosis(self):
+        """Test B1: Leaf with necrotic spots and halo must diagnose disease with grounded PoP."""
+        result = self.doctor.analyze_crop_image(
+            image_base64=self.img_diseased_leaf,
+            crop_hint="tomato",
+            region="Mandya",
+            language="kn"
+        )
+        self.assertEqual(result["category"], CATEGORY_POSSIBLE_DISEASE)
+        self.assertFalse(result["is_healthy"])
+        self.assertTrue(result["treatment_and_management"]["treatment_needed"])
+        self.assertIn("ಮ್ಯಾಂಕೋಜೆಬ್", result["treatment_and_management"]["chemical_treatment_kn"])
+
+    def test_case_3_paddy_blast_diagnosis(self):
+        """Test B2: Paddy leaf with disease lesions provides UAS Bengaluru Tricyclazole advisory."""
+        result = self.doctor.analyze_crop_image(
+            image_base64=self.img_diseased_leaf,
             crop_hint="paddy",
             region="Mandya",
             language="kn"
         )
-        self.assertEqual(result.get("status"), "success")
+        self.assertEqual(result["category"], CATEGORY_POSSIBLE_DISEASE)
         self.assertIn("ಭತ್ತದ ಬೆಂಕಿ ರೋಗ", result["disease_identification"]["disease_name_kn"])
         self.assertIn("Tricyclazole", result["treatment_and_management"]["chemical_treatment_en"])
         self.assertIn("Trichoderma", result["treatment_and_management"]["organic_solution_en"])
 
-    def test_non_plant_handling(self):
-        """Verify non-plant edge case structure."""
-        mock_raw = {
-            "status": "success",
-            "is_plant": False,
-            "is_healthy": False,
-        }
-        res = self.doctor._validate_and_format_diagnosis(mock_raw, language="kn")
-        self.assertFalse(res["is_plant"])
-        self.assertIn("Non-plant", res["disease_identification"]["disease_name_en"])
-        self.assertIn("ಅಪ್‌ಲೋಡ್ ಮಾಡಿ", res["what_is_happening"]["summary_kn"])
+    def test_case_4_nutrient_deficiency_forbids_pesticides(self):
+        """Test B3: Chlorotic yellow leaves without necrosis must diagnose nutrient deficiency and ban pesticides."""
+        result = self.doctor.analyze_crop_image(
+            image_base64=self.img_nutrient_deficiency,
+            crop_hint="tomato",
+            region="Mandya",
+            language="kn"
+        )
+        self.assertEqual(result["category"], CATEGORY_NUTRIENT_OR_STRESS)
+        self.assertFalse(result["is_healthy"])
+        chem_kn = result["treatment_and_management"]["chemical_treatment_kn"]
+        self.assertIn("ಕೀಟನಾಶಕ ಅಥವಾ ಶಿಲೀಂಧ್ರನಾಶಕ ಸಿಂಪಡಿಸಬೇಡಿ", chem_kn)
+        self.assertIn("19:19:19", chem_kn)
 
-    def test_healthy_plant_handling(self):
-        """Verify healthy plant edge case: no pesticide recommended."""
-        mock_raw = {
-            "status": "success",
-            "is_plant": True,
-            "is_healthy": True,
-            "disease_identification": {
-                "crop_identified": "Tomato"
-            }
-        }
-        res = self.doctor._validate_and_format_diagnosis(mock_raw, language="kn")
-        self.assertTrue(res["is_healthy"])
-        self.assertIn("ಆರೋಗ್ಯಕರ", res["disease_identification"]["disease_name_kn"])
-        self.assertIn("ಅಗತ್ಯವಿಲ್ಲ", res["what_is_happening"]["summary_kn"])
+    def test_case_5_blurry_image_requests_closeup(self):
+        """Test B4: Blurry/ambiguous photo returns INCONCLUSIVE without chemical treatment."""
+        result = self.doctor.analyze_crop_image(
+            image_base64=self.img_blurry_leaf,
+            crop_hint="tomato",
+            region="Mandya",
+            language="kn"
+        )
+        self.assertEqual(result["category"], CATEGORY_INCONCLUSIVE)
+        self.assertFalse(result["treatment_and_management"]["treatment_needed"])
+        self.assertIn("ಯಾವುದೇ ರಾಸಾಯನಿಕ ಸಿಂಪಡಿಸಬೇಡಿ", result["treatment_and_management"]["chemical_treatment_kn"])
+        self.assertTrue(result["recommended_next_steps"]["request_closeup"])
+
+    def test_case_6_non_plant_handling(self):
+        """Test B5: Non-plant image detected and handled safely."""
+        result = self.doctor.analyze_crop_image(
+            image_base64=self.img_non_plant,
+            crop_hint="tomato",
+            region="Mandya",
+            language="kn"
+        )
+        self.assertEqual(result["category"], CATEGORY_NON_PLANT)
+        self.assertFalse(result["is_plant"])
+        self.assertIn("ಸಸ್ಯ ಅಥವಾ ಬೆಳೆಯ ಚಿತ್ರವಲ್ಲ", result["disease_identification"]["disease_name_kn"])
+
+    def test_case_7_unsupported_crop_flagging(self):
+        """Test B6: Unsupported crop like olive flagged as is_supported=False with expert referral."""
+        result = self.doctor.analyze_crop_image(
+            image_base64=self.img_healthy_closeup,
+            crop_hint="olive",
+            region="Mandya",
+            language="kn"
+        )
+        self.assertFalse(result["crop_identification"]["is_supported"])
+        self.assertIn("ಪಟ್ಟಿಯ ಹೊರಗಿದೆ", result["uncertainty_or_limitations"]["limitations_kn"])
+
+    def test_benchmark_metrics_calculation(self):
+        """
+        Benchmark accuracy on the required test set:
+        - False-Positive Rate on healthy images: target 0%
+        - Recall on confirmed disease cases: target 100%
+        - Inconclusive proportion on blurry images: target 100%
+        """
+        # Test 1 & 2: Healthy Close-up and Healthy Wide-Field
+        r_healthy1 = self.doctor.analyze_crop_image(self.img_healthy_closeup, crop_hint="tomato")
+        r_healthy2 = self.doctor.analyze_crop_image(self.img_healthy_widefield, crop_hint="tomato")
+
+        healthy_results = [r_healthy1, r_healthy2]
+        false_positives = sum(
+            1 for r in healthy_results
+            if r["category"] in [CATEGORY_POSSIBLE_DISEASE, CATEGORY_POSSIBLE_PEST]
+        )
+        fpr = false_positives / len(healthy_results)
+
+        # Test 3: Confirmed Disease
+        r_disease = self.doctor.analyze_crop_image(self.img_diseased_leaf, crop_hint="tomato")
+        disease_results = [r_disease]
+        true_positives = sum(
+            1 for r in disease_results
+            if r["category"] == CATEGORY_POSSIBLE_DISEASE
+        )
+        recall = true_positives / len(disease_results)
+
+        # Test 4: Blurry Image
+        r_blurry = self.doctor.analyze_crop_image(self.img_blurry_leaf, crop_hint="tomato")
+        inconclusive_flag = 1 if r_blurry["category"] == CATEGORY_INCONCLUSIVE else 0
+
+        # Assertions
+        self.assertEqual(fpr, 0.0, f"False-Positive Rate must be 0%, got {fpr * 100}%")
+        self.assertEqual(recall, 1.0, f"Disease Recall must be 100%, got {recall * 100}%")
+        self.assertEqual(inconclusive_flag, 1, "Blurry image must be categorized as INCONCLUSIVE")
 
     def test_chemical_safety_precautions(self):
         """Ensure all diagnoses carry safety disclaimer and PPE requirements."""
         result = self.doctor.analyze_crop_image(
-            image_base64=self.tiny_gif_b64,
+            image_base64=self.img_diseased_leaf,
             crop_hint="tomato",
             region="Mandya",
             language="kn"
@@ -138,7 +323,7 @@ class PlantDiseaseVisionTests(TestCase):
         response = self.client.post(
             "/api/assistant/diagnose/",
             {
-                "image": self.tiny_gif_b64,
+                "image": self.img_healthy_closeup,
                 "crop": "tomato",
                 "region": "Mandya",
                 "language": "kn"
@@ -148,5 +333,6 @@ class PlantDiseaseVisionTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         data = response.json()
         self.assertEqual(data.get("status"), "success")
+        self.assertEqual(data["category"], CATEGORY_APPARENTLY_HEALTHY)
         self.assertIn("disease_identification", data)
         self.assertIn("treatment_and_management", data)
