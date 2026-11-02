@@ -26,6 +26,7 @@ import {
   IndianRupee,
   Shield,
   ExternalLink,
+  Globe,
 } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -76,7 +77,7 @@ const stats = [
 ];
 
 function Index() {
-  const { t } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const { location, weatherData, isLoading, isLocating, locationSource } = useWeather();
   const cur = locationSource === "default" ? undefined : weatherData?.current;
   const featureScrollRef = useRef<HTMLDivElement>(null);
@@ -151,9 +152,43 @@ function Index() {
 
           <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
             <div className="animate-fade-up">
-              <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-sm font-medium text-green-700">
-                <Sparkles className="h-4 w-4" />
-                {t("hero_eyebrow", "AI-Powered Farming")}
+              <div className="flex flex-wrap items-center gap-2.5">
+                <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-sm font-medium text-green-700">
+                  <Sparkles className="h-4 w-4" />
+                  {t("hero_eyebrow", "AI-Powered Farming")}
+                </div>
+
+                {/* Dashboard Language Switch Button */}
+                <div className="inline-flex items-center rounded-full border border-green-200/90 bg-white/95 p-1 shadow-xs">
+                  <span className="pl-2 pr-1.5 text-xs font-semibold text-gray-500 flex items-center gap-1">
+                    <Globe className="h-3.5 w-3.5 text-green-600" />
+                    <span className="hidden sm:inline">ಭಾಷೆ / Lang:</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage("kn")}
+                    className={`rounded-full px-3 py-1 text-xs font-bold transition-all cursor-pointer ${
+                      language === "kn"
+                        ? "bg-green-600 text-white shadow-xs"
+                        : "text-gray-700 hover:bg-gray-100"
+                    }`}
+                    title="ಕನ್ನಡ ಭಾಷೆಗೆ ಬದಲಾಯಿಸಿ"
+                  >
+                    ಕನ್ನಡ
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLanguage("en")}
+                    className={`rounded-full px-3 py-1 text-xs font-bold transition-all cursor-pointer ${
+                      language === "en"
+                        ? "bg-green-600 text-white shadow-xs"
+                        : "text-gray-700 hover:bg-gray-100"
+                    }`}
+                    title="Switch to English"
+                  >
+                    English
+                  </button>
+                </div>
               </div>
 
               <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
