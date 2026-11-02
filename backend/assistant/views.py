@@ -68,7 +68,9 @@ class PestDiagnosisView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        crop = request.data.get("crop", "paddy")
+        crop = request.data.get("crop", "auto")
+        if not crop or str(crop).lower().strip() in ["all", "none", "null", ""]:
+            crop = "auto"
         symptom_notes = request.data.get("symptoms", "")
         language = request.data.get("language", "kn")
         region = request.data.get("region", "Mandya")

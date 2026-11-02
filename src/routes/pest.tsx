@@ -402,7 +402,7 @@ const DISTRICTS = [
 
 export async function analyzeCropDiseaseWithGemini(
   base64Image: string,
-  cropName: string = "Tomato",
+  cropName: string = "auto",
   langPreference: "kn" | "en" = "kn"
 ): Promise<StructuredDiagnosis> {
   const backendUrl = import.meta.env["VITE_BACKEND_API_URL"] || "http://127.0.0.1:8000";
@@ -556,6 +556,7 @@ export function PestPage() {
   const [isDragging, setIsDragging] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState<DiseaseResult | null>(null);
+  const [uploadCrop, setUploadCrop] = useState<string>("auto");
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   // Fetch Alerts & Source Health from backend
@@ -652,8 +653,8 @@ export function PestPage() {
   async function runDiagnosis() {
     if (!selectedImage) return;
     setIsAnalyzing(true);
-    const cropLabel = CROPS.find((c) => c.slug === selectedCrop)?.nameEn || "Tomato";
-    const res = await analyzeCropDiseaseWithGemini(selectedImage, cropLabel, langPreference);
+    const cropToUse = uploadCrop === "auto" ? "auto" : uploadCrop;
+    const res = await analyzeCropDiseaseWithGemini(selectedImage, cropToUse, langPreference);
     setAnalysisResult(res);
     setIsAnalyzing(false);
   }
@@ -821,6 +822,54 @@ export function PestPage() {
                       <X className="mr-1 h-3.5 w-3.5" /> {langPreference === "kn" ? "ಫೋಟೋ ತೆಗೆದುಹಾಕಿ" : "Remove Photo"}
                     </Button>
                   )}
+                </div>
+
+                {/* Crop Selection Hint / Dropdown */}
+                <div className="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-gray-200/80 bg-gray-50/90 px-4 py-2.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-gray-700">
+                      🌾 {langPreference === "kn" ? "ಬೆಳೆ (Crop):" : "Target Crop:"}
+                    </span>
+                  </div>
+                  <select
+                    value={uploadCrop}
+                    onChange={(e) => setUploadCrop(e.target.value)}
+                    className="rounded-xl border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-800 shadow-2xs focus:border-green-600 focus:outline-hidden"
+                  >
+                    <option value="auto">
+                      {langPreference === "kn" ? "✨ ಚಿತ್ರದಿಂದ ಸ್ವಯಂ ಪತ್ತೆ (Auto-detect)" : "✨ Auto-detect Crop from Photo"}
+                    </option>
+                    <option value="maize">
+                      {langPreference === "kn" ? "🌽 ಮೆಕ್ಕೆಜೋಳ (Maize / Corn)" : "🌽 Maize / Corn"}
+                    </option>
+                    <option value="paddy">
+                      {langPreference === "kn" ? "🌾 ಭತ್ತ (Paddy / Rice)" : "🌾 Paddy / Rice"}
+                    </option>
+                    <option value="tomato">
+                      {langPreference === "kn" ? "🍅 ಟೊಮೆಟೊ (Tomato)" : "🍅 Tomato"}
+                    </option>
+                    <option value="ragi">
+                      {langPreference === "kn" ? "🌱 ರಾಗಿ (Finger Millet)" : "🌱 Finger Millet (Ragi)"}
+                    </option>
+                    <option value="cotton">
+                      {langPreference === "kn" ? "☁️ ಹತ್ತಿ (Cotton)" : "☁️ Cotton"}
+                    </option>
+                    <option value="sugarcane">
+                      {langPreference === "kn" ? "🎋 ಕಬ್ಬು (Sugarcane)" : "🎋 Sugarcane"}
+                    </option>
+                    <option value="chilli">
+                      {langPreference === "kn" ? "🌶️ ಮೆಣಸಿನಕಾಯಿ (Chilli)" : "🌶️ Chilli"}
+                    </option>
+                    <option value="onion">
+                      {langPreference === "kn" ? "🧅 ಈರುಳ್ಳಿ (Onion)" : "🧅 Onion"}
+                    </option>
+                    <option value="groundnut">
+                      {langPreference === "kn" ? "🥜 ಕಡಲೆಕಾಯಿ (Groundnut)" : "🥜 Groundnut"}
+                    </option>
+                    <option value="banana">
+                      {langPreference === "kn" ? "🍌 ಬಾಳೆ (Banana)" : "🍌 Banana"}
+                    </option>
+                  </select>
                 </div>
 
                 {!selectedImage ? (

@@ -98,6 +98,27 @@ class PlantDiseaseVisionTests(TestCase):
             lambda x, y, w, h: (50, 60, 140)
         )
 
+        # 7. Maize ear / cob with damaged kernels (Bug reproduction case)
+        # Golden yellow/orange kernels with localized dark necrotic/rotted spots
+        def maize_ear_pixels(x, y, w, h):
+            damaged_spots = [(70, 70), (130, 110), (90, 150)]
+            for cx, cy in damaged_spots:
+                dist = math.hypot(x - cx, y - cy)
+                if dist < 14:  # Decayed brown/black rotted kernel
+                    return (120, 55, 35)
+                elif dist < 22:  # Discolored margin
+                    return (160, 110, 50)
+            # Golden yellow maize kernels
+            # R=210, G=165, B=120 gives exg = 2*165 - 210 - 120 = 0 <= 15
+            # low green, high yellow ratio, plant presence > 0.15
+            r_val = int(210 + 15 * math.sin(x / 4.0))
+            g_val = int(165 + 10 * math.cos(y / 4.0))
+            b_val = int(120 + 8 * math.sin((x + y) / 6.0))
+            return (r_val, g_val, b_val)
+
+        cls.img_maize_ear = create_b64_image(200, 200, maize_ear_pixels)
+
+
     def setUp(self):
         self.client = APIClient()
         self.doctor = PlantDiseaseVisionDoctor()
@@ -220,6 +241,69 @@ class PlantDiseaseVisionTests(TestCase):
         self.assertIn("ಭತ್ತದ ಬೆಂಕಿ ರೋಗ", result["disease_identification"]["disease_name_kn"])
         self.assertIn("Tricyclazole", result["treatment_and_management"]["chemical_treatment_en"])
         self.assertIn("Trichoderma", result["treatment_and_management"]["organic_solution_en"])
+
+    def test_case_c_maize_ear_kernel_damage_not_paddy_blast(self):
+        """
+        Regression Test C: Upload of maize ear with damaged kernels (even with accidental crop_hint='paddy')
+        must strictly NOT diagnose Paddy Leaf Blast / Neck Blast and must NOT prescribe Tricyclazole.
+        """
+        result = self.doctor.analyze_crop_image(
+            image_base64=self.img_maize_ear,
+            crop_hint="paddy",  # Simulating accidental/prior default leak
+            region="Mandya",
+            language="kn"
+        )
+        self.assertEqual(result.get("status"), "success")
+        ident = result["disease_identification"]
+        mgmt = result["treatment_and_management"]
+
+        # Crop validation: must identify Maize / Corn, not Paddy
+        self.assertIn("Maize", ident["crop_identified"])
+        self.assertIn("Ear", ident["affected_plant_part"])
+
+        # Pathogen-Crop biological incompatibility check:
+        # Must NEVER diagnose Rice Blast (Pyricularia oryzae) on a maize ear!
+        self.assertNotIn("blast", ident["disease_name_en"].lower())
+        self.assertNotIn("ಬೆಂಕಿ ರೋಗ", ident["disease_name_kn"])
+        self.assertNotIn("pyricularia", ident.get("scientific_name", "").lower())
+
+        # Chemical safety: Tricyclazole 75% WP is strictly forbidden on maize/cobs
+        self.assertNotIn("tricyclazole", mgmt.get("chemical_treatment_en", "").lower())
+        self.assertNotIn("ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್", mgmt.get("chemical_treatment_kn", ""))
+
+        # Confidence reporting: Calibrated qualitative rating, not uncalibrated 96.2%
+        self.assertNotEqual(ident["confidence_score"], 0.962)
+        self.assertNotEqual(ident["confidence_level"], "96.2%")
+        self.assertTrue(
+            "MODERATE" in ident["confidence_level"] or "HIGH" in ident["confidence_level"]
+        )
+
+        # Grain/Cob specific treatment advice: drying/sorting, never spray mature edible cobs
+        self.assertTrue(
+            "ಒಣಗಿಸಿ" in mgmt["organic_solution_kn"] or "drying" in mgmt["organic_solution_en"].lower()
+        )
+
+    def test_case_c_api_endpoint_maize_ear_blocks_paddy_leakage(self):
+        """Regression Test C (API level): POST /api/assistant/diagnose/ with maize ear and crop='paddy'."""
+        response = self.client.post(
+            "/api/assistant/diagnose/",
+            {
+                "image": self.img_maize_ear,
+                "crop": "paddy",
+                "region": "Mandya",
+                "language": "kn"
+            },
+            format="json"
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.json()
+        ident = data["disease_identification"]
+        mgmt = data["treatment_and_management"]
+
+        self.assertIn("Maize", ident["crop_identified"])
+        self.assertNotIn("blast", ident["disease_name_en"].lower())
+        self.assertNotIn("tricyclazole", mgmt.get("chemical_treatment_en", "").lower())
+
 
     def test_case_4_nutrient_deficiency_forbids_pesticides(self):
         """Test B3: Chlorotic yellow leaves without necrosis must diagnose nutrient deficiency and ban pesticides."""
