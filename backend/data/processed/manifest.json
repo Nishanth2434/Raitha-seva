@@ -1,0 +1,2479 @@
+{
+  "total_documents": 7,
+  "total_chunks": 134,
+  "sources": [
+    {
+      "id": "uasb-pop-paddy-2024",
+      "crop": "paddy",
+      "crop_kn": "ಭತ್ತ / ನೆಲ್ಲು",
+      "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+      "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+      "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+      "publication_date": "2024-05-15",
+      "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+      "soil_climate": "Clayey loam, alluvial canal-irrigated soils with pH 6.5–7.5",
+      "growth_stages": [
+        "nursery",
+        "tillering",
+        "panicle_initiation",
+        "grain_filling",
+        "harvest"
+      ],
+      "review_status": "expert_reviewed",
+      "topics": [
+        "seed_treatment",
+        "nutrient_management",
+        "system_of_rice_intensification",
+        "blast_and_sheath_blight",
+        "stem_borer_ipm"
+      ],
+      "content_en": "\nPaddy Cultivation in Mandya & Cauvery Basin (Zone 6):\n1. Varieties: Jyothi, IR-64, BR-2655 (resistant to blast), MTU-1001, Jaya, KMP-175.\n2. Seed Rate & Treatment: 20-25 kg/acre for transplanted rice. Treat seeds with Trichoderma harzianum @ 5g/kg or Carbendazim 50% WP @ 2g/kg seed in 1 liter of water to prevent seed-borne blast (Pyricularia oryzae).\n3. Nursery & Transplanting: 20-25 days old seedlings should be transplanted at 20x10 cm spacing (2-3 seedlings per hill). For SRI (System of Rice Intensification), 10-12 days single seedling at 25x25 cm spacing.\n4. Integrated Nutrient Management (INM) per acre: Apply 10 tonnes Farmyard Manure (FYM) or green leaf manure (Daincha/Sunnhemp) 15 days before transplanting. Recommended chemical fertilizer: 40 kg N (Urea ~87 kg), 20 kg P2O5 (SSP ~125 kg), 20 kg K2O (MOP ~33 kg). Apply 50% N, 100% P, and 50% K as basal dose; remaining 25% N at active tillering (25-30 DAT) and 25% N + 50% K at panicle initiation (50-55 DAT). Zinc sulphate @ 10 kg/acre should be broadcasted basally (do not mix directly with phosphate fertilizers).\n5. Water Management: Keep shallow water depth of 2-3 cm for initial 7-10 days, then 5 cm during tillering to panicle emergence. Drain water completely 10-12 days before harvest.\n6. Major Pest & Disease Management:\n- Yellow Stem Borer (Scirpophaga incertulas): Causes 'dead heart' at vegetative stage and 'white earhead' at reproductive stage. ETL: 2 egg masses/sq.m or 5% dead hearts. Install pheromone traps @ 5-8/acre. Release Trichogramma japonicum egg parasitoid @ 40,000/acre. If ETL crossed, spray Cartap hydrochloride 50% SP @ 2g/liter or Chlorantraniliprole 18.5% SC @ 0.3 ml/liter (observe 14-day pre-harvest waiting period).\n- Leaf Blast (Pyricularia oryzae): Diamond-shaped lesions with grey center. Avoid excess urea. Spray Tricyclazole 75% WP @ 0.6g/liter or Isoprothiolane 40% EC @ 1.5 ml/liter.\n- Brown Plant Hopper (BPH - Nilaparvata lugens): Sucking pest causing 'hopper burn'. Drain water from fields for 3-4 days to create dry microclimate. Spray Pymetrozine 50% WG @ 0.6g/liter or Triflumezopyrim 10% SC @ 0.5 ml/liter into base of hills.\n        ",
+      "content_kn": "\nಮಂಡ್ಯ ಮತ್ತು ಕಾವೇರಿ ಕಣಿವೆ ಪ್ರದೇಶದಲ್ಲಿ ಭತ್ತದ ಸುಧಾರಿತ ಬೇಸಾಯ ಕ್ರಮಗಳು:\n1. ಸೂಕ್ತ ತಳಿಗಳು: ಜ್ಯೋತಿ, ಬಿಆರ್-2655 (ಬೆಂಕಿ ರೋಗ ನಿರೋಧಕ), ಐಆರ್-64, ಜಯ, ಎಂಟಿಯು-1001, ಕೆಎಂಪಿ-175.\n2. ಬೀಜ ಪ್ರಮಾಣ ಮತ್ತು ಉಪಚಾರ: ನಾಟಿ ಪದ್ಧತಿಗೆ ಎಕರೆಗೆ 20-25 ಕೆ.ಜಿ. ಬೀಜ. ಬಿತ್ತನೆಗೆ ಮುನ್ನ 1 ಕೆ.ಜಿ. ಬೀಜಕ್ಕೆ 5 ಗ್ರಾಂ ಟ್ರೈಕೋಡರ್ಮಾ ಅಥವಾ 2 ಗ್ರಾಂ ಕಾರ್ಬೆಂಡಾಜಿಮ್ 50% ಡಬ್ಲ್ಯೂಪಿ ಬೆರೆಸಿ ಉಪಚರಿಸಿ.\n3. ರಸಗೊಬ್ಬರ ನಿರ್ವಹಣೆ (ಎಕರೆಗೆ): 10 ಟನ್ ತಿಪ್ಪೆಗೊಬ್ಬರ. ಸಾರಜನಕ 40 ಕೆ.ಜಿ (ಯೂರಿಯಾ 87 ಕೆ.ಜಿ), ರಂಜಕ 20 ಕೆ.ಜಿ (ಎಸ್.ಎಸ್.ಪಿ 125 ಕೆ.ಜಿ), ಪೊಟ್ಯಾಷ್ 20 ಕೆ.ಜಿ (ಎಂ.ಒ.ಪಿ 33 ಕೆ.ಜಿ). ರಂಜಕ ಸಂಪೂರ್ಣ ತಳಕೊಬ್ಬರವಾಗಿ ನೀಡಬೇಕು. ಸಾರಜನಕವನ್ನು 3 ಕಂತುಗಳಲ್ಲಿ (ನಾಟಿ ಸಮಯದಲ್ಲಿ 50%, ಕವಲೊಡೆಯುವ 25 ದಿನಕ್ಕೆ 25%, ಮತ್ತು ತೆನೆ ಹೊರಬರುವ 50 ದಿನಕ್ಕೆ 25%) ಕೊಡಿ. ಸತುವಿನ ಕೊರತೆ ತಡೆಗಟ್ಟಲು 10 ಕೆ.ಜಿ ಜಿಂಕ್ ಸಲ್ಫೇಟ್ ನೀಡಬೇಕು.\n4. ರೋಗ ಮತ್ತು ಕೀಟ ನಿಯಂತ್ರಣ:\n- ಬೆಂಕಿ ರೋಗ (ಬ್ಲಾಸ್ಟ್): ಎಲೆಗಳ ಮೇಲೆ ಕಣ್ಣಿನಾಕಾರದ ಚುಕ್ಕೆಗಳು. ನಿಯಂತ್ರಣಕ್ಕೆ ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್ 75% WP @ 0.6 ಗ್ರಾಂ/ಲೀಟರ್ ನೀರಿಗೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n- ಕಾಂಡ ಕೊರೆಯುವ ಹುಳು: ಮೊಳಕೆ ಒಣಗುವಿಕೆ (ಡೆಡ್ ಹಾರ್ಟ್) ಉಂಟಾಗುತ್ತದೆ. ಎಕರೆಗೆ 5-8 ಲಿಂಗಾಕರ್ಷಕ ಬಲೆ ಅಳವಡಿಸಿ. ಕ್ಲೋರಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ 18.5% SC @ 0.3 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n- ಕಂದು ಜಿಗಿಹುಳು: ಹೊಲದಲ್ಲಿ ನೀರನ್ನು 3-4 ದಿನ ಬಸಿದು ಹಾಕಿ ಗಾಳಿಯಾಡುವಂತೆ ಮಾಡಿ. ಪೈಮೆಟ್ರೋಜೈನ್ 50% WG @ 0.6 ಗ್ರಾಂ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n        "
+    },
+    {
+      "id": "uasb-pop-ragi-2024",
+      "crop": "ragi",
+      "crop_kn": "ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ)",
+      "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+      "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+      "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+      "publication_date": "2024-04-10",
+      "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+      "soil_climate": "Red sandy loam, laterite soils with good drainage; rainfed or semi-irrigated",
+      "growth_stages": [
+        "sowing",
+        "seedling",
+        "tillering",
+        "flowering",
+        "maturity"
+      ],
+      "review_status": "expert_reviewed",
+      "topics": [
+        "drought_management",
+        "blast_control",
+        "intercropping",
+        "organic_manuring",
+        "gundu_tholu"
+      ],
+      "content_en": "\nFinger Millet (Ragi) Cultivation Guide for Southern Karnataka:\n1. Recommended Varieties: ML-365 (tolerant to blast and drought), GPU-28, MR-1, MR-6, KMR-301, Indaf-8, KMR-630.\n2. Sowing Time: July 15 to August 15 for rainfed kharif. Can be sown under irrigated conditions in January-February (Summer Ragi).\n3. Seed Rate & Sowing: 5 kg/acre for line sowing with seed drill (30 cm between rows); 2 kg/acre for transplanting or 'Gundu Tholu' method. Treat seed with Azospirillum brasilense and Phosphobacteria biofertilizers @ 200g each per 5 kg seed.\n4. Fertilizer Recommendation per acre: Rainfed: 20 kg N (Urea 43 kg), 16 kg P2O5 (SSP 100 kg), 12 kg K2O (MOP 20 kg). Irrigated: 40 kg N, 20 kg P2O5, 20 kg K2O. Apply 100% P and K along with 50% N at sowing; remaining 50% N at 25-30 days after sowing after weeding.\n5. Intercropping Systems: Ragi + Red Gram (8:2 or 10:2 ratio), Ragi + Field bean (Avare) provides risk resilience and soil nitrogen enrichment.\n6. Pest and Disease Management:\n- Ragi Blast (Magnaporthe grisea): Affects leaves, neck, and fingers. Use certified seed of ML-365 or GPU-28. For chemical control, spray Tricyclazole 75% WP @ 0.6g/liter or Mancozeb 75% WP @ 2g/liter at 50% earhead emergence.\n- Stem Borer & Armyworm: Dust neem seed kernel extract (NSKE 5%) @ 50g/liter or spray Chlorpyrifos 20% EC @ 2 ml/liter if outbreak occurs.\n        ",
+      "content_kn": "\nಕರ್ನಾಟಕದಲ್ಲಿ ರಾಗಿ ಸುಧಾರಿತ ಬೇಸಾಯ ಕ್ರಮಗಳು:\n1. ಸೂಕ್ತ ತಳಿಗಳು: ಎಂಎಲ್-365 (ಬೆಂಕಿ ರೋಗ ಮತ್ತು ಬರ ನಿರೋಧಕ), ಜಿಪಿಯು-28, ಕೆಎಂಆರ್-301, ಎಂಆರ್-1, ಎಂಆರ್-6, ಕೆಎಂಆರ್-630.\n2. ಬಿತ್ತನೆ ಸಮಯ: ಮುಂಗಾರು ಮಳೆ ಆಶ್ರಯದಲ್ಲಿ ಜುಲೈ 15 ರಿಂದ ಆಗಸ್ಟ್ 15. ಬೇಸಿಗೆ ನೀರಾವರಿ ರಾಗಿಗೆ ಜನವರಿ-ಫೆಬ್ರವರಿ.\n3. ಬೀಜ ಪ್ರಮಾಣ: ಸಾಲು ಬಿತ್ತನೆಗೆ ಎಕರೆಗೆ 5 ಕೆ.ಜಿ; ನಾಟಿ ಪದ್ಧತಿಗೆ 2 ಕೆ.ಜಿ. ಬಿತ್ತನೆಗೆ ಮುನ್ನ ಅಜೋಸ್ಪೈರಿಲಂ ಮತ್ತು ರಂಜಕ ಕರಗಿಸುವ ಜೀವಾಣು ಗೊಬ್ಬರ (ಪಿಎಸ್‌ಬಿ) ತಲಾ 200 ಗ್ರಾಂ ಬೆರೆಸಿ ಉಪಚರಿಸಿ.\n4. ರಸಗೊಬ್ಬರ ಪ್ರಮಾಣ (ಎಕರೆಗೆ): ಮಳೆಯಾಶ್ರಿತ ಬೆಳೆಗೆ 20 ಕೆ.ಜಿ ಸಾರಜನಕ (ಯೂರಿಯಾ 43 ಕೆ.ಜಿ), 16 ಕೆ.ಜಿ ರಂಜಕ (ಎಸ್.ಎಸ್.ಪಿ 100 ಕೆ.ಜಿ), 12 ಕೆ.ಜಿ ಪೊಟ್ಯಾಷ್ (ಎಂ.ಒ.ಪಿ 20 ಕೆ.ಜಿ). ನೀರಾವರಿ ಬೆಳೆಗೆ ಎರಡು ಪಟ್ಟು ಗೊಬ್ಬರ ಬೇಕು. ಅರ್ಧ ಸಾರಜನಕ ಮತ್ತು ಪೂರ್ಣ ರಂಜಕ, ಪೊಟ್ಯಾಷ್ ಬಿತ್ತನೆ ಕಾಲದಲ್ಲಿ ನೀಡಿ, ಉಳಿದ ಸಾರಜನಕವನ್ನು 25-30 ದಿನಗಳ ನಂತರ ಕಳೆ ಕೀಳುವಾಗ ಮೇಲುಗೊಬ್ಬರವಾಗಿ ನೀಡಿ.\n5. ರೋಗ ನಿಯಂತ್ರಣ:\n- ರಾಗಿ ಬೆಂಕಿ ರೋಗ (ಬ್ಲಾಸ್ಟ್): ಎಲೆ, ಕುತ್ತಿಗೆ ಮತ್ತು ತೆನೆ ಬೆಂಕಿ ರೋಗಕ್ಕೆ ಎಂಎಲ್-365 ರೋಗ ನಿರೋಧಕ ತಳಿ ಬಳಸಿ. ನಿಯಂತ್ರಣಕ್ಕೆ ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್ 75% WP @ 0.6 ಗ್ರಾಂ/ಲೀಟರ್ ನೀರಿಗೆ ಅಥವಾ ಮ್ಯಾಂಕೋಜೆಬ್ @ 2 ಗ್ರಾಂ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n- ಸೈನಿಕ ಹುಳು / ಕಾಂಡ ಕೊರೆಯುವ ಹುಳು: 5% ಬೇವಿನ ಬೀಜದ ಕಷಾಯ (NSKE) ಅಥವಾ ಕ್ಲೋರ್‌ಪೈರಿಫಾಸ್ 20% EC @ 2 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n        "
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024",
+      "crop": "sugarcane",
+      "crop_kn": "ಕಬ್ಬು",
+      "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+      "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+      "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+      "publication_date": "2024-03-20",
+      "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+      "soil_climate": "Deep rich loams with good drainage, warm tropical climate with abundant sunshine",
+      "growth_stages": [
+        "germination",
+        "tillering",
+        "grand_growth",
+        "maturation",
+        "ripening"
+      ],
+      "review_status": "expert_reviewed",
+      "topics": [
+        "sett_treatment",
+        "drip_fertigation",
+        "early_shoot_borer",
+        "woolly_aphid",
+        "trash_mulching"
+      ],
+      "content_en": "\nSugarcane Cultivation Protocol in Mandya (Sugar Bowl of Karnataka):\n1. Varieties: Co 86032 (Nayana - high sugar recovery), Co 62175, VCF 0517, Co 0212, Co 09004.\n2. Planting Seasons: Adsali (July-August - highest yield), Eksali (January-February), Pre-seasonal (October-November).\n3. Sett Selection & Treatment: Use top 1/3 portion of 8-10 month cane. Treat setts with Carbendazim 50% WP @ 1g/liter + Malathion 50% EC @ 1 ml/liter for 15 minutes before planting to control smut, sett rot, and scale insects.\n4. Spacing: Paired row planting (75 cm - 150 cm - 75 cm) or wide furrow at 120-150 cm to facilitate mechanical earthing-up and drip irrigation.\n5. Fertilizer Schedule per acre:\n- Normal cultivation: 100 kg N (Urea 217 kg), 40 kg P2O5 (SSP 250 kg), 50 kg K2O (MOP 83 kg). Apply P full at planting, N & K in 4 splits: 10% at planting, 20% at 45 DAP, 30% at 90 DAP, 40% at earthing-up (120-150 DAP).\n- Under Drip Fertigation: Water saving of 40% and fertilizer saving of 25-30% using water-soluble fertilizers (19-19-19, 13-0-45, Urea) weekly through venturi injector.\n6. Major Pest & Disease Management:\n- Early Shoot Borer (Chilo infuscatellus): Attacking before 90 DAP. Dead hearts emit offensive odor when pulled. Trash mulching @ 3 tonnes/acre reduces borer incidence by 40%. Earthing-up at 45 DAP. Spray Chlorantraniliprole 18.5% SC @ 0.4 ml/liter or apply Cartap hydrochloride 4G granules @ 10 kg/acre in furrows.\n- Sugarcane Woolly Aphid (Ceratovacuna lanigera): White woolly colonies under leaves. Conserve natural predators: Dipha aphidivora, Micromus igorotus. Spray Acephate 75% SP @ 1.5g/liter if biological control is delayed.\n- Red Rot (Colletotrichum falcatum): Use disease-free setts from registered nurseries; crop rotation with paddy.\n        ",
+      "content_kn": "\nಮಂಡ್ಯ ಜಿಲ್ಲೆಯಲ್ಲಿ ಕಬ್ಬು ಬೆಳೆಯ ಸಮಗ್ರ ಬೇಸಾಯ ತಂತ್ರಜ್ಞಾನ:\n1. ಶಿಫಾರಸು ಮಾಡಿದ ತಳಿಗಳು: ಕೊ 86032 (ನಯನ - ಅಧಿಕ ಸಕ್ಕರೆ ಅಂಶ), ಕೊ 62175, ವಿಸಿಎಫ್ 0517 (ಮಂಡ್ಯ ವಿಸಿ ಫಾರ್ಮ್ ತಳಿ), ಕೊ 0212.\n2. ನಾಟಿ ಕಾಲ: ಅಡ್ಸಾಲಿ (ಜುಲೈ-ಆಗಸ್ಟ್), ಏಕಸಾಲಿ (ಜನವರಿ-ಫೆಬ್ರವರಿ).\n3. ಬಿತ್ತನೆ ಬೀಜ (ಕಣ್ಣುಗಳ) ಉಪಚಾರ: 8-10 ತಿಂಗಳ ವಯಸ್ಸಿನ ಕಬ್ಬಿನ ಮೇಲ್ಭಾಗದ ತುಂಡುಗಳನ್ನು 1 ಗ್ರಾಂ ಕಾರ್ಬೆಂಡಾಜಿಮ್ ಮತ್ತು 1 ಮಿ.ಲೀ ಮಲಾಥಿಯಾನ್ ಬೆರೆಸಿದ 1 ಲೀಟರ್ ನೀರಿನ ದ್ರಾವಣದಲ್ಲಿ 15 ನಿಮಿಷ ನೆನೆಸಿ ನಾಟಿ ಮಾಡಿ (ಕಾಡಿಗೆ ರೋಗ ಮತ್ತು ಬೆಂಕಿ ರೋಗ ತಡೆಗಟ್ಟಲು).\n4. ರಸಗೊಬ್ಬರ ನಿರ್ವಹಣೆ (ಎಕರೆಗೆ): 100 ಕೆ.ಜಿ ಸಾರಜನಕ, 40 ಕೆ.ಜಿ ರಂಜಕ, 50 ಕೆ.ಜಿ ಪೊಟ್ಯಾಷ್. ರಂಜಕ ಸಂಪೂರ್ಣವಾಗಿ ನಾಟಿ ಸಮಯದಲ್ಲಿ ನೀಡಿ. ಸಾರಜನಕ ಮತ್ತು ಪೊಟ್ಯಾಷ್ ಅನ್ನು 4 ಕಂತುಗಳಲ್ಲಿ (ನಾಟಿ ಸಮಯದಲ್ಲಿ, 45 ನೇ ದಿನಕ್ಕೆ, 90 ನೇ ದಿನಕ್ಕೆ ಮತ್ತು 120-150 ನೇ ದಿನ ದೊಡ್ಡ ಸಾಲು ಏರಿಸುವಾಗ) ನೀಡಿ.\n5. ರೋಗ ಮತ್ತು ಕೀಟ ನಿಯಂತ್ರಣ:\n- ಸುಳಿ ಕೊರೆಯುವ ಹುಳು: ನಾಟಿಯಾದ 90 ದಿನಗಳೊಳಗೆ ಕಾಡುತ್ತದೆ. ಒಣಗಿದ ಸುಳಿಯನ್ನು ಎಳೆದರೆ ಕೆಟ್ಟ ವಾಸನೆ ಬರುತ್ತದೆ. ಎಕರೆಗೆ 3 ಟನ್ ಕಬ್ಬಿನ ರವದಿಯನ್ನು ಸಾಲುಗಳ ನಡುವೆ ಹರಡಿ (ರವದಿ ಹೊದಿಕೆ). ನಾಟಿ ಸಮಯದಲ್ಲಿ ಕ್ಲೋರಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ 18.5% SC @ 0.4 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n- ಬಿಳಿ ಗೂಡು ನುಸಿ (ವುಲ್ಲಿ ಆಫಿಡ್): ಎಲೆಗಳ ಕೆಳಭಾಗದಲ್ಲಿ ಬಿಳಿ ಬಣ್ಣದ ಹತ್ತಿಯಂತಹ ಕೀಟಗಳು. ಡಿಫಾ ಪ್ರಿಡೇಟರ್ ಕೀಟಗಳನ್ನು ಬಿಡಿ. ತೀವ್ರವಾದರೆ ಅಸಿಫೇಟ್ 75% SP @ 1.5 ಗ್ರಾಂ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n        "
+    },
+    {
+      "id": "uasb-pop-maize-2024",
+      "crop": "maize",
+      "crop_kn": "ಮೆಕ್ಕೆಜೋಳ",
+      "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+      "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+      "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+      "publication_date": "2024-06-01",
+      "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+      "soil_climate": "Well-drained sandy loam to clay loam, pH 6.0–7.5",
+      "growth_stages": [
+        "vegetative",
+        "knee_high",
+        "tasseling",
+        "silking",
+        "dough",
+        "maturity"
+      ],
+      "review_status": "expert_reviewed",
+      "topics": [
+        "fall_armyworm_ipm",
+        "pith_application",
+        "zinc_deficiency",
+        "fertilizer_management"
+      ],
+      "content_en": "\nMaize Production and Fall Armyworm (FAW) Management:\n1. Varieties: NAH-1137, Deccan 103, CP 818, Bio-9681, PAC-740, Hema.\n2. Seed Rate & Spacing: 7-8 kg/acre at 60 cm row-to-row and 20 cm plant-to-plant.\n3. Seed Treatment: Fortify seeds with Cyantraniliprole 19.8% + Thiamethoxam 19.8% FS @ 4 ml/kg seed for initial 20 days protection against Fall Armyworm.\n4. Fertilizer per acre: 60 kg N (Urea 130 kg), 30 kg P2O5 (SSP 187 kg), 16 kg K2O (MOP 27 kg), and Zinc Sulphate 10 kg. Apply full P, K and 1/3rd N as basal; 1/3rd N at knee-high stage (30 DAS) and 1/3rd N at tasseling stage (50 DAS).\n5. Integrated Management of Fall Armyworm (Spodoptera frugiperda):\n- Monitor window pane feeding marks and ragged leaves with frass in whorls.\n- Install FAW pheromone traps @ 4-6 traps/acre.\n- Bio-agent: Spray Bacillus thuringiensis (Bt) kurstaki @ 2g/liter or Metarhizium anisopliae @ 5g/liter at early vegetative stage.\n- Push-Pull technology: Plant Desmodium as intercrop (repels moths) and Napier grass on borders (trap crop).\n- Chemical whorl application (only when ETL > 10% damaged plants): Emamectin benzoate 5% SG @ 0.4g/liter or Spinetoram 11.7% SC @ 0.5 ml/liter directed into plant whorls using knapsack sprayer with hollow cone nozzle.\n        ",
+      "content_kn": "\nಮೆಕ್ಕೆಜೋಳ ಮತ್ತು ಸೈನಿಕ ಹುಳು (ಫಾಲ್ ಆರ್ಮಿವರ್ಮ್) ಸಮಗ್ರ ನಿರ್ವಹಣೆ:\n1. ಸುಧಾರಿತ ತಳಿಗಳು: ಎನ್ಎಹೆಚ್-1137, ಡೆಕ್ಕನ್-103, ಸಿಪಿ-818, ಬಯೋ-9681, ಹೇಮಾ.\n2. ಬೀಜ ಪ್ರಮಾಣ: ಎಕರೆಗೆ 7-8 ಕೆ.ಜಿ. ಸಾಲಿನಿಂದ ಸಾಲಿಗೆ 60 ಸೆಂ.ಮೀ, ಗಿಡದಿಂದ ಗಿಡಕ್ಕೆ 20 ಸೆಂ.ಮೀ ಅಂತರ.\n3. ಬೀಜೋಪಚಾರ: ಸೈನಿಕ ಹುಳು ಬಾಧೆ ತಡೆಯಲು 1 ಕೆ.ಜಿ ಬೀಜಕ್ಕೆ ಸಯಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ + ಥಯಾಮೆಥಾಕ್ಸಮ್ (ಫೋರ್ಟೆನ್ಜಾ ಡ್ಯುಯೊ) @ 4 ಮಿ.ಲೀ ಬೆರೆಸಿ ಉಪಚರಿಸಿ.\n4. ರಸಗೊಬ್ಬರ (ಎಕರೆಗೆ): 60 ಕೆ.ಜಿ ಸಾರಜನಕ (ಯೂರಿಯಾ 130 ಕೆ.ಜಿ), 30 ಕೆ.ಜಿ ರಂಜಕ (ಎಸ್.ಎಸ್.ಪಿ 187 ಕೆ.ಜಿ), 16 ಕೆ.ಜಿ ಪೊಟ್ಯಾಷ್ (ಎಂ.ಒ.ಪಿ 27 ಕೆ.ಜಿ), 10 ಕೆ.ಜಿ ಜಿಂಕ್ ಸಲ್ಫೇಟ್. ಸಾರಜನಕವನ್ನು ಬಿತ್ತನೆ ಕಾಲ, ಮಂಡಿ ಎತ್ತರದ ಹಂತ (30 ದಿನ) ಮತ್ತು ಜೊಂಡು ಬರುವ ಹಂತದಲ್ಲಿ (50 ದಿನ) ಮೂರು ಸಮಪಾಲುಗಳಲ್ಲಿ ಕೊಡಿ.\n5. ಕೀಟ ನಿರ್ವಹಣೆ (ಫಾಲ್ ಆರ್ಮಿವರ್ಮ್ ಸೈನಿಕ ಹುಳು):\n- ಸುಳಿಯಲ್ಲಿ ಹುಳು ಇರುವುದು ಮತ್ತು ಹಿಕ್ಕೆಯುಳ್ಳ ರಂಧ್ರಗಳಿರುವ ಎಲೆಗಳು ಪ್ರಮುಖ ಲಕ್ಷಣ.\n- ಎಕರೆಗೆ 4-6 ಲಿಂಗಾಕರ್ಷಕ ಬಲೆ ಅಳವಡಿಸಿ.\n- ಆರಂಭಿಕ ಹಂತದಲ್ಲಿ ಮೆಟಾರೈಜಿಯಮ್ ಅಥವಾ ಬಿಟಿ ಜೈವಿಕ ಕೀಟನಾಶಕ @ 2 ಗ್ರಾಂ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n- ಬಾಧೆ ಶೇ.10 ಕ್ಕಿಂತ ಹೆಚ್ಚಿದ್ದರೆ ಎಮಾಮೆಕ್ಟಿನ್ ಬೆಂಜೋಯೇಟ್ 5% SG @ 0.4 ಗ್ರಾಂ/ಲೀಟರ್ ಅಥವಾ ಸ್ಪೈನಟೋರಾಮ್ 11.7% SC @ 0.5 ಮಿ.ಲೀ/ಲೀಟರ್ ದ್ರಾವಣವನ್ನು ಕಡ್ಡಾಯವಾಗಿ ಸುಳಿಯೊಳಗೆ ಬೀಳುವಂತೆ ಸಿಂಪಡಿಸಿ.\n        "
+    },
+    {
+      "id": "uasb-pop-redgram-2024",
+      "crop": "pulses",
+      "crop_kn": "ತೊಗರಿ / ಬೇಳೆಕಾಳುಗಳು",
+      "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+      "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+      "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+      "publication_date": "2024-05-02",
+      "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+      "soil_climate": "Deep black soils or red sandy loams with excellent drainage, pH 6.5–8.0",
+      "growth_stages": [
+        "vegetative",
+        "branching",
+        "flowering",
+        "pod_formation",
+        "maturity"
+      ],
+      "review_status": "expert_reviewed",
+      "topics": [
+        "nipping",
+        "sterility_mosaic",
+        "pod_borer_helicoverpa",
+        "rhizobium_inoculation",
+        "pulse_magic"
+      ],
+      "content_en": "\nRed Gram (Tur / Arhar) Production Practices:\n1. Varieties: BRG-1, BRG-2, BRG-4, ICPH-2671 (hybrid), GRG-811, BSMR-736 (resistant to wilt and sterility mosaic).\n2. Seed Treatment: Treat seeds with Rhizobium leguminosarum + PSB @ 200g each per 5 kg seeds + Trichoderma harzianum @ 5g/kg to manage Fusarium wilt.\n3. Spacing & Agronomy: Sole crop at 90x20 cm or paired row 120x30 cm. Nipping of terminal bud at 45-50 DAS encourages profuse secondary branching and pod bearing.\n4. Foliar Nutrition: Spray 'Pulse Magic' (formulated micronutrient cocktail by UAS) @ 10g/liter or 1% 19-19-19 + 0.2% Boron at 50% flowering and 15 days later to prevent flower drop and increase pod filling by 20%.\n5. Major Pest Management:\n- Gram Pod Borer (Helicoverpa armigera): Larvae feed by inserting head into pods. Install 5 pheromone traps/acre. Plant African marigold as trap crop (1 line per 10 lines of red gram). Spray HaNPV 250 LE/acre or NSKE 5% at flowering. If ETL (1 larva/plant) is crossed, spray Chlorantraniliprole 18.5% SC @ 0.3 ml/liter or Indoxacarb 14.5% SC @ 0.7 ml/liter.\n- Sterility Mosaic Disease (SMD): Transmitted by Aceria cajani mite. Eradicate infected stunted bushy plants immediately. Spray Fenazaquin 10% EC @ 1 ml/liter for vector control.\n        ",
+      "content_kn": "\nತೊಗರಿ ಬೇಸಾಯ ಕ್ರಮಗಳು ಮತ್ತು ಹೂವುದುರುವಿಕೆ ತಡೆಗಟ್ಟುವ ತಂತ್ರಜ್ಞಾನ:\n1. ತಳಿಗಳು: ಬಿಆರ್‌ಜಿ-1, ಬಿಆರ್‌ಜಿ-2, ಬಿಆರ್‌ಜಿ-4, ಜಿಆರ್‌ಜಿ-811, ಬಿಎಸ್‌ಎಂಆರ್-736 (ವಸ್ತು ಮತ್ತು ಬಂಜೆರೋಗ ನಿರೋಧಕ).\n2. ಬೀಜೋಪಚಾರ: 5 ಕೆ.ಜಿ ಬೀಜಕ್ಕೆ ರೈಜೋಬಿಯಂ ಮತ್ತು ಪಿಎಸ್‌ಬಿ ತಲಾ 200 ಗ್ರಾಂ ಹಾಗೂ ಸೊರಗು ರೋಗ ತಡೆಗೆ 1 ಕೆ.ಜಿ ಬೀಜಕ್ಕೆ 5 ಗ್ರಾಂ ಟ್ರೈಕೋಡರ್ಮಾ ಪುಡಿ ಹಾಕಿ ಕಲೆಸಿ ನೆರಳಿನಲ್ಲಿ ಒಣಗಿಸಿ ಬಿತ್ತನೆ ಮಾಡಿ.\n3. ಸುಳಿ ಚಿವುಟುವಿಕೆ (Nipping): ಬಿತ್ತನೆಯ 45-50 ದಿನಗಳಲ್ಲಿ ಮುಖ್ಯ ಕಾಂಡದ ತುದಿಯನ್ನು 2-3 ಇಂಚು ಚಿವುಟುವುದರಿಂದ ಪಕ್ಕದ ಕೊಂಬೆಗಳು ಹೆಚ್ಚು ಒಡೆದು ಇಳುವರಿ ಶೇ. 25-30 ರಷ್ಟು ಹೆಚ್ಚುತ್ತದೆ.\n4. ಹೂವು ಉದುರುವಿಕೆ ತಡೆಗೆ: ಶೇ. 50 ರಷ್ಟು ಹೂವಾಡುವ ಹಂತದಲ್ಲಿ ಮತ್ತು ಕಾಯಿ ಕಟ್ಟುವ ಹಂತದಲ್ಲಿ 10 ಗ್ರಾಂ 'ಪಲ್ಸ್ ಮ್ಯಾಜಿಕ್' (Pulse Magic) ಅಥವಾ 19-19-19 @ 5 ಗ್ರಾಂ + ಬೋರಾನ್ 1 ಗ್ರಾಂ/ಲೀಟರ್ ನೀರಿಗೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n5. ಕಾಯಿ ಕೊರೆಯುವ ಹುಳು (ಹೆಲಿಕೋವರ್ಪ): ಮರಿ ಹುಳುಗಳು ಕಾಯಿಗೆ ರಂಧ್ರ ಕೊರೆದು ಕಾಳು ತಿನ್ನುತ್ತವೆ. ಎಕರೆಗೆ 5 ಲಿಂಗಾಕರ್ಷಕ ಬಲೆ ಹಾಕಿ. ಶೇ. 5 ರ ಬೇವಿನ ಬೀಜದ ಕಷಾಯ ಸಿಂಪಡಿಸಿ. ಬಾಧೆ ಮಿತಿ ಮೀರಿದರೆ ಕ್ಲೋರಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ 18.5% SC @ 0.3 ಮಿ.ಲೀ/ಲೀಟರ್ ನೀರಿಗೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n        "
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024",
+      "crop": "vegetables",
+      "crop_kn": "ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ)",
+      "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+      "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+      "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+      "publication_date": "2024-04-18",
+      "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+      "soil_climate": "Well-drained fertile loam with good organic matter, soil pH 6.0–7.0",
+      "growth_stages": [
+        "nursery",
+        "vegetative",
+        "flowering",
+        "fruiting",
+        "multiple_pickings"
+      ],
+      "review_status": "expert_reviewed",
+      "topics": [
+        "tomato_pinworm_tuta",
+        "chilli_leaf_curl_murda",
+        "onion_purple_blotch",
+        "iihr_special_micronutrients"
+      ],
+      "content_en": "\nTomato, Chilli, and Onion Comprehensive Horticultural Guide:\n1. Tomato (Solanum lycopersicum):\n- Varieties/Hybrids: Arka Rakshak (triple disease resistant to ToLCV, Early Blight & Bacterial Wilt), Arka Samrat, Shivam.\n- Spacing: 90x60 cm on raised beds with silver-black plastic mulch (25 micron) and drip irrigation.\n- Tomato Pinworm (Tuta absoluta): Mines into leaves and bores fruits near calyx. Install Tuta pheromone traps @ 16 traps/acre. Spray Flubendiamide 39.35% SC @ 0.3 ml/liter or Chlorantraniliprole 18.5% SC @ 0.3 ml/liter.\n- Early & Late Blight: Spray Mancozeb 75% WP @ 2g/liter or Dimethomorph 50% WP @ 1g/liter alternating with Azoxystrobin 23% SC @ 1 ml/liter.\n2. Chilli (Capsicum annuum):\n- Varieties: Arka Kyathi, Arka Meghna, Byadagi Kaddi, Byadagi Dabbi, G-4.\n- Murda Disease / Leaf Curl Complex: Sucking pests (Thrips & Yellow Mites) transmit virus. Yellow sticky traps (10/acre) for whitefly; Blue sticky traps (10/acre) for thrips. Spray Diafenthiuron 50% WP @ 1.2g/liter or Spinetoram 11.7% SC @ 0.9 ml/liter for thrips. For mites, spray Spiromesifen 22.9% SC @ 1 ml/liter.\n3. Onion (Allium cepa):\n- Varieties: Arka Kalyan, Arka Lalima, Bhima Super.\n- Purple Blotch (Alternaria porri): Purple necrotic sunken spots on leaves. Spray Tebuconazole 25.9% EC @ 1 ml/liter or Mancozeb 75% WP @ 2.5g/liter with sticker (sandovit @ 0.5 ml/liter).\n        ",
+      "content_kn": "\nಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ ಮತ್ತು ಈರುಳ್ಳಿ ಸಮಗ್ರ ರೋಗ ಮತ್ತು ಪೋಷಕಾಂಶ ನಿರ್ವಹಣೆ:\n1. ಟೊಮೆಟೊ:\n- ತಳಿಗಳು: ಅರ್ಕ ರಕ್ಷಕ್ (ಬ್ಯಾಕ್ಟೀರಿಯಾ ಸೊರಗು, ಎಲೆ ಮುರುಟು ಮತ್ತು ಅರ್ಲಿ ಬ್ಲೈಟ್ ರೋಗಗಳ ತ್ರಿವಳಿ ರೋಗ ನಿರೋಧಕ ತಳಿ), ಅರ್ಕ ಸಾಮ್ರಾಟ್, ಶಿವಮ್.\n- ಟ್ಯೂಟಾ ಎಲೆ ಕೊರೆಯುವ ಹುಳು (Tuta absoluta): ಕಾಯಿ ಮತ್ತು ಎಲೆಗಳ ಒಳಗೆ ಕೊರೆದು ಹಾನಿ ಮಾಡುತ್ತದೆ. ಎಕರೆಗೆ 16 ಟ್ಯೂಟಾ ಲಿಂಗಾಕರ್ಷಕ ಬಲೆ ಅಳವಡಿಸಿ. ಕ್ಲೋರಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ 18.5% SC @ 0.3 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n- ಬೆಂಕಿ / ಚಿಬ್ಬು ರೋಗ: ಮ್ಯಾಂಕೋಜೆಬ್ 75% WP @ 2 ಗ್ರಾಂ ಅಥವಾ ಅಜೋಕ್ಸಿಸ್ಟ್ರೋಬಿನ್ 23% SC @ 1 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n2. ಮೆಣಸಿನಕಾಯಿ (ಮುರುಟು ರೋಗ / ಮುರ್ದಾ ರೋಗ):\n- ನುಸಿ ಮತ್ತು ಥ್ರಿಪ್ಸ್ ರಸ ಹೀರುವ ಕೀಟಗಳಿಂದ ಎಲೆಗಳು ದೋಣಿಯಾಕಾರದಲ್ಲಿ ಮೇಲಕ್ಕೆ ಅಥವಾ ಕೆಳಕ್ಕೆ ಮುರುಟಿಕೊಳ್ಳುತ್ತವೆ.\n- ತೋಟದಲ್ಲಿ ಎಕರೆಗೆ 10 ನೀಲಿ ಜಿಗುಟು ಬಲೆ (ಥ್ರಿಪ್ಸ್‌ಗಾಗಿ) ಮತ್ತು 10 ಹಳದಿ ಬಲೆ (ಬಿಳಿ ನೊಣಕ್ಕಾಗಿ) ಅಳವಡಿಸಿ.\n- ಪೆಗಾಸಸ್ (Diafenthiuron 50% WP) @ 1.2 ಗ್ರಾಂ/ಲೀಟರ್ ಅಥವಾ ಡೆಲಿಗೇಟ್ (Spinetoram 11.7% SC) @ 0.9 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n- ನುಸಿ ಬಾಧೆಗೆ ಸ್ಪೈರೋಮೆಸಿಫೆನ್ 22.9% SC @ 1 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.\n3. ಈರುಳ್ಳಿ (ನೇರಳೆ ಮಚ್ಚೆ ರೋಗ):\n- ಎಲೆಗಳ ಮೇಲೆ ನೇರಳೆ ಕಂದು ಬಣ್ಣದ ಮಚ್ಚೆಗಳು. ನಿಯಂತ್ರಣಕ್ಕೆ ಟೆಬುಕೊನಜೋಲ್ @ 1 ಮಿ.ಲೀ ಅಥವಾ ಮ್ಯಾಂಕೋಜೆಬ್ @ 2.5 ಗ್ರಾಂ ಜೊತೆಗೆ ಅಂಟು (ಸ್ಪ್ರೆಡರ್) ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.\n        "
+    },
+    {
+      "id": "uasb-pop-coconut-2024",
+      "crop": "coconut",
+      "crop_kn": "ತೆಂಗು",
+      "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+      "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+      "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+      "publication_date": "2024-03-12",
+      "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+      "soil_climate": "Deep well-drained sandy loam, red sandy soil with high water table",
+      "growth_stages": [
+        "seedling",
+        "juvenile",
+        "bearing",
+        "perennial"
+      ],
+      "review_status": "expert_reviewed",
+      "topics": [
+        "rhinoceros_beetle",
+        "black_headed_caterpillar",
+        "rugose_whitefly",
+        "boron_deficiency_button_shedding"
+      ],
+      "content_en": "\nCoconut Palm Management Protocol:\n1. Varieties: Tiptur Tall, Arasikere Tall, COD x DTO, Chandra Sankara.\n2. Annual Nutrition per adult palm (Apply in 2 splits in May-June & September-October):\n- Farmyard manure: 50 kg/palm/year\n- Nitrogen: 500g (Urea 1.1 kg)\n- Phosphorus: 320g (Rock phosphate or SSP 2 kg)\n- Potassium: 1200g (MOP 2 kg) - Coconut has high potassium requirement for nut filling.\n- Micronutrients: Apply 1 kg agricultural lime or dolomite every alternative year in acidic soils. Apply Borax 100g/palm/year to prevent crown chocking and button shedding.\n3. Major Pest Management:\n- Rhinoceros Beetle (Oryctes rhinoceros): Bores into unopened spindle leaf producing geometric 'V' shape leaf cuts. Clean palm crown before monsoon. Fill leaf axils with mixture of Sevidol 8G (25g) + fine sand (200g) or hook out beetles with iron rod. Treat FYM pits with Metarhizium majus fungus to kill grubs.\n- Rugose Spiralling Whitefly (Aleurodicus rugosus): Produces heavy honeydew and black sooty mold. Strictly avoid chemical sprays that destroy natural parasitoids. Release Encarsia guadeloupae parasitic wasps. Spray 1% starch solution to flake off sooty mold.\n- Black-headed Caterpillar (Opisina arenosella): Releases Goniozus nephantidis larval parasitoids @ 20 parasitoids/palm.\n        ",
+      "content_kn": "\nತೆಂಗಿನ ಮರಗಳ ಸಮಗ್ರ ಪೋಷಕಾಂಶ ಮತ್ತು ಕೀಟ ನಿರ್ವಹಣೆ:\n1. ವಾರ್ಷಿಕ ಪೋಷಕಾಂಶ ಪ್ರಮಾಣ (ಒಂದು ಫಲ ನೀಡುವ ಮರಕ್ಕೆ ವರ್ಷಕ್ಕೆ):\n- 50 ಕೆ.ಜಿ ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರ.\n- ಯೂರಿಯಾ: 1.1 ಕೆ.ಜಿ, ರಾಕ್‌ಫಾಸ್ಫೇಟ್: 2 ಕೆ.ಜಿ, ಪೊಟ್ಯಾಷ್ (ಎಂ.ಒ.ಪಿ): 2 ಕೆ.ಜಿ (ತೆಂಗಿನಲ್ಲಿ ಕಾಯಿ ಕಟ್ಟಲು ಮತ್ತು ನೀರು ತುಂಬಲು ಪೊಟ್ಯಾಷ್ ಅತ್ಯಂತ ಮುಖ್ಯ).\n- ಬೋರಾನ್ ಕೊರತೆಯಿಂದ ಕಾಯಿಗಳು ಉದುರುತ್ತಿದ್ದರೆ (ಬಟನ್ ಶೆಡ್ಡಿಂಗ್) ಪ್ರತಿ ಮರಕ್ಕೆ ವರ್ಷಕ್ಕೆ 100 ಗ್ರಾಂ ಬೋರಾಕ್ಸ್ ಮಣ್ಣಿಗೆ ಸೇರಿಸಿ.\n2. ಕೀಟಗಳ ಜೈವಿಕ ನಿಯಂತ್ರಣ:\n- ಕಪ್ಪು ಮೂತಿಯ ದುಂಬಿ (ರೈನೋಸಿರಸ್ ಜೀರುಂಡೆ): ಸುಳಿ ಎಲೆಗಳನ್ನು 'V' ಆಕಾರದಲ್ಲಿ ಕತ್ತರಿಸುತ್ತದೆ. ಮರದ ಸುಳಿಯನ್ನು ಸ್ವಚ್ಛಗೊಳಿಸಿ ಸುಳಿಯ ಎಲೆಗಳ ಸಂದಿಗಳಲ್ಲಿ ಬೇವಿನ ಹಿಂಡಿ ಮತ್ತು ಮರಳಿನ ಮಿಶ್ರಣ (1:1) ತುಂಬಿ.\n- ಸುರುಳಿ ಬಿಳಿ ನೊಣ (Rugose Whitefly): ಎಲೆಗಳ ಕೆಳಗೆ ಬಿಳಿ ಹಿಟ್ಟಿನಂತಹ ನೊಣಗಳು ಹಾಗೂ ಎಲೆಗಳ ಮೇಲೆ ಕಪ್ಪು ಬೂಷ್ಟು ರೋಗ. ಯಾವುದೇ ವಿಷಕಾರಿ ಕೀಟನಾಶಕ ಸಿಂಪಡಿಸಬೇಡಿ. ಎನ್‌ಕಾರ್ಸಿಯಾ ಪರಾವಲಂಬಿ ಜೀವಿಗಳನ್ನು ಬಿಡಿ ಮತ್ತು ಕಪ್ಪು ಬೂಷ್ಟನ್ನು ತೊಳೆಯಲು ಶೇ. 1 ರ ಗಂಜಿ ದ್ರಾವಣವನ್ನು ರಭಸವಾಗಿ ಸಿಂಪಡಿಸಿ.\n        "
+    }
+  ],
+  "chunks": [
+    {
+      "id": "uasb-pop-paddy-2024-en-1",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\nPaddy Cultivation in Mandya & Cauvery Basin (Zone 6):",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 1,
+        "content_hash": "aad7ee71c9794f38e0e55fa576181da1c0db5ecdcd1ffc886414a1c02308dc2c",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-2",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n1. Varieties: Jyothi, IR-64, BR-2655 (resistant to blast), MTU-1001, Jaya, KMP-175.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 2,
+        "content_hash": "1c0d7cca8a4299cb7fd37ba0627dd25e153ee86188e86d564e06820f0e40ed76",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-3",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n2. Seed Rate & Treatment: 20-25 kg/acre for transplanted rice. Treat seeds with Trichoderma harzianum @ 5g/kg or Carbendazim 50% WP @ 2g/kg seed in 1 liter of water to prevent seed-borne blast (Pyricularia oryzae).",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 3,
+        "content_hash": "19f92497ee602e8db7a8047d7037875eed5e93bab0ffa7d2b1cd14c1d5b462c7",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-4",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n3. Nursery & Transplanting: 20-25 days old seedlings should be transplanted at 20x10 cm spacing (2-3 seedlings per hill). For SRI (System of Rice Intensification), 10-12 days single seedling at 25x25 cm spacing.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 4,
+        "content_hash": "56c51ea306cca8be58e014141ea64246f48a03f8a9ac9832a46467599f972294",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-5",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n4. Integrated Nutrient Management (INM) per acre: Apply 10 tonnes Farmyard Manure (FYM) or green leaf manure (Daincha/Sunnhemp) 15 days before transplanting. Recommended chemical fertilizer: 40 kg N (Urea ~87 kg), 20 kg P2O5 (SSP ~125 kg), 20 kg K2O (MOP ~33 kg). Apply 50% N, 100% P, and 50% K as basal dose; remaining 25% N at active tillering (25-30 DAT) and 25% N + 50% K at panicle initiation (50-55 DAT). Zinc sulphate @ 10 kg/acre should be broadcasted basally (do not mix directly with phosphate fertilizers).",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 5,
+        "content_hash": "75223d4cbc2bbdfd47f51975bbcd6231b74c35e2024b70076fb475150ab016cf",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-6",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n5. Water Management: Keep shallow water depth of 2-3 cm for initial 7-10 days, then 5 cm during tillering to panicle emergence. Drain water completely 10-12 days before harvest.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 6,
+        "content_hash": "97ce30cdd530672aee11890c5b45c555fb76c0b540133aa25d2b398c87df4f48",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-7",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n6. Major Pest & Disease Management:",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 7,
+        "content_hash": "b526d4a5b7127cf3c8d174446464a8f8b16f779adfddeff20f13b60a0f65b2d1",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-8",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n- Yellow Stem Borer (Scirpophaga incertulas): Causes 'dead heart' at vegetative stage and 'white earhead' at reproductive stage. ETL: 2 egg masses/sq.m or 5% dead hearts. Install pheromone traps @ 5-8/acre. Release Trichogramma japonicum egg parasitoid @ 40,000/acre. If ETL crossed, spray Cartap hydrochloride 50% SP @ 2g/liter or Chlorantraniliprole 18.5% SC @ 0.3 ml/liter (observe 14-day pre-harvest waiting period).",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 8,
+        "content_hash": "2f8b3230c9fd142891ec2fc56f280cee48c02192d799411722ed060d197de837",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-9",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n- Leaf Blast (Pyricularia oryzae): Diamond-shaped lesions with grey center. Avoid excess urea. Spray Tricyclazole 75% WP @ 0.6g/liter or Isoprothiolane 40% EC @ 1.5 ml/liter.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 9,
+        "content_hash": "2300f2149facafcd729a0e4f5d85a3739fd14f05ebadab2e3da968d1fbec9b44",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-en-10",
+      "text": "[PADDY - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n- Brown Plant Hopper (BPH - Nilaparvata lugens): Sucking pest causing 'hopper burn'. Drain water from fields for 3-4 days to create dry microclimate. Spray Pymetrozine 50% WG @ 0.6g/liter or Triflumezopyrim 10% SC @ 0.5 ml/liter into base of hills.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "en",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 10,
+        "content_hash": "879f557e82a3166a75d8f0131681dd85bd188f8fd0f92e749ceb949a1aac7be2",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-kn-1",
+      "text": "[ಭತ್ತ / ನೆಲ್ಲು - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\nಮಂಡ್ಯ ಮತ್ತು ಕಾವೇರಿ ಕಣಿವೆ ಪ್ರದೇಶದಲ್ಲಿ ಭತ್ತದ ಸುಧಾರಿತ ಬೇಸಾಯ ಕ್ರಮಗಳು:",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "kn",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 1,
+        "content_hash": "c6a196c8af590fdadb334b8a941761aba62ef53ecf7786871c394dc41e178bd0",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-kn-2",
+      "text": "[ಭತ್ತ / ನೆಲ್ಲು - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n1. ಸೂಕ್ತ ತಳಿಗಳು: ಜ್ಯೋತಿ, ಬಿಆರ್-2655 (ಬೆಂಕಿ ರೋಗ ನಿರೋಧಕ), ಐಆರ್-64, ಜಯ, ಎಂಟಿಯು-1001, ಕೆಎಂಪಿ-175.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "kn",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 2,
+        "content_hash": "ae1d272186b3983088487fb72279b97f60a7150803aabf558cbb1c19d7c90faf",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-kn-3",
+      "text": "[ಭತ್ತ / ನೆಲ್ಲು - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n2. ಬೀಜ ಪ್ರಮಾಣ ಮತ್ತು ಉಪಚಾರ: ನಾಟಿ ಪದ್ಧತಿಗೆ ಎಕರೆಗೆ 20-25 ಕೆ.ಜಿ. ಬೀಜ. ಬಿತ್ತನೆಗೆ ಮುನ್ನ 1 ಕೆ.ಜಿ. ಬೀಜಕ್ಕೆ 5 ಗ್ರಾಂ ಟ್ರೈಕೋಡರ್ಮಾ ಅಥವಾ 2 ಗ್ರಾಂ ಕಾರ್ಬೆಂಡಾಜಿಮ್ 50% ಡಬ್ಲ್ಯೂಪಿ ಬೆರೆಸಿ ಉಪಚರಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "kn",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 3,
+        "content_hash": "65daab69eb1ba92ffd9fafc3d2577a66c7d1fbe494c4b3018404cb105fa779fb",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-kn-4",
+      "text": "[ಭತ್ತ / ನೆಲ್ಲು - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n3. ರಸಗೊಬ್ಬರ ನಿರ್ವಹಣೆ (ಎಕರೆಗೆ): 10 ಟನ್ ತಿಪ್ಪೆಗೊಬ್ಬರ. ಸಾರಜನಕ 40 ಕೆ.ಜಿ (ಯೂರಿಯಾ 87 ಕೆ.ಜಿ), ರಂಜಕ 20 ಕೆ.ಜಿ (ಎಸ್.ಎಸ್.ಪಿ 125 ಕೆ.ಜಿ), ಪೊಟ್ಯಾಷ್ 20 ಕೆ.ಜಿ (ಎಂ.ಒ.ಪಿ 33 ಕೆ.ಜಿ). ರಂಜಕ ಸಂಪೂರ್ಣ ತಳಕೊಬ್ಬರವಾಗಿ ನೀಡಬೇಕು. ಸಾರಜನಕವನ್ನು 3 ಕಂತುಗಳಲ್ಲಿ (ನಾಟಿ ಸಮಯದಲ್ಲಿ 50%, ಕವಲೊಡೆಯುವ 25 ದಿನಕ್ಕೆ 25%, ಮತ್ತು ತೆನೆ ಹೊರಬರುವ 50 ದಿನಕ್ಕೆ 25%) ಕೊಡಿ. ಸತುವಿನ ಕೊರತೆ ತಡೆಗಟ್ಟಲು 10 ಕೆ.ಜಿ ಜಿಂಕ್ ಸಲ್ಫೇಟ್ ನೀಡಬೇಕು.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "kn",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 4,
+        "content_hash": "b48585939b5cb80c5b7542b8a25e944d8649af4997aa86f764810da3b4784390",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-kn-5",
+      "text": "[ಭತ್ತ / ನೆಲ್ಲು - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n4. ರೋಗ ಮತ್ತು ಕೀಟ ನಿಯಂತ್ರಣ:",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "kn",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 5,
+        "content_hash": "2cef34ef6a5982ab48364dc58decbc3811625ee7076ff7f1d199bc0de775320c",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-kn-6",
+      "text": "[ಭತ್ತ / ನೆಲ್ಲು - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n- ಬೆಂಕಿ ರೋಗ (ಬ್ಲಾಸ್ಟ್): ಎಲೆಗಳ ಮೇಲೆ ಕಣ್ಣಿನಾಕಾರದ ಚುಕ್ಕೆಗಳು. ನಿಯಂತ್ರಣಕ್ಕೆ ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್ 75% WP @ 0.6 ಗ್ರಾಂ/ಲೀಟರ್ ನೀರಿಗೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "kn",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 6,
+        "content_hash": "abe7842c1b8f9cc699534e2f4d801c868026cb766e0b4a19199a32c70d081b9d",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-kn-7",
+      "text": "[ಭತ್ತ / ನೆಲ್ಲು - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n- ಕಾಂಡ ಕೊರೆಯುವ ಹುಳು: ಮೊಳಕೆ ಒಣಗುವಿಕೆ (ಡೆಡ್ ಹಾರ್ಟ್) ಉಂಟಾಗುತ್ತದೆ. ಎಕರೆಗೆ 5-8 ಲಿಂಗಾಕರ್ಷಕ ಬಲೆ ಅಳವಡಿಸಿ. ಕ್ಲೋರಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ 18.5% SC @ 0.3 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "kn",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 7,
+        "content_hash": "d71e00224b9bdddff056169a6f0a15884ff9665f579aded90736acf34e40b061",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-paddy-2024-kn-8",
+      "text": "[ಭತ್ತ / ನೆಲ್ಲು - Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)]\n- ಕಂದು ಜಿಗಿಹುಳು: ಹೊಲದಲ್ಲಿ ನೀರನ್ನು 3-4 ದಿನ ಬಸಿದು ಹಾಕಿ ಗಾಳಿಯಾಡುವಂತೆ ಮಾಡಿ. ಪೈಮೆಟ್ರೋಜೈನ್ 50% WG @ 0.6 ಗ್ರಾಂ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-paddy-2024",
+        "crop": "paddy",
+        "language": "kn",
+        "title": "Package of Practices for High-Yielding Paddy Cultivation in Southern Karnataka (Mandya Region)",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB)",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-05-15",
+        "applicable_region": "Mandya, Mysuru, Ramanagara, Southern Dry Zone",
+        "chunk_index": 8,
+        "content_hash": "335412468f12a8475156965e1f59d36f21110164978dc6f315cab1e931ef1d0a",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-1",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\nFinger Millet (Ragi) Cultivation Guide for Southern Karnataka:",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 1,
+        "content_hash": "364682d00e0fc2c4fcb0fd6be02dee2ef875c0660d064d846d6f759758f2b6ae",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-2",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n1. Recommended Varieties: ML-365 (tolerant to blast and drought), GPU-28, MR-1, MR-6, KMR-301, Indaf-8, KMR-630.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 2,
+        "content_hash": "a0abc8127b4288a87e573a2fa8379180f2563dc62858f6152cd03a281d838816",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-3",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n2. Sowing Time: July 15 to August 15 for rainfed kharif. Can be sown under irrigated conditions in January-February (Summer Ragi).",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 3,
+        "content_hash": "15ebc89e0c5f584b133fc82fafb8a72b11552551ae99685e9cc546cf680689e0",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-4",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n3. Seed Rate & Sowing: 5 kg/acre for line sowing with seed drill (30 cm between rows); 2 kg/acre for transplanting or 'Gundu Tholu' method. Treat seed with Azospirillum brasilense and Phosphobacteria biofertilizers @ 200g each per 5 kg seed.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 4,
+        "content_hash": "1ffefa58ab4c2482a398445785b86f4f6d5fb9dfefc253a65489a34adab414ac",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-5",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n4. Fertilizer Recommendation per acre: Rainfed: 20 kg N (Urea 43 kg), 16 kg P2O5 (SSP 100 kg), 12 kg K2O (MOP 20 kg). Irrigated: 40 kg N, 20 kg P2O5, 20 kg K2O. Apply 100% P and K along with 50% N at sowing; remaining 50% N at 25-30 days after sowing after weeding.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 5,
+        "content_hash": "59a1bed1e0e0ce373b7a42db282e7bb822f306ecbd91d7197f4321cdb5812075",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-6",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n5. Intercropping Systems: Ragi + Red Gram (8:2 or 10:2 ratio), Ragi + Field bean (Avare) provides risk resilience and soil nitrogen enrichment.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 6,
+        "content_hash": "d0bdbf1334ab67d35fdc859103113eed7f268179b361cd5945aa6189a705c5d2",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-7",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n6. Pest and Disease Management:",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 7,
+        "content_hash": "565c8f1aab6839e100036501f704e5a3e2d9dfbc2bd7b74fa8822df9d6c89edc",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-8",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n- Ragi Blast (Magnaporthe grisea): Affects leaves, neck, and fingers. Use certified seed of ML-365 or GPU-28. For chemical control, spray Tricyclazole 75% WP @ 0.6g/liter or Mancozeb 75% WP @ 2g/liter at 50% earhead emergence.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 8,
+        "content_hash": "3c55cc76d3c41e587bedd5484e3be0725d2b876c29c0c7162e1af3a413d861fe",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-en-9",
+      "text": "[RAGI - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n- Stem Borer & Armyworm: Dust neem seed kernel extract (NSKE 5%) @ 50g/liter or spray Chlorpyrifos 20% EC @ 2 ml/liter if outbreak occurs.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "en",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 9,
+        "content_hash": "7dbf4d0b12252fb710983323ee65034e31c16090ba327a08d335156946d1c974",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-kn-1",
+      "text": "[ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ) - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\nಕರ್ನಾಟಕದಲ್ಲಿ ರಾಗಿ ಸುಧಾರಿತ ಬೇಸಾಯ ಕ್ರಮಗಳು:",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "kn",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 1,
+        "content_hash": "1a16d4163e4bb4dd5eff4819b051cc26d6d226b582b3d66e83175c3776d13988",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-kn-2",
+      "text": "[ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ) - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n1. ಸೂಕ್ತ ತಳಿಗಳು: ಎಂಎಲ್-365 (ಬೆಂಕಿ ರೋಗ ಮತ್ತು ಬರ ನಿರೋಧಕ), ಜಿಪಿಯು-28, ಕೆಎಂಆರ್-301, ಎಂಆರ್-1, ಎಂಆರ್-6, ಕೆಎಂಆರ್-630.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "kn",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 2,
+        "content_hash": "983e0c4a9deddc35fed00ba88fba28d1850b63dcec061c2d60bdf4bde7bcbc9e",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-kn-3",
+      "text": "[ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ) - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n2. ಬಿತ್ತನೆ ಸಮಯ: ಮುಂಗಾರು ಮಳೆ ಆಶ್ರಯದಲ್ಲಿ ಜುಲೈ 15 ರಿಂದ ಆಗಸ್ಟ್ 15. ಬೇಸಿಗೆ ನೀರಾವರಿ ರಾಗಿಗೆ ಜನವರಿ-ಫೆಬ್ರವರಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "kn",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 3,
+        "content_hash": "7504e16bedf172eb424129a0db7cc36e973e1617266c9527018d2561d444f3b9",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-kn-4",
+      "text": "[ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ) - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n3. ಬೀಜ ಪ್ರಮಾಣ: ಸಾಲು ಬಿತ್ತನೆಗೆ ಎಕರೆಗೆ 5 ಕೆ.ಜಿ; ನಾಟಿ ಪದ್ಧತಿಗೆ 2 ಕೆ.ಜಿ. ಬಿತ್ತನೆಗೆ ಮುನ್ನ ಅಜೋಸ್ಪೈರಿಲಂ ಮತ್ತು ರಂಜಕ ಕರಗಿಸುವ ಜೀವಾಣು ಗೊಬ್ಬರ (ಪಿಎಸ್‌ಬಿ) ತಲಾ 200 ಗ್ರಾಂ ಬೆರೆಸಿ ಉಪಚರಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "kn",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 4,
+        "content_hash": "1dd5713dfec678370e77b976e4feeecbeebdad2d8ba379251508ece932926664",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-kn-5",
+      "text": "[ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ) - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n4. ರಸಗೊಬ್ಬರ ಪ್ರಮಾಣ (ಎಕರೆಗೆ): ಮಳೆಯಾಶ್ರಿತ ಬೆಳೆಗೆ 20 ಕೆ.ಜಿ ಸಾರಜನಕ (ಯೂರಿಯಾ 43 ಕೆ.ಜಿ), 16 ಕೆ.ಜಿ ರಂಜಕ (ಎಸ್.ಎಸ್.ಪಿ 100 ಕೆ.ಜಿ), 12 ಕೆ.ಜಿ ಪೊಟ್ಯಾಷ್ (ಎಂ.ಒ.ಪಿ 20 ಕೆ.ಜಿ). ನೀರಾವರಿ ಬೆಳೆಗೆ ಎರಡು ಪಟ್ಟು ಗೊಬ್ಬರ ಬೇಕು. ಅರ್ಧ ಸಾರಜನಕ ಮತ್ತು ಪೂರ್ಣ ರಂಜಕ, ಪೊಟ್ಯಾಷ್ ಬಿತ್ತನೆ ಕಾಲದಲ್ಲಿ ನೀಡಿ, ಉಳಿದ ಸಾರಜನಕವನ್ನು 25-30 ದಿನಗಳ ನಂತರ ಕಳೆ ಕೀಳುವಾಗ ಮೇಲುಗೊಬ್ಬರವಾಗಿ ನೀಡಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "kn",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 5,
+        "content_hash": "7f2256c34fabf0b6c84d5750b541ae9f3f1bd4f935b80266fc4832489c2f6feb",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-kn-6",
+      "text": "[ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ) - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n5. ರೋಗ ನಿಯಂತ್ರಣ:",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "kn",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 6,
+        "content_hash": "e8575353dcb35789c3ca92a3dc84962226ce01c5ada119496a76b1f05f837eef",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-kn-7",
+      "text": "[ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ) - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n- ರಾಗಿ ಬೆಂಕಿ ರೋಗ (ಬ್ಲಾಸ್ಟ್): ಎಲೆ, ಕುತ್ತಿಗೆ ಮತ್ತು ತೆನೆ ಬೆಂಕಿ ರೋಗಕ್ಕೆ ಎಂಎಲ್-365 ರೋಗ ನಿರೋಧಕ ತಳಿ ಬಳಸಿ. ನಿಯಂತ್ರಣಕ್ಕೆ ಟ್ರೈಸೈಕ್ಲಾಜೋಲ್ 75% WP @ 0.6 ಗ್ರಾಂ/ಲೀಟರ್ ನೀರಿಗೆ ಅಥವಾ ಮ್ಯಾಂಕೋಜೆಬ್ @ 2 ಗ್ರಾಂ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "kn",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 7,
+        "content_hash": "399cf9229355c98fed557d0802e16b5c1e6c72a4cd28a77052bad95882701587",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-ragi-2024-kn-8",
+      "text": "[ರಾಗಿ (ಬೆರಳ ಸಿರಿಧಾನ್ಯ) - Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka]\n- ಸೈನಿಕ ಹುಳು / ಕಾಂಡ ಕೊರೆಯುವ ಹುಳು: 5% ಬೇವಿನ ಬೀಜದ ಕಷಾಯ (NSKE) ಅಥವಾ ಕ್ಲೋರ್‌ಪೈರಿಫಾಸ್ 20% EC @ 2 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-ragi-2024",
+        "crop": "ragi",
+        "language": "kn",
+        "title": "Package of Practices for Finger Millet (Ragi) Cultivation in Karnataka",
+        "source": "University of Agricultural Sciences, Bengaluru (UASB) & ICAR-AICRP on Small Millets",
+        "source_url": "https://www.uasbangalore.edu.in/extension/package-of-practices",
+        "publication_date": "2024-04-10",
+        "applicable_region": "Mandya, Mysore, Hassan, Tumakuru, Kolar, Chikkaballapura",
+        "chunk_index": 8,
+        "content_hash": "cd0e2e96540f0e937c19ba9e422e1d2f2ca5b548c8607794092011da435f8b02",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-1",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\nSugarcane Cultivation Protocol in Mandya (Sugar Bowl of Karnataka):",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 1,
+        "content_hash": "94eae41b45f7a72f2935474e75ce1977c2bcbd8452ecfbaffcc69a657b218691",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-2",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n1. Varieties: Co 86032 (Nayana - high sugar recovery), Co 62175, VCF 0517, Co 0212, Co 09004.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 2,
+        "content_hash": "e3e93da6d164ff2407b3da22301a501bb0b235114de404d41dea1acace5865fa",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-3",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n2. Planting Seasons: Adsali (July-August - highest yield), Eksali (January-February), Pre-seasonal (October-November).",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 3,
+        "content_hash": "7d9b71d3625f22795178256c4a7252cd9fef60f7138f9e6a02eaa4acbd395e65",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-4",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n3. Sett Selection & Treatment: Use top 1/3 portion of 8-10 month cane. Treat setts with Carbendazim 50% WP @ 1g/liter + Malathion 50% EC @ 1 ml/liter for 15 minutes before planting to control smut, sett rot, and scale insects.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 4,
+        "content_hash": "0d1d9e6d06f178e9eb8a03a3d596145ef485424ce15b4844571ce9ea8aa603ba",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-5",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n4. Spacing: Paired row planting (75 cm - 150 cm - 75 cm) or wide furrow at 120-150 cm to facilitate mechanical earthing-up and drip irrigation.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 5,
+        "content_hash": "44cc1fd0517d44b6698ac4efd525e001a9ba1b71a387d5973bd63ab4232660de",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-6",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n5. Fertilizer Schedule per acre:",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 6,
+        "content_hash": "91dfec887b117cc8a3d9134f7f84a9d8318a6ff6c7e5df21ff4b014343912795",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-7",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n- Normal cultivation: 100 kg N (Urea 217 kg), 40 kg P2O5 (SSP 250 kg), 50 kg K2O (MOP 83 kg). Apply P full at planting, N & K in 4 splits: 10% at planting, 20% at 45 DAP, 30% at 90 DAP, 40% at earthing-up (120-150 DAP).",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 7,
+        "content_hash": "801659608f766998ace3f334ec4a063fc5c946aea983914e02f2ba0c68479e5f",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-8",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n- Under Drip Fertigation: Water saving of 40% and fertilizer saving of 25-30% using water-soluble fertilizers (19-19-19, 13-0-45, Urea) weekly through venturi injector.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 8,
+        "content_hash": "83fb0a32e8e22d784d24c58d246b1b6930ffdb921b6de87a52d0af2beba34791",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-9",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n6. Major Pest & Disease Management:",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 9,
+        "content_hash": "b526d4a5b7127cf3c8d174446464a8f8b16f779adfddeff20f13b60a0f65b2d1",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-10",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n- Early Shoot Borer (Chilo infuscatellus): Attacking before 90 DAP. Dead hearts emit offensive odor when pulled. Trash mulching @ 3 tonnes/acre reduces borer incidence by 40%. Earthing-up at 45 DAP. Spray Chlorantraniliprole 18.5% SC @ 0.4 ml/liter or apply Cartap hydrochloride 4G granules @ 10 kg/acre in furrows.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 10,
+        "content_hash": "b88681842391ea58a0b3e0d0143aed9e9edab91f85ca293eb0e4a322abe5f50b",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-11",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n- Sugarcane Woolly Aphid (Ceratovacuna lanigera): White woolly colonies under leaves. Conserve natural predators: Dipha aphidivora, Micromus igorotus. Spray Acephate 75% SP @ 1.5g/liter if biological control is delayed.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 11,
+        "content_hash": "f840d49de9145c25240faf861d3f17c00b13f42d5e42558ee525e23a22b4627f",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-en-12",
+      "text": "[SUGARCANE - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n- Red Rot (Colletotrichum falcatum): Use disease-free setts from registered nurseries; crop rotation with paddy.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "en",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 12,
+        "content_hash": "054fbddb542d57892ed09e07010eb3ab3b1e482e32b615f5295154024f609a64",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-kn-1",
+      "text": "[ಕಬ್ಬು - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\nಮಂಡ್ಯ ಜಿಲ್ಲೆಯಲ್ಲಿ ಕಬ್ಬು ಬೆಳೆಯ ಸಮಗ್ರ ಬೇಸಾಯ ತಂತ್ರಜ್ಞಾನ:",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "kn",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 1,
+        "content_hash": "f29e974994e303a49f1147c5585ca7fd63534ec433711ee02c88a586a6331d4a",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-kn-2",
+      "text": "[ಕಬ್ಬು - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n1. ಶಿಫಾರಸು ಮಾಡಿದ ತಳಿಗಳು: ಕೊ 86032 (ನಯನ - ಅಧಿಕ ಸಕ್ಕರೆ ಅಂಶ), ಕೊ 62175, ವಿಸಿಎಫ್ 0517 (ಮಂಡ್ಯ ವಿಸಿ ಫಾರ್ಮ್ ತಳಿ), ಕೊ 0212.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "kn",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 2,
+        "content_hash": "b374266bcae7953cfa97cd0d0895f51e1642eec608c85b483c62e2f38fbef713",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-kn-3",
+      "text": "[ಕಬ್ಬು - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n2. ನಾಟಿ ಕಾಲ: ಅಡ್ಸಾಲಿ (ಜುಲೈ-ಆಗಸ್ಟ್), ಏಕಸಾಲಿ (ಜನವರಿ-ಫೆಬ್ರವರಿ).",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "kn",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 3,
+        "content_hash": "a1dedc1d255e0dc089815c4b19a790dc7f3a0b46f493aafb16db77e754474b2e",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-kn-4",
+      "text": "[ಕಬ್ಬು - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n3. ಬಿತ್ತನೆ ಬೀಜ (ಕಣ್ಣುಗಳ) ಉಪಚಾರ: 8-10 ತಿಂಗಳ ವಯಸ್ಸಿನ ಕಬ್ಬಿನ ಮೇಲ್ಭಾಗದ ತುಂಡುಗಳನ್ನು 1 ಗ್ರಾಂ ಕಾರ್ಬೆಂಡಾಜಿಮ್ ಮತ್ತು 1 ಮಿ.ಲೀ ಮಲಾಥಿಯಾನ್ ಬೆರೆಸಿದ 1 ಲೀಟರ್ ನೀರಿನ ದ್ರಾವಣದಲ್ಲಿ 15 ನಿಮಿಷ ನೆನೆಸಿ ನಾಟಿ ಮಾಡಿ (ಕಾಡಿಗೆ ರೋಗ ಮತ್ತು ಬೆಂಕಿ ರೋಗ ತಡೆಗಟ್ಟಲು).",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "kn",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 4,
+        "content_hash": "63d1d2232730c7ed3eaada86614df6764cb627497bd5c08bcc1887c420e2ba1c",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-kn-5",
+      "text": "[ಕಬ್ಬು - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n4. ರಸಗೊಬ್ಬರ ನಿರ್ವಹಣೆ (ಎಕರೆಗೆ): 100 ಕೆ.ಜಿ ಸಾರಜನಕ, 40 ಕೆ.ಜಿ ರಂಜಕ, 50 ಕೆ.ಜಿ ಪೊಟ್ಯಾಷ್. ರಂಜಕ ಸಂಪೂರ್ಣವಾಗಿ ನಾಟಿ ಸಮಯದಲ್ಲಿ ನೀಡಿ. ಸಾರಜನಕ ಮತ್ತು ಪೊಟ್ಯಾಷ್ ಅನ್ನು 4 ಕಂತುಗಳಲ್ಲಿ (ನಾಟಿ ಸಮಯದಲ್ಲಿ, 45 ನೇ ದಿನಕ್ಕೆ, 90 ನೇ ದಿನಕ್ಕೆ ಮತ್ತು 120-150 ನೇ ದಿನ ದೊಡ್ಡ ಸಾಲು ಏರಿಸುವಾಗ) ನೀಡಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "kn",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 5,
+        "content_hash": "a0b4d283035b804171069440de1ba1a68e02d9fe93579cbaa2521e1a75d26f70",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-kn-6",
+      "text": "[ಕಬ್ಬು - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n5. ರೋಗ ಮತ್ತು ಕೀಟ ನಿಯಂತ್ರಣ:",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "kn",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 6,
+        "content_hash": "44785b357e897823c659cfd25f077539ae5795ef9fffa0f00d97b852067a8583",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-kn-7",
+      "text": "[ಕಬ್ಬು - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n- ಸುಳಿ ಕೊರೆಯುವ ಹುಳು: ನಾಟಿಯಾದ 90 ದಿನಗಳೊಳಗೆ ಕಾಡುತ್ತದೆ. ಒಣಗಿದ ಸುಳಿಯನ್ನು ಎಳೆದರೆ ಕೆಟ್ಟ ವಾಸನೆ ಬರುತ್ತದೆ. ಎಕರೆಗೆ 3 ಟನ್ ಕಬ್ಬಿನ ರವದಿಯನ್ನು ಸಾಲುಗಳ ನಡುವೆ ಹರಡಿ (ರವದಿ ಹೊದಿಕೆ). ನಾಟಿ ಸಮಯದಲ್ಲಿ ಕ್ಲೋರಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ 18.5% SC @ 0.4 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "kn",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 7,
+        "content_hash": "2db8146b9c722620601f814b7be4c9cd8e0fed105fbee530d5aa7cdf6fdee4fd",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-sugarcane-2024-kn-8",
+      "text": "[ಕಬ್ಬು - Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District]\n- ಬಿಳಿ ಗೂಡು ನುಸಿ (ವುಲ್ಲಿ ಆಫಿಡ್): ಎಲೆಗಳ ಕೆಳಭಾಗದಲ್ಲಿ ಬಿಳಿ ಬಣ್ಣದ ಹತ್ತಿಯಂತಹ ಕೀಟಗಳು. ಡಿಫಾ ಪ್ರಿಡೇಟರ್ ಕೀಟಗಳನ್ನು ಬಿಡಿ. ತೀವ್ರವಾದರೆ ಅಸಿಫೇಟ್ 75% SP @ 1.5 ಗ್ರಾಂ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-sugarcane-2024",
+        "crop": "sugarcane",
+        "language": "kn",
+        "title": "Comprehensive Sugarcane Production & Drip Fertigation Technology for Mandya District",
+        "source": "Zonal Agricultural Research Station (ZARS), V.C. Farm, Mandya & ICAR-Sugarcane Breeding Institute",
+        "source_url": "https://www.uasbangalore.edu.in/research/zars-mandya",
+        "publication_date": "2024-03-20",
+        "applicable_region": "Mandya (Sugar City), Mysuru, Chamarajanagar, Belagavi",
+        "chunk_index": 8,
+        "content_hash": "485c8e8c47855c4a73f3b79fa0d35ee437167025cf0e13d1845993de143e3d71",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-1",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\nMaize Production and Fall Armyworm (FAW) Management:",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 1,
+        "content_hash": "41fcc01c71a92a84d3d20987cdab4ae2431ee70d4543473fef2a53c758afe0d3",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-2",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n1. Varieties: NAH-1137, Deccan 103, CP 818, Bio-9681, PAC-740, Hema.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 2,
+        "content_hash": "0bca8e11e7fac355c23bf16ab920e83b41ace1454503c0814fa0c76fb63299f4",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-3",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n2. Seed Rate & Spacing: 7-8 kg/acre at 60 cm row-to-row and 20 cm plant-to-plant.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 3,
+        "content_hash": "0043e196fdbf56e03acd3e9e875d1aea6af5e2cbab178d14dc6b03e93959c8f5",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-4",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n3. Seed Treatment: Fortify seeds with Cyantraniliprole 19.8% + Thiamethoxam 19.8% FS @ 4 ml/kg seed for initial 20 days protection against Fall Armyworm.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 4,
+        "content_hash": "ff97d8cbbb75d493e58156ab7258575207db9c492fe7b4d9c13609b00aa45be4",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-5",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n4. Fertilizer per acre: 60 kg N (Urea 130 kg), 30 kg P2O5 (SSP 187 kg), 16 kg K2O (MOP 27 kg), and Zinc Sulphate 10 kg. Apply full P, K and 1/3rd N as basal; 1/3rd N at knee-high stage (30 DAS) and 1/3rd N at tasseling stage (50 DAS).",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 5,
+        "content_hash": "efcc79aa7ac60ff9d8bedf2ab1569076130069a0e8c82ed965d3edab66e4bcb1",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-6",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n5. Integrated Management of Fall Armyworm (Spodoptera frugiperda):",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 6,
+        "content_hash": "bbd0e5fd582d84d27c94a91e8519b83e87c9e324e5db55ae863948ccce10d387",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-7",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- Monitor window pane feeding marks and ragged leaves with frass in whorls.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 7,
+        "content_hash": "da8cf3d4660087f8f28b83f74bc59fb37d4564195a3c09f9222267bb0d13741d",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-8",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- Install FAW pheromone traps @ 4-6 traps/acre.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 8,
+        "content_hash": "f7b781662fda58183b1e556ab3a253fe61010391db93bce0943bd7b2c5c83789",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-9",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- Bio-agent: Spray Bacillus thuringiensis (Bt) kurstaki @ 2g/liter or Metarhizium anisopliae @ 5g/liter at early vegetative stage.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 9,
+        "content_hash": "c4a309ebb20472b3db9f1022cb80bfc3f076d8d2de5d802d53d3d127ea5a435f",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-10",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- Push-Pull technology: Plant Desmodium as intercrop (repels moths) and Napier grass on borders (trap crop).",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 10,
+        "content_hash": "b8d3ca603bb0a176b5c362883d38eae9325b23e01116f8be28617cdf0460b43e",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-en-11",
+      "text": "[MAIZE - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- Chemical whorl application (only when ETL > 10% damaged plants): Emamectin benzoate 5% SG @ 0.4g/liter or Spinetoram 11.7% SC @ 0.5 ml/liter directed into plant whorls using knapsack sprayer with hollow cone nozzle.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "en",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 11,
+        "content_hash": "01972c153e1be12af1940c29e69e28f3aa5b99336fa27830eebd33f82dd9e4ad",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-1",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\nಮೆಕ್ಕೆಜೋಳ ಮತ್ತು ಸೈನಿಕ ಹುಳು (ಫಾಲ್ ಆರ್ಮಿವರ್ಮ್) ಸಮಗ್ರ ನಿರ್ವಹಣೆ:",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 1,
+        "content_hash": "1ecf2de18dd98fd6260c11bb027ededd46862b5295281834b241a0adf595a95e",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-2",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n1. ಸುಧಾರಿತ ತಳಿಗಳು: ಎನ್ಎಹೆಚ್-1137, ಡೆಕ್ಕನ್-103, ಸಿಪಿ-818, ಬಯೋ-9681, ಹೇಮಾ.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 2,
+        "content_hash": "54a62e5c727018c6e14d159e4a8d7f1c363b756686d069d1842e05c3f8afb992",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-3",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n2. ಬೀಜ ಪ್ರಮಾಣ: ಎಕರೆಗೆ 7-8 ಕೆ.ಜಿ. ಸಾಲಿನಿಂದ ಸಾಲಿಗೆ 60 ಸೆಂ.ಮೀ, ಗಿಡದಿಂದ ಗಿಡಕ್ಕೆ 20 ಸೆಂ.ಮೀ ಅಂತರ.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 3,
+        "content_hash": "4bec2bbbc804813c4612ac01a33f2e56e45775965170986158aed49c8f2a6da8",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-4",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n3. ಬೀಜೋಪಚಾರ: ಸೈನಿಕ ಹುಳು ಬಾಧೆ ತಡೆಯಲು 1 ಕೆ.ಜಿ ಬೀಜಕ್ಕೆ ಸಯಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ + ಥಯಾಮೆಥಾಕ್ಸಮ್ (ಫೋರ್ಟೆನ್ಜಾ ಡ್ಯುಯೊ) @ 4 ಮಿ.ಲೀ ಬೆರೆಸಿ ಉಪಚರಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 4,
+        "content_hash": "59af9ea4b3b2239c952b2acbb53fd82fe8a3a53468736d058972a90d0c2b07d6",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-5",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n4. ರಸಗೊಬ್ಬರ (ಎಕರೆಗೆ): 60 ಕೆ.ಜಿ ಸಾರಜನಕ (ಯೂರಿಯಾ 130 ಕೆ.ಜಿ), 30 ಕೆ.ಜಿ ರಂಜಕ (ಎಸ್.ಎಸ್.ಪಿ 187 ಕೆ.ಜಿ), 16 ಕೆ.ಜಿ ಪೊಟ್ಯಾಷ್ (ಎಂ.ಒ.ಪಿ 27 ಕೆ.ಜಿ), 10 ಕೆ.ಜಿ ಜಿಂಕ್ ಸಲ್ಫೇಟ್. ಸಾರಜನಕವನ್ನು ಬಿತ್ತನೆ ಕಾಲ, ಮಂಡಿ ಎತ್ತರದ ಹಂತ (30 ದಿನ) ಮತ್ತು ಜೊಂಡು ಬರುವ ಹಂತದಲ್ಲಿ (50 ದಿನ) ಮೂರು ಸಮಪಾಲುಗಳಲ್ಲಿ ಕೊಡಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 5,
+        "content_hash": "e5381f5178f4198a123ef6b12ea52f5671e1ecef64bdeec8ca0f03683df4bcf9",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-6",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n5. ಕೀಟ ನಿರ್ವಹಣೆ (ಫಾಲ್ ಆರ್ಮಿವರ್ಮ್ ಸೈನಿಕ ಹುಳು):",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 6,
+        "content_hash": "929f7944be276ad14c74a45b9d0dfc45f15b3651fa92216a9c3c7607786e1d8d",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-7",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- ಸುಳಿಯಲ್ಲಿ ಹುಳು ಇರುವುದು ಮತ್ತು ಹಿಕ್ಕೆಯುಳ್ಳ ರಂಧ್ರಗಳಿರುವ ಎಲೆಗಳು ಪ್ರಮುಖ ಲಕ್ಷಣ.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 7,
+        "content_hash": "2d24d82dfb9cea16c27e99686bd02141352374154d9e6b80661a3ff661ac858d",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-8",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- ಎಕರೆಗೆ 4-6 ಲಿಂಗಾಕರ್ಷಕ ಬಲೆ ಅಳವಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 8,
+        "content_hash": "f80e107aa8b3d6e7ede4a41da80eb3a6242b4ce1a981561250e5d28ce1029d3c",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-9",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- ಆರಂಭಿಕ ಹಂತದಲ್ಲಿ ಮೆಟಾರೈಜಿಯಮ್ ಅಥವಾ ಬಿಟಿ ಜೈವಿಕ ಕೀಟನಾಶಕ @ 2 ಗ್ರಾಂ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 9,
+        "content_hash": "580fd687fb6c4ae087262e595b31afb8be92959afd8d82ff2b385b6419894ed5",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-maize-2024-kn-10",
+      "text": "[ಮೆಕ್ಕೆಜೋಳ - Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines]\n- ಬಾಧೆ ಶೇ.10 ಕ್ಕಿಂತ ಹೆಚ್ಚಿದ್ದರೆ ಎಮಾಮೆಕ್ಟಿನ್ ಬೆಂಜೋಯೇಟ್ 5% SG @ 0.4 ಗ್ರಾಂ/ಲೀಟರ್ ಅಥವಾ ಸ್ಪೈನಟೋರಾಮ್ 11.7% SC @ 0.5 ಮಿ.ಲೀ/ಲೀಟರ್ ದ್ರಾವಣವನ್ನು ಕಡ್ಡಾಯವಾಗಿ ಸುಳಿಯೊಳಗೆ ಬೀಳುವಂತೆ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-maize-2024",
+        "crop": "maize",
+        "language": "kn",
+        "title": "Maize Production & Fall Armyworm (FAW) Integrated Management Guidelines",
+        "source": "ICAR-Indian Institute of Maize Research & UAS Bengaluru",
+        "source_url": "https://iimr.icar.gov.in/fall-armyworm-management",
+        "publication_date": "2024-06-01",
+        "applicable_region": "Mandya, Davanagere, Haveri, Belagavi, Ballari",
+        "chunk_index": 10,
+        "content_hash": "f73b7fb679db26a11af8c3d60992dee857003cc13b90a31d8cbee144de7ccdbb",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-en-1",
+      "text": "[PULSES - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\nRed Gram (Tur / Arhar) Production Practices:",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "en",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 1,
+        "content_hash": "dd542b9a01cf466cf8c94bf8ff3ac98a901eda3de82eb50ab5148ba1c9bf8bb9",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-en-2",
+      "text": "[PULSES - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n1. Varieties: BRG-1, BRG-2, BRG-4, ICPH-2671 (hybrid), GRG-811, BSMR-736 (resistant to wilt and sterility mosaic).",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "en",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 2,
+        "content_hash": "0724ec5cb5318e970a4fbdd0fdfb0d1d6084d49e52fbfdb1b6b7095115aafcd0",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-en-3",
+      "text": "[PULSES - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n2. Seed Treatment: Treat seeds with Rhizobium leguminosarum + PSB @ 200g each per 5 kg seeds + Trichoderma harzianum @ 5g/kg to manage Fusarium wilt.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "en",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 3,
+        "content_hash": "9b07e73bece291da0d2b95fc31caf725c3f2d781a7d0c6e5db0361161dbb7acc",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-en-4",
+      "text": "[PULSES - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n3. Spacing & Agronomy: Sole crop at 90x20 cm or paired row 120x30 cm. Nipping of terminal bud at 45-50 DAS encourages profuse secondary branching and pod bearing.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "en",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 4,
+        "content_hash": "d323ca710abc5ae255a37f2f024d9292d8a927a950b854a40b9873fcefd0c8db",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-en-5",
+      "text": "[PULSES - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n4. Foliar Nutrition: Spray 'Pulse Magic' (formulated micronutrient cocktail by UAS) @ 10g/liter or 1% 19-19-19 + 0.2% Boron at 50% flowering and 15 days later to prevent flower drop and increase pod filling by 20%.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "en",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 5,
+        "content_hash": "91817e626b96ccb7cec0f2e290e58583e776d009dc1d9bc90c848545cfdbd751",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-en-6",
+      "text": "[PULSES - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n5. Major Pest Management:",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "en",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 6,
+        "content_hash": "063ecd9f680dfa38da972bcdc7d79184e4fca49d0f26c269e849e12504f806eb",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-en-7",
+      "text": "[PULSES - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n- Gram Pod Borer (Helicoverpa armigera): Larvae feed by inserting head into pods. Install 5 pheromone traps/acre. Plant African marigold as trap crop (1 line per 10 lines of red gram). Spray HaNPV 250 LE/acre or NSKE 5% at flowering. If ETL (1 larva/plant) is crossed, spray Chlorantraniliprole 18.5% SC @ 0.3 ml/liter or Indoxacarb 14.5% SC @ 0.7 ml/liter.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "en",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 7,
+        "content_hash": "756828db641cf4d6851689606d85b7dd89a95989cd8ac61161af6c3bb9e9deaf",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-en-8",
+      "text": "[PULSES - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n- Sterility Mosaic Disease (SMD): Transmitted by Aceria cajani mite. Eradicate infected stunted bushy plants immediately. Spray Fenazaquin 10% EC @ 1 ml/liter for vector control.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "en",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 8,
+        "content_hash": "c7901a9c75e46eaba47ab1a76997621313a9f620def938397ca03292416c3327",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-kn-1",
+      "text": "[ತೊಗರಿ / ಬೇಳೆಕಾಳುಗಳು - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\nತೊಗರಿ ಬೇಸಾಯ ಕ್ರಮಗಳು ಮತ್ತು ಹೂವುದುರುವಿಕೆ ತಡೆಗಟ್ಟುವ ತಂತ್ರಜ್ಞಾನ:",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "kn",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 1,
+        "content_hash": "11f23f22b9e64d709bd3df92de3394898fd593d07d98963f8ce60f0fc9fb0924",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-kn-2",
+      "text": "[ತೊಗರಿ / ಬೇಳೆಕಾಳುಗಳು - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n1. ತಳಿಗಳು: ಬಿಆರ್‌ಜಿ-1, ಬಿಆರ್‌ಜಿ-2, ಬಿಆರ್‌ಜಿ-4, ಜಿಆರ್‌ಜಿ-811, ಬಿಎಸ್‌ಎಂಆರ್-736 (ವಸ್ತು ಮತ್ತು ಬಂಜೆರೋಗ ನಿರೋಧಕ).",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "kn",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 2,
+        "content_hash": "2241aafb89bbe6b3e177e32991fc9462d7a237146022580d1cd2f116d6ba8bc4",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-kn-3",
+      "text": "[ತೊಗರಿ / ಬೇಳೆಕಾಳುಗಳು - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n2. ಬೀಜೋಪಚಾರ: 5 ಕೆ.ಜಿ ಬೀಜಕ್ಕೆ ರೈಜೋಬಿಯಂ ಮತ್ತು ಪಿಎಸ್‌ಬಿ ತಲಾ 200 ಗ್ರಾಂ ಹಾಗೂ ಸೊರಗು ರೋಗ ತಡೆಗೆ 1 ಕೆ.ಜಿ ಬೀಜಕ್ಕೆ 5 ಗ್ರಾಂ ಟ್ರೈಕೋಡರ್ಮಾ ಪುಡಿ ಹಾಕಿ ಕಲೆಸಿ ನೆರಳಿನಲ್ಲಿ ಒಣಗಿಸಿ ಬಿತ್ತನೆ ಮಾಡಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "kn",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 3,
+        "content_hash": "887e9adcf5dbb4bf62685653f98a48fb3ab54f871cc72532cc9345233579bfc7",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-kn-4",
+      "text": "[ತೊಗರಿ / ಬೇಳೆಕಾಳುಗಳು - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n3. ಸುಳಿ ಚಿವುಟುವಿಕೆ (Nipping): ಬಿತ್ತನೆಯ 45-50 ದಿನಗಳಲ್ಲಿ ಮುಖ್ಯ ಕಾಂಡದ ತುದಿಯನ್ನು 2-3 ಇಂಚು ಚಿವುಟುವುದರಿಂದ ಪಕ್ಕದ ಕೊಂಬೆಗಳು ಹೆಚ್ಚು ಒಡೆದು ಇಳುವರಿ ಶೇ. 25-30 ರಷ್ಟು ಹೆಚ್ಚುತ್ತದೆ.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "kn",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 4,
+        "content_hash": "6f5481a4bfef1a98b9395dcfc48ed5006048f9eb79ffdeb9127e46b816dbaffa",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-kn-5",
+      "text": "[ತೊಗರಿ / ಬೇಳೆಕಾಳುಗಳು - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n4. ಹೂವು ಉದುರುವಿಕೆ ತಡೆಗೆ: ಶೇ. 50 ರಷ್ಟು ಹೂವಾಡುವ ಹಂತದಲ್ಲಿ ಮತ್ತು ಕಾಯಿ ಕಟ್ಟುವ ಹಂತದಲ್ಲಿ 10 ಗ್ರಾಂ 'ಪಲ್ಸ್ ಮ್ಯಾಜಿಕ್' (Pulse Magic) ಅಥವಾ 19-19-19 @ 5 ಗ್ರಾಂ + ಬೋರಾನ್ 1 ಗ್ರಾಂ/ಲೀಟರ್ ನೀರಿಗೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "kn",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 5,
+        "content_hash": "77c25077d3916e0ee7b55a37a0f3447c3367a806fc831ba6f3c0e7ddbfbc0d69",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-redgram-2024-kn-6",
+      "text": "[ತೊಗರಿ / ಬೇಳೆಕಾಳುಗಳು - Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers]\n5. ಕಾಯಿ ಕೊರೆಯುವ ಹುಳು (ಹೆಲಿಕೋವರ್ಪ): ಮರಿ ಹುಳುಗಳು ಕಾಯಿಗೆ ರಂಧ್ರ ಕೊರೆದು ಕಾಳು ತಿನ್ನುತ್ತವೆ. ಎಕರೆಗೆ 5 ಲಿಂಗಾಕರ್ಷಕ ಬಲೆ ಹಾಕಿ. ಶೇ. 5 ರ ಬೇವಿನ ಬೀಜದ ಕಷಾಯ ಸಿಂಪಡಿಸಿ. ಬಾಧೆ ಮಿತಿ ಮೀರಿದರೆ ಕ್ಲೋರಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ 18.5% SC @ 0.3 ಮಿ.ಲೀ/ಲೀಟರ್ ನೀರಿಗೆ ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-redgram-2024",
+        "crop": "pulses",
+        "language": "kn",
+        "title": "Red Gram (Pigeonpea) and Pulses Package of Practices for Dryland Farmers",
+        "source": "UAS Bengaluru & ICAR-Indian Institute of Pulses Research",
+        "source_url": "https://www.uasbangalore.edu.in/extension/pulses-advisory",
+        "publication_date": "2024-05-02",
+        "applicable_region": "Mandya, Kalaburagi (Tur Bowl), Raichur, Vijayapura, Tumakuru",
+        "chunk_index": 6,
+        "content_hash": "aa7e13adeaa489498d89ad6db15f41608d2ef65576d69e22c9b335aff8232eb7",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-1",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\nTomato, Chilli, and Onion Comprehensive Horticultural Guide:",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 1,
+        "content_hash": "f00dc37a82b1550174a32bb5e2721c3f16b453edcc4e72c1132bb7ecb5fe7f1b",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-2",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n1. Tomato (Solanum lycopersicum):",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 2,
+        "content_hash": "a6c588df878f09b75595c4420361911e891f325872c4310ff7706b93478672f7",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-3",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- Varieties/Hybrids: Arka Rakshak (triple disease resistant to ToLCV, Early Blight & Bacterial Wilt), Arka Samrat, Shivam.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 3,
+        "content_hash": "de85b699a69bcbf0c7924c1923a3f7f2ef15db4e9bc165321872173cd0d4af23",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-4",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- Spacing: 90x60 cm on raised beds with silver-black plastic mulch (25 micron) and drip irrigation.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 4,
+        "content_hash": "c7878fead9f6bca1d045a99b0a5d4ddba4b487c6168be061a52973fc62c57bf4",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-5",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- Tomato Pinworm (Tuta absoluta): Mines into leaves and bores fruits near calyx. Install Tuta pheromone traps @ 16 traps/acre. Spray Flubendiamide 39.35% SC @ 0.3 ml/liter or Chlorantraniliprole 18.5% SC @ 0.3 ml/liter.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 5,
+        "content_hash": "084353b5d9d60e01f6e1bf71b10390a0016d734f54e602f14355131e74134253",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-6",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- Early & Late Blight: Spray Mancozeb 75% WP @ 2g/liter or Dimethomorph 50% WP @ 1g/liter alternating with Azoxystrobin 23% SC @ 1 ml/liter.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 6,
+        "content_hash": "40024c93599b67e1f28c356b0c5a9726b2be8602ce98cebfc0764267392f17d4",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-7",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n2. Chilli (Capsicum annuum):",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 7,
+        "content_hash": "abe30e1e6b5ca05fd24510b05262a6fc19de27924bfd33f96e598c8983f997f6",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-8",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- Varieties: Arka Kyathi, Arka Meghna, Byadagi Kaddi, Byadagi Dabbi, G-4.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 8,
+        "content_hash": "71a253bcdd39038b46f582c797a16dfee2b9b87c1136d965f4bd8555bee767d3",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-9",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- Murda Disease / Leaf Curl Complex: Sucking pests (Thrips & Yellow Mites) transmit virus. Yellow sticky traps (10/acre) for whitefly; Blue sticky traps (10/acre) for thrips. Spray Diafenthiuron 50% WP @ 1.2g/liter or Spinetoram 11.7% SC @ 0.9 ml/liter for thrips. For mites, spray Spiromesifen 22.9% SC @ 1 ml/liter.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 9,
+        "content_hash": "72e9cf3c36e1225883db95627bd7a991b43f665b54be2f59dde0101e0514eaed",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-10",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n3. Onion (Allium cepa):",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 10,
+        "content_hash": "7baf23575b808da521660c0aa593b648f1890c0fe91e192929ce0ecd744f5c22",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-11",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- Varieties: Arka Kalyan, Arka Lalima, Bhima Super.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 11,
+        "content_hash": "a8fbc4504736209f882cacd2cc96eb27086f8e3f51663bab51456393b49ed671",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-en-12",
+      "text": "[VEGETABLES - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- Purple Blotch (Alternaria porri): Purple necrotic sunken spots on leaves. Spray Tebuconazole 25.9% EC @ 1 ml/liter or Mancozeb 75% WP @ 2.5g/liter with sticker (sandovit @ 0.5 ml/liter).",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "en",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 12,
+        "content_hash": "a82080426132114dbff5e7700f932a6027ac84215b92a6aee2309eea626d7b46",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-1",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\nಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ ಮತ್ತು ಈರುಳ್ಳಿ ಸಮಗ್ರ ರೋಗ ಮತ್ತು ಪೋಷಕಾಂಶ ನಿರ್ವಹಣೆ:",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 1,
+        "content_hash": "16f9708888c07dcb4f7dbda047d7ee3e3579aaad9ae1a4ca3ea3c2b2af6f6480",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-2",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n1. ಟೊಮೆಟೊ:",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 2,
+        "content_hash": "3a0865c88ccefcf9ac7ef038ff0e5679ae7ae5cc3a6b3843b346fdcd7d7f0303",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-3",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- ತಳಿಗಳು: ಅರ್ಕ ರಕ್ಷಕ್ (ಬ್ಯಾಕ್ಟೀರಿಯಾ ಸೊರಗು, ಎಲೆ ಮುರುಟು ಮತ್ತು ಅರ್ಲಿ ಬ್ಲೈಟ್ ರೋಗಗಳ ತ್ರಿವಳಿ ರೋಗ ನಿರೋಧಕ ತಳಿ), ಅರ್ಕ ಸಾಮ್ರಾಟ್, ಶಿವಮ್.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 3,
+        "content_hash": "416acdb1bdae51a5f2b0072261f93ae6bad241b41cf47e71193956912dc03256",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-4",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- ಟ್ಯೂಟಾ ಎಲೆ ಕೊರೆಯುವ ಹುಳು (Tuta absoluta): ಕಾಯಿ ಮತ್ತು ಎಲೆಗಳ ಒಳಗೆ ಕೊರೆದು ಹಾನಿ ಮಾಡುತ್ತದೆ. ಎಕರೆಗೆ 16 ಟ್ಯೂಟಾ ಲಿಂಗಾಕರ್ಷಕ ಬಲೆ ಅಳವಡಿಸಿ. ಕ್ಲೋರಾಂಟ್ರಾನಿಲಿಪ್ರೋಲ್ 18.5% SC @ 0.3 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 4,
+        "content_hash": "e2b5b8279d5aec229db5995367698121dd307851c3f5d87254c1a3e54f354fb4",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-5",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- ಬೆಂಕಿ / ಚಿಬ್ಬು ರೋಗ: ಮ್ಯಾಂಕೋಜೆಬ್ 75% WP @ 2 ಗ್ರಾಂ ಅಥವಾ ಅಜೋಕ್ಸಿಸ್ಟ್ರೋಬಿನ್ 23% SC @ 1 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 5,
+        "content_hash": "ab510000a6fbb82cd04e78b12d07fee88d7e92b80551f95fead48714aaff89bc",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-6",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n2. ಮೆಣಸಿನಕಾಯಿ (ಮುರುಟು ರೋಗ / ಮುರ್ದಾ ರೋಗ):",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 6,
+        "content_hash": "b141dc8b6a8abcb11a8d96ad77a696edf18d4ec2debff4ed8104d2f2c9c12e87",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-7",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- ನುಸಿ ಮತ್ತು ಥ್ರಿಪ್ಸ್ ರಸ ಹೀರುವ ಕೀಟಗಳಿಂದ ಎಲೆಗಳು ದೋಣಿಯಾಕಾರದಲ್ಲಿ ಮೇಲಕ್ಕೆ ಅಥವಾ ಕೆಳಕ್ಕೆ ಮುರುಟಿಕೊಳ್ಳುತ್ತವೆ.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 7,
+        "content_hash": "51822117381285c61e7c28819019131579b1b60f2e33765f9f289fc9437b4287",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-8",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- ತೋಟದಲ್ಲಿ ಎಕರೆಗೆ 10 ನೀಲಿ ಜಿಗುಟು ಬಲೆ (ಥ್ರಿಪ್ಸ್‌ಗಾಗಿ) ಮತ್ತು 10 ಹಳದಿ ಬಲೆ (ಬಿಳಿ ನೊಣಕ್ಕಾಗಿ) ಅಳವಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 8,
+        "content_hash": "440febe57368e536d5cdc6ad96666d2c83cb5ade5edf0ad7fcc38f0cefab77d2",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-9",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- ಪೆಗಾಸಸ್ (Diafenthiuron 50% WP) @ 1.2 ಗ್ರಾಂ/ಲೀಟರ್ ಅಥವಾ ಡೆಲಿಗೇಟ್ (Spinetoram 11.7% SC) @ 0.9 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 9,
+        "content_hash": "1196f0e636e263cebfbec4cc1e17b8b5e5bf6d608280e8b3d4fcd3cbe4f49f46",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-10",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- ನುಸಿ ಬಾಧೆಗೆ ಸ್ಪೈರೋಮೆಸಿಫೆನ್ 22.9% SC @ 1 ಮಿ.ಲೀ/ಲೀಟರ್ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 10,
+        "content_hash": "48efeb736ef2ad4b882c488e71c0ca142446e63b29f411a00fb07b08ecf0a2d6",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-11",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n3. ಈರುಳ್ಳಿ (ನೇರಳೆ ಮಚ್ಚೆ ರೋಗ):",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 11,
+        "content_hash": "3b153fc39cca4de89fa4ef492c7176dd30b674cca1a0601e1f36a519c840a6fd",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-vegetables-tomato-chilli-2024-kn-12",
+      "text": "[ತರಕಾರಿ ಬೆಳೆಗಳು (ಟೊಮೆಟೊ, ಮೆಣಸಿನಕಾಯಿ, ಈರುಳ್ಳಿ) - Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts]\n- ಎಲೆಗಳ ಮೇಲೆ ನೇರಳೆ ಕಂದು ಬಣ್ಣದ ಮಚ್ಚೆಗಳು. ನಿಯಂತ್ರಣಕ್ಕೆ ಟೆಬುಕೊನಜೋಲ್ @ 1 ಮಿ.ಲೀ ಅಥವಾ ಮ್ಯಾಂಕೋಜೆಬ್ @ 2.5 ಗ್ರಾಂ ಜೊತೆಗೆ ಅಂಟು (ಸ್ಪ್ರೆಡರ್) ಬೆರೆಸಿ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-vegetables-tomato-chilli-2024",
+        "crop": "vegetables",
+        "language": "kn",
+        "title": "Vegetable Integrated Pest & Nutrient Management for Karnataka Horticultural Belts",
+        "source": "ICAR-Indian Institute of Horticultural Research (IIHR, Hessaraghatta, Bengaluru)",
+        "source_url": "https://iihr.icar.gov.in/crop-protection-technologies",
+        "publication_date": "2024-04-18",
+        "applicable_region": "Mandya, Kolar, Chikkaballapura, Belagavi, Haveri",
+        "chunk_index": 12,
+        "content_hash": "614e8863b0589a2973e724cf512637a3132b175eb16c91d61b6dde3dd44697eb",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-1",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\nCoconut Palm Management Protocol:",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 1,
+        "content_hash": "f0a78564d38543950e30981d8730ba8a021f4d9b2b1622f0d855bc3323714105",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-2",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n1. Varieties: Tiptur Tall, Arasikere Tall, COD x DTO, Chandra Sankara.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 2,
+        "content_hash": "85e17a7c1f79d0f96bb43cc3f6ccbfd2f20b9f0ca40c1cdf14f8cba2c1ef51cc",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-3",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n2. Annual Nutrition per adult palm (Apply in 2 splits in May-June & September-October):",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 3,
+        "content_hash": "5e89d7d67c36073e44b227c0024a227d02eea2cf5fb21a3e186c1b52fec1b3e3",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-4",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- Farmyard manure: 50 kg/palm/year",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 4,
+        "content_hash": "80d0c5c2c579bf36475035768f2cf5adb3fef0990ffd838331d1dc1faede31fd",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-5",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- Nitrogen: 500g (Urea 1.1 kg)",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 5,
+        "content_hash": "8f62fe4a6dd6ae0b1abda437d5d6f1898839abee4f152e82e41596f29fc641b5",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-6",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- Phosphorus: 320g (Rock phosphate or SSP 2 kg)",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 6,
+        "content_hash": "10fca47912ed555e66c63c78ce6b25f9d6f22a2222db103afd570f6e8030b009",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-7",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- Potassium: 1200g (MOP 2 kg) - Coconut has high potassium requirement for nut filling.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 7,
+        "content_hash": "4a2a5aa51f88a12aefcf210ce032b96ddbca30e4a88653ea9ba1f2f9c964436d",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-8",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- Micronutrients: Apply 1 kg agricultural lime or dolomite every alternative year in acidic soils. Apply Borax 100g/palm/year to prevent crown chocking and button shedding.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 8,
+        "content_hash": "e62f2c8fe85475f10fdc28463ce12e66d786bba5f4459976b761b082ae06fe74",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-9",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n3. Major Pest Management:",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 9,
+        "content_hash": "7907bc14ac762f4f4d8378651a87beea00d873f2e0c57665b8572182409f6598",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-10",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- Rhinoceros Beetle (Oryctes rhinoceros): Bores into unopened spindle leaf producing geometric 'V' shape leaf cuts. Clean palm crown before monsoon. Fill leaf axils with mixture of Sevidol 8G (25g) + fine sand (200g) or hook out beetles with iron rod. Treat FYM pits with Metarhizium majus fungus to kill grubs.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 10,
+        "content_hash": "fa91f435d6085d844c63d79475eeb965322a261316463b1153f7280eb9b596a4",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-11",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- Rugose Spiralling Whitefly (Aleurodicus rugosus): Produces heavy honeydew and black sooty mold. Strictly avoid chemical sprays that destroy natural parasitoids. Release Encarsia guadeloupae parasitic wasps. Spray 1% starch solution to flake off sooty mold.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 11,
+        "content_hash": "28e7a7a441a0dd5002d0ea21d8ea0fb9e3ca4601d46e0c3dbeb68a7377105ff2",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-en-12",
+      "text": "[COCONUT - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- Black-headed Caterpillar (Opisina arenosella): Releases Goniozus nephantidis larval parasitoids @ 20 parasitoids/palm.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "en",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 12,
+        "content_hash": "610138bd9b43d5620371d652e69e0a26db2de2d5b789058c645f592ff742ea50",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-kn-1",
+      "text": "[ತೆಂಗು - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\nತೆಂಗಿನ ಮರಗಳ ಸಮಗ್ರ ಪೋಷಕಾಂಶ ಮತ್ತು ಕೀಟ ನಿರ್ವಹಣೆ:",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "kn",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 1,
+        "content_hash": "44753c116632db1c2e4e5a188074d292ef152e29a93b86c521f0af66c1173e89",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-kn-2",
+      "text": "[ತೆಂಗು - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n1. ವಾರ್ಷಿಕ ಪೋಷಕಾಂಶ ಪ್ರಮಾಣ (ಒಂದು ಫಲ ನೀಡುವ ಮರಕ್ಕೆ ವರ್ಷಕ್ಕೆ):",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "kn",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 2,
+        "content_hash": "bd1fa8e74c71a2431481eda406802e8dd29ee014f5765c82d94744f965e27f38",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-kn-3",
+      "text": "[ತೆಂಗು - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- 50 ಕೆ.ಜಿ ಕೊಟ್ಟಿಗೆ ಗೊಬ್ಬರ.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "kn",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 3,
+        "content_hash": "a3aa069ad5dd8334bd34021c2878ec6c9e5379164c54e8845538ff36fb83d335",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-kn-4",
+      "text": "[ತೆಂಗು - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- ಯೂರಿಯಾ: 1.1 ಕೆ.ಜಿ, ರಾಕ್‌ಫಾಸ್ಫೇಟ್: 2 ಕೆ.ಜಿ, ಪೊಟ್ಯಾಷ್ (ಎಂ.ಒ.ಪಿ): 2 ಕೆ.ಜಿ (ತೆಂಗಿನಲ್ಲಿ ಕಾಯಿ ಕಟ್ಟಲು ಮತ್ತು ನೀರು ತುಂಬಲು ಪೊಟ್ಯಾಷ್ ಅತ್ಯಂತ ಮುಖ್ಯ).",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "kn",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 4,
+        "content_hash": "6cfe5a5bb9f9e22cadc1d1bb2adcef14999eccf662dc43fabd1fa7a03dd656d4",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-kn-5",
+      "text": "[ತೆಂಗು - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- ಬೋರಾನ್ ಕೊರತೆಯಿಂದ ಕಾಯಿಗಳು ಉದುರುತ್ತಿದ್ದರೆ (ಬಟನ್ ಶೆಡ್ಡಿಂಗ್) ಪ್ರತಿ ಮರಕ್ಕೆ ವರ್ಷಕ್ಕೆ 100 ಗ್ರಾಂ ಬೋರಾಕ್ಸ್ ಮಣ್ಣಿಗೆ ಸೇರಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "kn",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 5,
+        "content_hash": "bcec94b72c4b698bf9bfb519960771e2a0459f31e1bff6c329d142c72467f9af",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-kn-6",
+      "text": "[ತೆಂಗು - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n2. ಕೀಟಗಳ ಜೈವಿಕ ನಿಯಂತ್ರಣ:",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "kn",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 6,
+        "content_hash": "7f2595d86f9fd4229cce503ad4b42e388914a93f68df34adf7db83b66cbf5aea",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-kn-7",
+      "text": "[ತೆಂಗು - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- ಕಪ್ಪು ಮೂತಿಯ ದುಂಬಿ (ರೈನೋಸಿರಸ್ ಜೀರುಂಡೆ): ಸುಳಿ ಎಲೆಗಳನ್ನು 'V' ಆಕಾರದಲ್ಲಿ ಕತ್ತರಿಸುತ್ತದೆ. ಮರದ ಸುಳಿಯನ್ನು ಸ್ವಚ್ಛಗೊಳಿಸಿ ಸುಳಿಯ ಎಲೆಗಳ ಸಂದಿಗಳಲ್ಲಿ ಬೇವಿನ ಹಿಂಡಿ ಮತ್ತು ಮರಳಿನ ಮಿಶ್ರಣ (1:1) ತುಂಬಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "kn",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 7,
+        "content_hash": "6b771e226d996ee4413b7ee006f9c2994c4a11cfbc99605c2b417213f6435a62",
+        "review_status": "expert_reviewed"
+      }
+    },
+    {
+      "id": "uasb-pop-coconut-2024-kn-8",
+      "text": "[ತೆಂಗು - Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management]\n- ಸುರುಳಿ ಬಿಳಿ ನೊಣ (Rugose Whitefly): ಎಲೆಗಳ ಕೆಳಗೆ ಬಿಳಿ ಹಿಟ್ಟಿನಂತಹ ನೊಣಗಳು ಹಾಗೂ ಎಲೆಗಳ ಮೇಲೆ ಕಪ್ಪು ಬೂಷ್ಟು ರೋಗ. ಯಾವುದೇ ವಿಷಕಾರಿ ಕೀಟನಾಶಕ ಸಿಂಪಡಿಸಬೇಡಿ. ಎನ್‌ಕಾರ್ಸಿಯಾ ಪರಾವಲಂಬಿ ಜೀವಿಗಳನ್ನು ಬಿಡಿ ಮತ್ತು ಕಪ್ಪು ಬೂಷ್ಟನ್ನು ತೊಳೆಯಲು ಶೇ. 1 ರ ಗಂಜಿ ದ್ರಾವಣವನ್ನು ರಭಸವಾಗಿ ಸಿಂಪಡಿಸಿ.",
+      "metadata": {
+        "doc_id": "uasb-pop-coconut-2024",
+        "crop": "coconut",
+        "language": "kn",
+        "title": "Coconut Nutrition & Rugose Spiralling Whitefly / Rhinoceros Beetle Bio-Management",
+        "source": "ICAR-Central Plantation Crops Research Institute (CPCRI) & UASB",
+        "source_url": "https://cpcri.icar.gov.in/technology-bulletins",
+        "publication_date": "2024-03-12",
+        "applicable_region": "Mandya (Maddur, Malavalli), Tumakuru, Hassan, Coastal Karnataka",
+        "chunk_index": 8,
+        "content_hash": "edf2c3a9414184c642e14237eb0eb54c29ca9c9e58ecdf2603f605a7c991c8ec",
+        "review_status": "expert_reviewed"
+      }
+    }
+  ]
+}

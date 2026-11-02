@@ -567,9 +567,37 @@ export function GeminiChatbot() {
   );
 }
 
-// ─── Gemini API Call Function ──────────────────────────────────────────────────
+// ─── Gemini API & Backend RAG Call Function ──────────────────────────────────────
 
 async function fetchGeminiResponse(userPrompt: string, history: ChatMessage[], lang: LanguageCode = "en"): Promise<string> {
+  const backendUrl = import.meta.env["VITE_BACKEND_API_URL"] || "http://127.0.0.1:8000";
+
+  // 1. Try Raitha Seva Evidence-Grounded Backend RAG (ChromaDB + Multi-Crop POP)
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000);
+    const backendRes = await fetch(`${backendUrl}/api/assistant/ask/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        query: userPrompt,
+        language: lang,
+        region: "Mandya",
+      }),
+      signal: controller.signal,
+    });
+    clearTimeout(timeoutId);
+
+    if (backendRes.ok) {
+      const ragData = await backendRes.json();
+      if (ragData.answer && ragData.answer.trim().length > 0) {
+        return ragData.answer;
+      }
+    }
+  } catch (backendErr) {
+    // Backend offline / fallback to direct Gemini or local knowledge engine
+  }
+
   const apiKey = import.meta.env["VITE_GEMINI_API_KEY"];
 
   const langInstruction =

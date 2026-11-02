@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     # Local apps
     'api.apps.ApiConfig',
     'accounts.apps.AccountsConfig',
+    'assistant',
 ]
 
 MIDDLEWARE = [
