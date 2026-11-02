@@ -4,7 +4,6 @@ import {
   CloudSun,
   Bug,
   TrendingUp,
-  Mic,
   Sparkles,
   ArrowRight,
   ShieldAlert,
@@ -15,7 +14,6 @@ import {
   CloudRain,
   MapPin,
   Clock,
-  HelpCircle,
   Wheat,
   User as UserIcon,
   Globe,
@@ -64,79 +62,6 @@ export function Index() {
   const { user } = useAuth();
   const { location, weatherData, isLoading, locationSource, isLocating } = useWeather();
   const cur = locationSource === "default" ? undefined : weatherData?.current;
-
-  const quickFeatures = [
-    {
-      to: "/assistant",
-      icon: Sparkles,
-      titleKn: "AI ಕೃಷಿ ಸಹಾಯಕ",
-      titleEn: "AI Assistant",
-      descKn: "ಕನ್ನಡದಲ್ಲೇ ಕೃಷಿ ಪರಿಹಾರ",
-      descEn: "Evidence-grounded advice",
-      color: "border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-emerald-800",
-      iconColor: "bg-emerald-600 text-white",
-    },
-    {
-      to: "/weather",
-      icon: CloudSun,
-      titleKn: "ಹವಾಮಾನ ಸಲಹೆ",
-      titleEn: "Weather Advisor",
-      descKn: "7 ದಿನಗಳ ಮಳೆ ಮುನ್ಸೂಚನೆ",
-      descEn: "7-day rain & spray forecast",
-      color: "border-sky-200 bg-sky-50/60 hover:bg-sky-100/70 text-sky-800",
-      iconColor: "bg-sky-600 text-white",
-    },
-    {
-      to: "/pest-alerts",
-      icon: Bug,
-      titleKn: "ಕೀಟ ರೋಗ ಎಚ್ಚರಿಕೆ",
-      titleEn: "Pest Alerts",
-      descKn: "ರೋಗ ಪತ್ತೆ ಮತ್ತು ಸುರಕ್ಷಿತ ಔಷಧ",
-      descEn: "Disease scan & dosage",
-      color: "border-amber-200 bg-amber-50/60 hover:bg-amber-100/70 text-amber-800",
-      iconColor: "bg-amber-600 text-white",
-    },
-    {
-      to: "/market-prices",
-      icon: TrendingUp,
-      titleKn: "ಮಂಡಿ ಮಾರುಕಟ್ಟೆ ಬೆಲೆ",
-      titleEn: "Market Prices",
-      descKn: "ಲೈವ್ APMC ದರಗಳು",
-      descEn: "Live APMC mandi rates",
-      color: "border-green-200 bg-green-50/60 hover:bg-green-100/70 text-green-800",
-      iconColor: "bg-green-600 text-white",
-    },
-    {
-      to: "/voice-assistant",
-      icon: Mic,
-      titleKn: "ಕನ್ನಡ ಧ್ವನಿ AI",
-      titleEn: "Voice Assistant",
-      descKn: "ಮಾತನಾಡಿ ಉತ್ತರ ಪಡೆಯಿರಿ",
-      descEn: "Speak & listen in Kannada",
-      color: "border-purple-200 bg-purple-50/60 hover:bg-purple-100/70 text-purple-800",
-      iconColor: "bg-purple-600 text-white",
-    },
-    {
-      to: "/schemes",
-      icon: Landmark,
-      titleKn: "ಯೋಜನೆಗಳು & ಸಾಲ",
-      titleEn: "Schemes & Loans",
-      descKn: "ಸಬ್ಸಿಡಿ & ಲಿಂಕ್ ಸ್ಕ್ಯಾನರ್",
-      descEn: "Subsidies & Link Scanner",
-      color: "border-blue-200 bg-blue-50/60 hover:bg-blue-100/70 text-blue-800",
-      iconColor: "bg-blue-600 text-white",
-    },
-    {
-      to: "/help",
-      icon: HelpCircle,
-      titleKn: "ಸಹಾಯ ಮತ್ತು ಬೆಂಬಲ",
-      titleEn: "Help & Care",
-      descKn: "6360997180 ಗ್ರಾಹಕ ಸೇವೆ",
-      descEn: "Direct helpline & support",
-      color: "border-teal-200 bg-teal-50/60 hover:bg-teal-100/70 text-teal-800",
-      iconColor: "bg-teal-600 text-white",
-    },
-  ];
 
   const [agriculturalUpdates, setAgriculturalUpdates] = useState<AgriculturalUpdateNotification[]>(
     BASELINE_AGRICULTURAL_UPDATES
@@ -237,57 +162,7 @@ export function Index() {
           </div>
         </section>
 
-        {/* ─── 2. QUICK ACCESS BUTTONS TO DEDICATED FEATURE PAGES ─── */}
-        <section className="space-y-3">
-          <div className="flex items-center justify-between">
-            <h2 className="text-base sm:text-lg font-extrabold text-gray-900">
-              {language === "kn" ? "ಪ್ರಮುಖ ಕೃಷಿ ಸೌಲಭ್ಯಗಳು (Quick Access)" : "Dedicated Farming Features"}
-            </h2>
-            <span className="text-xs text-gray-500">
-              {language === "kn" ? "ಪ್ರತ್ಯೇಕ ಪುಟವನ್ನು ತೆರೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ" : "Tap any feature to open its page"}
-            </span>
-          </div>
 
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {quickFeatures.map((f) => {
-              const IconComp = f.icon;
-              return (
-                <Link
-                  key={f.to}
-                  to={f.to as any}
-                  className={`group flex flex-col justify-between rounded-3xl border p-4 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md ${f.color}`}
-                >
-                  <div className="space-y-3">
-                    <div className="flex items-start justify-between">
-                      <span className={`grid h-10 w-10 place-items-center rounded-2xl ${f.iconColor}`}>
-                        <IconComp className="h-5 w-5" />
-                      </span>
-                      {f.badge && (
-                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[9px] font-bold text-amber-800 border border-amber-200">
-                          {f.badge}
-                        </span>
-                      )}
-                    </div>
-
-                    <div>
-                      <h3 className="text-sm font-bold text-gray-900 group-hover:text-green-700">
-                        {language === "kn" ? f.titleKn : f.titleEn}
-                      </h3>
-                      <p className="mt-0.5 text-[11px] text-gray-600 line-clamp-1">
-                        {language === "kn" ? f.descKn : f.descEn}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="mt-3 flex items-center text-[11px] font-extrabold text-green-700 group-hover:underline">
-                    <span>{language === "kn" ? "ತೆರೆಯಿರಿ" : "Open"}</span>
-                    <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
 
         {/* ─── 3. FEATURE SUMMARY CARDS (CLEAN SUMMARIES WITH VIEW DETAILS LINKS) ─── */}
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-3">
