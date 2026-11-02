@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Raitha Seva</string>
+    <string name="title_activity_main">Raitha Seva</string>
+    <string name="package_name">com.raithaseva.app</string>
+    <string name="custom_url_scheme">com.raithaseva.app</string>
+</resources>

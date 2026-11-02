@@ -43,3 +43,11 @@ backend/staticfiles/
 backend/data/chroma_db/
 .env
 backend/.env
+
+# Capacitor
+dist-capacitor/
+# Android Gradle build outputs (keep android/ source in git)
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
