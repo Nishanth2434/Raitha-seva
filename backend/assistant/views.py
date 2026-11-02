@@ -12,6 +12,7 @@ from rest_framework.permissions import AllowAny
 from assistant.rag import rag_engine
 from assistant.safety import check_chemical_safety, validate_agricultural_advice
 from assistant.citations import format_citations
+from assistant.vision import vision_doctor
 from ingestion.collect_sources import list_all_crops, OFFICIAL_SOURCES
 
 class AssistantQueryView(APIView):
@@ -62,7 +63,7 @@ class AssistantQueryView(APIView):
 class PestDiagnosisView(APIView):
     """
     POST /api/assistant/diagnose/
-    Accepts crop image analysis requests with backend safety enforcement.
+    Accepts crop image analysis requests with multimodal vision processing and backend safety enforcement.
     """
     permission_classes = [AllowAny]
 
@@ -71,7 +72,19 @@ class PestDiagnosisView(APIView):
         symptom_notes = request.data.get("symptoms", "")
         language = request.data.get("language", "kn")
         region = request.data.get("region", "Mandya")
+        image = request.data.get("image") or request.data.get("image_base64")
 
+        # 1. Multimodal Vision Doctor if image is provided
+        if image:
+            result = vision_doctor.analyze_crop_image(
+                image_base64=image,
+                crop_hint=crop,
+                region=region,
+                language=language
+            )
+            return Response(result)
+
+        # 2. Text-based query fallback if only text was submitted
         query = f"{crop} disease symptoms: {symptom_notes}" if symptom_notes else f"{crop} disease diagnosis"
 
         # Query verified agronomic knowledge base
