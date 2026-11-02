@@ -149,22 +149,51 @@ class MarketPrice(models.Model):
     RECOMMENDATION_CHOICES = [
         ('HOLD', 'Hold'),
         ('SELL NOW', 'Sell Now'),
+        ('WATCH', 'Watch'),
     ]
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    crop_name = models.CharField(max_length=255)
-    mandi_name = models.CharField(max_length=255)
-    district = models.CharField(max_length=255, blank=True, null=True)
-    today_price = models.DecimalField(max_digits=10, decimal_places=2)
-    predicted_price = models.DecimalField(max_digits=10, decimal_places=2)
+    crop_name = models.CharField(max_length=255, db_index=True)
+    crop_name_kn = models.CharField(max_length=255, blank=True, null=True)
+    variety = models.CharField(max_length=255, default='Common / Local')
+    grade = models.CharField(max_length=100, default='FAQ')
+    category = models.CharField(max_length=100, default='General', db_index=True)
+    mandi_name = models.CharField(max_length=255, db_index=True)
+    district = models.CharField(max_length=255, default='Mandya', db_index=True)
+    state = models.CharField(max_length=255, default='Karnataka', db_index=True)
+
+    min_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    max_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    modal_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    today_price = models.DecimalField(max_digits=10, decimal_places=2)  # Modal price alias for compatibility
+    predicted_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     price_change_pct = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    price_unit = models.CharField(max_length=50, default='₹/Quintal')
     recommendation = models.CharField(max_length=20, choices=RECOMMENDATION_CHOICES, default='HOLD')
-    price_date = models.DateField(default=timezone.now)
+    recommendation_reason = models.TextField(blank=True, null=True)
+    confidence_score = models.IntegerField(default=85)
+
+    market_report_date = models.DateField(default=timezone.now, db_index=True)
+    price_date = models.DateField(default=timezone.now, db_index=True)
+    source_name = models.CharField(max_length=255, default='AGMARKNET (agmarknet.gov.in)')
+    source_record_id = models.CharField(max_length=255, blank=True, null=True, db_index=True)
+    fetched_at = models.DateTimeField(default=timezone.now)
+    is_stale = models.BooleanField(default=False)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['-market_report_date', '-created_at']
+        constraints = [
+            models.UniqueConstraint(
+                fields=['crop_name', 'variety', 'mandi_name', 'district', 'state', 'market_report_date'],
+                name='unique_mandi_commodity_date_record'
+            )
+        ]
+
     def __str__(self):
-        return f"{self.crop_name} @ {self.mandi_name}"
+        return f"{self.crop_name} @ {self.mandi_name} ({self.market_report_date}): ₹{self.modal_price or self.today_price}"
 
 
 class PestReport(models.Model):

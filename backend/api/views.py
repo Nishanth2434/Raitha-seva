@@ -153,9 +153,123 @@ class WeatherCacheViewSet(viewsets.ModelViewSet):
 
 
 class MarketPriceViewSet(viewsets.ModelViewSet):
-    queryset = MarketPrice.objects.all().order_by('-price_date')
+    """
+    Agricultural Market Price API.
+    Supports filtering by:
+    - district: Mandya, Mysuru, Ramanagara, etc. (defaults to Mandya priority if empty)
+    - crop: Paddy, Ragi, Jaggery, Sugarcane, etc. (matches English or Kannada)
+    - market / mandi: Mandya, Maddur, Pandavapura, etc.
+    - state: Karnataka (default)
+    - date: YYYY-MM-DD
+    """
     serializer_class = MarketPriceSerializer
     permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        qs = MarketPrice.objects.all()
+
+        # District filter
+        district = self.request.query_params.get('district')
+        if district and district.lower() != 'all':
+            qs = qs.filter(district__icontains=district.strip())
+
+        # Crop filter
+        crop = self.request.query_params.get('crop')
+        if crop and crop.lower() != 'all':
+            c = crop.strip().lower()
+            qs = qs.filter(
+                Q(crop_name__icontains=c) |
+                Q(crop_name_kn__icontains=c)
+            )
+
+        # Market / Mandi filter
+        mandi = self.request.query_params.get('mandi') or self.request.query_params.get('market')
+        if mandi and mandi.lower() != 'all':
+            qs = qs.filter(mandi_name__icontains=mandi.strip())
+
+        # State filter
+        state = self.request.query_params.get('state')
+        if state and state.lower() != 'all':
+            qs = qs.filter(state__icontains=state.strip())
+
+        # Date filter
+        date_param = self.request.query_params.get('date')
+        if date_param:
+            qs = qs.filter(market_report_date=date_param)
+
+        return qs.order_by('-market_report_date', '-created_at')
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        # If no records exist in DB at all, auto-populate baseline once
+        if MarketPrice.objects.count() == 0:
+            from integrations.market_service import MarketDataSyncService
+            MarketDataSyncService().sync_market_prices(state='Karnataka', district='Mandya')
+            queryset = self.filter_queryset(self.get_queryset())
+
+        serializer = self.get_serializer(queryset, many=True)
+
+        last_sync_log = SourceSyncLog.objects.filter(source_org='AGMARKNET').order_by('-last_sync').first()
+        latest_record = MarketPrice.objects.order_by('-market_report_date').first()
+        today = date.today()
+
+        is_stale = False
+        if latest_record and latest_record.market_report_date:
+            is_stale = (today - latest_record.market_report_date).days > 1
+
+        return Response({
+            "count": queryset.count(),
+            "results": serializer.data,
+            "metadata": {
+                "district_requested": request.query_params.get('district', 'all'),
+                "crop_requested": request.query_params.get('crop', 'all'),
+                "last_synced_at": last_sync_log.last_sync.isoformat() if last_sync_log else None,
+                "sync_status": last_sync_log.status if last_sync_log else "INITIAL",
+                "latest_report_date": latest_record.market_report_date.isoformat() if latest_record else None,
+                "is_stale": is_stale,
+                "source": latest_record.source_name if latest_record else "AGMARKNET (agmarknet.gov.in)",
+                "mandya_count": MarketPrice.objects.filter(district__iexact='Mandya').count(),
+                "total_records": MarketPrice.objects.count()
+            }
+        })
+
+    @action(detail=False, methods=['post'], url_path='sync')
+    def sync(self, request):
+        """Trigger market data sync on-demand."""
+        from integrations.market_service import MarketDataSyncService
+        state = request.data.get('state', 'Karnataka')
+        district = request.data.get('district', 'Mandya')
+        force = bool(request.data.get('force', False))
+
+        service = MarketDataSyncService()
+        result = service.sync_market_prices(state=state, district=district, force=force)
+        return Response(result, status=status.HTTP_200_OK if result.get('status') != 'FAILED' else status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    @action(detail=False, methods=['get'], url_path='status')
+    def status_report(self, request):
+        """Diagnostic status of AGMARKNET sync service."""
+        last_sync_log = SourceSyncLog.objects.filter(source_org='AGMARKNET').order_by('-last_sync').first()
+        latest_record = MarketPrice.objects.order_by('-market_report_date').first()
+        today = date.today()
+
+        districts = list(MarketPrice.objects.values_list('district', flat=True).distinct())
+        commodities = list(MarketPrice.objects.values_list('crop_name', flat=True).distinct())
+
+        return Response({
+            "service": "AGMARKNET Market Data Sync Service",
+            "schedule": "Daily at 06:00 AM IST (00:30 UTC)",
+            "timezone": "Asia/Kolkata",
+            "last_sync": last_sync_log.last_sync.isoformat() if last_sync_log else None,
+            "last_status": last_sync_log.status if last_sync_log else "NO_SYNC_YET",
+            "error_message": last_sync_log.error_message if last_sync_log else None,
+            "total_records": MarketPrice.objects.count(),
+            "mandya_records": MarketPrice.objects.filter(district__iexact='Mandya').count(),
+            "latest_report_date": latest_record.market_report_date.isoformat() if latest_record else None,
+            "is_stale": (today - latest_record.market_report_date).days > 1 if (latest_record and latest_record.market_report_date) else True,
+            "districts": districts,
+            "commodities": commodities,
+        })
 
 
 class PestReportViewSet(viewsets.ModelViewSet):

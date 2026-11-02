@@ -1,0 +1,69 @@
+name: Daily Agricultural Market Price Sync
+
+on:
+  schedule:
+    # Runs everyday at 06:00 AM IST (00:30 UTC)
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+    inputs:
+      state:
+        description: 'State to fetch market prices for'
+        required: false
+        default: 'Karnataka'
+      district:
+        description: 'District to fetch market prices for (or "all")'
+        required: false
+        default: 'Mandya'
+      force:
+        description: 'Force re-fetch even if synced today'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  sync-market-data:
+    name: Sync Agmarknet / APMC Market Prices
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'backend/requirements.txt'
+
+      - name: Install Backend Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Run Fetch Market Prices Command
+        working-directory: backend
+        env:
+          DATA_GOV_IN_API_KEY: ${{ secrets.DATA_GOV_IN_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || secrets.VITE_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          DJANGO_SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY || 'market-price-cron-key-temp' }}
+          DEBUG: 'False'
+        run: |
+          python manage.py fetch_market_prices \
+            --state "${{ github.event.inputs.state || 'Karnataka' }}" \
+            --district "${{ github.event.inputs.district || 'Mandya' }}" \
+            ${{ github.event.inputs.force == 'true' && '--force' || '' }}
+
+      - name: Notify Production Endpoint (Optional)
+        if: env.PRODUCTION_BACKEND_URL != ''
+        env:
+          PRODUCTION_BACKEND_URL: ${{ secrets.PRODUCTION_BACKEND_URL }}
+          SYNC_AUTH_TOKEN: ${{ secrets.SYNC_AUTH_TOKEN }}
+        run: |
+          echo "Pinging production backend sync endpoint..."
+          curl -s -X POST "${PRODUCTION_BACKEND_URL}/api/market-prices/sync/" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${SYNC_AUTH_TOKEN}" \
+            -d '{"state": "Karnataka", "district": "Mandya"}' || true
