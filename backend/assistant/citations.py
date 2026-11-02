@@ -40,10 +40,15 @@ def render_citations_markdown(citations: List[Dict[str, str]], language: str = "
     if not citations:
         return ""
 
-    if language == "kn":
+    lang = (language or "kn").lower().strip()
+    if lang == "kn":
         md = "\n\n📚 **ಅಧಿಕೃತ ಆಧಾರ ಮತ್ತು ಉಲ್ಲೇಖಗಳು (Verified Sources):**\n"
         for i, c in enumerate(citations, 1):
             md += f"{i}. **{c['title']}** — {c['source']} ({c['publication_date']})\n   🔗 [ಅಧಿಕೃತ ಮಾಹಿತಿ ಲಿಂಕ್]({c['url']}) | ಅನ್ವಯ: {c['region']}\n"
+    elif lang == "hi":
+        md = "\n\n📚 **सत्यापित आधिकारिक स्रोत एवं संदर्भ (Verified Sources):**\n"
+        for i, c in enumerate(citations, 1):
+            md += f"{i}. **{c['title']}** — {c['source']} ({c['publication_date']})\n   🔗 [आधिकारिक दस्तावेज़ लिंक]({c['url']}) | लागू क्षेत्र: {c['region']}\n"
     else:
         md = "\n\n📚 **Verified Scientific Citations:**\n"
         for i, c in enumerate(citations, 1):

@@ -36,7 +36,8 @@ class AssistantQueryView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        language = request.data.get("language", "kn")
+        raw_lang = str(request.data.get("language", "kn")).lower().strip()
+        language = raw_lang if raw_lang in ["kn", "hi", "en"] else "kn"
         region = request.data.get("region", "Mandya")
         explicit_crop = request.data.get("crop")
 
@@ -72,7 +73,8 @@ class PestDiagnosisView(APIView):
         if not crop or str(crop).lower().strip() in ["all", "none", "null", ""]:
             crop = "auto"
         symptom_notes = request.data.get("symptoms", "")
-        language = request.data.get("language", "kn")
+        raw_lang = str(request.data.get("language", "kn")).lower().strip()
+        language = raw_lang if raw_lang in ["kn", "hi", "en"] else "kn"
         region = request.data.get("region", "Mandya")
         image = request.data.get("image") or request.data.get("image_base64")
 

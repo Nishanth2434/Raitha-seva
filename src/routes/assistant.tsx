@@ -29,7 +29,7 @@ export const Route = createFileRoute("/assistant")({
       {
         name: "description",
         content:
-          "ಕನ್ನಡದಲ್ಲಿ ಎಐ ಕೃಷಿ ಸಲಹೆಗಾರ. ಭತ್ತ, ರಾಗಿ, ಕಬ್ಬು, ಮೆಕ್ಕೆಜೋಳ ಬೆಳೆಗಳಿಗೆ ಅಧಿಕೃತ UASB ಮತ್ತು ICAR ಪ್ರಮಾಣೀಕೃತ ಕೃಷಿ ಪರಿಹಾರಗಳು.",
+          "ಕನ್ನಡ ಮತ್ತು ಭಾರತೀಯ ಭಾಷೆಗಳಲ್ಲಿ ಎಐ ಕೃಷಿ ಸಲಹೆಗಾರ. UASB ಮತ್ತು ICAR ಪ್ರಮಾಣೀಕೃತ ಕೃಷಿ ಪರಿಹಾರಗಳು.",
       },
     ],
   }),
@@ -59,24 +59,47 @@ interface AskResponse {
 }
 
 const CROPS = [
-  { id: "Ragi", nameKn: "ರಾಗಿ (Finger Millet)", nameEn: "Ragi" },
-  { id: "Paddy", nameKn: "ಭತ್ತ (Paddy)", nameEn: "Paddy" },
-  { id: "Sugarcane", nameKn: "ಕಬ್ಬು (Sugarcane)", nameEn: "Sugarcane" },
-  { id: "Maize", nameKn: "ಮೆಕ್ಕೆಜೋಳ (Maize)", nameEn: "Maize" },
-  { id: "Red Gram", nameKn: "ತೊಗರಿ (Red Gram)", nameEn: "Red Gram" },
-  { id: "Tomato", nameKn: "ಟೊಮ್ಯಾಟೊ / ತರಕಾರಿ", nameEn: "Vegetables" },
-  { id: "Coconut", nameKn: "ತೆಂಗು (Coconut)", nameEn: "Coconut" },
+  { id: "Ragi", nameKn: "ರಾಗಿ (Finger Millet)", nameHi: "रागी / मंडुआ", nameEn: "Ragi (Finger Millet)" },
+  { id: "Paddy", nameKn: "ಭತ್ತ (Paddy)", nameHi: "धान (Paddy)", nameEn: "Paddy (Rice)" },
+  { id: "Sugarcane", nameKn: "ಕಬ್ಬು (Sugarcane)", nameHi: "गन्ना (Sugarcane)", nameEn: "Sugarcane" },
+  { id: "Maize", nameKn: "ಮೆಕ್ಕೆಜೋಳ (Maize)", nameHi: "मक्का (Maize)", nameEn: "Maize" },
+  { id: "Red Gram", nameKn: "ತೊಗರಿ (Red Gram)", nameHi: "अरहर / तुअर", nameEn: "Red Gram (Pigeon Pea)" },
+  { id: "Tomato", nameKn: "ಟೊಮ್ಯಾಟೊ (Tomato)", nameHi: "टमाटर (Tomato)", nameEn: "Tomato" },
+  { id: "Coconut", nameKn: "ತೆಂಗು (Coconut)", nameHi: "नारियल (Coconut)", nameEn: "Coconut" },
 ];
 
 const SUGGESTIONS = [
-  { crop: "Ragi", queryKn: "ರಾಗಿಯಲ್ಲಿ ಬೆಂಕಿ ರೋಗ (Blast) ನಿರ್ವಹಣೆಗೆ ಶಿಫಾರಸು ಏನು?", queryEn: "How to manage blast disease in Ragi?" },
-  { crop: "Paddy", queryKn: "ಭತ್ತದಲ್ಲಿ ಕಂದು ಜಿಗಿಹುಳು (BPH) ಹತೋಟಿಗೆ ಯಾವ ಔಷಧ ಸಿಂಪಡಿಸಬೇಕು?", queryEn: "What spray is recommended for Brown Plant Hopper in paddy?" },
-  { crop: "Sugarcane", queryKn: "ಕಬ್ಬಿನಲ್ಲಿ ಸುಳಿ ಕೊರೆಯುವ ಹುಳು ಬಾಧೆಗೆ ಪರಿಹಾರವೇನು?", queryEn: "Remedy for early shoot borer in sugarcane?" },
-  { crop: "Maize", queryKn: "ಮೆಕ್ಕೆಜೋಳದಲ್ಲಿ ಸೈನಿಕ ಹುಳು (Fall Armyworm) ನಿಯಂತ್ರಣ ಹೇಗೆ?", queryEn: "How to control Fall Armyworm in maize?" },
+  {
+    crop: "Ragi",
+    queryKn: "ರಾಗಿಯಲ್ಲಿ ಬೆಂಕಿ ರೋಗ (Blast) ನಿರ್ವಹಣೆಗೆ ಶಿಫಾರಸು ಏನು?",
+    queryHi: "रागी में ब्लास्ट (झुलसा) रोग का वैज्ञानिक उपचार क्या है?",
+    queryEn: "How to manage blast disease in Ragi?",
+  },
+  {
+    crop: "Paddy",
+    queryKn: "ಭತ್ತದಲ್ಲಿ ಕಂದು ಜಿಗಿಹುಳು (BPH) ಹತೋಟಿಗೆ ಯಾವ ಔಷಧ ಸಿಂಪಡಿಸಬೇಕು?",
+    queryHi: "धान में भूरा फुदका (BPH) नियंत्रण के लिए कौन सी दवा छिड़कें?",
+    queryEn: "What spray is recommended for Brown Plant Hopper in paddy?",
+  },
+  {
+    crop: "Sugarcane",
+    queryKn: "ಕಬ್ಬಿನಲ್ಲಿ ಸುಳಿ ಕೊರೆಯುವ ಹುಳು ಬಾಧೆಗೆ ಪರಿಹಾರವೇನು?",
+    queryHi: "गन्ने में तना छेदक कीट की रोकथाम के उपाय क्या हैं?",
+    queryEn: "Remedy for early shoot borer in sugarcane?",
+  },
+  {
+    crop: "Maize",
+    queryKn: "ಮೆಕ್ಕೆಜೋಳದಲ್ಲಿ ಸೈನಿಕ ಹುಳು (Fall Armyworm) ನಿಯಂತ್ರಣ ಹೇಗೆ?",
+    queryHi: "मक्का में फॉल आर्मीवर्म (सैनिक कीट) का नियंत्रण कैसे करें?",
+    queryEn: "How to control Fall Armyworm in maize?",
+  },
 ];
 
 export function AssistantPage() {
   const { language, t } = useLanguage();
+  const isKn = language === "kn";
+  const isHi = language === "hi";
+
   const [selectedCrop, setSelectedCrop] = useState("Ragi");
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -99,8 +122,9 @@ export function AssistantPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           query: text,
-          language: language === "kn" ? "kn" : "en",
+          language: language, // Explicitly pass kn, hi, or en
           crop: selectedCrop,
+          region: "Mandya",
         }),
       });
 
@@ -112,8 +136,10 @@ export function AssistantPage() {
       setResponse(data);
     } catch {
       setError(
-        language === "kn"
+        isKn
           ? "ಕ್ಷಮಿಸಿ, ಎಐ ಸಂಪರ್ಕದಲ್ಲಿ ತೊಂದರೆ ಉಂಟಾಗಿದೆ. ದಯವಿಟ್ಟು ಕಿಸಾನ್ ಸಹಾಯವಾಣಿ 1800-180-1551 ಅಥವಾ ಕೆವಿಕೆ ಮಂಡ್ಯ ಸಂಪರ್ಕಿಸಿ."
+          : isHi
+          ? "माफ कीजिए, एआई सर्वर से संपर्क नहीं हो पाया। कृपया किसान कॉल सेंटर 1800-180-1551 पर संपर्क करें।"
           : "Connection issue with AI assistant. Please try again or call Kisan Call Centre 1800-180-1551."
       );
     } finally {
@@ -127,10 +153,18 @@ export function AssistantPage() {
 
       <PageShell
         eyebrow={t("nav_assistant", "AI Farming Assistant")}
-        title={language === "kn" ? "ಕನ್ನಡ ಎಐ ಕೃಷಿ ಸಹಾಯಕ" : "Raitha Seva AI Assistant"}
+        title={
+          isKn
+            ? "ಕನ್ನಡ ಎಐ ಕೃಷಿ ಸಹಾಯಕ"
+            : isHi
+            ? "कृषि मित्र एआई सहायक"
+            : "KrishiMitra AI Assistant"
+        }
         description={
-          language === "kn"
-            ? "ಬೆಂಗಳೂರು ಕೃಷಿ ವಿಶ್ವವಿದ್ಯಾಲಯ (UASB) ಮತ್ತು ICAR ಮಾರ್ಗಸೂಚಿಗಳ ಆಧಾರದ ಮೇಲೆ ನಿಮ್ಮ ಬೆಳೆಗಳಿಗೆ ಸುರಕ್ಷಿತ ಸಲಹೆ."
+          isKn
+            ? "ಬೆಂಗಳೂರು ಕೃಷಿ ವಿಶ್ವವಿದ್ಯಾಲಯ (UASB) ಮತ್ತು ICAR ಮಾರ್ಗಸೂಚಿಗಳ ಆಧಾರದ ಮೇಲೆ ನಿಮ್ಮ ಬೆಳೆಗಳಿಗೆ ಅಧಿಕೃತ ಹಾಗೂ ಸುರಕ್ಷಿತ ಸಲಹೆ."
+            : isHi
+            ? "भारतीय कृषि अनुसंधान परिषद (ICAR) और कृषि विश्वविद्यालयों द्वारा प्रमाणित वैज्ञानिक खेती सलाह।"
             : "Evidence-grounded agricultural advisory grounded in UAS Bangalore and ICAR Package of Practices."
         }
       >
@@ -141,10 +175,16 @@ export function AssistantPage() {
               <CardHeader className="p-0 pb-3">
                 <CardTitle className="text-sm font-bold text-gray-900 flex items-center gap-2">
                   <Wheat className="h-4 w-4 text-green-600" />
-                  <span>{language === "kn" ? "ನಿಮ್ಮ ಬೆಳೆ ಆಯ್ಕೆಮಾಡಿ" : "Select Your Crop"}</span>
+                  <span>
+                    {isKn ? "ನಿಮ್ಮ ಬೆಳೆ ಆಯ್ಕೆಮಾಡಿ" : isHi ? "अपनी फसल चुनें" : "Select Your Crop"}
+                  </span>
                 </CardTitle>
                 <CardDescription className="text-xs text-gray-500">
-                  {language === "kn" ? "ಮಂಡ್ಯ ಮತ್ತು ಕರ್ನಾಟಕದ ಪ್ರಮುಖ ಬೆಳೆಗಳು" : "Southern Dry Zone crops"}
+                  {isKn
+                    ? "ಮಂಡ್ಯ ಮತ್ತು ಕರ್ನಾಟಕದ ಪ್ರಮುಖ ಬೆಳೆಗಳು"
+                    : isHi
+                    ? "प्रमुख भारतीय फसलें"
+                    : "Southern Dry Zone crops"}
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-0 pt-1 space-y-1.5">
@@ -159,7 +199,7 @@ export function AssistantPage() {
                         : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                     }`}
                   >
-                    <span>{language === "kn" ? c.nameKn : c.nameEn}</span>
+                    <span>{isKn ? c.nameKn : isHi ? c.nameHi : c.nameEn}</span>
                     {selectedCrop === c.id && <CheckCircle2 className="h-3.5 w-3.5" />}
                   </button>
                 ))}
@@ -169,23 +209,26 @@ export function AssistantPage() {
             {/* Quick Questions Suggestions */}
             <Card className="rounded-3xl border border-gray-200/90 bg-white shadow-sm p-4">
               <h3 className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
-                {language === "kn" ? "ಪ್ರಮುಖ ಪ್ರಶ್ನೆಗಳು" : "Suggested Queries"}
+                {isKn ? "ಪ್ರಮುಖ ಪ್ರಶ್ನೆಗಳು" : isHi ? "सुझाए गए प्रश्न" : "Suggested Queries"}
               </h3>
               <div className="space-y-2">
-                {SUGGESTIONS.map((s, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => {
-                      setSelectedCrop(s.crop);
-                      setQuery(language === "kn" ? s.queryKn : s.queryEn);
-                      handleSubmit(undefined, language === "kn" ? s.queryKn : s.queryEn);
-                    }}
-                    className="w-full text-left rounded-xl border border-green-100 bg-green-50/50 p-2.5 text-xs text-green-900 hover:bg-green-100/70 hover:border-green-300 transition-all font-medium"
-                  >
-                    "{language === "kn" ? s.queryKn : s.queryEn}"
-                  </button>
-                ))}
+                {SUGGESTIONS.map((s, idx) => {
+                  const queryText = isKn ? s.queryKn : isHi ? s.queryHi : s.queryEn;
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => {
+                        setSelectedCrop(s.crop);
+                        setQuery(queryText);
+                        handleSubmit(undefined, queryText);
+                      }}
+                      className="w-full text-left rounded-xl border border-green-100 bg-green-50/50 p-2.5 text-xs text-green-900 hover:bg-green-100/70 hover:border-green-300 transition-all font-medium cursor-pointer"
+                    >
+                      "{queryText}"
+                    </button>
+                  );
+                })}
               </div>
             </Card>
 
@@ -193,10 +236,16 @@ export function AssistantPage() {
             <Card className="rounded-3xl border-2 border-amber-300 bg-amber-50/70 p-4">
               <div className="flex items-center gap-2 text-amber-900 font-bold text-xs">
                 <Phone className="h-4 w-4 text-amber-700 shrink-0" />
-                <span>{language === "kn" ? "ನೇರ ತಜ್ಞರ ಸಹಾಯವಾಣಿ" : "Direct Scientist Helpline"}</span>
+                <span>
+                  {isKn
+                    ? "ನೇರ ತಜ್ಞರ ಸಹಾಯವಾಣಿ"
+                    : isHi
+                    ? "कृषि वैज्ञानिक हेल्पलाइन"
+                    : "Direct Scientist Helpline"}
+                </span>
               </div>
               <p className="mt-1 text-[11px] text-amber-800">
-                ICAR-KVK Mandya (V.C. Farm):{" "}
+                ICAR-KVK Mandya:{" "}
                 <a href="tel:08232277456" className="font-bold underline">
                   08232-277456
                 </a>
@@ -219,8 +268,10 @@ export function AssistantPage() {
                   <label htmlFor="agri-q" className="text-xs font-bold text-gray-800 flex items-center gap-1.5">
                     <Sparkles className="h-3.5 w-3.5 text-green-600" />
                     <span>
-                      {language === "kn"
+                      {isKn
                         ? `${selectedCrop} ಬಗ್ಗೆ ಪ್ರಶ್ನೆ ಕೇಳಿ:`
+                        : isHi
+                        ? `${selectedCrop} के बारे में प्रश्न पूछें:`
                         : `Ask agricultural question about ${selectedCrop}:`}
                     </span>
                   </label>
@@ -235,8 +286,10 @@ export function AssistantPage() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder={
-                    language === "kn"
+                    isKn
                       ? "ಉದಾಹರಣೆಗೆ: ರಾಗಿಯಲ್ಲಿ ಬೆಂಕಿ ರೋಗದ ಲಕ್ಷಣಗಳು ಯಾವುವು? ಯಾವ ಔಷಧ ಮತ್ತು ಎಷ್ಟು ಪ್ರಮಾಣದಲ್ಲಿ ಸಿಂಪಡಿಸಬೇಕು?"
+                      : isHi
+                      ? "उदाहरण: धान में ब्लास्ट रोग के लक्षण क्या हैं और कौन सी दवा कितनी मात्रा में छिड़कें?"
                       : "E.g., What are the symptoms of blast in Ragi? What is the verified chemical spray dose?"
                   }
                   className="w-full rounded-2xl border border-gray-200 p-3 text-xs sm:text-sm text-gray-900 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500"
@@ -244,22 +297,26 @@ export function AssistantPage() {
 
                 <div className="flex items-center justify-between pt-1">
                   <p className="text-[11px] text-gray-500">
-                    {language === "kn" ? "ಕನ್ನಡ ಮತ್ತು English ಎರಡರಲ್ಲೂ ಕೇಳಬಹುದು" : "Bilingual Kannada & English support"}
+                    {isKn
+                      ? "ಕನ್ನಡ, हिन्दी ಮತ್ತು English ಭಾಷೆಗಳಲ್ಲಿ ಲಭ್ಯ"
+                      : isHi
+                      ? "हिन्दी, ಕನ್ನಡ और English में उपलब्ध"
+                      : "Trilingual Kannada, Hindi & English support"}
                   </p>
                   <Button
                     type="submit"
                     disabled={!query.trim() || loading}
-                    className="rounded-full bg-green-600 px-6 font-bold text-white shadow-md hover:bg-green-700"
+                    className="rounded-full bg-green-600 px-6 font-bold text-white shadow-md hover:bg-green-700 cursor-pointer"
                   >
                     {loading ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        <span>{language === "kn" ? "ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ..." : "Thinking..."}</span>
+                        <span>{isKn ? "ಪರಿಶೀಲಿಸಲಾಗುತ್ತಿದೆ..." : isHi ? "विचार कर रहे हैं..." : "Thinking..."}</span>
                       </>
                     ) : (
                       <>
                         <Send className="mr-2 h-3.5 w-3.5" />
-                        <span>{language === "kn" ? "ಕೇಳಿ (Ask AI)" : "Ask AI"}</span>
+                        <span>{isKn ? "ಕೇಳಿ (Ask AI)" : isHi ? "पूछें (Ask AI)" : "Ask AI"}</span>
                       </>
                     )}
                   </Button>
@@ -285,10 +342,18 @@ export function AssistantPage() {
                     </span>
                     <div>
                       <h4 className="text-sm font-bold text-gray-900">
-                        {language === "kn" ? "ರೈತ ಸೇವಾ ಅಧಿಕೃತ ಕೃಷಿ ಸಲಹೆ" : "Raitha Seva Verified Advisory"}
+                        {isKn
+                          ? "ರೈತ ಸೇವಾ ಅಧಿಕೃತ ಕೃಷಿ ಸಲಹೆ"
+                          : isHi
+                          ? "कृषि मित्र सत्यापित सलाह"
+                          : "Raitha Seva Verified Advisory"}
                       </h4>
                       <p className="text-[10px] text-gray-500">
-                        {language === "kn" ? "ಕೃಷಿ ವಿವಿ ಪ್ಯಾಕೇಜ್ ಆಫ್ ಪ್ರಾಕ್ಟೀಸಸ್ ಆಧಾರಿತ" : "Grounded in Official Package of Practices"}
+                        {isKn
+                          ? "ಕೃಷಿ ವಿವಿ ಪ್ಯಾಕೇಜ್ ಆಫ್ ಪ್ರಾಕ್ಟೀಸಸ್ ಆಧಾರಿತ"
+                          : isHi
+                          ? "आधिकारिक ICAR/KVK पैकेज ऑफ प्रैक्टिसेज आधारित"
+                          : "Grounded in Official Package of Practices"}
                       </p>
                     </div>
                   </div>
@@ -296,7 +361,7 @@ export function AssistantPage() {
                   {response.safety_passed && (
                     <Badge className="bg-emerald-100 text-emerald-800 border-emerald-200 text-[11px] font-bold">
                       <ShieldCheck className="mr-1 h-3.5 w-3.5 text-emerald-600" />
-                      {language === "kn" ? "ಸುರಕ್ಷತೆ ಪರಿಶೀಲಿಸಲಾಗಿದೆ" : "Safety Verified"}
+                      {isKn ? "ಸುರಕ್ಷತೆ ಪರಿಶೀಲಿಸಲಾಗಿದೆ" : isHi ? "सुरक्षा सत्यापित" : "Safety Verified"}
                     </Badge>
                   )}
                 </div>
@@ -310,7 +375,13 @@ export function AssistantPage() {
                   <div className="rounded-2xl border border-gray-100 bg-emerald-50/40 p-3">
                     <p className="text-xs font-bold text-emerald-950 flex items-center gap-1.5 mb-1.5">
                       <BookOpen className="h-3.5 w-3.5 text-emerald-700" />
-                      <span>{language === "kn" ? "ಅಧಿಕೃತ ಮೂಲಗಳು (Citations):" : "Verified Institutional Sources:"}</span>
+                      <span>
+                        {isKn
+                          ? "ಅಧಿಕೃತ ಮೂಲಗಳು (Citations):"
+                          : isHi
+                          ? "सत्यापित आधिकारिक स्रोत:"
+                          : "Verified Institutional Sources:"}
+                      </span>
                     </p>
                     <ul className="space-y-1 text-[11px] text-gray-700">
                       {response.sources.map((src, i) => (
@@ -325,7 +396,7 @@ export function AssistantPage() {
                               rel="noopener noreferrer"
                               className="text-green-700 font-semibold underline hover:text-green-900 inline-flex items-center gap-0.5"
                             >
-                              <span>ಲಿಂಕ್</span>
+                              <span>{isKn ? "ಲಿಂಕ್" : isHi ? "लिंक" : "Link"}</span>
                               <ExternalLink className="h-3 w-3" />
                             </a>
                           )}
@@ -344,4 +415,5 @@ export function AssistantPage() {
     </div>
   );
 }
+
 export default AssistantPage;

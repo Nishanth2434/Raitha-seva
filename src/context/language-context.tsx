@@ -80,6 +80,17 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     scheme_kcc_benefit: "Crop loans up to ₹5 lakh at just 4% interest",
     scheme_kcc_desc:
       "Collateral-free up to ₹2 lakh. Apply via any bank branch, Kisan Rin Portal, or e-KCC digital process. Covers crop production & allied activities.",
+
+    // Chatbot & Voice AI
+    chat_title: "KrishiMitra AI",
+    chat_subtitle: "Trilingual Farming Assistant",
+    chat_thinking: "Thinking...",
+    chat_listen: "Listen",
+    chat_stop: "Stop",
+    chat_error: "Connection error. Please try again or call Kisan Call Centre 1800-180-1551.",
+    chat_listening: "Listening... speak now 🎙️",
+    chat_mic_error: "Speech recognition not supported in this browser.",
+    chat_mic_denied: "Could not capture voice. Please check microphone permissions.",
   },
   kn: {
     // Navigation
@@ -141,6 +152,17 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     scheme_kcc_title: "ಕಿಸಾನ್ ಕ್ರೆಡಿಟ್ ಕಾರ್ಡ್ (KCC)",
     scheme_kcc_benefit: "₹5 ಲಕ್ಷದವರೆಗೆ ಕೇವಲ 4% ಬಡ್ಡಿಯಲ್ಲಿ ಬೆಳೆ ಸಾಲ",
     scheme_kcc_desc: "₹2 ಲಕ್ಷದವರೆಗೆ ಜಾಮೀನು-ಮುಕ್ತ. ಯಾವುದೇ ಬ್ಯಾಂಕ್ ಶಾಖೆ ಅಥವಾ e-KCC ಮೂಲಕ ಅರ್ಜಿ.",
+
+    // Chatbot & Voice AI
+    chat_title: "ಕೃಷಿಮಿತ್ರ ಎಐ",
+    chat_subtitle: "ತ್ರಿಭಾಷಾ ಕೃಷಿ ಸಹಾಯಕ",
+    chat_thinking: "ಚಿಂತಿಸುತ್ತಿದೆ...",
+    chat_listen: "ಕೇಳಿ",
+    chat_stop: "ನಿಲ್ಲಿಸಿ",
+    chat_error: "ಕ್ಷಮಿಸಿ, ಸಂಪರ್ಕದಲ್ಲಿ ತೊಂದರೆಯಾಗಿದೆ. ದಯವಿಟ್ಟು ಮರುಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಕಿಸಾನ್ ಸಹಾಯವಾಣಿ 1800-180-1551 ಗೆ ಕರೆ ಮಾಡಿ.",
+    chat_listening: "ಆಲಿಸಲಾಗುತ್ತಿದೆ... ಈಗ ಮಾತನಾಡಿ 🎙️",
+    chat_mic_error: "ನಿಮ್ಮ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಧ್ವನಿ ಸೌಲಭ್ಯ ಲಭ್ಯವಿಲ್ಲ.",
+    chat_mic_denied: "ಧ್ವನಿ ಗುರುತಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮೈಕ್ರೊಫೋನ್ ಅನುಮತಿ ಪರಿಶೀಲಿಸಿ.",
   },
   hi: {
     // Navigation
@@ -203,6 +225,17 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     scheme_kcc_title: "किसान क्रेडिट कार्ड (KCC)",
     scheme_kcc_benefit: "₹5 लाख तक मात्र 4% ब्याज पर फसल ऋण",
     scheme_kcc_desc: "₹2 लाख तक बिना जमानत। किसी भी बैंक शाखा या e-KCC से आवेदन करें।",
+
+    // Chatbot & Voice AI
+    chat_title: "कृषि मित्र एआई",
+    chat_subtitle: "त्रिभाषी किसान सहायक",
+    chat_thinking: "विचार कर रहे हैं...",
+    chat_listen: "सुनें",
+    chat_stop: "रोकें",
+    chat_error: "माफ कीजिए, नेटवर्क समस्या है। कृपया पुनः प्रयास करें या किसान हेल्पलाइन 1800-180-1551 पर कॉल करें।",
+    chat_listening: "सुन रहे हैं... अब बोलें 🎙️",
+    chat_mic_error: "आपके ब्राउज़र में स्पीच रिकग्निशन समर्थित नहीं है।",
+    chat_mic_denied: "आवाज़ रिकॉर्ड नहीं हो सकी। कृपया माइक्रोफ़ोन अनुमति जांचें।",
   },
 };
 
@@ -215,14 +248,32 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+function getInitialLanguage(): LanguageCode {
+  if (typeof window !== "undefined") {
+    try {
+      const saved = localStorage.getItem("krishimitra_lang");
+      if (saved === "kn" || saved === "hi" || saved === "en") {
+        return saved;
+      }
+    } catch {
+      // ignore
+    }
+  }
+  return "en";
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<LanguageCode>("en");
+  const [language, setLanguageState] = useState<LanguageCode>(getInitialLanguage);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("krishimitra_lang");
-      if (saved === "kn" || saved === "hi" || saved === "en") {
-        setLanguageState(saved);
+      try {
+        const saved = localStorage.getItem("krishimitra_lang");
+        if ((saved === "kn" || saved === "hi" || saved === "en") && saved !== language) {
+          setLanguageState(saved);
+        }
+      } catch {
+        // ignore
       }
     }
   }, []);
@@ -230,7 +281,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const setLanguage = (lang: LanguageCode) => {
     setLanguageState(lang);
     if (typeof window !== "undefined") {
-      localStorage.setItem("krishimitra_lang", lang);
+      try {
+        localStorage.setItem("krishimitra_lang", lang);
+      } catch (e) {
+        console.warn("Could not save language preference:", e);
+      }
     }
   };
 
