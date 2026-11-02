@@ -23,7 +23,11 @@ import { Badge } from "@/components/ui/badge";
 import { useLanguage, type LanguageCode } from "@/context/language-context";
 import { toast } from "sonner";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+
 export const Route = createFileRoute("/voice-assistant")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "ಕನ್ನಡ / हिंदी / English ಧ್ವನಿ ಸಹಾಯಕ | Raitha Seva Voice AI" },
@@ -34,7 +38,11 @@ export const Route = createFileRoute("/voice-assistant")({
       },
     ],
   }),
-  component: VoiceAssistantPage,
+  component: () => (
+    <AuthGuard>
+      <VoiceAssistantPage />
+    </AuthGuard>
+  ),
 });
 
 function getBestVoice(langCode: LanguageCode): SpeechSynthesisVoice | null {

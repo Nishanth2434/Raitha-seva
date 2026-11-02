@@ -12,7 +12,14 @@ import { useAuth } from "@/hooks/use-auth";
 import { useLanguage } from "@/context/language-context";
 import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
 
+import { validateRedirectUrl } from "@/lib/auth-guard";
+
 export const Route = createFileRoute("/login")({
+  validateSearch: (search: Record<string, unknown>): { redirect?: string } => {
+    return {
+      redirect: typeof search.redirect === "string" ? search.redirect : undefined,
+    };
+  },
   head: () => ({
     meta: [
       { title: "Sign in | KrishiMitra AI" },
@@ -29,6 +36,8 @@ export const Route = createFileRoute("/login")({
 
 function LoginPage() {
   const navigate = useNavigate();
+  const search = Route.useSearch();
+  const redirectTarget = validateRedirectUrl(search?.redirect);
   const { user } = useAuth();
   const { t, language, setLanguage } = useLanguage();
   const [email, setEmail] = useState("");
@@ -44,10 +53,20 @@ function LoginPage() {
       if (typeof window !== "undefined" && sessionStorage.getItem("raitha_seva_is_new_signup") === "true") {
         navigate({ to: "/onboarding", replace: true });
       } else {
-        navigate({ to: "/", replace: true });
+        navigate({ to: redirectTarget as any, replace: true });
       }
     }
-  }, [user, navigate]);
+  }, [user, navigate, redirectTarget]);
+
+  useEffect(() => {
+    if (search?.redirect && !user) {
+      toast.info(
+        language === "kn"
+          ? "ದಯವಿಟ್ಟು ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಪ್ರವೇಶಿಸಲು ಸೈನ್ ಇನ್ ಮಾಡಿ."
+          : "Please sign in to access this feature."
+      );
+    }
+  }, [search?.redirect, language, user]);
 
   async function signIn(e: React.FormEvent) {
     e.preventDefault();
@@ -74,8 +93,12 @@ function LoginPage() {
       sessionStorage.removeItem("raitha_seva_is_new_signup");
     }
 
-    toast.success("Welcome back!");
-    navigate({ to: "/", replace: true });
+    toast.success(
+      language === "kn"
+        ? "ಸ್ವಾಗತ! ಯಶಸ್ವಿಯಾಗಿ ಲಾಗಿನ್ ಆಗಿದ್ದೀರಿ."
+        : "Welcome back!"
+    );
+    navigate({ to: redirectTarget as any, replace: true });
   }
 
   async function signUp(e: React.FormEvent) {
@@ -173,6 +196,16 @@ function LoginPage() {
 
         <Card className="rounded-3xl border border-gray-100 bg-white p-2 shadow-xl shadow-gray-100">
           <CardHeader className="text-center pb-3">
+            {search?.redirect && (
+              <div className="mb-3 flex items-center justify-center gap-2 rounded-2xl border border-amber-300 bg-amber-50 p-2.5 text-xs font-bold text-amber-900 animate-fade-down shadow-2xs">
+                <ShieldCheck className="h-4 w-4 shrink-0 text-amber-600" />
+                <span>
+                  {language === "kn"
+                    ? "ದಯವಿಟ್ಟು ಈ ವೈಶಿಷ್ಟ್ಯವನ್ನು ಪ್ರವೇಶಿಸಲು ಸೈನ್ ಇನ್ ಮಾಡಿ."
+                    : "Please sign in to access this feature."}
+                </span>
+              </div>
+            )}
             <CardTitle className="text-2xl font-bold text-gray-900">
               {language === "kn" ? "ಸ್ವಾಗತ (Welcome)" : "Welcome"}
             </CardTitle>

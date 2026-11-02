@@ -26,7 +26,11 @@ import { useLanguage } from "@/context/language-context";
 import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
 import { supabase } from "@/lib/supabase";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+
 export const Route = createFileRoute("/onboarding")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "ರೈತ ಸೇವಾ ಸಾಥಿ | Raitha Seva Saathi — Onboarding & Support" },
@@ -37,7 +41,11 @@ export const Route = createFileRoute("/onboarding")({
       },
     ],
   }),
-  component: OnboardingPage,
+  component: () => (
+    <AuthGuard>
+      <OnboardingPage />
+    </AuthGuard>
+  ),
 });
 
 export function OnboardingPage() {

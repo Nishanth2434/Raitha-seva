@@ -7,7 +7,7 @@ import json
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from assistant.rag import rag_engine
 from assistant.safety import check_chemical_safety, validate_agricultural_advice
@@ -26,7 +26,7 @@ class AssistantQueryView(APIView):
         "crop": "paddy" (optional)
     }
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         query = request.data.get("query", "").strip()
@@ -66,7 +66,7 @@ class PestDiagnosisView(APIView):
     POST /api/assistant/diagnose/
     Accepts crop image analysis requests with multimodal vision processing and backend safety enforcement.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         crop = request.data.get("crop", "auto")
@@ -114,7 +114,7 @@ class CropCatalogueView(APIView):
     GET /api/assistant/crops/
     Returns full multi-crop catalogue with regional suitability.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         crops = list_all_crops()
@@ -129,7 +129,7 @@ class SourcesManifestView(APIView):
     GET /api/assistant/sources/
     Returns verified official documents and publication dates.
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         sources = [

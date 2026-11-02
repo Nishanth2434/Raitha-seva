@@ -1,3 +1,5 @@
+import { supabase } from "@/lib/supabase";
+
 // Django API Client for KrishiMitra AI Frontend
 
 const env = import.meta.env as Record<string, string | undefined>;
@@ -25,7 +27,15 @@ export async function apiRequest<T = unknown>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<{ data: T | null; error: string | null }> {
-  const token = getAuthToken();
+  let token = getAuthToken();
+  if (!token) {
+    try {
+      const { data } = await supabase.auth.getSession();
+      token = data?.session?.access_token || null;
+    } catch {
+      // fallback
+    }
+  }
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",

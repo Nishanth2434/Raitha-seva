@@ -56,7 +56,7 @@ export function Navbar() {
 
   // Primary navigation items visible directly on desktop
   const primaryLinks = [
-    { to: "/dashboard", label: t("nav_home", "Home"), icon: LayoutDashboard },
+    { to: user ? "/dashboard" : "/", label: t("nav_home", "Home"), icon: LayoutDashboard },
     { to: "/assistant", label: t("nav_ai", "AI"), icon: Sparkles },
     { to: "/weather", label: t("nav_weather_short", "Weather"), icon: CloudSun },
     { to: "/pest-alerts", label: t("nav_pests", "Pests"), icon: Bug },
@@ -109,7 +109,7 @@ export function Navbar() {
             )}
 
             <Link
-              to="/dashboard"
+              to={user ? "/dashboard" : "/"}
               className="flex shrink-0 items-center gap-2 whitespace-nowrap focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-green-600 rounded-lg p-0.5"
             >
               <img
@@ -376,9 +376,9 @@ export function Navbar() {
       <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200/80 bg-white/95 px-2 py-1.5 backdrop-blur-md lg:hidden">
         <div className="grid grid-cols-5 items-center justify-around gap-1">
           <Link
-            to="/dashboard"
+            to={user ? "/dashboard" : "/"}
             className={`flex flex-col items-center py-1 text-[10px] font-bold ${
-              isLinkActive("/dashboard") ? "text-green-600" : "text-gray-500 hover:text-gray-900"
+              isLinkActive(user ? "/dashboard" : "/") ? "text-green-600" : "text-gray-500 hover:text-gray-900"
             }`}
           >
             <LayoutDashboard className="h-4 w-4 mb-0.5" />

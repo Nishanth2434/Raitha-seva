@@ -24,7 +24,11 @@ import { useLanguage } from "@/context/language-context";
 import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
 import { toast } from "sonner";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+
 export const Route = createFileRoute("/help")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "ಸಹಾಯ ಮತ್ತು ಗ್ರಾಹಕ ಸೇವೆ | Raitha Seva Help & Customer Care" },
@@ -35,7 +39,11 @@ export const Route = createFileRoute("/help")({
       },
     ],
   }),
-  component: HelpPage,
+  component: () => (
+    <AuthGuard>
+      <HelpPage />
+    </AuthGuard>
+  ),
 });
 
 export function HelpPage() {

@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MarketPage } from "./market";
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
 
 export const Route = createFileRoute("/market-prices")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "ಮಾರುಕಟ್ಟೆ ಬೆಲೆ ಮಾಹಿತಿ | Raitha Seva APMC Mandi Prices" },
@@ -12,5 +15,9 @@ export const Route = createFileRoute("/market-prices")({
       },
     ],
   }),
-  component: MarketPage,
+  component: () => (
+    <AuthGuard>
+      <MarketPage />
+    </AuthGuard>
+  ),
 });

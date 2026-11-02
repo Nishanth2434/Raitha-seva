@@ -148,7 +148,7 @@ class ReelViewSet(viewsets.ModelViewSet):
 class WeatherCacheViewSet(viewsets.ModelViewSet):
     queryset = WeatherCache.objects.all()
     serializer_class = WeatherCacheSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     lookup_field = 'village_name'
 
 
@@ -163,7 +163,7 @@ class MarketPriceViewSet(viewsets.ModelViewSet):
     - date: YYYY-MM-DD
     """
     serializer_class = MarketPriceSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         qs = MarketPrice.objects.all()
@@ -331,7 +331,7 @@ class OfficialPestAlertViewSet(viewsets.ReadOnlyModelViewSet):
     - weather_risk: true, false
     """
     serializer_class = OfficialPestAlertSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         qs = OfficialPestAlert.objects.all()
@@ -397,7 +397,7 @@ class PestSourcesStatusView(APIView):
     GET /api/pest-alerts/sources/
     Returns live connectivity status, access method, last sync, and error logs for all 3 sources.
     """
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request):
         sources = pest_pipeline.get_sources_status()
@@ -414,7 +414,7 @@ class PestAlertSyncView(APIView):
     Triggers synchronization from official sources.
     Body (optional): { "source": "UAS_BANGALORE" | "ICAR" | "RAITAMITRA_KSDA" | "ALL" }
     """
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         source_key = request.data.get('source', 'ALL').upper()
@@ -440,7 +440,7 @@ class PestAlertManualUploadView(APIView):
     POST /api/pest-alerts/upload/
     Allows administrative ingestion of official bulletins / circulars.
     """
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request):
         title = request.data.get('title', '').strip()

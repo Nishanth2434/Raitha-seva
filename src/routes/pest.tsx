@@ -38,7 +38,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/context/language-context";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+
 export const Route = createFileRoute("/pest")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "ಅಧಿಕೃತ ಕೀಟ ಮತ್ತು ರೋಗ ಎಚ್ಚರಿಕೆಗಳು | Raitha Seva Official Pest Alerts" },
@@ -54,7 +58,11 @@ export const Route = createFileRoute("/pest")({
       },
     ],
   }),
-  component: PestPage,
+  component: () => (
+    <AuthGuard>
+      <PestPage />
+    </AuthGuard>
+  ),
 });
 
 /* =========================================================================

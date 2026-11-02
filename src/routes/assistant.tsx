@@ -22,7 +22,12 @@ import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/context/language-context";
 import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+import { supabase } from "@/lib/supabase";
+
 export const Route = createFileRoute("/assistant")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "AI ಕೃಷಿ ಸಹಾಯಕ | Raitha Seva AI Farming Assistant" },
@@ -33,7 +38,11 @@ export const Route = createFileRoute("/assistant")({
       },
     ],
   }),
-  component: AssistantPage,
+  component: () => (
+    <AuthGuard>
+      <AssistantPage />
+    </AuthGuard>
+  ),
 });
 
 interface Citation {
@@ -117,9 +126,15 @@ export function AssistantPage() {
     const backendUrl = import.meta.env["VITE_BACKEND_API_URL"] || "http://127.0.0.1:8000";
 
     try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const headers: Record<string, string> = { "Content-Type": "application/json" };
+      if (session?.access_token) {
+        headers["Authorization"] = `Bearer ${session.access_token}`;
+      }
+
       const res = await fetch(`${backendUrl}/api/assistant/ask/`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({
           query: text,
           language: language, // Explicitly pass kn, hi, or en

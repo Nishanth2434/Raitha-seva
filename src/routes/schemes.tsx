@@ -25,7 +25,11 @@ import { SchemeUrlVerifier } from "@/components/site/SchemeUrlVerifier";
 import { useLanguage } from "@/context/language-context";
 import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+
 export const Route = createFileRoute("/schemes")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "Government Schemes, Subsidies & Loans | Raitha Seva AI" },
@@ -36,7 +40,11 @@ export const Route = createFileRoute("/schemes")({
       },
     ],
   }),
-  component: SchemesPage,
+  component: () => (
+    <AuthGuard>
+      <SchemesPage />
+    </AuthGuard>
+  ),
 });
 
 interface SchemeItem {

@@ -43,7 +43,11 @@ import { apiRequest } from "@/lib/api-client";
 import { supabase } from "@/lib/supabase";
 import { toast } from "sonner";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+
 export const Route = createFileRoute("/market")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "Market Intelligence & Mandi Prices | Raitha Seva AI" },
@@ -59,7 +63,11 @@ export const Route = createFileRoute("/market")({
       },
     ],
   }),
-  component: MarketPage,
+  component: () => (
+    <AuthGuard>
+      <MarketPage />
+    </AuthGuard>
+  ),
 });
 
 export interface MarketItem {

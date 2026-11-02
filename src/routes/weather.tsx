@@ -44,7 +44,11 @@ import { Label } from "@/components/ui/label";
 import { useWeather } from "@/hooks/use-weather";
 import { generateFarmingRecommendations, ForecastDay } from "@/lib/open-meteo";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+
 export const Route = createFileRoute("/weather")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "7-Day High Precision Weather & Crop Report | KrishiMitra AI" },
@@ -60,7 +64,11 @@ export const Route = createFileRoute("/weather")({
       },
     ],
   }),
-  component: WeatherPage,
+  component: () => (
+    <AuthGuard>
+      <WeatherPage />
+    </AuthGuard>
+  ),
 });
 
 const availableCrops = [

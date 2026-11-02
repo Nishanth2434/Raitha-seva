@@ -22,6 +22,7 @@ import django
 django.setup()
 
 from django.test import TestCase
+from django.contrib.auth.models import User
 from unittest.mock import patch
 from rest_framework.test import APIClient
 from rest_framework import status
@@ -35,6 +36,8 @@ class TestMarketCommodityMatching(TestCase):
     def setUp(self, mock_supa):
         mock_supa.return_value = None
         self.client = APIClient()
+        self.user = User.objects.create_user(username="test_farmer_market", password="password123")
+        self.client.force_authenticate(user=self.user)
         MarketPrice.objects.all().delete()
 
         service = MarketDataSyncService()

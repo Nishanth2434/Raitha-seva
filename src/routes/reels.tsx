@@ -23,7 +23,11 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
+import { requireAuth } from "@/lib/auth-guard";
+import { AuthGuard } from "@/components/auth/AuthGuard";
+
 export const Route = createFileRoute("/reels")({
+  beforeLoad: requireAuth,
   head: () => ({
     meta: [
       { title: "Agri Reels | KrishiMitra AI" },
@@ -39,7 +43,11 @@ export const Route = createFileRoute("/reels")({
       },
     ],
   }),
-  component: ReelsPage,
+  component: () => (
+    <AuthGuard>
+      <ReelsPage />
+    </AuthGuard>
+  ),
 });
 
 export interface AgriReel {

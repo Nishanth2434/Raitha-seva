@@ -120,7 +120,10 @@ class PlantDiseaseVisionTests(TestCase):
 
 
     def setUp(self):
+        from django.contrib.auth.models import User
         self.client = APIClient()
+        self.user = User.objects.create_user(username="test_farmer_vision", password="password123")
+        self.client.force_authenticate(user=self.user)
         self.doctor = PlantDiseaseVisionDoctor()
 
     def test_eight_sections_present_in_diagnosis(self):

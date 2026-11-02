@@ -143,7 +143,10 @@ class TestPestAlertAPIEndpoints(TestCase):
             pest_pipeline.sync_all_sources()
 
     def setUp(self):
+        from django.contrib.auth.models import User
         self.client = APIClient()
+        self.user = User.objects.create_user(username="test_farmer_pest", password="password123")
+        self.client.force_authenticate(user=self.user)
 
     def test_get_all_alerts(self):
         response = self.client.get('/api/pest-alerts/')

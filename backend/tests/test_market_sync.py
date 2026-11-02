@@ -148,7 +148,10 @@ class TestFetchMarketPricesManagementCommand(TestCase):
 
 class TestMarketPriceAPIEndpoints(TestCase):
     def setUp(self):
+        from django.contrib.auth.models import User
         self.client = APIClient()
+        self.user = User.objects.create_user(username="test_farmer_sync", password="password123")
+        self.client.force_authenticate(user=self.user)
         MarketPrice.objects.all().delete()
         with patch("integrations.market_service.MarketDataSyncService._sync_to_supabase"):
             service = MarketDataSyncService()
