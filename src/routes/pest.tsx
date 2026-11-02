@@ -533,10 +533,8 @@ export async function analyzeCropDiseaseWithGemini(
    ========================================================================= */
 
 export function PestPage() {
-  const { currentLanguage } = useLanguage();
-  const [langPreference, setLangPreference] = useState<"kn" | "en">(
-    currentLanguage === "en" ? "en" : "kn"
-  );
+  const { language, setLanguage } = useLanguage();
+  const langPreference: "kn" | "en" = language === "en" ? "en" : "kn";
 
   // Filter States
   const [selectedCrop, setSelectedCrop] = useState<string>("all");
@@ -703,7 +701,7 @@ export function PestPage() {
             <div className="inline-flex rounded-xl border border-gray-200 bg-gray-50 p-1 text-xs">
               <button
                 type="button"
-                onClick={() => setLangPreference("kn")}
+                onClick={() => setLanguage("kn")}
                 className={`rounded-lg px-3 py-1 font-semibold transition-all ${
                   langPreference === "kn"
                     ? "bg-white text-green-800 shadow-sm"
@@ -714,7 +712,7 @@ export function PestPage() {
               </button>
               <button
                 type="button"
-                onClick={() => setLangPreference("en")}
+                onClick={() => setLanguage("en")}
                 className={`rounded-lg px-3 py-1 font-semibold transition-all ${
                   langPreference === "en"
                     ? "bg-white text-green-800 shadow-sm"

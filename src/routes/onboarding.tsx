@@ -15,12 +15,14 @@ import {
   ArrowLeft,
   Info,
   CheckCircle2,
+  Landmark,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/hooks/use-auth";
+import { useLanguage } from "@/context/language-context";
 import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
 import { supabase } from "@/lib/supabase";
 
@@ -31,7 +33,7 @@ export const Route = createFileRoute("/onboarding")({
       {
         name: "description",
         content:
-          "ನಮಸ್ಕಾರ ರೈತ ಮಿತ್ರರೇ! ರೈತ ಸೇವಾಕ್ಕೆ ಸ್ವಾಗತ. ನಿಮ್ಮ ಕೃಷಿ ಕೆಲಸಗಳಿಗೆ ನಾವು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.",
+          "Welcome to Raitha Seva AI. Empowering farmers in Karnataka with bilingual advisory, disease diagnosis, weather, and market intelligence.",
       },
     ],
   }),
@@ -41,6 +43,8 @@ export const Route = createFileRoute("/onboarding")({
 export function OnboardingPage() {
   const navigate = useNavigate();
   const { authUser } = useAuth();
+  const { language, setLanguage } = useLanguage();
+  const isKn = language === "kn";
   const [copied, setCopied] = useState(false);
 
   // Mark onboarding completed and navigate to dashboard
@@ -75,19 +79,25 @@ export function OnboardingPage() {
       await navigator.clipboard.writeText(CUSTOMER_CARE_CONFIG.rawPhone);
       setCopied(true);
       toast.success(
-        `${CUSTOMER_CARE_CONFIG.copiedKn} (${CUSTOMER_CARE_CONFIG.formattedPhone})`
+        isKn
+          ? `${CUSTOMER_CARE_CONFIG.copiedKn} (${CUSTOMER_CARE_CONFIG.formattedPhone})`
+          : `${CUSTOMER_CARE_CONFIG.copiedEn} (${CUSTOMER_CARE_CONFIG.formattedPhone})`
       );
       setTimeout(() => setCopied(false), 3000);
     } catch {
-      toast.info(`ಗ್ರಾಹಕ ಸೇವೆ ಸಂಖ್ಯೆ: ${CUSTOMER_CARE_CONFIG.formattedPhone}`);
+      toast.info(
+        isKn
+          ? `ಗ್ರಾಹಕ ಸೇವೆ ಸಂಖ್ಯೆ: ${CUSTOMER_CARE_CONFIG.formattedPhone}`
+          : `Helpline: ${CUSTOMER_CARE_CONFIG.formattedPhone}`
+      );
     }
   };
 
   return (
     <main className="min-h-screen bg-linear-to-b from-green-50/60 via-white to-amber-50/40 px-4 py-8 sm:py-12">
       <div className="mx-auto max-w-3xl">
-        {/* Top Navigation Bar with Back & Skip */}
-        <div className="mb-6 flex items-center justify-between">
+        {/* Top Navigation Bar with Back & Skip & Language Toggle */}
+        <div className="mb-6 flex items-center justify-between gap-3">
           <Link
             to="/"
             onClick={(e) => {
@@ -97,34 +107,62 @@ export function OnboardingPage() {
             className="group inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-gray-700 shadow-xs transition-all hover:bg-green-50 hover:text-green-700 sm:text-sm"
           >
             <ArrowLeft className="h-4 w-4 text-green-600 transition-transform group-hover:-translate-x-0.5" />
-            <span>ಹಿಂದೆ (Back)</span>
+            <span>{isKn ? "ಹಿಂದೆ" : "Back"}</span>
           </Link>
 
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => completeOnboardingAndProceed("/")}
-            className="text-xs font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900"
-          >
-            ದಾಟಿಸಿ (Skip to Dashboard)
-          </Button>
+          <div className="flex items-center gap-2">
+            {/* Bilingual Toggle */}
+            <div className="inline-flex rounded-xl border border-gray-200 bg-white p-1 text-xs shadow-xs">
+              <button
+                type="button"
+                onClick={() => setLanguage("kn")}
+                className={`rounded-lg px-2.5 py-1 font-bold transition-all ${
+                  isKn ? "bg-green-600 text-white shadow-xs" : "text-gray-600 hover:text-gray-900"
+                }`}
+              >
+                ಕನ್ನಡ
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage("en")}
+                className={`rounded-lg px-2.5 py-1 font-bold transition-all ${
+                  !isKn ? "bg-green-600 text-white shadow-xs" : "text-gray-600 hover:text-gray-900"
+                }`}
+              >
+                English
+              </button>
+            </div>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => completeOnboardingAndProceed("/")}
+              className="text-xs font-semibold text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+            >
+              {isKn ? "ದಾಟಿಸಿ (Skip)" : "Skip to Dashboard"}
+            </Button>
+          </div>
         </div>
 
         {/* Welcome Header */}
         <header className="text-center animate-fade-up">
           <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-100/80 px-4 py-1.5 text-xs font-bold text-green-800 shadow-xs">
             <Sparkles className="h-4 w-4 text-green-600" />
-            <span>ರೈತ ಸೇವಾ ಸಾಥಿ • Raitha Seva Saathi</span>
+            <span>{isKn ? "ರೈತ ಸೇವಾ ಸಾಥಿ • Raitha Seva Saathi" : "Raitha Seva AI • Welcome Guide"}</span>
           </div>
 
           <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            ನಮಸ್ಕಾರ ರೈತ ಮಿತ್ರರೇ!
+            {isKn ? "ನಮಸ್ಕಾರ ರೈತ ಮಿತ್ರರೇ!" : "Welcome, Farmer Friend!"}
           </h1>
           <p className="mt-2 text-base font-semibold text-green-700 sm:text-xl">
-            ರೈತ ಸೇವಾಕ್ಕೆ ಸ್ವಾಗತ. ನಿಮ್ಮ ಕೃಷಿ ಕೆಲಸಗಳಿಗೆ ನಾವು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.
+            {isKn
+              ? "ರೈತ ಸೇವಾಕ್ಕೆ ಸ್ವಾಗತ. ನಿಮ್ಮ ಕೃಷಿ ಕೆಲಸಗಳಿಗೆ ನಾವು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ."
+              : "Empowering farmers with AI-driven weather, disease alerts, market prices, and loans."}
           </p>
           <p className="mx-auto mt-2 max-w-xl text-xs text-gray-600 sm:text-sm">
-            ಕರ್ನಾಟಕದ ರೈತರಿಗೆ ಹವಾಮಾನ, ಕೀಟ ಬಾಧೆ ನಿಯಂತ್ರಣ, ಮಂಡಿ ಬೆಲೆಗಳು ಮತ್ತು ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರದ (KVK) ಅಧಿಕೃತ ಮಾರ್ಗದರ್ಶನ ನೀಡುವ ತಂತ್ರಜ್ಞಾನ ವೇದಿಕೆ.
+            {isKn
+              ? "ಕರ್ನಾಟಕದ ರೈತರಿಗೆ ಹವಾಮಾನ, ಕೀಟ ಬಾಧೆ ನಿಯಂತ್ರಣ, ಮಂಡಿ ಬೆಲೆಗಳು ಮತ್ತು ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರದ (KVK) ಅಧಿಕೃತ ಮಾರ್ಗದರ್ಶನ ನೀಡುವ ತಂತ್ರಜ್ಞಾನ ವೇದಿಕೆ."
+              : "A dedicated bilingual agricultural intelligence platform connecting you to official UAS Bangalore, ICAR, and Karnataka KSDA Package of Practices."}
           </p>
         </header>
 
@@ -136,14 +174,16 @@ export function OnboardingPage() {
             </div>
             <div className="mt-3">
               <Badge variant="outline" className="border-amber-400 bg-amber-50 text-[11px] font-bold text-amber-800">
-                {CUSTOMER_CARE_CONFIG.labelKn}
+                {isKn ? CUSTOMER_CARE_CONFIG.labelKn : CUSTOMER_CARE_CONFIG.labelEn}
               </Badge>
             </div>
             <CardTitle className="mt-2 text-2xl font-black text-gray-900 sm:text-3xl tracking-tight">
               {CUSTOMER_CARE_CONFIG.formattedPhone}
             </CardTitle>
             <CardDescription className="text-xs text-gray-600">
-              ಯಾವುದೇ ತಾಂತ್ರಿಕ ನೆರವು ಅಥವಾ ಅಪ್ಲಿಕೇಶನ್ ಬಳಕೆಯ ಪ್ರಶ್ನೆಗಳಿಗೆ ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಿ.
+              {isKn
+                ? "ಯಾವುದೇ ತಾಂತ್ರಿಕ ನೆರವು ಅಥವಾ ಅಪ್ಲಿಕೇಶನ್ ಬಳಕೆಯ ಪ್ರಶ್ನೆಗಳಿಗೆ ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಿ."
+                : "Dedicated support helpline for assistance with account login, app tools, or farming questions."}
             </CardDescription>
           </CardHeader>
 
@@ -153,10 +193,10 @@ export function OnboardingPage() {
               <a
                 href={CUSTOMER_CARE_CONFIG.telLink}
                 className="flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-green-600 px-4 text-sm font-bold text-white shadow-lg shadow-green-200 transition-all hover:bg-green-700 hover:shadow-green-300 active:scale-98"
-                aria-label={`${CUSTOMER_CARE_CONFIG.callButtonKn}: ${CUSTOMER_CARE_CONFIG.formattedPhone}`}
+                aria-label={isKn ? CUSTOMER_CARE_CONFIG.callButtonKn : CUSTOMER_CARE_CONFIG.callButtonEn}
               >
                 <Phone className="h-4 w-4" />
-                <span>{CUSTOMER_CARE_CONFIG.callButtonKn}</span>
+                <span>{isKn ? CUSTOMER_CARE_CONFIG.callButtonKn : CUSTOMER_CARE_CONFIG.callButtonEn}</span>
               </a>
 
               {/* Desktop Copy Button */}
@@ -169,12 +209,14 @@ export function OnboardingPage() {
                 {copied ? (
                   <>
                     <Check className="mr-1.5 h-4 w-4 text-green-600" />
-                    <span className="text-green-700 font-bold">{CUSTOMER_CARE_CONFIG.copiedKn}</span>
+                    <span className="text-green-700 font-bold">
+                      {isKn ? CUSTOMER_CARE_CONFIG.copiedKn : CUSTOMER_CARE_CONFIG.copiedEn}
+                    </span>
                   </>
                 ) : (
                   <>
                     <Copy className="mr-1.5 h-4 w-4 text-gray-500" />
-                    <span>{CUSTOMER_CARE_CONFIG.copyButtonKn}</span>
+                    <span>{isKn ? CUSTOMER_CARE_CONFIG.copyButtonKn : CUSTOMER_CARE_CONFIG.copyButtonEn}</span>
                   </>
                 )}
               </Button>
@@ -188,30 +230,32 @@ export function OnboardingPage() {
               className="flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-emerald-300 bg-emerald-50 px-4 text-xs font-bold text-emerald-800 transition-all hover:bg-emerald-100 hover:border-emerald-400 active:scale-98 sm:text-sm"
             >
               <MessageCircle className="h-4 w-4 text-emerald-600" />
-              <span>{CUSTOMER_CARE_CONFIG.whatsappButtonKn}</span>
+              <span>{isKn ? CUSTOMER_CARE_CONFIG.whatsappButtonKn : CUSTOMER_CARE_CONFIG.whatsappButtonEn}</span>
             </a>
 
             {/* Disclaimers & Notes */}
             <div className="rounded-xl bg-amber-50/80 p-3 text-[11px] text-amber-900 border border-amber-200/60 space-y-1">
               <p className="flex items-start gap-1.5 font-medium">
                 <Info className="h-3.5 w-3.5 shrink-0 mt-0.5 text-amber-700" />
-                <span>{CUSTOMER_CARE_CONFIG.disclaimerKn}</span>
+                <span>{isKn ? CUSTOMER_CARE_CONFIG.disclaimerKn : CUSTOMER_CARE_CONFIG.disclaimerEn}</span>
               </p>
               <p className="text-[10px] text-amber-800/80 pl-5">
-                {CUSTOMER_CARE_CONFIG.whatsappNoteKn}
+                {isKn ? CUSTOMER_CARE_CONFIG.whatsappNoteKn : CUSTOMER_CARE_CONFIG.whatsappNoteEn}
               </p>
             </div>
           </CardContent>
         </Card>
 
-        {/* Feature Explanations in Simple Kannada */}
+        {/* Feature Explanations */}
         <section className="mt-10">
           <div className="mb-4 text-center sm:text-left">
             <h2 className="text-lg font-bold text-gray-900 sm:text-xl">
-              ರೈತ ಸೇವಾದಲ್ಲಿ ಲಭ್ಯವಿರುವ ಪ್ರಮುಖ ಸೌಲಭ್ಯಗಳು
+              {isKn ? "ರೈತ ಸೇವಾದಲ್ಲಿ ಲಭ್ಯವಿರುವ ಪ್ರಮುಖ ಸೌಲಭ್ಯಗಳು" : "Core Agricultural Features Available"}
             </h2>
             <p className="text-xs text-gray-500">
-              ನಮ್ಮ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ನೀವು ಬಳಸಬಹುದಾದ ಸೇವೆಗಳ ವಿವರ ಇಲ್ಲಿದೆ:
+              {isKn
+                ? "ನಮ್ಮ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ನೀವು ಬಳಸಬಹುದಾದ ಸೇವೆಗಳ ವಿವರ ಇಲ್ಲಿದೆ:"
+                : "Explore smart farming tools designed for precision and productivity:"}
             </p>
           </div>
 
@@ -224,16 +268,21 @@ export function OnboardingPage() {
                     <CloudSun className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-gray-900">ಹವಾಮಾನ ಮಾಹಿತಿ</h3>
-                    <p className="text-[11px] text-gray-500">Weather Information</p>
+                    <h3 className="text-sm font-bold text-gray-900">
+                      {isKn ? "ಹವಾಮಾನ ಮಾಹಿತಿ" : "Weather Advisor"}
+                    </h3>
+                    <p className="text-[11px] text-gray-500">7-Day Rain & Spray Forecast</p>
                   </div>
                 </div>
                 <Badge className="bg-green-100 text-[10px] font-semibold text-green-800 border-green-200">
-                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" /> ಚಾಲ್ತಿಯಲ್ಲಿದೆ
+                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" />
+                  {isKn ? "ಚಾಲ್ತಿಯಲ್ಲಿದೆ" : "Active"}
                 </Badge>
               </div>
               <p className="mt-3 text-xs leading-relaxed text-gray-600">
-                ಮುಂದಿನ 7 ದಿನಗಳ ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ, ತಾಪಮಾನ, ಮಳೆಯ ಸಾಧ್ಯತೆ ಮತ್ತು ಕೃಷಿ ಸಿಂಪಡಣೆಗೆ ಸೂಕ್ತ ದಿನಗಳ ಸಲಹೆ.
+                {isKn
+                  ? "ಮುಂದಿನ 7 ದಿನಗಳ ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ, ತಾಪಮಾನ, ಮಳೆಯ ಸಾಧ್ಯತೆ ಮತ್ತು ಕೃಷಿ ಸಿಂಪಡಣೆಗೆ ಸೂಕ್ತ ದಿನಗಳ ಸಲಹೆ."
+                  : "Hyperlocal 7-day forecast with GPS pinpoint accuracy for rainfall, spray timing, and harvesting windows."}
               </p>
             </Card>
 
@@ -245,16 +294,21 @@ export function OnboardingPage() {
                     <Bug className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-gray-900">ಕೀಟ ಮತ್ತು ರೋಗ ಎಚ್ಚರಿಕೆಗಳು</h3>
-                    <p className="text-[11px] text-gray-500">Pest & Disease Alerts</p>
+                    <h3 className="text-sm font-bold text-gray-900">
+                      {isKn ? "ಕೀಟ ಮತ್ತು ರೋಗ ಎಚ್ಚರಿಕೆಗಳು" : "Pest & Disease Diagnosis"}
+                    </h3>
+                    <p className="text-[11px] text-gray-500">AI Leaf Scan & Bulletins</p>
                   </div>
                 </div>
                 <Badge className="bg-green-100 text-[10px] font-semibold text-green-800 border-green-200">
-                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" /> ಚಾಲ್ತಿಯಲ್ಲಿದೆ
+                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" />
+                  {isKn ? "ಚಾಲ್ತಿಯಲ್ಲಿದೆ" : "Active"}
                 </Badge>
               </div>
               <p className="mt-3 text-xs leading-relaxed text-gray-600">
-                ಬೆಳೆಯ ಎಲೆ ಅಥವಾ ರೋಗದ ಫೋಟೋ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅಥವಾ ಲಕ್ಷಣ ವಿವರಿಸಿ. ಅಧಿಕೃತ ICAR/UASB ಶಿಫಾರಸಿನ ಸುರಕ್ಷಿತ ಔಷಧ ಪ್ರಮಾಣ ಪಡೆಯಿರಿ.
+                {isKn
+                  ? "ಬೆಳೆಯ ಎಲೆ ಅಥವಾ ರೋಗದ ಫೋಟೋ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅಥವಾ ಲಕ್ಷಣ ವಿವರಿಸಿ. ಅಧಿಕೃತ ICAR/UASB ಶಿಫಾರಸಿನ ಸುರಕ್ಷಿತ ಔಷಧ ಪ್ರಮಾಣ ಪಡೆಯಿರಿ."
+                  : "Scan leaf disease photos or explore synchronized advisories from UAS Bengaluru, ICAR, and Raitamitra."}
               </p>
             </Card>
 
@@ -266,37 +320,47 @@ export function OnboardingPage() {
                     <TrendingUp className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-gray-900">ಮಾರುಕಟ್ಟೆ ಬೆಲೆ ಮಾಹಿತಿ</h3>
-                    <p className="text-[11px] text-gray-500">Market Prices</p>
+                    <h3 className="text-sm font-bold text-gray-900">
+                      {isKn ? "ಮಾರುಕಟ್ಟೆ ಬೆಲೆ ಮಾಹಿತಿ" : "Market Mandi Rates"}
+                    </h3>
+                    <p className="text-[11px] text-gray-500">Live APMC & 7-Day Forecast</p>
                   </div>
                 </div>
                 <Badge className="bg-green-100 text-[10px] font-semibold text-green-800 border-green-200">
-                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" /> ಚಾಲ್ತಿಯಲ್ಲಿದೆ
+                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" />
+                  {isKn ? "ಚಾಲ್ತಿಯಲ್ಲಿದೆ" : "Active"}
                 </Badge>
               </div>
               <p className="mt-3 text-xs leading-relaxed text-gray-600">
-                ಮಂಡ್ಯ ಮತ್ತು ಕರ್ನಾಟಕದ ಪ್ರಮುಖ ಎಪಿಎಂಸಿ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಭತ್ತ, ರಾಗಿ, ಬೆಲ್ಲ, ತರಕಾರಿಗಳ ಇತ್ತೀಚಿನ ಕನಿಷ್ಠ ಮತ್ತು ಗರಿಷ್ಠ ಬೆಲೆಗಳು.
+                {isKn
+                  ? "ಮಂಡ್ಯ ಮತ್ತು ಕರ್ನಾಟಕದ ಪ್ರಮುಖ ಎಪಿಎಂಸಿ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಭತ್ತ, ರಾಗಿ, ಬೆಲ್ಲ, ತರಕಾರಿಗಳ ಇತ್ತೀಚಿನ ಕನಿಷ್ಠ ಮತ್ತು ಗರಿಷ್ಠ ಬೆಲೆಗಳು."
+                  : "Live AGMARKNET prices, price trend indicators, and sell-or-hold recommendations for local mandis."}
               </p>
             </Card>
 
-            {/* Feature 4: Kannada AI Assistant */}
+            {/* Feature 4: Schemes & Loans */}
             <Card className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:border-green-300 transition-colors">
               <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
-                    <Mic className="h-5 w-5" />
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-700">
+                    <Landmark className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-bold text-gray-900">ಕನ್ನಡ AI ಸಹಾಯಕ</h3>
-                    <p className="text-[11px] text-gray-500">Kannada AI Assistant</p>
+                    <h3 className="text-sm font-bold text-gray-900">
+                      {isKn ? "ಯೋಜನೆಗಳು & ಸಾಲ ಸ್ಕ್ಯಾನರ್" : "Schemes, Loans & Scanner"}
+                    </h3>
+                    <p className="text-[11px] text-gray-500">Subsidies & Link Verifier</p>
                   </div>
                 </div>
                 <Badge className="bg-green-100 text-[10px] font-semibold text-green-800 border-green-200">
-                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" /> ಚಾಲ್ತಿಯಲ್ಲಿದೆ
+                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" />
+                  {isKn ? "ಚಾಲ್ತಿಯಲ್ಲಿದೆ" : "Active"}
                 </Badge>
               </div>
               <p className="mt-3 text-xs leading-relaxed text-gray-600">
-                ಧ್ವನಿ ಅಥವಾ ಸಂದೇಶದ ಮೂಲಕ ನಿಮ್ಮದೇ ಕನ್ನಡ ಭಾಷೆಯಲ್ಲಿ ಪ್ರಶ್ನಿಸಿ, ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರದ ತಜ್ಞರ ಆಧಾರಿತ ನಿಖರ ಸಲಹೆಗಳನ್ನು ತಕ್ಷಣ ಪಡೆಯಿರಿ.
+                {isKn
+                  ? "PM-KISAN, ಬೆಳೆ ವಿಮೆ, 40-50% ಯಂತ್ರೋಪಕರಣ ಸಬ್ಸಿಡಿ ಮತ್ತು 4% KCC ಸಾಲದ ಮಾಹಿತಿ ಜೊತೆಗೆ ವಂಚನೆ ತಡೆಗಟ್ಟುವ ಲಿಂಕ್ ಸ್ಕ್ಯಾನರ್."
+                  : "PM-KISAN income support, PMFBY insurance, 50% mechanization subsidies, and anti-fraud URL verification."}
               </p>
             </Card>
           </div>
@@ -309,11 +373,13 @@ export function OnboardingPage() {
             onClick={() => completeOnboardingAndProceed("/")}
             className="h-14 w-full max-w-md rounded-2xl bg-green-600 px-8 text-base font-extrabold text-white shadow-xl shadow-green-200 hover:bg-green-700 active:scale-98"
           >
-            <span>{CUSTOMER_CARE_CONFIG.skipButtonKn}</span>
+            <span>{isKn ? CUSTOMER_CARE_CONFIG.skipButtonKn : CUSTOMER_CARE_CONFIG.skipButtonEn}</span>
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
           <p className="mt-2 text-[11px] text-gray-500">
-            ನಿಮ್ಮ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ತೆರಳಿ ಹವಾಮಾನ, ಬೆಳೆ ಸಲಹೆ ಮತ್ತು ಮಂಡಿ ಬೆಲೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ.
+            {isKn
+              ? "ನಿಮ್ಮ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ತೆರಳಿ ಹವಾಮಾನ, ಬೆಳೆ ಸಲಹೆ ಮತ್ತು ಮಂಡಿ ಬೆಲೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ."
+              : "Proceed to your dashboard to view weather forecasts, pest alerts, and mandi market prices."}
           </p>
         </div>
       </div>

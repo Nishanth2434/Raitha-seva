@@ -97,7 +97,7 @@ export function HelpPage() {
 
               <div>
                 <Badge variant="outline" className="border-amber-400 bg-amber-50 text-[11px] font-bold text-amber-800">
-                  {CUSTOMER_CARE_CONFIG.labelKn}
+                  {language === "kn" ? CUSTOMER_CARE_CONFIG.labelKn : CUSTOMER_CARE_CONFIG.labelEn}
                 </Badge>
                 <h3 className="mt-2 text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
                   {CUSTOMER_CARE_CONFIG.formattedPhone}
@@ -115,7 +115,7 @@ export function HelpPage() {
                   className="flex h-12 items-center justify-center gap-2 rounded-2xl bg-green-600 px-6 text-sm font-bold text-white shadow-md hover:bg-green-700 active:scale-98"
                 >
                   <Phone className="h-4 w-4" />
-                  <span>{CUSTOMER_CARE_CONFIG.callButtonKn}</span>
+                  <span>{language === "kn" ? CUSTOMER_CARE_CONFIG.callButtonKn : CUSTOMER_CARE_CONFIG.callButtonEn}</span>
                 </a>
 
                 <Button
@@ -127,12 +127,14 @@ export function HelpPage() {
                   {copied ? (
                     <>
                       <Check className="mr-1.5 h-4 w-4 text-green-600" />
-                      <span className="text-green-700">{CUSTOMER_CARE_CONFIG.copiedKn}</span>
+                      <span className="text-green-700">
+                        {language === "kn" ? CUSTOMER_CARE_CONFIG.copiedKn : CUSTOMER_CARE_CONFIG.copiedEn}
+                      </span>
                     </>
                   ) : (
                     <>
                       <Copy className="mr-1.5 h-4 w-4 text-gray-500" />
-                      <span>{CUSTOMER_CARE_CONFIG.copyButtonKn}</span>
+                      <span>{language === "kn" ? CUSTOMER_CARE_CONFIG.copyButtonKn : CUSTOMER_CARE_CONFIG.copyButtonEn}</span>
                     </>
                   )}
                 </Button>
@@ -145,11 +147,11 @@ export function HelpPage() {
                 className="flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-emerald-300 bg-emerald-50 px-4 text-xs font-bold text-emerald-800 hover:bg-emerald-100"
               >
                 <MessageCircle className="h-4 w-4 text-emerald-600" />
-                <span>{CUSTOMER_CARE_CONFIG.whatsappButtonKn}</span>
+                <span>{language === "kn" ? CUSTOMER_CARE_CONFIG.whatsappButtonKn : CUSTOMER_CARE_CONFIG.whatsappButtonEn}</span>
               </a>
 
               <p className="text-[11px] text-amber-900/80 pt-1">
-                {CUSTOMER_CARE_CONFIG.disclaimerKn}
+                {language === "kn" ? CUSTOMER_CARE_CONFIG.disclaimerKn : CUSTOMER_CARE_CONFIG.disclaimerEn}
               </p>
             </div>
           </Card>
@@ -163,14 +165,16 @@ export function HelpPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-gray-900">
-                    ಕಿಸಾನ್ ಕಾಲ್ ಸೆಂಟರ್ (Kisan Call Centre)
+                    {language === "kn" ? "ಕಿಸಾನ್ ಕಾಲ್ ಸೆಂಟರ್ (Kisan Call Centre)" : "Kisan Call Centre (KCC Toll-Free)"}
                   </h4>
                   <p className="text-xs text-gray-500">Government of India Toll-Free</p>
                 </div>
               </div>
 
               <p className="text-xs text-gray-600">
-                ದೇಶದ ಯಾವುದೇ ಭಾಗದಿಂದ ಉಚಿತವಾಗಿ ಕರೆ ಮಾಡಿ ಕೃಷಿ ತಜ್ಞರಿಂದ ನೇರ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ.
+                {language === "kn"
+                  ? "ದೇಶದ ಯಾವುದೇ ಭಾಗದಿಂದ ಉಚಿತವಾಗಿ ಕರೆ ಮಾಡಿ ಕೃಷಿ ತಜ್ಞರಿಂದ ನೇರ ಮಾರ್ಗದರ್ಶನ ಪಡೆಯಿರಿ."
+                  : "Free call from any part of the country for direct guidance from agricultural experts."}
               </p>
 
               <div className="pt-1">
@@ -191,14 +195,16 @@ export function HelpPage() {
                 </div>
                 <div>
                   <h4 className="text-sm font-bold text-gray-900">
-                    ICAR - KVK ಮಂಡ್ಯ (V.C. Farm)
+                    {language === "kn" ? "ICAR - KVK ಮಂಡ್ಯ (V.C. Farm)" : "ICAR - KVK Mandya (V.C. Farm)"}
                   </h4>
                   <p className="text-xs text-gray-500">Zonal Agricultural Research Station</p>
                 </div>
               </div>
 
               <p className="text-xs text-gray-600">
-                ಮಂಡ್ಯ ಜಿಲ್ಲೆಯ ಸ್ಥಳೀಯ ಮಣ್ಣು, ಬೆಳೆ ರೋಗ ಮತ್ತು ಹವಾಮಾನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ವೈಜ್ಞಾನಿಕ ಪರಿಹಾರ.
+                {language === "kn"
+                  ? "ಮಂಡ್ಯ ಜಿಲ್ಲೆಯ ಸ್ಥಳೀಯ ಮಣ್ಣು, ಬೆಳೆ ರೋಗ ಮತ್ತು ಹವಾಮಾನಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ವೈಜ್ಞಾನಿಕ ಪರಿಹಾರ."
+                  : "Scientific remedies tailored to Mandya district soil, crops, and micro-climate."}
               </p>
 
               <div className="pt-1 flex flex-wrap gap-2">
@@ -218,15 +224,17 @@ export function HelpPage() {
             <div>
               <h4 className="text-sm font-bold text-green-950 flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-green-700" />
-                <span>ರೈತ ಸೇವಾ ಸಾಥಿ ಮಾರ್ಗದರ್ಶಿ (Onboarding Tour)</span>
+                <span>{language === "kn" ? "ರೈತ ಸೇವಾ ಸಾಥಿ ಮಾರ್ಗದರ್ಶಿ (Onboarding Tour)" : "Raitha Seva Saathi Tour"}</span>
               </h4>
               <p className="text-xs text-gray-600 mt-1">
-                ಅಪ್ಲಿಕೇಶನ್‌ನ ಪ್ರಮುಖ ಸೌಲಭ್ಯಗಳ ಪರಿಚಯ ಮತ್ತು ಸ್ವಾಗತ ಪರದೆಯನ್ನು ವೀಕ್ಷಿಸಿ.
+                {language === "kn"
+                  ? "ಅಪ್ಲಿಕೇಶನ್‌ನ ಪ್ರಮುಖ ಸೌಲಭ್ಯಗಳ ಪರಿಚಯ ಮತ್ತು ಸ್ವಾಗತ ಪರದೆಯನ್ನು ವೀಕ್ಷಿಸಿ."
+                  : "Explore feature highlights and introductory walkthrough guide."}
               </p>
             </div>
             <Button asChild className="rounded-full bg-green-600 font-bold text-xs text-white hover:bg-green-700 shrink-0">
               <Link to="/onboarding">
-                <span>ಪರಿಚಯ ವೀಕ್ಷಿಸಿ</span>
+                <span>{language === "kn" ? "ಪರಿಚಯ ವೀಕ್ಷಿಸಿ" : "View Tour"}</span>
                 <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
               </Link>
             </Button>

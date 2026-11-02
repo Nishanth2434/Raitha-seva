@@ -14,6 +14,7 @@ import {
   TrendingUp,
   Mic,
   HelpCircle,
+  Landmark,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -46,6 +47,7 @@ export function Navbar() {
     { to: "/weather", label: t("nav_weather", "Weather"), icon: CloudSun },
     { to: "/pest-alerts", label: t("nav_pest", "Pest Alerts"), icon: Bug },
     { to: "/market-prices", label: t("nav_market", "Market Prices"), icon: TrendingUp },
+    { to: "/schemes", label: t("nav_schemes", "Schemes & Loans"), icon: Landmark },
     { to: "/voice-assistant", label: t("nav_voice", "Voice AI"), icon: Mic },
     { to: "/help", label: t("nav_help", "Help & Care"), icon: HelpCircle },
   ];
@@ -54,6 +56,7 @@ export function Navbar() {
     if (to === "/dashboard") return location.pathname === "/" || location.pathname === "/dashboard";
     if (to === "/pest-alerts") return location.pathname === "/pest-alerts" || location.pathname === "/pest";
     if (to === "/market-prices") return location.pathname === "/market-prices" || location.pathname === "/market";
+    if (to === "/schemes") return location.pathname === "/schemes";
     if (to === "/help") return location.pathname === "/help" || location.pathname === "/onboarding" || location.pathname === "/saathi";
     return location.pathname === to;
   };

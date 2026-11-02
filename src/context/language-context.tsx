@@ -25,6 +25,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     nav_pest: "Pest Alerts",
     nav_market: "Market Prices",
     nav_voice: "Voice AI",
+    nav_schemes: "Schemes & Loans",
     nav_help: "Help & Care",
     nav_reels: "Reels",
     nav_profile: "Profile",
@@ -89,6 +90,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     nav_pest: "ಕೀಟ ಎಚ್ಚರಿಕೆ",
     nav_market: "ಮಾರುಕಟ್ಟೆ ಬೆಲೆ",
     nav_voice: "ಧ್ವನಿ AI",
+    nav_schemes: "ಯೋಜನೆಗಳು & ಸಾಲ",
     nav_help: "ಸಹಾಯವಾಣಿ",
     nav_reels: "ವೀಡಿಯೊಗಳು",
     nav_profile: "ನನ್ನ ಪ್ರೊಫೈಲ್",
@@ -149,6 +151,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     nav_pest: "कीट अलर्ट",
     nav_market: "मंडी भाव",
     nav_voice: "वॉयस एआई",
+    nav_schemes: "योजनाएं व ऋण",
     nav_help: "सहायता केंद्र",
     nav_reels: "रील्स",
     nav_profile: "मेरी प्रोफाइल",
@@ -205,6 +208,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
 
 interface LanguageContextType {
   language: LanguageCode;
+  currentLanguage: LanguageCode;
   setLanguage: (lang: LanguageCode) => void;
   t: (key: string, fallback?: string) => string;
 }
@@ -235,7 +239,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, currentLanguage: language, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

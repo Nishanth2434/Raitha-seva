@@ -22,6 +22,7 @@ import { Route as PestRouteImport } from './routes/pest'
 import { Route as PestAlertsRouteImport } from './routes/pest-alerts'
 import { Route as ReelsRouteImport } from './routes/reels'
 import { Route as SaathiRouteImport } from './routes/saathi'
+import { Route as SchemesRouteImport } from './routes/schemes'
 import { Route as VoiceAssistantRouteImport } from './routes/voice-assistant'
 import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
@@ -90,6 +91,11 @@ const SaathiRoute = SaathiRouteImport.update({
   path: '/saathi',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SchemesRoute = SchemesRouteImport.update({
+  id: '/schemes',
+  path: '/schemes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VoiceAssistantRoute = VoiceAssistantRouteImport.update({
   id: '/voice-assistant',
   path: '/voice-assistant',
@@ -119,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/pest-alerts': typeof PestAlertsRoute
   '/reels': typeof ReelsRoute
   '/saathi': typeof SaathiRoute
+  '/schemes': typeof SchemesRoute
   '/voice-assistant': typeof VoiceAssistantRoute
   '/weather': typeof WeatherRoute
   '/profile': typeof AuthenticatedProfileRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/pest-alerts': typeof PestAlertsRoute
   '/reels': typeof ReelsRoute
   '/saathi': typeof SaathiRoute
+  '/schemes': typeof SchemesRoute
   '/voice-assistant': typeof VoiceAssistantRoute
   '/weather': typeof WeatherRoute
   '/profile': typeof AuthenticatedProfileRoute
@@ -155,6 +163,7 @@ export interface FileRoutesById {
   '/pest-alerts': typeof PestAlertsRoute
   '/reels': typeof ReelsRoute
   '/saathi': typeof SaathiRoute
+  '/schemes': typeof SchemesRoute
   '/voice-assistant': typeof VoiceAssistantRoute
   '/weather': typeof WeatherRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
@@ -174,6 +183,7 @@ export interface FileRouteTypes {
     | '/pest-alerts'
     | '/reels'
     | '/saathi'
+    | '/schemes'
     | '/voice-assistant'
     | '/weather'
     | '/profile'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
     | '/pest-alerts'
     | '/reels'
     | '/saathi'
+    | '/schemes'
     | '/voice-assistant'
     | '/weather'
     | '/profile'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/pest-alerts'
     | '/reels'
     | '/saathi'
+    | '/schemes'
     | '/voice-assistant'
     | '/weather'
     | '/_authenticated/profile'
@@ -228,6 +240,7 @@ export interface RootRouteChildren {
   PestAlertsRoute: typeof PestAlertsRoute
   ReelsRoute: typeof ReelsRoute
   SaathiRoute: typeof SaathiRoute
+  SchemesRoute: typeof SchemesRoute
   VoiceAssistantRoute: typeof VoiceAssistantRoute
   WeatherRoute: typeof WeatherRoute
 }
@@ -325,6 +338,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SaathiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/schemes': {
+      id: '/schemes'
+      path: '/schemes'
+      fullPath: '/schemes'
+      preLoaderRoute: typeof SchemesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/voice-assistant': {
       id: '/voice-assistant'
       path: '/voice-assistant'
@@ -374,6 +394,7 @@ const rootRouteChildren: RootRouteChildren = {
   PestAlertsRoute: PestAlertsRoute,
   ReelsRoute: ReelsRoute,
   SaathiRoute: SaathiRoute,
+  SchemesRoute: SchemesRoute,
   VoiceAssistantRoute: VoiceAssistantRoute,
   WeatherRoute: WeatherRoute,
 }

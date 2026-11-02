@@ -20,12 +20,19 @@ import {
   Globe,
   AlertTriangle,
   CheckCircle2,
+  Landmark,
+  Shield,
+  Tractor,
+  FileText,
+  IndianRupee,
+  ExternalLink,
 } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { SchemeUrlVerifier } from "@/components/site/SchemeUrlVerifier";
 import { useLanguage } from "@/context/language-context";
 import { useWeather } from "@/hooks/use-weather";
 import { useAuth } from "@/hooks/use-auth";
@@ -101,6 +108,16 @@ export function Index() {
       descEn: "Speak & listen in Kannada",
       color: "border-purple-200 bg-purple-50/60 hover:bg-purple-100/70 text-purple-800",
       iconColor: "bg-purple-600 text-white",
+    },
+    {
+      to: "/schemes",
+      icon: Landmark,
+      titleKn: "ಯೋಜನೆಗಳು & ಸಾಲ",
+      titleEn: "Schemes & Loans",
+      descKn: "ಸಬ್ಸಿಡಿ & ಲಿಂಕ್ ಸ್ಕ್ಯಾನರ್",
+      descEn: "Subsidies & Link Scanner",
+      color: "border-blue-200 bg-blue-50/60 hover:bg-blue-100/70 text-blue-800",
+      iconColor: "bg-blue-600 text-white",
     },
     {
       to: "/help",
@@ -501,17 +518,26 @@ export function Index() {
                   href={CUSTOMER_CARE_CONFIG.telLink}
                   className="rounded-full bg-green-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-green-700"
                 >
-                  ಕರೆ ಮಾಡಿ
+                  {language === "kn" ? "ಕರೆ ಮಾಡಿ" : "Call Now"}
                 </a>
               </div>
 
               <p className="text-xs text-gray-600">
-                ಅಪ್ಲಿಕೇಶನ್ ಬಳಕೆ, ಸೈನ್ ಅಪ್ ಅಥವಾ ಕೃಷಿ ಸಹಾಯಕ್ಕೆ ತಾತ್ಕಾಲಿಕ ಗ್ರಾಹಕ ಸೇವೆ ಸಂಖ್ಯೆಗೆ ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಿ.
+                {language === "kn"
+                  ? "ಅಪ್ಲಿಕೇಶನ್ ಬಳಕೆ, ಸೈನ್ ಅಪ್ ಅಥವಾ ಕೃಷಿ ಸಹಾಯಕ್ಕೆ ತಾತ್ಕಾಲಿಕ ಗ್ರಾಹಕ ಸೇವೆ ಸಂಖ್ಯೆಗೆ ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಿ."
+                  : "Call our dedicated customer care helpline for support with app features, registration, or farming guidance."}
               </p>
 
               <div className="rounded-xl bg-slate-50 p-2.5 text-[11px] text-gray-700 space-y-1 border border-slate-100">
-                <p>• ಕಿಸಾನ್ ಕಾಲ್ ಸೆಂಟರ್: <a href="tel:18001801551" className="font-bold underline text-blue-700">1800-180-1551</a> (ಉಚಿತ ಕರೆ)</p>
-                <p>• ICAR-KVK ಮಂಡ್ಯ: <a href="tel:08232277456" className="font-bold underline text-green-700">08232-277456</a></p>
+                <p>
+                  • {language === "kn" ? "ಕಿಸಾನ್ ಕಾಲ್ ಸೆಂಟರ್: " : "Kisan Call Centre: "}
+                  <a href="tel:18001801551" className="font-bold underline text-blue-700">1800-180-1551</a>
+                  {language === "kn" ? " (ಉಚಿತ ಕರೆ)" : " (Toll-Free)"}
+                </p>
+                <p>
+                  • {language === "kn" ? "ICAR-KVK ಮಂಡ್ಯ: " : "ICAR-KVK Mandya: "}
+                  <a href="tel:08232277456" className="font-bold underline text-green-700">08232-277456</a>
+                </p>
               </div>
             </div>
 
@@ -524,6 +550,199 @@ export function Index() {
               </Button>
             </div>
           </Card>
+        </section>
+
+        {/* ─── 5. GOVERNMENT SCHEMES, SUBSIDIES & LOANS + LINK SCANNER ─── */}
+        <section className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-100 text-blue-700">
+                <Landmark className="h-5 w-5" />
+              </span>
+              <div>
+                <h2 className="text-base sm:text-lg font-extrabold text-gray-900">
+                  {t("schemes_title", "Government Schemes & Subsidies")}
+                </h2>
+                <p className="text-xs text-gray-500">
+                  {language === "kn"
+                    ? "ಕೇಂದ್ರ ಮತ್ತು ಕರ್ನಾಟಕ ಸರ್ಕಾರದ ಸಬ್ಸಿಡಿ, ಬೆಳೆ ವಿಮೆ & ಸಾಲ ಯೋಜನೆಗಳು"
+                    : "Central & Karnataka State subsidies, crop insurance & zero/low-interest loans"}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.myscheme.gov.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-xs font-bold text-blue-600 hover:underline"
+              >
+                <span>myScheme Portal</span>
+                <ExternalLink className="ml-1 h-3.5 w-3.5" />
+              </a>
+              <Button asChild size="sm" variant="outline" className="rounded-full text-xs font-bold border-blue-200 text-blue-700 hover:bg-blue-50">
+                <Link to="/schemes">
+                  <span>{language === "kn" ? "ಎಲ್ಲಾ ಯೋಜನೆಗಳು" : "View All"}</span>
+                  <ArrowRight className="ml-1 h-3 w-3" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Scheme Link Verifier & Anti-Fraud Scanner */}
+          <SchemeUrlVerifier />
+
+          {/* 4 Primary Scheme Cards */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {/* PM-KISAN */}
+            <Card className="rounded-3xl border border-blue-200 bg-blue-50/40 p-5 shadow-sm flex flex-col justify-between">
+              <div className="flex items-start gap-3.5">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-blue-100 text-blue-600">
+                  <IndianRupee className="h-5 w-5" />
+                </span>
+                <div className="space-y-1">
+                  <Badge className="bg-blue-100 text-blue-800 border-0 text-[10px] uppercase font-bold">
+                    {t("scheme_active", "Active Scheme")}
+                  </Badge>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-900">
+                    {t("scheme_pmkisan_title", "PM-KISAN Samman Nidhi")}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold text-blue-900">
+                    {t("scheme_pmkisan_benefit", "₹6,000/year — 3 installments of ₹2,000 via DBT")}
+                  </p>
+                  <p className="text-xs leading-relaxed text-gray-600">
+                    {t(
+                      "scheme_pmkisan_desc",
+                      "Income support for all landholding farmer families. Direct bank transfer every 4 months. Check status at pmkisan.gov.in"
+                    )}
+                  </p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-blue-100/80 mt-2">
+                <a
+                  href="https://pmkisan.gov.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs font-bold text-blue-700 hover:underline"
+                >
+                  <span>pmkisan.gov.in</span>
+                  <ExternalLink className="ml-1 h-3 w-3" />
+                </a>
+              </div>
+            </Card>
+
+            {/* PMFBY - Crop Insurance */}
+            <Card className="rounded-3xl border border-emerald-200 bg-emerald-50/40 p-5 shadow-sm flex flex-col justify-between">
+              <div className="flex items-start gap-3.5">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-emerald-100 text-emerald-600">
+                  <Shield className="h-5 w-5" />
+                </span>
+                <div className="space-y-1">
+                  <Badge className="bg-emerald-100 text-emerald-800 border-0 text-[10px] uppercase font-bold">
+                    {t("scheme_active", "Active Scheme")}
+                  </Badge>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-900">
+                    {t("scheme_pmfby_title", "PM Fasal Bima Yojana (PMFBY)")}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold text-emerald-900">
+                    {t("scheme_pmfby_benefit", "Crop Insurance: 2% Kharif, 1.5% Rabi, 5% Commercial")}
+                  </p>
+                  <p className="text-xs leading-relaxed text-gray-600">
+                    {t(
+                      "scheme_pmfby_desc",
+                      "Comprehensive crop insurance from pre-sowing to post-harvest. Satellite and drone assessments for faster claim settlements."
+                    )}
+                  </p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-emerald-100/80 mt-2">
+                <a
+                  href="https://pmfby.gov.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs font-bold text-emerald-700 hover:underline"
+                >
+                  <span>pmfby.gov.in</span>
+                  <ExternalLink className="ml-1 h-3 w-3" />
+                </a>
+              </div>
+            </Card>
+
+            {/* SMAM - Mechanization Subsidy */}
+            <Card className="rounded-3xl border border-orange-200 bg-orange-50/40 p-5 shadow-sm flex flex-col justify-between">
+              <div className="flex items-start gap-3.5">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-orange-100 text-orange-600">
+                  <Tractor className="h-5 w-5" />
+                </span>
+                <div className="space-y-1">
+                  <Badge className="bg-orange-100 text-orange-800 border-0 text-[10px] uppercase font-bold">
+                    {t("scheme_subsidy", "Subsidy Scheme")}
+                  </Badge>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-900">
+                    {t("scheme_smam_title", "SMAM — Agri Mechanization")}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold text-orange-900">
+                    {t("scheme_smam_benefit", "40-50% subsidy on tractors, drones, tillers & sprayers")}
+                  </p>
+                  <p className="text-xs leading-relaxed text-gray-600">
+                    {t(
+                      "scheme_smam_desc",
+                      "Sub-Mission on Agricultural Mechanization. 50% for SC/ST/small/marginal/women farmers, 40% for others. Supports Custom Hiring Centres."
+                    )}
+                  </p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-orange-100/80 mt-2">
+                <a
+                  href="https://agrimachinery.nic.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs font-bold text-orange-700 hover:underline"
+                >
+                  <span>agrimachinery.nic.in</span>
+                  <ExternalLink className="ml-1 h-3 w-3" />
+                </a>
+              </div>
+            </Card>
+
+            {/* KCC - Low-Interest Crop Loans */}
+            <Card className="rounded-3xl border border-violet-200 bg-violet-50/40 p-5 shadow-sm flex flex-col justify-between">
+              <div className="flex items-start gap-3.5">
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-violet-100 text-violet-600">
+                  <FileText className="h-5 w-5" />
+                </span>
+                <div className="space-y-1">
+                  <Badge className="bg-violet-100 text-violet-800 border-0 text-[10px] uppercase font-bold">
+                    {t("scheme_credit", "Credit Scheme")}
+                  </Badge>
+                  <h3 className="text-sm sm:text-base font-bold text-gray-900">
+                    {t("scheme_kcc_title", "Kisan Credit Card (KCC)")}
+                  </h3>
+                  <p className="text-xs sm:text-sm font-semibold text-violet-900">
+                    {t("scheme_kcc_benefit", "Crop loans up to ₹5 lakh at just 4% interest")}
+                  </p>
+                  <p className="text-xs leading-relaxed text-gray-600">
+                    {t(
+                      "scheme_kcc_desc",
+                      "Collateral-free up to ₹2 lakh. Apply via any bank branch, Kisan Rin Portal, or e-KCC digital process. Covers crop production & allied activities."
+                    )}
+                  </p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-violet-100/80 mt-2">
+                <a
+                  href="https://kisancreditcard.gov.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs font-bold text-violet-700 hover:underline"
+                >
+                  <span>kisancreditcard.gov.in</span>
+                  <ExternalLink className="ml-1 h-3 w-3" />
+                </a>
+              </div>
+            </Card>
+          </div>
         </section>
 
         {/* ─── 5. RECENT AGRICULTURAL ACTIVITIES & ADVISORIES ─── */}
