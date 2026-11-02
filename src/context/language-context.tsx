@@ -26,6 +26,8 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     nav_profile: "Profile",
     nav_signin: "Sign in",
     nav_signout: "Sign out",
+    nav_back: "Back to Home",
+    back: "Back",
 
     // Hero Section
     hero_eyebrow: "AI-Powered Farming",
@@ -83,6 +85,8 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     nav_profile: "ನನ್ನ ಪ್ರೊಫೈಲ್",
     nav_signin: "ಲಾಗಿನ್ ಮಾಡಿ",
     nav_signout: "ನಿರ್ಗಮಿಸಿ",
+    nav_back: "ಮುಖಪುಟಕ್ಕೆ ಹಿಂದಿರುಗಿ",
+    back: "ಹಿಂದಕ್ಕೆ",
 
     // Hero Section
     hero_eyebrow: "ಎಐ-ಚಾಲಿತ ಕೃಷಿ ಸಹಾಯ",
@@ -136,6 +140,8 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
     nav_profile: "मेरी प्रोफाइल",
     nav_signin: "साइन इन करें",
     nav_signout: "साइन आउट",
+    nav_back: "होम पेज पर वापस जाएं",
+    back: "वापस जाएं",
 
     // Hero Section
     hero_eyebrow: "एआई-संचालित कृषि",

@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/hooks/use-auth";
+import { useLanguage } from "@/context/language-context";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -28,6 +29,7 @@ export const Route = createFileRoute("/login")({
 function LoginPage() {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { t } = useLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -126,6 +128,23 @@ function LoginPage() {
   return (
     <main className="grid min-h-screen place-items-center bg-white px-4 py-12">
       <div className="w-full max-w-md animate-fade-up">
+        <div className="mb-4">
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (typeof window !== "undefined" && window.history.length > 1 && (window.history.state?.idx ?? 0) > 0) {
+                e.preventDefault();
+                window.history.back();
+              }
+            }}
+            className="group inline-flex items-center gap-2 rounded-full border border-gray-200/90 bg-white/95 px-3.5 py-1.5 text-xs font-semibold text-gray-700 shadow-xs transition-all hover:border-green-300 hover:bg-green-50/80 hover:text-green-700 active:scale-95 sm:text-sm cursor-pointer"
+            aria-label={t("nav_back", "Back to Home")}
+          >
+            <ArrowLeft className="h-4 w-4 text-green-600 transition-transform duration-200 group-hover:-translate-x-1" />
+            <span>{t("nav_back", "Back to Home")}</span>
+          </Link>
+        </div>
+
         <div className="mb-6 flex flex-col items-center">
           <Link to="/" className="flex items-center gap-2">
             <img src="/logo.png" alt="KrishiMitra AI" className="h-24 w-24 sm:h-32 sm:w-32 object-contain" />

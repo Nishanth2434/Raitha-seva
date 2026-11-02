@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
-import { Leaf, Menu, X, User as UserIcon, LogOut, Globe } from "lucide-react";
+import { Leaf, Menu, X, User as UserIcon, LogOut, Globe, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -16,6 +16,8 @@ export function Navbar() {
   const { user, role, logout } = useAuth();
   const { language, setLanguage, t } = useLanguage();
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   async function signOut() {
     logout();
@@ -35,12 +37,32 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
       <nav className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6">
-        <Link to="/" className="flex min-w-0 items-center gap-2">
-          <img src="/logo.png" alt="KrishiMitra AI" className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 object-contain" />
-          <span className="truncate text-lg font-bold">
-            Krishi<span className="text-primary">Mitra</span> AI
-          </span>
-        </Link>
+        <div className="flex min-w-0 items-center gap-2">
+          {!isHome && (
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined" && window.history.length > 1 && (window.history.state?.idx ?? 0) > 0) {
+                  window.history.back();
+                } else {
+                  navigate({ to: "/" });
+                }
+              }}
+              aria-label={t("back", "Back")}
+              title={t("nav_back", "Back to Home")}
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-border bg-white text-gray-700 shadow-2xs hover:bg-green-50 hover:border-green-300 hover:text-green-700 transition-colors lg:hidden cursor-pointer"
+            >
+              <ArrowLeft className="h-5 w-5 text-green-600" />
+            </button>
+          )}
+
+          <Link to="/" className="flex min-w-0 items-center gap-2">
+            <img src="/logo.png" alt="KrishiMitra AI" className="h-16 w-16 sm:h-20 sm:w-20 shrink-0 object-contain" />
+            <span className="truncate text-lg font-bold">
+              Krishi<span className="text-primary">Mitra</span> AI
+            </span>
+          </Link>
+        </div>
 
         <div className="hidden items-center gap-1 lg:flex">
           {links.map((l) => (
