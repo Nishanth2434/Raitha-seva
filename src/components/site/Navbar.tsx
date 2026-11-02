@@ -15,6 +15,7 @@ import {
   Mic,
   HelpCircle,
   Landmark,
+  Film,
   ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -68,6 +69,7 @@ export function Navbar() {
   const secondaryLinks = [
     { to: "/schemes", label: t("nav_schemes_short", "Schemes"), icon: Landmark },
     { to: "/voice-assistant", label: t("nav_voice_short", "Voice"), icon: Mic },
+    { to: "/reels", label: t("nav_reels", "Reels"), icon: Film },
     { to: "/help", label: t("nav_help_short", "Help"), icon: HelpCircle },
   ];
 
@@ -79,6 +81,7 @@ export function Navbar() {
     if (to === "/pest-alerts") return location.pathname === "/pest-alerts" || location.pathname === "/pest";
     if (to === "/market-prices") return location.pathname === "/market-prices" || location.pathname === "/market";
     if (to === "/schemes") return location.pathname === "/schemes";
+    if (to === "/reels") return location.pathname === "/reels";
     if (to === "/help") return location.pathname === "/help" || location.pathname === "/onboarding" || location.pathname === "/saathi";
     return location.pathname === to;
   };

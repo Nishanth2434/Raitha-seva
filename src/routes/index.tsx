@@ -26,6 +26,9 @@ import {
   IndianRupee,
   ExternalLink,
   ChevronRight,
+  Play,
+  Film,
+  Eye,
 } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -78,6 +81,73 @@ export function Index() {
       isMounted = false;
     };
   }, []);
+
+  const featuredReels = [
+    {
+      id: "reel-1",
+      titleEn: "Jeevamrut Preparation in 200L Drum",
+      titleKn: "200 ಲೀಟರ್ ಡ್ರಮ್‌ನಲ್ಲಿ ಜೀವಾಮೃತ ತಯಾರಿಕೆ ವಿಧಾನ",
+      titleHi: "200 लीटर ड्रम में जीवामृत बनाने की विधि",
+      descEn: "Step-by-step ratio of cow dung, urine, jaggery and gram flour to boost soil microbes natively.",
+      descKn: "ಮಣ್ಣಿನ ಫಲವತ್ತತೆ ಹೆಚ್ಚಿಸಲು ಸಗಣಿ, ಗಂಜಲ, ಬೆಲ್ಲ ಮತ್ತು ಕಡಲೆಹಿಟ್ಟಿನ ನಿಖರ ಪ್ರಮಾಣ.",
+      descHi: "मिट्टी की उर्वरता बढ़ाने के लिए गोबर, गोमूत्र, गुड़ और बेसन का सही अनुपात।",
+      category: "Organic Farming",
+      categoryKn: "ಸಾವಯವ ಕೃಷಿ",
+      categoryHi: "जैविक खेती",
+      thumbnail: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=800&q=80",
+      views: "18.4K",
+      author: "Ramesh Patil",
+      location: "Nashik, MH",
+    },
+    {
+      id: "reel-6",
+      titleEn: "Pre-Monsoon Foliar Micronutrient Spray",
+      titleKn: "ಮುಂಗಾರು ಪೂರ್ವ ಎಲೆಗಳ ಪೋಷಕಾಂಶ ಸಿಂಪಡಣೆ",
+      titleHi: "मानसून पूर्व पर्णीय सूक्ष्म पोषक छिड़काव",
+      descEn: "Blend Zinc & Boron spray before heavy rains to prevent flower drop.",
+      descKn: "ಭಾರೀ ಮಳೆಗೂ ಮುನ್ನ ಹೂವು ಉದುರುವುದನ್ನು ತಡೆಯಲು ಸತು & ಬೋರಾನ್ ಸಿಂಪಡಣೆ.",
+      descHi: "फूलों को झड़ने से रोकने के लिए बारिश से पहले जिंक और बोरॉन का छिड़काव।",
+      category: "Crop Care",
+      categoryKn: "ಬೆಳೆ ರಕ್ಷಣೆ",
+      categoryHi: "फसल सुरक्षा",
+      thumbnail: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+      views: "12.7K",
+      author: "Venkatesh Rao",
+      location: "Mandya, KA",
+    },
+    {
+      id: "reel-2",
+      titleEn: "Laser Land Leveler Settings & Operation",
+      titleKn: "ಲೇಸರ್ ಲ್ಯಾಂಡ್ ಲೆವೆಲರ್ ಸೆಟ್ಟಿಂಗ್ಸ್ & ಬಳಕೆ",
+      titleHi: "लेजर लैंड लेवलर सेटिंग्स और संचालन",
+      descEn: "Save up to 35% irrigation water by precision levelling your field before paddy sowing.",
+      descKn: "ಭತ್ತ ಬಿತ್ತನೆಗೂ ಮುನ್ನ ಮಣ್ಣು ಸಮತಟ್ಟು ಮಾಡಿ ಶೇ. 35 ರಷ್ಟು ನೀರು ಉಳಿಸಿ.",
+      descHi: "धान की बुवाई से पहले खेत समतल करके 35% तक सिंचाई जल बचाएं।",
+      category: "Machinery",
+      categoryKn: "ಕೃಷಿ ಯಂತ್ರೋಪಕರಣ",
+      categoryHi: "कृषि मशीनरी",
+      thumbnail: "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80",
+      views: "24.1K",
+      author: "Iqbal Singh",
+      location: "Karnal, HR",
+    },
+    {
+      id: "reel-3",
+      titleEn: "PM-Kisan 17th Installment Status Check",
+      titleKn: "ಪಿಎಂ-ಕಿಸಾನ್ 17ನೇ ಕಂತಿನ ಸ್ಥಿತಿ ಪರಿಶೀಲನೆ",
+      titleHi: "पीएम-किसान 17वीं किस्त की स्थिति जांचें",
+      descEn: "Quick guide to verify e-KYC status and direct bank transfer eligibility.",
+      descKn: "e-KYC ಸ್ಥಿತಿ ಮತ್ತು ಬ್ಯಾಂಕ್ ಖಾತೆಗೆ ಜಮೆ ಪರಿಶೀಲಿಸುವ ಸರಳ ಮಾರ್ಗದರ್ಶಿ.",
+      descHi: "ई-केवाईसी स्थिति और डायरेक्ट बैंक ट्रांसफर पात्रता जांचने की त्वरित गाइड।",
+      category: "Government Schemes",
+      categoryKn: "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು",
+      categoryHi: "सरकारी योजनाएं",
+      thumbnail: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
+      views: "42.8K",
+      author: "KrishiMitra Govt Desk",
+      location: "New Delhi",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-slate-50/50 pb-16 xl:pb-0 flex flex-col">
@@ -702,6 +772,140 @@ export function Index() {
                       <ChevronRight className="h-3.5 w-3.5 text-gray-400 group-hover:text-green-600 transition-colors shrink-0 ml-1" />
                     </div>
                   </Card>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ─── 6. 🎥 AGRI REELS & FARMING PRACTICAL VIDEOS ─── */}
+        <section className="space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
+                <Film className="h-4 w-4" />
+              </span>
+              <div>
+                <h2 className="text-base sm:text-lg font-extrabold text-gray-900">
+                  {language === "kn"
+                    ? "ಕೃಷಿ ರೀಲ್ಸ್‌ಗಳು (Agri Reels)"
+                    : language === "hi"
+                    ? "कृषि रील्स (Agri Reels)"
+                    : "Agri Reels — Practical Farming Videos"}
+                </h2>
+                <p className="text-xs text-gray-500">
+                  {language === "kn"
+                    ? "ಸಾವಯವ ಕೃಷಿ, ಯಂತ್ರೋಪಕರಣ ಬಳಕೆ ಮತ್ತು ಬೆಳೆ ರಕ್ಷಣೆಯ ವೀಡಿಯೊಗಳು"
+                    : language === "hi"
+                    ? "जैविक खेती, मशीनरी और फसल सुरक्षा के उपयोगी वीडियो"
+                    : "Short practical farming lessons, machinery demos & expert tips"}
+                </p>
+              </div>
+            </div>
+
+            <Button
+              asChild
+              size="sm"
+              variant="outline"
+              className="rounded-full text-xs font-bold border-purple-200 text-purple-700 hover:bg-purple-50 self-start sm:self-auto"
+            >
+              <Link to="/reels">
+                <Play className="mr-1.5 h-3.5 w-3.5 fill-purple-600 text-purple-600" />
+                <span>
+                  {language === "kn"
+                    ? "ಎಲ್ಲಾ ರೀಲ್ಸ್‌ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
+                    : language === "hi"
+                    ? "सभी रील्स देखें"
+                    : t("watch_reels", "Watch Reels")}
+                </span>
+                <ChevronRight className="ml-1 h-3.5 w-3.5" />
+              </Link>
+            </Button>
+          </div>
+
+          {/* Featured Reels Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {featuredReels.map((reel) => {
+              const title =
+                language === "kn"
+                  ? reel.titleKn
+                  : language === "hi"
+                  ? reel.titleHi
+                  : reel.titleEn;
+              const desc =
+                language === "kn"
+                  ? reel.descKn
+                  : language === "hi"
+                  ? reel.descHi
+                  : reel.descEn;
+              const category =
+                language === "kn"
+                  ? reel.categoryKn
+                  : language === "hi"
+                  ? reel.categoryHi
+                  : reel.category;
+
+              return (
+                <Link
+                  key={reel.id}
+                  to="/reels"
+                  className="group block rounded-3xl overflow-hidden border border-gray-200/90 bg-white shadow-2xs hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                >
+                  {/* Thumbnail Container */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-900">
+                    <img
+                      src={reel.thumbnail}
+                      alt={title}
+                      className="h-full w-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                    {/* Category Pill */}
+                    <Badge className="absolute top-3 left-3 bg-white/95 text-gray-900 border-0 text-[10px] font-bold shadow-xs">
+                      {category}
+                    </Badge>
+
+                    {/* View Count */}
+                    <span className="absolute top-3 right-3 flex items-center gap-1 rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur-xs">
+                      <Eye className="h-3 w-3" /> {reel.views}
+                    </span>
+
+                    {/* Center Play Icon */}
+                    <div className="absolute inset-0 grid place-items-center">
+                      <span className="grid h-10 w-10 place-items-center rounded-full bg-white/30 text-white backdrop-blur-md shadow-md transition-transform duration-300 group-hover:scale-115 group-hover:bg-green-600">
+                        <Play className="h-5 w-5 ml-0.5 fill-white" />
+                      </span>
+                    </div>
+
+                    {/* Bottom Author Pill */}
+                    <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white text-[11px]">
+                      <span className="font-semibold truncate drop-shadow-sm">
+                        {reel.author} · {reel.location}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="p-3.5 space-y-1.5">
+                    <h3 className="text-xs font-bold text-gray-900 group-hover:text-green-700 transition-colors line-clamp-1">
+                      {title}
+                    </h3>
+                    <p className="text-[11px] text-gray-500 line-clamp-2 leading-relaxed">
+                      {desc}
+                    </p>
+                    <div className="pt-2 flex items-center justify-between text-[11px] font-bold text-purple-700 border-t border-gray-100">
+                      <span className="flex items-center gap-1">
+                        <Play className="h-3 w-3 fill-purple-600" />
+                        {language === "kn"
+                          ? "ವೀಕ್ಷಿಸಿ"
+                          : language === "hi"
+                          ? "देखें"
+                          : "Play Reel"}
+                      </span>
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
                 </Link>
               );
             })}
