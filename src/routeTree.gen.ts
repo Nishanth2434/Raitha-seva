@@ -13,8 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarketRouteImport } from './routes/market'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PestRouteImport } from './routes/pest'
 import { Route as ReelsRouteImport } from './routes/reels'
+import { Route as SaathiRouteImport } from './routes/saathi'
 import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 
@@ -37,6 +39,11 @@ const MarketRoute = MarketRouteImport.update({
   path: '/market',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PestRoute = PestRouteImport.update({
   id: '/pest',
   path: '/pest',
@@ -45,6 +52,11 @@ const PestRoute = PestRouteImport.update({
 const ReelsRoute = ReelsRouteImport.update({
   id: '/reels',
   path: '/reels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SaathiRoute = SaathiRouteImport.update({
+  id: '/saathi',
+  path: '/saathi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WeatherRoute = WeatherRouteImport.update({
@@ -62,8 +74,10 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
+  '/onboarding': typeof OnboardingRoute
   '/pest': typeof PestRoute
   '/reels': typeof ReelsRoute
+  '/saathi': typeof SaathiRoute
   '/weather': typeof WeatherRoute
   '/profile': typeof AuthenticatedProfileRoute
 }
@@ -71,8 +85,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
+  '/onboarding': typeof OnboardingRoute
   '/pest': typeof PestRoute
   '/reels': typeof ReelsRoute
+  '/saathi': typeof SaathiRoute
   '/weather': typeof WeatherRoute
   '/profile': typeof AuthenticatedProfileRoute
 }
@@ -82,25 +98,46 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
+  '/onboarding': typeof OnboardingRoute
   '/pest': typeof PestRoute
   '/reels': typeof ReelsRoute
+  '/saathi': typeof SaathiRoute
   '/weather': typeof WeatherRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/login' | '/market' | '/pest' | '/reels' | '/weather' | '/profile'
+    | '/'
+    | '/login'
+    | '/market'
+    | '/onboarding'
+    | '/pest'
+    | '/reels'
+    | '/saathi'
+    | '/weather'
+    | '/profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/market' | '/pest' | '/reels' | '/weather' | '/profile'
+  to:
+    | '/'
+    | '/login'
+    | '/market'
+    | '/onboarding'
+    | '/pest'
+    | '/reels'
+    | '/saathi'
+    | '/weather'
+    | '/profile'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/login'
     | '/market'
+    | '/onboarding'
     | '/pest'
     | '/reels'
+    | '/saathi'
     | '/weather'
     | '/_authenticated/profile'
   fileRoutesById: FileRoutesById
@@ -110,8 +147,10 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   LoginRoute: typeof LoginRoute
   MarketRoute: typeof MarketRoute
+  OnboardingRoute: typeof OnboardingRoute
   PestRoute: typeof PestRoute
   ReelsRoute: typeof ReelsRoute
+  SaathiRoute: typeof SaathiRoute
   WeatherRoute: typeof WeatherRoute
 }
 
@@ -145,6 +184,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pest': {
       id: '/pest'
       path: '/pest'
@@ -157,6 +203,13 @@ declare module '@tanstack/react-router' {
       path: '/reels'
       fullPath: '/reels'
       preLoaderRoute: typeof ReelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saathi': {
+      id: '/saathi'
+      path: '/saathi'
+      fullPath: '/saathi'
+      preLoaderRoute: typeof SaathiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/weather': {
@@ -192,8 +245,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   LoginRoute: LoginRoute,
   MarketRoute: MarketRoute,
+  OnboardingRoute: OnboardingRoute,
   PestRoute: PestRoute,
   ReelsRoute: ReelsRoute,
+  SaathiRoute: SaathiRoute,
   WeatherRoute: WeatherRoute,
 }
 export const routeTree = rootRouteImport

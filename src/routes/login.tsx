@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/hooks/use-auth";
 import { useLanguage } from "@/context/language-context";
+import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -40,7 +41,11 @@ function LoginPage() {
 
   useEffect(() => {
     if (user) {
-      navigate({ to: "/", replace: true });
+      if (typeof window !== "undefined" && sessionStorage.getItem("raitha_seva_is_new_signup") === "true") {
+        navigate({ to: "/onboarding", replace: true });
+      } else {
+        navigate({ to: "/", replace: true });
+      }
     }
   }, [user, navigate]);
 
@@ -63,6 +68,10 @@ function LoginPage() {
     if (error || !data.user) {
       toast.error(error?.message || "Invalid credentials. Please try again.");
       return;
+    }
+
+    if (typeof window !== "undefined") {
+      sessionStorage.removeItem("raitha_seva_is_new_signup");
     }
 
     toast.success("Welcome back!");
@@ -120,8 +129,13 @@ function LoginPage() {
       }
     }
 
-    toast.success("Account created successfully! Welcome to KrishiMitra AI!");
-    navigate({ to: "/", replace: true });
+    // Set first-time signup flag and redirect to Raitha Seva Saathi welcome onboarding
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("raitha_seva_is_new_signup", "true");
+    }
+
+    toast.success("ಖಾತೆ ಯಶಸ್ವಿಯಾಗಿ ರಚನೆಯಾಗಿದೆ! ರೈತ ಸೇವಾ ಸಾಥಿಗೆ ಸ್ವಾಗತ!");
+    navigate({ to: "/onboarding", replace: true });
   }
 
   // ─── Main Login / Sign-Up View ──────────────────────────────────────────────
@@ -338,7 +352,21 @@ function LoginPage() {
               </TabsContent>
             </Tabs>
 
-            <div className="mt-6 text-center text-xs text-gray-500">
+            <div className="mt-5 rounded-2xl border border-green-200 bg-green-50/70 p-3 text-center text-xs text-gray-700">
+              <span className="text-gray-600">ಸೈನ್ ಅಪ್ ಅಥವಾ ಲಾಗಿನ್ ಮಾಡಲು ತೊಂದರೆ ಇದೆಯೇ? </span>
+              <div className="mt-1 flex items-center justify-center gap-1.5 font-bold text-green-800">
+                <span>📞 {CUSTOMER_CARE_CONFIG.labelKn}:</span>
+                <a
+                  href={CUSTOMER_CARE_CONFIG.telLink}
+                  className="underline hover:text-green-950"
+                  title="Call Customer Care"
+                >
+                  {CUSTOMER_CARE_CONFIG.formattedPhone}
+                </a>
+              </div>
+            </div>
+
+            <div className="mt-4 text-center text-xs text-gray-500">
               <Link
                 to="/"
                 className="inline-flex items-center text-gray-600 hover:text-green-600 font-medium"

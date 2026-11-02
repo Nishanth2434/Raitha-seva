@@ -32,6 +32,7 @@ export function Navbar() {
     { to: "/pest", label: t("nav_pest", "Pest AI") },
     { to: "/market", label: t("nav_market", "Market") },
     { to: "/reels", label: t("nav_reels", "Reels") },
+    { to: "/onboarding", label: t("nav_care", "ಸಹಾಯ (Care)") },
   ];
 
   return (

@@ -1,0 +1,345 @@
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
+import { useState } from "react";
+import {
+  Phone,
+  MessageCircle,
+  Copy,
+  Check,
+  ArrowRight,
+  CloudSun,
+  Bug,
+  TrendingUp,
+  Mic,
+  Tractor,
+  Clock,
+  Sparkles,
+  ArrowLeft,
+  Info,
+  CheckCircle2,
+} from "lucide-react";
+import { toast } from "sonner";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { useAuth } from "@/hooks/use-auth";
+import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
+import { supabase } from "@/lib/supabase";
+
+export const Route = createFileRoute("/onboarding")({
+  head: () => ({
+    meta: [
+      { title: "ರೈತ ಸೇವಾ ಸಾಥಿ | Raitha Seva Saathi — Onboarding & Support" },
+      {
+        name: "description",
+        content:
+          "ನಮಸ್ಕಾರ ರೈತ ಮಿತ್ರರೇ! ರೈತ ಸೇವಾಕ್ಕೆ ಸ್ವಾಗತ. ನಿಮ್ಮ ಕೃಷಿ ಕೆಲಸಗಳಿಗೆ ನಾವು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.",
+      },
+    ],
+  }),
+  component: OnboardingPage,
+});
+
+export function OnboardingPage() {
+  const navigate = useNavigate();
+  const { authUser } = useAuth();
+  const [copied, setCopied] = useState(false);
+
+  // Mark onboarding completed and navigate to dashboard
+  const completeOnboardingAndProceed = async (targetRoute = "/") => {
+    try {
+      if (typeof window !== "undefined") {
+        sessionStorage.removeItem("raitha_seva_is_new_signup");
+        localStorage.setItem("raitha_seva_onboarding_completed", "true");
+        if (authUser?.id) {
+          localStorage.setItem(`raitha_seva_onboarding_completed_${authUser.id}`, "true");
+        }
+      }
+
+      // Record in Supabase profile if possible (graceful fallback if column not present)
+      if (authUser?.id) {
+        supabase
+          .from("profiles")
+          .update({ updated_at: new Date().toISOString() })
+          .eq("id", authUser.id)
+          .then(() => {})
+          .catch(() => {});
+      }
+    } catch {
+      // Ignore storage errors
+    }
+
+    navigate({ to: targetRoute as any, replace: true });
+  };
+
+  const handleCopyPhone = async () => {
+    try {
+      await navigator.clipboard.writeText(CUSTOMER_CARE_CONFIG.rawPhone);
+      setCopied(true);
+      toast.success(
+        `${CUSTOMER_CARE_CONFIG.copiedKn} (${CUSTOMER_CARE_CONFIG.formattedPhone})`
+      );
+      setTimeout(() => setCopied(false), 3000);
+    } catch {
+      toast.info(`ಗ್ರಾಹಕ ಸೇವೆ ಸಂಖ್ಯೆ: ${CUSTOMER_CARE_CONFIG.formattedPhone}`);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-linear-to-b from-green-50/60 via-white to-amber-50/40 px-4 py-8 sm:py-12">
+      <div className="mx-auto max-w-3xl">
+        {/* Top Navigation Bar with Back & Skip */}
+        <div className="mb-6 flex items-center justify-between">
+          <Link
+            to="/"
+            onClick={(e) => {
+              e.preventDefault();
+              completeOnboardingAndProceed("/");
+            }}
+            className="group inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-gray-700 shadow-xs transition-all hover:bg-green-50 hover:text-green-700 sm:text-sm"
+          >
+            <ArrowLeft className="h-4 w-4 text-green-600 transition-transform group-hover:-translate-x-0.5" />
+            <span>ಹಿಂದೆ (Back)</span>
+          </Link>
+
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => completeOnboardingAndProceed("/")}
+            className="text-xs font-medium text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+          >
+            ದಾಟಿಸಿ (Skip to Dashboard)
+          </Button>
+        </div>
+
+        {/* Welcome Header */}
+        <header className="text-center animate-fade-up">
+          <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-100/80 px-4 py-1.5 text-xs font-bold text-green-800 shadow-xs">
+            <Sparkles className="h-4 w-4 text-green-600" />
+            <span>ರೈತ ಸೇವಾ ಸಾಥಿ • Raitha Seva Saathi</span>
+          </div>
+
+          <h1 className="mt-4 text-2xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+            ನಮಸ್ಕಾರ ರೈತ ಮಿತ್ರರೇ!
+          </h1>
+          <p className="mt-2 text-base font-semibold text-green-700 sm:text-xl">
+            ರೈತ ಸೇವಾಕ್ಕೆ ಸ್ವಾಗತ. ನಿಮ್ಮ ಕೃಷಿ ಕೆಲಸಗಳಿಗೆ ನಾವು ಸಹಾಯ ಮಾಡುತ್ತೇವೆ.
+          </p>
+          <p className="mx-auto mt-2 max-w-xl text-xs text-gray-600 sm:text-sm">
+            ಕರ್ನಾಟಕದ ರೈತರಿಗೆ ಹವಾಮಾನ, ಕೀಟ ಬಾಧೆ ನಿಯಂತ್ರಣ, ಮಂಡಿ ಬೆಲೆಗಳು ಮತ್ತು ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರದ (KVK) ಅಧಿಕೃತ ಮಾರ್ಗದರ್ಶನ ನೀಡುವ ತಂತ್ರಜ್ಞಾನ ವೇದಿಕೆ.
+          </p>
+        </header>
+
+        {/* Temporary Customer Care Section */}
+        <Card className="mt-8 overflow-hidden rounded-3xl border-2 border-green-500 bg-linear-to-br from-green-50 via-white to-emerald-50 shadow-xl shadow-green-100/50">
+          <CardHeader className="bg-green-600/10 pb-4 text-center">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-green-600 text-white shadow-md shadow-green-200">
+              <Phone className="h-6 w-6" />
+            </div>
+            <div className="mt-3">
+              <Badge variant="outline" className="border-amber-400 bg-amber-50 text-[11px] font-bold text-amber-800">
+                {CUSTOMER_CARE_CONFIG.labelKn}
+              </Badge>
+            </div>
+            <CardTitle className="mt-2 text-2xl font-black text-gray-900 sm:text-3xl tracking-tight">
+              {CUSTOMER_CARE_CONFIG.formattedPhone}
+            </CardTitle>
+            <CardDescription className="text-xs text-gray-600">
+              ಯಾವುದೇ ತಾಂತ್ರಿಕ ನೆರವು ಅಥವಾ ಅಪ್ಲಿಕೇಶನ್ ಬಳಕೆಯ ಪ್ರಶ್ನೆಗಳಿಗೆ ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಿ.
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent className="space-y-4 p-5 sm:p-6">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {/* Call Button */}
+              <a
+                href={CUSTOMER_CARE_CONFIG.telLink}
+                className="flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-green-600 px-4 text-sm font-bold text-white shadow-lg shadow-green-200 transition-all hover:bg-green-700 hover:shadow-green-300 active:scale-98"
+                aria-label={`${CUSTOMER_CARE_CONFIG.callButtonKn}: ${CUSTOMER_CARE_CONFIG.formattedPhone}`}
+              >
+                <Phone className="h-4 w-4" />
+                <span>{CUSTOMER_CARE_CONFIG.callButtonKn}</span>
+              </a>
+
+              {/* Desktop Copy Button */}
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleCopyPhone}
+                className="h-12 w-full rounded-2xl border-gray-300 bg-white text-sm font-semibold text-gray-700 hover:bg-gray-50 active:scale-98"
+              >
+                {copied ? (
+                  <>
+                    <Check className="mr-1.5 h-4 w-4 text-green-600" />
+                    <span className="text-green-700 font-bold">{CUSTOMER_CARE_CONFIG.copiedKn}</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="mr-1.5 h-4 w-4 text-gray-500" />
+                    <span>{CUSTOMER_CARE_CONFIG.copyButtonKn}</span>
+                  </>
+                )}
+              </Button>
+            </div>
+
+            {/* Optional WhatsApp Button */}
+            <a
+              href={CUSTOMER_CARE_CONFIG.whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex h-11 w-full items-center justify-center gap-2 rounded-2xl border border-emerald-300 bg-emerald-50 px-4 text-xs font-bold text-emerald-800 transition-all hover:bg-emerald-100 hover:border-emerald-400 active:scale-98 sm:text-sm"
+            >
+              <MessageCircle className="h-4 w-4 text-emerald-600" />
+              <span>{CUSTOMER_CARE_CONFIG.whatsappButtonKn}</span>
+            </a>
+
+            {/* Disclaimers & Notes */}
+            <div className="rounded-xl bg-amber-50/80 p-3 text-[11px] text-amber-900 border border-amber-200/60 space-y-1">
+              <p className="flex items-start gap-1.5 font-medium">
+                <Info className="h-3.5 w-3.5 shrink-0 mt-0.5 text-amber-700" />
+                <span>{CUSTOMER_CARE_CONFIG.disclaimerKn}</span>
+              </p>
+              <p className="text-[10px] text-amber-800/80 pl-5">
+                {CUSTOMER_CARE_CONFIG.whatsappNoteKn}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Feature Explanations in Simple Kannada */}
+        <section className="mt-10">
+          <div className="mb-4 text-center sm:text-left">
+            <h2 className="text-lg font-bold text-gray-900 sm:text-xl">
+              ರೈತ ಸೇವಾದಲ್ಲಿ ಲಭ್ಯವಿರುವ ಪ್ರಮುಖ ಸೌಲಭ್ಯಗಳು
+            </h2>
+            <p className="text-xs text-gray-500">
+              ನಮ್ಮ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ನೀವು ಬಳಸಬಹುದಾದ ಸೇವೆಗಳ ವಿವರ ಇಲ್ಲಿದೆ:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {/* Feature 1: Weather */}
+            <Card className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:border-green-300 transition-colors">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700">
+                    <CloudSun className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-900">ಹವಾಮಾನ ಮಾಹಿತಿ</h3>
+                    <p className="text-[11px] text-gray-500">Weather Information</p>
+                  </div>
+                </div>
+                <Badge className="bg-green-100 text-[10px] font-semibold text-green-800 border-green-200">
+                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" /> ಚಾಲ್ತಿಯಲ್ಲಿದೆ
+                </Badge>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-gray-600">
+                ಮುಂದಿನ 7 ದಿನಗಳ ಹವಾಮಾನ ಮುನ್ಸೂಚನೆ, ತಾಪಮಾನ, ಮಳೆಯ ಸಾಧ್ಯತೆ ಮತ್ತು ಕೃಷಿ ಸಿಂಪಡಣೆಗೆ ಸೂಕ್ತ ದಿನಗಳ ಸಲಹೆ.
+              </p>
+            </Card>
+
+            {/* Feature 2: Pest & Disease */}
+            <Card className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:border-green-300 transition-colors">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-rose-100 text-rose-700">
+                    <Bug className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-900">ಕೀಟ ಮತ್ತು ರೋಗ ಎಚ್ಚರಿಕೆಗಳು</h3>
+                    <p className="text-[11px] text-gray-500">Pest & Disease Alerts</p>
+                  </div>
+                </div>
+                <Badge className="bg-green-100 text-[10px] font-semibold text-green-800 border-green-200">
+                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" /> ಚಾಲ್ತಿಯಲ್ಲಿದೆ
+                </Badge>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-gray-600">
+                ಬೆಳೆಯ ಎಲೆ ಅಥವಾ ರೋಗದ ಫೋಟೋ ಸ್ಕ್ಯಾನ್ ಮಾಡಿ ಅಥವಾ ಲಕ್ಷಣ ವಿವರಿಸಿ. ಅಧಿಕೃತ ICAR/UASB ಶಿಫಾರಸಿನ ಸುರಕ್ಷಿತ ಔಷಧ ಪ್ರಮಾಣ ಪಡೆಯಿರಿ.
+              </p>
+            </Card>
+
+            {/* Feature 3: Market Prices */}
+            <Card className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:border-green-300 transition-colors">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
+                    <TrendingUp className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-900">ಮಾರುಕಟ್ಟೆ ಬೆಲೆ ಮಾಹಿತಿ</h3>
+                    <p className="text-[11px] text-gray-500">Market Prices</p>
+                  </div>
+                </div>
+                <Badge className="bg-green-100 text-[10px] font-semibold text-green-800 border-green-200">
+                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" /> ಚಾಲ್ತಿಯಲ್ಲಿದೆ
+                </Badge>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-gray-600">
+                ಮಂಡ್ಯ ಮತ್ತು ಕರ್ನಾಟಕದ ಪ್ರಮುಖ ಎಪಿಎಂಸಿ ಮಾರುಕಟ್ಟೆಗಳಲ್ಲಿ ಭತ್ತ, ರಾಗಿ, ಬೆಲ್ಲ, ತರಕಾರಿಗಳ ಇತ್ತೀಚಿನ ಕನಿಷ್ಠ ಮತ್ತು ಗರಿಷ್ಠ ಬೆಲೆಗಳು.
+              </p>
+            </Card>
+
+            {/* Feature 4: Kannada AI Assistant */}
+            <Card className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm hover:border-green-300 transition-colors">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
+                    <Mic className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-900">ಕನ್ನಡ AI ಸಹಾಯಕ</h3>
+                    <p className="text-[11px] text-gray-500">Kannada AI Assistant</p>
+                  </div>
+                </div>
+                <Badge className="bg-green-100 text-[10px] font-semibold text-green-800 border-green-200">
+                  <CheckCircle2 className="mr-1 h-3 w-3 text-green-600" /> ಚಾಲ್ತಿಯಲ್ಲಿದೆ
+                </Badge>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-gray-600">
+                ಧ್ವನಿ ಅಥವಾ ಸಂದೇಶದ ಮೂಲಕ ನಿಮ್ಮದೇ ಕನ್ನಡ ಭಾಷೆಯಲ್ಲಿ ಪ್ರಶ್ನಿಸಿ, ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರದ ತಜ್ಞರ ಆಧಾರಿತ ನಿಖರ ಸಲಹೆಗಳನ್ನು ತಕ್ಷಣ ಪಡೆಯಿರಿ.
+              </p>
+            </Card>
+
+            {/* Feature 5: Equipment Booking (Clearly labeled Coming Soon) */}
+            <Card className="rounded-2xl border border-dashed border-gray-300 bg-gray-50/70 p-4 sm:col-span-2">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-200 text-gray-600">
+                    <Tractor className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-700">ಕೃಷಿ ಉಪಕರಣಗಳ ಬುಕಿಂಗ್</h3>
+                    <p className="text-[11px] text-gray-500">Equipment Booking</p>
+                  </div>
+                </div>
+                <Badge variant="secondary" className="bg-amber-100 text-[10px] font-semibold text-amber-800 border-amber-200">
+                  <Clock className="mr-1 h-3 w-3 text-amber-600" /> ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ (Coming Soon)
+                </Badge>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-gray-500">
+                ಸ್ಥಳೀಯ ರೈತರು ಮತ್ತು ಕಸ್ಟಮ್ ಹೈರಿಂಗ್ ಕೇಂದ್ರಗಳಿಂದ (CHC) ಟ್ರ್ಯಾಕ್ಟರ್, ಹಾರ್ವೆಸ್ಟರ್ ಹಾಗೂ ಡ್ರೋನ್ ಬಾಡಿಗೆ ಸೇವೆಗಳನ್ನು ಮುಂದಿನ ಹಂತದಲ್ಲಿ ಒದಗಿಸಲಾಗುವುದು.
+              </p>
+            </Card>
+          </div>
+        </section>
+
+        {/* Primary Continue Button */}
+        <div className="mt-10 pb-8 text-center">
+          <Button
+            size="lg"
+            onClick={() => completeOnboardingAndProceed("/")}
+            className="h-14 w-full max-w-md rounded-2xl bg-green-600 px-8 text-base font-extrabold text-white shadow-xl shadow-green-200 hover:bg-green-700 active:scale-98"
+          >
+            <span>{CUSTOMER_CARE_CONFIG.skipButtonKn}</span>
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
+          <p className="mt-2 text-[11px] text-gray-500">
+            ನಿಮ್ಮ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ತೆರಳಿ ಹವಾಮಾನ, ಬೆಳೆ ಸಲಹೆ ಮತ್ತು ಮಂಡಿ ಬೆಲೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ.
+          </p>
+        </div>
+      </div>
+    </main>
+  );
+}
+export default OnboardingPage;
