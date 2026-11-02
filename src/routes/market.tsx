@@ -221,7 +221,7 @@ const districtOptions = [
 ];
 const dateOptions = ["Today (Aug 7)", "Aug 8", "Aug 9", "Next Week Forecast"];
 
-function MarketPage() {
+export function MarketPage() {
   const [selectedCrop, setSelectedCrop] = useState("All Crops");
   const [selectedDistrict, setSelectedDistrict] = useState("All Districts");
   const [selectedDate, setSelectedDate] = useState("Today (Aug 7)");

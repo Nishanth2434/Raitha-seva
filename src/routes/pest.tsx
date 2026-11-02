@@ -228,7 +228,7 @@ const communityAlerts = [
   },
 ];
 
-function PestPage() {
+export function PestPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string>("");
   const [isDragging, setIsDragging] = useState(false);

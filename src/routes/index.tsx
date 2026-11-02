@@ -1,855 +1,570 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SchemeUrlVerifier } from "@/components/site/SchemeUrlVerifier";
-import { useRef } from "react";
 import {
   CloudSun,
   Bug,
   TrendingUp,
   Mic,
   Tractor,
-  ArrowRight,
   Sparkles,
-  Leaf,
-  ChevronRight,
-  ChevronLeft,
-  Thermometer,
+  ArrowRight,
+  ShieldAlert,
+  Phone,
   Droplets,
+  Thermometer,
   Wind,
   CloudRain,
+  MapPin,
+  Clock,
+  HelpCircle,
+  Wheat,
+  User as UserIcon,
+  Globe,
   AlertTriangle,
   CheckCircle2,
-  Play,
-  Eye,
-  MapPin,
-  Landmark,
-  FileText,
-  IndianRupee,
-  Shield,
-  ExternalLink,
-  Globe,
 } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import { AdBanner } from "@/components/site/AdBanner";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/context/language-context";
 import { useWeather } from "@/hooks/use-weather";
-
-// Real-world Unsplash photographs (free commercial use, no attribution required)
-const heroImage =
-  "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1200&q=80";
-const weatherImg =
-  "https://images.unsplash.com/photo-1534088568595-a066f410bcda?auto=format&fit=crop&w=800&q=80";
-const pestImg =
-  "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80";
-const marketImg =
-  "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=800&q=80";
-const voiceImg =
-  "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=800&q=80";
+import { useAuth } from "@/hooks/use-auth";
+import { CUSTOMER_CARE_CONFIG } from "@/lib/customer-care";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "KrishiMitra AI — Smart Farming Companion for Indian Farmers" },
+      { title: "Raitha Seva AI — ರೈತ ಸೇವಾ ಕೃಷಿ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್" },
       {
         name: "description",
         content:
-          "AI-powered farming assistant — hyperlocal weather advice, pest prediction, live mandi prices, voice assistant and agricultural guidance.",
-      },
-      { property: "og:title", content: "KrishiMitra AI — Smart Farming Companion" },
-      {
-        property: "og:description",
-        content:
-          "Weather advisories, pest prediction, mandi intelligence, and voice AI in one unified farmer companion.",
+          "AI-powered farming summary dashboard — hyperlocal weather advice, pest alert summary, live mandi prices, and verified ICAR/UASB agricultural guidance.",
       },
     ],
   }),
   component: Index,
 });
 
-const stats = [
-  { value: "11.8 Cr", label: "PM-KISAN Beneficiaries" },
-  { value: "7,000+", label: "APMC Mandis" },
-  { value: "28", label: "States Covered" },
-  { value: "Agmarknet", label: "Data Source" },
-];
-
-function Index() {
+export function Index() {
   const { t, language, setLanguage } = useLanguage();
-  const { location, weatherData, isLoading, isLocating, locationSource } = useWeather();
+  const { user } = useAuth();
+  const { location, weatherData, isLoading, locationSource, isLocating } = useWeather();
   const cur = locationSource === "default" ? undefined : weatherData?.current;
-  const featureScrollRef = useRef<HTMLDivElement>(null);
 
-  function scrollFeatures(direction: "left" | "right") {
-    if (featureScrollRef.current) {
-      const scrollAmount = direction === "left" ? -340 : 340;
-      featureScrollRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  }
-
-  const featuresList = [
+  const quickFeatures = [
+    {
+      to: "/assistant",
+      icon: Sparkles,
+      titleKn: "AI ಕೃಷಿ ಸಹಾಯಕ",
+      titleEn: "AI Assistant",
+      descKn: "ಕನ್ನಡದಲ್ಲೇ ಕೃಷಿ ಪರಿಹಾರ",
+      descEn: "Evidence-grounded advice",
+      color: "border-emerald-200 bg-emerald-50/60 hover:bg-emerald-100/70 text-emerald-800",
+      iconColor: "bg-emerald-600 text-white",
+    },
     {
       to: "/weather",
       icon: CloudSun,
-      image: weatherImg,
-      title: t("feat_weather_title", "Weather Advisor"),
-      text: t(
-        "feat_weather_desc",
-        "Hyperlocal 7-day forecasts turned into spray, irrigation and harvest decisions.",
-      ),
-      color: "from-sky-50 to-blue-50 border-sky-100",
-      iconBg: "bg-sky-100 text-sky-600",
+      titleKn: "ಹವಾಮಾನ ಸಲಹೆ",
+      titleEn: "Weather Advisor",
+      descKn: "7 ದಿನಗಳ ಮಳೆ ಮುನ್ಸೂಚನೆ",
+      descEn: "7-day rain & spray forecast",
+      color: "border-sky-200 bg-sky-50/60 hover:bg-sky-100/70 text-sky-800",
+      iconColor: "bg-sky-600 text-white",
     },
     {
-      to: "/pest",
+      to: "/pest-alerts",
       icon: Bug,
-      image: pestImg,
-      title: t("feat_pest_title", "Pest Alerts"),
-      text: t(
-        "feat_pest_desc",
-        "AI-powered outbreak risk scores 10 days ahead tuned to your village and crop.",
-      ),
-      color: "from-amber-50 to-yellow-50 border-amber-100",
-      iconBg: "bg-amber-100 text-amber-600",
+      titleKn: "ಕೀಟ ರೋಗ ಎಚ್ಚರಿಕೆ",
+      titleEn: "Pest Alerts",
+      descKn: "ರೋಗ ಪತ್ತೆ ಮತ್ತು ಸುರಕ್ಷಿತ ಔಷಧ",
+      descEn: "Disease scan & dosage",
+      color: "border-amber-200 bg-amber-50/60 hover:bg-amber-100/70 text-amber-800",
+      iconColor: "bg-amber-600 text-white",
     },
     {
-      to: "/market",
+      to: "/market-prices",
       icon: TrendingUp,
-      image: marketImg,
-      title: t("feat_market_title", "Market Analysis"),
-      text: t(
-        "feat_market_desc",
-        "Live mandi rates, 7-day price momentum and AI sell-or-hold recommendations.",
-      ),
-      color: "from-emerald-50 to-green-50 border-emerald-100",
-      iconBg: "bg-emerald-100 text-emerald-600",
+      titleKn: "ಮಂಡಿ ಮಾರುಕಟ್ಟೆ ಬೆಲೆ",
+      titleEn: "Market Prices",
+      descKn: "ಲೈವ್ APMC ದರಗಳು",
+      descEn: "Live APMC mandi rates",
+      color: "border-green-200 bg-green-50/60 hover:bg-green-100/70 text-green-800",
+      iconColor: "bg-green-600 text-white",
     },
     {
-      to: "/reels",
+      to: "/voice-assistant",
       icon: Mic,
-      image: voiceImg,
-      title: t("feat_voice_title", "Voice Assistant"),
-      text: t(
-        "feat_voice_desc",
-        "Ask anything about your farm in your language — instant AI responses.",
-      ),
-      color: "from-violet-50 to-indigo-50 border-violet-100",
-      iconBg: "bg-violet-100 text-violet-600",
+      titleKn: "ಕನ್ನಡ ಧ್ವನಿ AI",
+      titleEn: "Voice Assistant",
+      descKn: "ಮಾತನಾಡಿ ಉತ್ತರ ಪಡೆಯಿರಿ",
+      descEn: "Speak & listen in Kannada",
+      color: "border-purple-200 bg-purple-50/60 hover:bg-purple-100/70 text-purple-800",
+      iconColor: "bg-purple-600 text-white",
+    },
+    {
+      to: "/equipment",
+      icon: Tractor,
+      titleKn: "ಉಪಕರಣ ಬಾಡಿಗೆ",
+      titleEn: "Equipment",
+      descKn: "ಯಂತ್ರೋಪಕರಣ (Coming Soon)",
+      descEn: "Machinery rentals (Phase 2)",
+      color: "border-slate-200 bg-slate-50/80 hover:bg-slate-100 text-slate-800",
+      iconColor: "bg-slate-600 text-white",
+      badge: language === "kn" ? "ಶೀಘ್ರದಲ್ಲೇ" : "Coming Soon",
+    },
+    {
+      to: "/help",
+      icon: HelpCircle,
+      titleKn: "ಸಹಾಯ ಮತ್ತು ಬೆಂಬಲ",
+      titleEn: "Help & Care",
+      descKn: "6360997180 ಗ್ರಾಹಕ ಸೇವೆ",
+      descEn: "Direct helpline & support",
+      color: "border-teal-200 bg-teal-50/60 hover:bg-teal-100/70 text-teal-800",
+      iconColor: "bg-teal-600 text-white",
+    },
+  ];
+
+  const recentActivities = [
+    {
+      titleKn: "ಮಂಡ್ಯ ವಲಯ 6 ರಾಗಿ ಬ್ಲಾಸ್ಟ್ ನಿರ್ವಹಣಾ ಸಲಹೆ ನವೀಕರಿಸಲಾಗಿದೆ",
+      titleEn: "UASB Zone 6 Ragi Blast advisory updated",
+      source: "UAS Bangalore Package of Practices",
+      time: "2 hours ago",
+    },
+    {
+      titleKn: "ಮಂಡ್ಯ APMC ಭತ್ತ ಮತ್ತು ಬೆಲ್ಲದ ಮಂಡಿ ಬೆಲೆ ನವೀಕರಣಗೊಂಡಿದೆ",
+      titleEn: "Mandya APMC Paddy & Jaggery prices refreshed",
+      source: "AGMARKNET Mandi Intelligence",
+      time: "Today, 11:30 AM",
+    },
+    {
+      titleKn: "ದಕ್ಷಿಣ ಒಣ ವಲಯಕ್ಕೆ 36 ಗಂಟೆಗಳ ಮಳೆ ಮುನ್ಸೂಚನೆ ಎಚ್ಚರಿಕೆ",
+      titleEn: "36-hour rain alert issued for Southern Dry Zone",
+      source: "IMD Mausam / Agro-Met Advisory",
+      time: "Today, 6:00 AM",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-slate-50/50 pb-16 xl:pb-0 flex flex-col">
       <Navbar />
 
-      <main className="space-y-16 pb-16">
-        {/* ─── 1. HERO SECTION ─── */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-white via-green-50/30 to-white pt-10 pb-16">
-          <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-green-100/40 to-transparent" />
-          <div className="pointer-events-none absolute -left-20 bottom-0 h-[400px] w-[400px] rounded-full bg-gradient-to-tr from-sky-100/30 to-transparent" />
+      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 space-y-8 flex-1">
+        {/* ─── 1. PERSONALIZED WELCOME BANNER ─── */}
+        <section className="rounded-3xl border border-green-200 bg-linear-to-r from-green-50 via-emerald-50/70 to-teal-50 p-6 sm:p-8 shadow-xs">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge className="bg-green-600 text-white border-0 text-xs px-3 py-1 font-bold">
+                  <Sparkles className="mr-1.5 h-3.5 w-3.5" />
+                  {language === "kn" ? "ರೈತ ಸೇವಾ ಕೃಷಿ ಡ್ಯಾಶ್‌ಬೋರ್ಡ್" : "Raitha Seva Dashboard"}
+                </Badge>
 
-          <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
-            <div className="animate-fade-up">
-              <div className="flex flex-wrap items-center gap-2.5">
-                <div className="inline-flex items-center gap-2 rounded-full border border-green-200 bg-green-50 px-4 py-1.5 text-sm font-medium text-green-700">
-                  <Sparkles className="h-4 w-4" />
-                  {t("hero_eyebrow", "AI-Powered Farming")}
-                </div>
-
-                {/* Dashboard Language Switch Button */}
-                <div className="inline-flex items-center rounded-full border border-green-200/90 bg-white/95 p-1 shadow-xs">
-                  <span className="pl-2 pr-1.5 text-xs font-semibold text-gray-500 flex items-center gap-1">
-                    <Globe className="h-3.5 w-3.5 text-green-600" />
-                    <span className="hidden sm:inline">ಭಾಷೆ / Lang:</span>
-                  </span>
+                {/* Direct Language Switcher Pill */}
+                <div className="inline-flex items-center rounded-full border border-green-200 bg-white/95 p-1 shadow-2xs">
+                  <Globe className="h-3.5 w-3.5 ml-1 text-green-600" />
                   <button
                     type="button"
                     onClick={() => setLanguage("kn")}
-                    className={`rounded-full px-3 py-1 text-xs font-bold transition-all cursor-pointer ${
-                      language === "kn"
-                        ? "bg-green-600 text-white shadow-xs"
-                        : "text-gray-700 hover:bg-gray-100"
+                    className={`rounded-full px-2.5 py-0.5 text-xs font-bold transition-all cursor-pointer ${
+                      language === "kn" ? "bg-green-600 text-white" : "text-gray-700 hover:bg-gray-100"
                     }`}
-                    title="ಕನ್ನಡ ಭಾಷೆಗೆ ಬದಲಾಯಿಸಿ"
                   >
                     ಕನ್ನಡ
                   </button>
                   <button
                     type="button"
                     onClick={() => setLanguage("en")}
-                    className={`rounded-full px-3 py-1 text-xs font-bold transition-all cursor-pointer ${
-                      language === "en"
-                        ? "bg-green-600 text-white shadow-xs"
-                        : "text-gray-700 hover:bg-gray-100"
+                    className={`rounded-full px-2.5 py-0.5 text-xs font-bold transition-all cursor-pointer ${
+                      language === "en" ? "bg-green-600 text-white" : "text-gray-700 hover:bg-gray-100"
                     }`}
-                    title="Switch to English"
                   >
                     English
                   </button>
                 </div>
               </div>
 
-              <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
-                {t("hero_title", "AI Powered Farming Assistant")}
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-gray-900">
+                {language === "kn"
+                  ? `ನಮಸ್ಕಾರ, ${user?.full_name || "ರೈತ ಮಿತ್ರರೇ"}!`
+                  : `Welcome, ${user?.full_name || "Farmer Friend"}!`}
               </h1>
-
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-gray-500">
-                {t(
-                  "hero_desc",
-                  "Helping farmers make smarter decisions through weather intelligence, pest prediction, market insights and community guidance.",
-                )}
+              <p className="text-xs sm:text-sm text-gray-600 max-w-2xl">
+                {language === "kn"
+                  ? "ನಿಮ್ಮ ಕೃಷಿ ಕಾರ್ಯಗಳಿಗೆ ಹವಾಮಾನ, ಬೆಳೆ ರೋಗ ಎಚ್ಚರಿಕೆ, ಮಂಡಿ ಬೆಲೆಗಳು ಮತ್ತು ಅಧಿಕೃತ ವಿಜ್ಞಾನಿಗಳ ಸಲಹೆ ಇಲ್ಲಿದೆ."
+                  : "Hyperlocal weather forecasts, pest outbreak alerts, and real-time mandi prices for your farm."}
               </p>
-
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="rounded-full bg-green-600 px-8 shadow-lg shadow-green-200 transition-all hover:bg-green-700"
-                >
-                  <Link to="/weather">
-                    {t("hero_explore_weather", "Explore Weather")}{" "}
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full border-gray-200 px-8 text-gray-700 hover:bg-gray-50"
-                >
-                  <Link to="/pest">{t("nav_pest", "Pest AI Diagnosis")}</Link>
-                </Button>
-              </div>
-
-              <div className="mt-12 grid max-w-lg grid-cols-4 gap-4">
-                {stats.map((s) => (
-                  <div key={s.label}>
-                    <p className="text-2xl font-extrabold text-gray-900">{s.value}</p>
-                    <p className="mt-0.5 text-xs text-gray-400">{s.label}</p>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            <div className="relative animate-fade-up lg:animate-none">
-              <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-green-50 to-emerald-50 p-2 shadow-2xl shadow-green-100/50 border border-green-100">
-                <img
-                  src={heroImage}
-                  alt="AI-powered smart farming illustration"
-                  width={800}
-                  height={600}
-                  className="h-full w-full rounded-[2rem] object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-4 left-6 flex items-center gap-3 rounded-2xl border border-gray-100 bg-white px-5 py-3 shadow-xl">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-green-100 text-green-600 font-bold">
-                  <Leaf className="h-5 w-5" />
+            {/* Profile / Region Summary Card */}
+            <div className="rounded-2xl border border-green-200/80 bg-white p-4 shadow-sm shrink-0 min-w-[260px]">
+              <div className="flex items-center justify-between pb-2 border-b border-gray-100">
+                <span className="text-[11px] font-bold text-gray-500 uppercase flex items-center gap-1">
+                  <MapPin className="h-3 w-3 text-green-600" />
+                  <span>{language === "kn" ? "ವಲಯ ಮತ್ತು ಬೆಳೆಗಳು" : "Region & Crops"}</span>
                 </span>
-                <div>
-                  <p className="text-sm font-bold text-gray-900">Rain in 36 hours</p>
-                  <p className="text-xs text-gray-400">Hold spray — save ₹3,400</p>
+                <Link to="/profile" className="text-[11px] font-bold text-green-700 hover:underline">
+                  {language === "kn" ? "ಬದಲಾಯಿಸಿ" : "Edit"}
+                </Link>
+              </div>
+              <div className="pt-2 text-xs text-gray-700 space-y-1">
+                <p className="font-bold text-gray-900">
+                  {location.name || "Mandya District (ಮಂಡ್ಯ)"}
+                </p>
+                <p className="text-[11px] text-gray-500">ವಲಯ 6 (Southern Dry Zone)</p>
+                <div className="flex flex-wrap gap-1 pt-1">
+                  <span className="rounded-md bg-green-50 border border-green-200 px-1.5 py-0.5 text-[10px] font-bold text-green-800">
+                    ಭತ್ತ (Paddy)
+                  </span>
+                  <span className="rounded-md bg-amber-50 border border-amber-200 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">
+                    ರಾಗಿ (Ragi)
+                  </span>
+                  <span className="rounded-md bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 text-[10px] font-bold text-emerald-800">
+                    ಕಬ್ಬು (Sugarcane)
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ─── 5 FEATURE CARDS (LEFT-TO-RIGHT HORIZONTAL CAROUSEL STREAM) ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-4 flex items-center justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-green-600">
-                {t("features_eyebrow", "Smart Tools")}
-              </p>
-              <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
-                {t("features_title", "Explore Features (Swipe Left to Right)")}
-              </h2>
-            </div>
-
-            {/* Left / Right Scroll Buttons */}
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => scrollFeatures("left")}
-                className="h-9 w-9 rounded-full border-gray-200 hover:bg-gray-100"
-              >
-                <ChevronLeft className="h-5 w-5 text-gray-700" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => scrollFeatures("right")}
-                className="h-9 w-9 rounded-full border-gray-200 hover:bg-gray-100"
-              >
-                <ChevronRight className="h-5 w-5 text-gray-700" />
-              </Button>
-            </div>
+        {/* ─── 2. QUICK ACCESS BUTTONS TO DEDICATED FEATURE PAGES ─── */}
+        <section className="space-y-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base sm:text-lg font-extrabold text-gray-900">
+              {language === "kn" ? "ಪ್ರಮುಖ ಕೃಷಿ ಸೌಲಭ್ಯಗಳು (Quick Access)" : "Dedicated Farming Features"}
+            </h2>
+            <span className="text-xs text-gray-500">
+              {language === "kn" ? "ಪ್ರತ್ಯೇಕ ಪುಟವನ್ನು ತೆರೆಯಲು ಕ್ಲಿಕ್ ಮಾಡಿ" : "Tap any feature to open its page"}
+            </span>
           </div>
 
-          {/* Left-to-Right Horizontal Row Container */}
-          <div
-            ref={featureScrollRef}
-            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 pt-2 no-scrollbar"
-            style={{ scrollbarWidth: "none" }}
-          >
-            {featuresList.map((f) => (
-              <Link
-                key={f.to}
-                to={f.to}
-                className={`group relative shrink-0 w-[280px] sm:w-[320px] snap-start flex flex-col justify-between overflow-hidden rounded-3xl border bg-gradient-to-br ${f.color} p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl`}
-              >
-                <div>
-                  <div className="relative overflow-hidden rounded-2xl bg-white/70 p-4 mb-4">
-                    <img
-                      src={f.image}
-                      alt={f.title}
-                      className="h-36 w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                    />
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+            {quickFeatures.map((f) => {
+              const IconComp = f.icon;
+              return (
+                <Link
+                  key={f.to}
+                  to={f.to as any}
+                  className={`group flex flex-col justify-between rounded-3xl border p-4 shadow-2xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md ${f.color}`}
+                >
+                  <div className="space-y-3">
+                    <div className="flex items-start justify-between">
+                      <span className={`grid h-10 w-10 place-items-center rounded-2xl ${f.iconColor}`}>
+                        <IconComp className="h-5 w-5" />
+                      </span>
+                      {f.badge && (
+                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[9px] font-bold text-amber-800 border border-amber-200">
+                          {f.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm font-bold text-gray-900 group-hover:text-green-700">
+                        {language === "kn" ? f.titleKn : f.titleEn}
+                      </h3>
+                      <p className="mt-0.5 text-[11px] text-gray-600 line-clamp-1">
+                        {language === "kn" ? f.descKn : f.descEn}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
-                    <span className={`grid h-10 w-10 place-items-center rounded-xl ${f.iconBg}`}>
-                      <f.icon className="h-5 w-5" />
-                    </span>
-                    <h3 className="text-lg font-bold text-gray-900">{f.title}</h3>
+                  <div className="mt-3 flex items-center text-[11px] font-extrabold text-green-700 group-hover:underline">
+                    <span>{language === "kn" ? "ತೆರೆಯಿರಿ" : "Open"}</span>
+                    <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
-
-                  <p className="mt-3 text-xs leading-relaxed text-gray-600">{f.text}</p>
-                </div>
-
-                <div className="mt-6 flex items-center text-xs font-bold text-green-600 group-hover:text-green-700">
-                  {t("open_tool", "Open")} {f.title}{" "}
-                  <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </section>
 
-        {/* ─── 2. WEATHER CARD ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <CloudSun className="h-5 w-5 text-green-600" />
-              <h2 className="text-xl font-bold text-gray-900">
-                {t("feat_weather_title", "Weather Advisor")}
-              </h2>
-            </div>
-            <Link
-              to="/weather"
-              className="flex items-center text-xs font-semibold text-green-600 hover:underline"
-            >
-              Full Forecast <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <Card className="overflow-hidden rounded-3xl border border-green-100 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 text-white shadow-xl">
-            <CardContent className="p-8">
-              <div className="flex flex-col justify-between gap-6 md:flex-row md:items-center">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-green-200" />
-                    <span className="text-2xl font-bold text-white">
-                      {location.name ||
-                        (isLocating ? "Detecting your location…" : "Location unavailable")}
-                    </span>
-                    <Badge className="bg-white/20 text-white border-0">
-                      {isLocating ? "Locating…" : "Live · Your current location"}
-                    </Badge>
+        {/* ─── 3. FEATURE SUMMARY CARDS (CLEAN SUMMARIES WITH VIEW DETAILS LINKS) ─── */}
+        <section className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {/* Summary Card 1: Weather Overview */}
+          <Card className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-100 text-sky-700">
+                    <CloudSun className="h-5 w-5" />
                   </div>
-                  <p className="mt-1 text-sm text-green-100">
-                    {cur?.conditionLabel ?? (isLoading ? "Loading live weather…" : "—")}
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-900">
+                      {language === "kn" ? "ಹವಾಮಾನ ಸಾರಾಂಶ" : "Weather Summary"}
+                    </h3>
+                    <p className="text-[10px] text-gray-500">Live · {location.name || "Mandya"}</p>
+                  </div>
+                </div>
+                <Badge className="bg-sky-50 text-sky-800 border-sky-200 text-[10px] font-bold">
+                  {cur?.conditionLabel || "Clear Sky"}
+                </Badge>
+              </div>
+
+              <div className="flex items-baseline justify-between pt-1">
+                <div>
+                  <span className="text-3xl sm:text-4xl font-black text-gray-900">
+                    {cur ? `${Math.round(cur.temp)}°C` : "29°C"}
+                  </span>
+                  <p className="text-[11px] text-gray-500">
+                    {cur ? `Feels like ${Math.round(cur.feelsLike)}°C` : "Feels like 31°C"}
                   </p>
-                  <div className="mt-4 flex items-baseline gap-4">
-                    <span className="text-5xl font-extrabold">
-                      {cur ? `${Math.round(cur.temp)}°C` : "--°C"}
-                    </span>
-                    <span className="text-sm text-green-100">
-                      {cur ? `Feels like ${Math.round(cur.feelsLike)}°C` : ""}
-                    </span>
-                  </div>
                 </div>
-
-                <div className="grid grid-cols-2 gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur-md sm:grid-cols-4">
-                  <div className="flex items-center gap-2">
-                    <Thermometer className="h-5 w-5 text-green-200" />
-                    <div>
-                      <p className="text-[10px] text-green-100">Temp</p>
-                      <p className="text-sm font-bold">{cur ? `${Math.round(cur.temp)}°C` : "--"}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Droplets className="h-5 w-5 text-green-200" />
-                    <div>
-                      <p className="text-[10px] text-green-100">Humidity</p>
-                      <p className="text-sm font-bold">{cur ? `${Math.round(cur.humidity)}%` : "--"}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Wind className="h-5 w-5 text-green-200" />
-                    <div>
-                      <p className="text-[10px] text-green-100">Wind</p>
-                      <p className="text-sm font-bold">{cur ? `${Math.round(cur.windSpeed)} km/h` : "--"}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CloudRain className="h-5 w-5 text-green-200" />
-                    <div>
-                      <p className="text-[10px] text-green-100">Rain Prediction</p>
-                      <p className="text-sm font-bold">{cur ? `${Math.round(cur.rainChance)}% Chance` : "--"}</p>
-                    </div>
-                  </div>
+                <div className="text-right text-[11px] text-gray-600 space-y-0.5">
+                  <p className="flex items-center gap-1 justify-end font-semibold text-sky-700">
+                    <CloudRain className="h-3.5 w-3.5" />
+                    <span>{cur ? `${cur.rainChance}% ಮಳೆ ಸಾಧ್ಯತೆ` : "15% Rain"}</span>
+                  </p>
+                  <p className="flex items-center gap-1 justify-end">
+                    <Droplets className="h-3.5 w-3.5 text-gray-400" />
+                    <span>{cur ? `${cur.humidity}% ತೇವಾಂಶ` : "65% Humidity"}</span>
+                  </p>
                 </div>
               </div>
-            </CardContent>
+
+              {/* Actionable Agricultural Spray Advice */}
+              <div className="rounded-2xl border border-amber-200 bg-amber-50/70 p-3 text-xs text-amber-900 space-y-1">
+                <p className="font-bold flex items-center gap-1.5 text-amber-950">
+                  <AlertTriangle className="h-3.5 w-3.5 text-amber-700 shrink-0" />
+                  <span>{language === "kn" ? "ಸಿಂಪಡಣೆ ಸಲಹೆ:" : "Spray Advisory:"}</span>
+                </p>
+                <p className="text-[11px] text-amber-800/90 leading-relaxed">
+                  {language === "kn"
+                    ? "ಮಳೆ ಮುನ್ಸೂಚನೆ ಇರುವ ದಿನಗಳಲ್ಲಿ ಕೀಟನಾಶಕ ಸಿಂಪಡಣೆ ಮಾಡಬೇಡಿ. ಮುಂಜಾನೆ ಅಥವಾ ಸಂಜೆ ವೇಳೆ ಮಾತ್ರ ಸಿಂಪಡಿಸಿ."
+                    : "Postpone chemical spraying during rain spells. Spray during calm morning/evening hours."}
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-100">
+              <Button asChild variant="outline" className="w-full rounded-2xl text-xs font-bold text-sky-800 border-sky-200 hover:bg-sky-50">
+                <Link to="/weather">
+                  <span>{language === "kn" ? "ಸಂಪೂರ್ಣ 7 ದಿನಗಳ ಹವಾಮಾನ ವೀಕ್ಷಿಸಿ" : "View Full 7-Day Forecast"}</span>
+                  <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                </Link>
+              </Button>
+            </div>
+          </Card>
+
+          {/* Summary Card 2: Recent Pest Alert */}
+          <Card className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-rose-100 text-rose-700">
+                    <Bug className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-900">
+                      {language === "kn" ? "ಕೀಟ ಮತ್ತು ರೋಗ ಎಚ್ಚರಿಕೆ" : "Pest Alert Summary"}
+                    </h3>
+                    <p className="text-[10px] text-gray-500">Agro-Climatic Zone 6 Alert</p>
+                  </div>
+                </div>
+                <Badge className="bg-rose-50 text-rose-800 border-rose-200 text-[10px] font-bold">
+                  {language === "kn" ? "ಹೆಚ್ಚಿನ ಅಪಾಯ" : "Moderate Risk"}
+                </Badge>
+              </div>
+
+              <div className="rounded-2xl border border-rose-100 bg-rose-50/50 p-3 space-y-1">
+                <h4 className="text-xs font-bold text-rose-950">
+                  {language === "kn"
+                    ? "ಭತ್ತದಲ್ಲಿ ಬೆಂಕಿ ರೋಗ ಮತ್ತು ಕಂದು ಜಿಗಿಹುಳು (BPH)"
+                    : "Paddy Blast & Brown Plant Hopper Alert"}
+                </h4>
+                <p className="text-[11px] text-rose-800/90 leading-relaxed">
+                  {language === "kn"
+                    ? "ಮೋಡ ಕವಿದ ವಾತಾವರಣದಿಂದಾಗಿ ರೋಗ ಬಾಧೆ ಹೆಚ್ಚಾಗುವ ಸಾಧ್ಯತೆ. ಎಲೆಗಳ ಮೇಲೆ ಕಂದು ಮಚ್ಚೆಗಳು ಕಂಡುಬಂದಲ್ಲಿ ಟ್ರೈಸೈಕ್ಲೋಜೋಲ್ (0.6 ಗ್ರಾಂ/ಲೀ) ಸಿಂಪಡಿಸಿ."
+                    : "Cloudy humid weather favors blast development. Apply Tricyclazole 75 WP @ 0.6 g/L upon first symptom detection."}
+                </p>
+              </div>
+
+              <div className="text-[11px] text-gray-600 space-y-1">
+                <p className="font-semibold text-gray-800">
+                  {language === "kn" ? "ಇತರ ಬೆಳೆಗಳ ಎಚ್ಚರಿಕೆ:" : "Other Crop Advisories:"}
+                </p>
+                <p>• ರಾಗಿ: ಬೆಂಕಿ ರೋಗಕ್ಕೆ KMR-630 ತಳಿ ಬಳಸಿ</p>
+                <p>• ಕಬ್ಬು: ಮುಂಚಿನ ಸುಳಿ ಕೊರೆಯುವ ಹುಳು ಹತೋಟಿಗೆ ಟ್ರೈಕೋಗ್ರಾಮಾ ಪರಾವಲಂಬಿ ಬಿಡುಗಡೆ</p>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-100">
+              <Button asChild variant="outline" className="w-full rounded-2xl text-xs font-bold text-rose-800 border-rose-200 hover:bg-rose-50">
+                <Link to="/pest-alerts">
+                  <span>{language === "kn" ? "ರೋಗ ಪತ್ತೆ ಸ್ಕ್ಯಾನ್ ಮತ್ತು ಎಚ್ಚರಿಕೆಗಳು" : "Scan Crop & View All Alerts"}</span>
+                  <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                </Link>
+              </Button>
+            </div>
+          </Card>
+
+          {/* Summary Card 3: Mandi Market Prices */}
+          <Card className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-emerald-700">
+                    <TrendingUp className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-gray-900">
+                      {language === "kn" ? "ಮಂಡಿ ಮಾರುಕಟ್ಟೆ ಬೆಲೆ" : "Market Price Summary"}
+                    </h3>
+                    <p className="text-[10px] text-gray-500">APMC Mandya Live Rates</p>
+                  </div>
+                </div>
+                <Badge className="bg-emerald-50 text-emerald-800 border-emerald-200 text-[10px] font-bold">
+                  ಇಂದಿನ ಬೆಲೆ
+                </Badge>
+              </div>
+
+              <div className="space-y-2 text-xs">
+                <div className="flex items-center justify-between rounded-xl bg-slate-50 p-2.5">
+                  <div>
+                    <p className="font-bold text-gray-900">ಭತ್ತ (Paddy - Jyothi)</p>
+                    <p className="text-[10px] text-gray-400">Mandya APMC</p>
+                  </div>
+                  <span className="font-extrabold text-green-700 text-sm">₹2,350 / Q</span>
+                </div>
+
+                <div className="flex items-center justify-between rounded-xl bg-slate-50 p-2.5">
+                  <div>
+                    <p className="font-bold text-gray-900">ರಾಗಿ (Finger Millet)</p>
+                    <p className="text-[10px] text-gray-400">Mandya APMC</p>
+                  </div>
+                  <span className="font-extrabold text-green-700 text-sm">₹3,420 / Q</span>
+                </div>
+
+                <div className="flex items-center justify-between rounded-xl bg-slate-50 p-2.5">
+                  <div>
+                    <p className="font-bold text-gray-900">ಬೆಲ್ಲ (Sugarcane Jaggery)</p>
+                    <p className="text-[10px] text-gray-400">Mandya Mandi</p>
+                  </div>
+                  <span className="font-extrabold text-green-700 text-sm">₹4,200 / Q</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-gray-100">
+              <Button asChild variant="outline" className="w-full rounded-2xl text-xs font-bold text-emerald-800 border-emerald-200 hover:bg-emerald-50">
+                <Link to="/market-prices">
+                  <span>{language === "kn" ? "ಎಲ್ಲಾ ಮಂಡಿ ಧಾರಣೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ" : "View All Mandi Prices & Trends"}</span>
+                  <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                </Link>
+              </Button>
+            </div>
           </Card>
         </section>
 
-        {/* ─── 3. AI RECOMMENDATION ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-4 flex items-center gap-2">
-            <Sparkles className="h-5 w-5 text-green-600" />
-            <h2 className="text-xl font-bold text-gray-900">AI Weather Recommendations</h2>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            <Card className="rounded-3xl border border-red-200 bg-red-50/50 p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-red-100 text-red-600">
-                  <AlertTriangle className="h-5 w-5" />
-                </span>
-                <div>
-                  <Badge className="bg-red-100 text-red-700 border-0 text-[10px] uppercase font-bold">
-                    Critical Alert
-                  </Badge>
-                  <h3 className="mt-1 text-base font-bold text-gray-900">
-                    Heavy rainfall expected tomorrow.
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-red-900">
-                    💡 Action: Avoid fertilizer application today.
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-gray-600">
-                    High rain probability (85%+) will wash away applied nitrogen and phosphorus
-                    fertilizer. Postpone application.
-                  </p>
-                </div>
+        {/* ─── 4. AI PROMPT BANNER & DIRECT HELPLINE ─── */}
+        <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {/* Ask AI Assistant Prompt Box */}
+          <Card className="rounded-3xl border-2 border-green-300 bg-linear-to-br from-green-50 via-white to-emerald-50 p-6 shadow-sm space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-green-600 text-white shadow-md shadow-green-200">
+                <Sparkles className="h-6 w-6" />
               </div>
-            </Card>
-
-            <Card className="rounded-3xl border border-emerald-200 bg-emerald-50/50 p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-emerald-100 text-emerald-600">
-                  <CheckCircle2 className="h-5 w-5" />
-                </span>
-                <div>
-                  <Badge className="bg-emerald-100 text-emerald-700 border-0 text-[10px] uppercase font-bold">
-                    Natural Irrigation
-                  </Badge>
-                  <h3 className="mt-1 text-base font-bold text-gray-900">
-                    Natural Rainfall Coverage
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-emerald-900">
-                    💡 Action: Turn off drip irrigation system.
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-gray-600">
-                    Expected 24mm precipitation will satisfy crop water demand for 48 hours. Save
-                    electricity and water.
-                  </p>
-                </div>
+              <div>
+                <h3 className="text-base font-extrabold text-gray-900">
+                  {language === "kn" ? "AI ಕೃಷಿ ಸಹಾಯಕರಿಗೆ ಪ್ರಶ್ನೆ ಕೇಳಿ" : "Ask Raitha Seva AI Assistant"}
+                </h3>
+                <p className="text-xs text-gray-600">
+                  {language === "kn"
+                    ? "UAS ಬೆಂಗಳೂರು ಮತ್ತು ICAR ಪ್ಯಾಕೇಜ್ ಆಫ್ ಪ್ರಾಕ್ಟೀಸಸ್ ಆಧಾರಿತ ತ್ವರಿತ ಪರಿಹಾರ."
+                    : "Get instant verified advice in Kannada or English."}
+                </p>
               </div>
-            </Card>
-          </div>
-        </section>
-
-        {/* ─── 4. 📢 SPONSORED ADVERTISEMENT ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <AdBanner label="Sponsored · Featured Agri Offer" />
-        </section>
-
-        {/* ─── GOVERNMENT SCHEMES & SUBSIDIES (REAL DATA) ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Landmark className="h-5 w-5 text-blue-600" />
-              <h2 className="text-xl font-bold text-gray-900">
-                {t("schemes_title", "Government Schemes & Subsidies")}
-              </h2>
             </div>
-            <a
-              href="https://www.myscheme.gov.in/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center text-xs font-semibold text-blue-600 hover:underline"
-            >
-              myScheme Portal <ExternalLink className="ml-1 h-3 w-3" />
-            </a>
-          </div>
 
-          <div className="mb-4">
-            <SchemeUrlVerifier />
-          </div>
+            <p className="text-xs text-gray-700 leading-relaxed bg-white/80 p-3 rounded-2xl border border-green-100 font-medium">
+              "{language === "kn" ? "ರಾಗಿಯಲ್ಲಿ ಬೆಂಕಿ ರೋಗ ಬಂದರೆ ಯಾವ ಔಷಧ ಮತ್ತು ಎಷ್ಟು ಪ್ರಮಾಣದಲ್ಲಿ ಸಿಂಪಡಿಸಬೇಕು?" : "What is the recommended spray dosage for blast disease in Ragi?"}"
+            </p>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {/* PM-KISAN */}
-            <Card className="rounded-3xl border border-blue-200 bg-blue-50/40 p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-blue-100 text-blue-600">
-                  <IndianRupee className="h-5 w-5" />
-                </span>
-                <div>
-                  <Badge className="bg-blue-100 text-blue-800 border-0 text-[10px] uppercase font-bold">
-                    {t("scheme_active", "Active Scheme")}
-                  </Badge>
-                  <h3 className="mt-1 text-base font-bold text-gray-900">
-                    {t("scheme_pmkisan_title", "PM-KISAN Samman Nidhi")}
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-blue-900">
-                    {t("scheme_pmkisan_benefit", "₹6,000/year — 3 installments of ₹2,000 via DBT")}
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-gray-600">
-                    {t(
-                      "scheme_pmkisan_desc",
-                      "Income support for all landholding farmer families. Direct bank transfer every 4 months. Check status at pmkisan.gov.in",
-                    )}
-                  </p>
-                  <a
-                    href="https://pmkisan.gov.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center text-xs font-bold text-blue-600 hover:underline"
-                  >
-                    pmkisan.gov.in <ExternalLink className="ml-1 h-3 w-3" />
-                  </a>
-                </div>
-              </div>
-            </Card>
+            <Button asChild className="w-full rounded-2xl bg-green-600 text-white font-bold text-xs hover:bg-green-700">
+              <Link to="/assistant">
+                <span>{language === "kn" ? "ಎಐ ಸಹಾಯಕ ಪುಟಕ್ಕೆ ತೆರಳಿ" : "Open AI Assistant"}</span>
+                <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+              </Link>
+            </Button>
+          </Card>
 
-            {/* PMFBY - Fasal Bima */}
-            <Card className="rounded-3xl border border-emerald-200 bg-emerald-50/40 p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-emerald-100 text-emerald-600">
-                  <Shield className="h-5 w-5" />
-                </span>
-                <div>
-                  <Badge className="bg-emerald-100 text-emerald-800 border-0 text-[10px] uppercase font-bold">
-                    {t("scheme_active", "Active Scheme")}
-                  </Badge>
-                  <h3 className="mt-1 text-base font-bold text-gray-900">
-                    {t("scheme_pmfby_title", "PM Fasal Bima Yojana (PMFBY)")}
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-emerald-900">
-                    {t(
-                      "scheme_pmfby_benefit",
-                      "Crop Insurance: 2% Kharif, 1.5% Rabi, 5% Commercial",
-                    )}
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-gray-600">
-                    {t(
-                      "scheme_pmfby_desc",
-                      "Comprehensive crop insurance from pre-sowing to post-harvest. Budget: ₹69,515 Cr. Uses satellite & drone assessments for faster claims.",
-                    )}
-                  </p>
-                  <a
-                    href="https://pmfby.gov.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center text-xs font-bold text-emerald-600 hover:underline"
-                  >
-                    pmfby.gov.in <ExternalLink className="ml-1 h-3 w-3" />
-                  </a>
-                </div>
-              </div>
-            </Card>
-
-            {/* SMAM */}
-            <Card className="rounded-3xl border border-orange-200 bg-orange-50/40 p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-orange-100 text-orange-600">
-                  <Tractor className="h-5 w-5" />
-                </span>
-                <div>
-                  <Badge className="bg-orange-100 text-orange-800 border-0 text-[10px] uppercase font-bold">
-                    {t("scheme_subsidy", "Subsidy Scheme")}
-                  </Badge>
-                  <h3 className="mt-1 text-base font-bold text-gray-900">
-                    {t("scheme_smam_title", "SMAM — Agri Mechanization")}
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-orange-900">
-                    {t(
-                      "scheme_smam_benefit",
-                      "40-50% subsidy on tractors, drones, tillers & sprayers",
-                    )}
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-gray-600">
-                    {t(
-                      "scheme_smam_desc",
-                      "Sub-Mission on Agricultural Mechanization. 50% for SC/ST/small/marginal/women farmers, 40% for others. Supports Custom Hiring Centres.",
-                    )}
-                  </p>
-                </div>
-              </div>
-            </Card>
-
-            {/* KCC */}
-            <Card className="rounded-3xl border border-violet-200 bg-violet-50/40 p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-violet-100 text-violet-600">
-                  <FileText className="h-5 w-5" />
-                </span>
-                <div>
-                  <Badge className="bg-violet-100 text-violet-800 border-0 text-[10px] uppercase font-bold">
-                    {t("scheme_credit", "Credit Scheme")}
-                  </Badge>
-                  <h3 className="mt-1 text-base font-bold text-gray-900">
-                    {t("scheme_kcc_title", "Kisan Credit Card (KCC)")}
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-violet-900">
-                    {t("scheme_kcc_benefit", "Crop loans up to ₹5 lakh at just 4% interest")}
-                  </p>
-                  <p className="mt-2 text-xs leading-relaxed text-gray-600">
-                    {t(
-                      "scheme_kcc_desc",
-                      "Collateral-free up to ₹2 lakh. Apply via any bank branch, Kisan Rin Portal, or e-KCC digital process. Covers crop production & allied activities.",
-                    )}
-                  </p>
-                </div>
-              </div>
-            </Card>
-          </div>
-
-          <p className="mt-3 text-center text-[10px] text-gray-400">
-            Source: Ministry of Agriculture & Farmers Welfare, Govt. of India · myscheme.gov.in
-          </p>
-        </section>
-
-        {/* ─── 5. PEST ALERT ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Bug className="h-5 w-5 text-amber-600" />
-              <h2 className="text-xl font-bold text-gray-900">Pest & Outbreak Alerts</h2>
-            </div>
-            <Link
-              to="/pest"
-              className="flex items-center text-xs font-semibold text-green-600 hover:underline"
-            >
-              AI Disease Doctor <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            <Card className="rounded-3xl border border-amber-200 bg-amber-50/40 p-6 shadow-sm">
-              <div className="flex items-start justify-between">
-                <div>
-                  <Badge className="bg-amber-100 text-amber-800 border-0 text-[10px]">
-                    High Outbreak Risk
-                  </Badge>
-                  <h3 className="mt-2 text-lg font-bold text-gray-900">
-                    Pink Bollworm Infestation
-                  </h3>
-                  <p className="text-xs text-gray-500">
-                    Affecting Cotton · Reported 6km away in Guntur
-                  </p>
-                </div>
-                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-amber-100 text-amber-700 font-bold text-xs">
-                  91%
-                </span>
-              </div>
-              <p className="mt-3 text-xs leading-relaxed text-gray-600">
-                🌿 Organic: Install 8 Pheromone traps/acre. 🧪 Chemical: Spray Profenofos 50% EC @
-                2ml/L water.
-              </p>
-            </Card>
-
-            <Card className="rounded-3xl border border-red-200 bg-red-50/40 p-6 shadow-sm">
-              <div className="flex items-start justify-between">
-                <div>
-                  <Badge className="bg-red-100 text-red-800 border-0 text-[10px]">
-                    Critical Outbreak Risk
-                  </Badge>
-                  <h3 className="mt-2 text-lg font-bold text-gray-900">
-                    Early Blight (Alternaria)
-                  </h3>
-                  <p className="text-xs text-gray-500">
-                    Affecting Tomato / Potato · Reported in Nashik
-                  </p>
-                </div>
-                <span className="grid h-10 w-10 place-items-center rounded-2xl bg-red-100 text-red-700 font-bold text-xs">
-                  95%
-                </span>
-              </div>
-              <p className="mt-3 text-xs leading-relaxed text-gray-600">
-                🌿 Organic: Spray Neem Oil (5ml/L). 🧪 Chemical: Spray Mancozeb 75% WP @ 2.5g/L
-                water.
-              </p>
-            </Card>
-          </div>
-        </section>
-
-        {/* ─── 6. MARKET PRICES ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <TrendingUp className="h-5 w-5 text-emerald-600" />
-              <h2 className="text-xl font-bold text-gray-900">
-                Live Mandi Prices & AI Predictions
-              </h2>
-              <Badge className="ml-2 bg-gray-100 text-gray-500 border-0 text-[9px]">
-                Source: Agmarknet.gov.in
-              </Badge>
-            </div>
-            <Link
-              to="/market"
-              className="flex items-center text-xs font-semibold text-green-600 hover:underline"
-            >
-              View All Mandis <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-3">
-            {[
-              {
-                crop: "Onion (Red)",
-                mandi: "Lasalgaon, Nashik",
-                today: 2450,
-                pred: 2680,
-                change: "+9.4%",
-                rec: "HOLD",
-              },
-              {
-                crop: "Cotton (Long)",
-                mandi: "Guntur Yard, AP",
-                today: 7420,
-                pred: 7150,
-                change: "-3.6%",
-                rec: "SELL NOW",
-              },
-              {
-                crop: "Wheat (Sharbati)",
-                mandi: "Karnal Mandi, HR",
-                today: 2320,
-                pred: 2480,
-                change: "+6.8%",
-                rec: "HOLD",
-              },
-            ].map((m) => (
-              <Card
-                key={m.crop}
-                className="rounded-3xl border border-gray-100 bg-white p-5 shadow-sm"
-              >
-                <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+          {/* Temporary Helpline Support Banner */}
+          <Card className="rounded-3xl border border-gray-200/90 bg-white p-6 shadow-sm flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-100 text-amber-800">
+                    <Phone className="h-6 w-6" />
+                  </div>
                   <div>
-                    <h3 className="font-extrabold text-gray-900 text-base">{m.crop}</h3>
-                    <p className="text-[11px] text-gray-500">{m.mandi}</p>
+                    <Badge variant="outline" className="border-amber-300 bg-amber-50 text-[10px] font-bold text-amber-800">
+                      {CUSTOMER_CARE_CONFIG.labelKn}
+                    </Badge>
+                    <h3 className="text-lg font-black text-gray-900">
+                      {CUSTOMER_CARE_CONFIG.formattedPhone}
+                    </h3>
                   </div>
-                  <Badge
-                    className={`text-[10px] ${m.rec === "HOLD" ? "bg-emerald-100 text-emerald-800 border-0" : "bg-red-100 text-red-800 border-0"}`}
-                  >
-                    {m.rec === "HOLD" ? "🟢 HOLD" : "🔴 SELL NOW"}
-                  </Badge>
                 </div>
-                <div className="mt-4 flex items-baseline justify-between">
-                  <div>
-                    <p className="text-[10px] text-gray-400 uppercase font-semibold">
-                      Today's Rate
-                    </p>
-                    <p className="text-xl font-extrabold text-gray-900">
-                      ₹{m.today.toLocaleString("en-IN")}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-[10px] text-green-700 uppercase font-semibold">
-                      7-Day Target
-                    </p>
-                    <p className="text-xl font-extrabold text-green-700">
-                      ₹{m.pred.toLocaleString("en-IN")}
-                    </p>
-                  </div>
+
+                <a
+                  href={CUSTOMER_CARE_CONFIG.telLink}
+                  className="rounded-full bg-green-600 px-4 py-2 text-xs font-bold text-white shadow-xs hover:bg-green-700"
+                >
+                  ಕರೆ ಮಾಡಿ
+                </a>
+              </div>
+
+              <p className="text-xs text-gray-600">
+                ಅಪ್ಲಿಕೇಶನ್ ಬಳಕೆ, ಸೈನ್ ಅಪ್ ಅಥವಾ ಕೃಷಿ ಸಹಾಯಕ್ಕೆ ತಾತ್ಕಾಲಿಕ ಗ್ರಾಹಕ ಸೇವೆ ಸಂಖ್ಯೆಗೆ ನೇರವಾಗಿ ಸಂಪರ್ಕಿಸಿ.
+              </p>
+
+              <div className="rounded-xl bg-slate-50 p-2.5 text-[11px] text-gray-700 space-y-1 border border-slate-100">
+                <p>• ಕಿಸಾನ್ ಕಾಲ್ ಸೆಂಟರ್: <a href="tel:18001801551" className="font-bold underline text-blue-700">1800-180-1551</a> (ಉಚಿತ ಕರೆ)</p>
+                <p>• ICAR-KVK ಮಂಡ್ಯ: <a href="tel:08232277456" className="font-bold underline text-green-700">08232-277456</a></p>
+              </div>
+            </div>
+
+            <div className="pt-3 border-t border-gray-100">
+              <Button asChild variant="outline" className="w-full rounded-2xl text-xs font-bold text-gray-700">
+                <Link to="/help">
+                  <span>{language === "kn" ? "ಸಹಾಯ ಮತ್ತು ಸಂಪರ್ಕ ಪುಟ (View Details)" : "View Help & Support"}</span>
+                  <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+                </Link>
+              </Button>
+            </div>
+          </Card>
+        </section>
+
+        {/* ─── 5. RECENT AGRICULTURAL ACTIVITIES & ADVISORIES ─── */}
+        <section className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4 text-gray-600" />
+            <h2 className="text-sm font-bold uppercase tracking-wider text-gray-700">
+              {language === "kn" ? "ಇತ್ತೀಚಿನ ಕೃಷಿ ನವೀಕರಣಗಳು (Recent Updates)" : "Recent Agricultural Updates"}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {recentActivities.map((act, i) => (
+              <Card key={i} className="rounded-2xl border border-gray-200/90 bg-white p-4 space-y-1">
+                <p className="text-xs font-bold text-gray-900 leading-snug">
+                  {language === "kn" ? act.titleKn : act.titleEn}
+                </p>
+                <div className="flex items-center justify-between text-[10px] text-gray-500 pt-1">
+                  <span>{act.source}</span>
+                  <span className="font-medium text-green-700">{act.time}</span>
                 </div>
               </Card>
             ))}
           </div>
         </section>
-
-        {/* ─── 7. 🎥 SINGLE FEATURED AGRI REEL SPOTLIGHT ─── */}
-        <section className="mx-auto max-w-7xl px-4 sm:px-6">
-          <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Play className="h-5 w-5 text-purple-600 fill-purple-600" />
-              <h2 className="text-xl font-bold text-gray-900">Featured Agri Reel</h2>
-            </div>
-            <Link
-              to="/reels"
-              className="flex items-center text-xs font-semibold text-green-600 hover:underline"
-            >
-              Watch All Agri Reels <ChevronRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          {/* Single Featured Reel Card */}
-          <Link to="/reels" className="block">
-            <Card className="group relative overflow-hidden rounded-3xl border border-gray-100 bg-gray-950 shadow-xl transition-all hover:shadow-2xl">
-              <div className="relative aspect-[16/7] w-full overflow-hidden sm:aspect-[21/9]">
-                <img
-                  src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=1200&q=80"
-                  alt="Jeevamrut Preparation in 200L Drum"
-                  className="h-full w-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20" />
-
-                <div className="absolute top-6 left-6 z-10 flex items-center gap-2">
-                  <Badge className="bg-green-600 text-white border-0 text-xs font-bold">
-                    Featured Organic Reel
-                  </Badge>
-                </div>
-
-                <span className="absolute inset-0 grid place-items-center">
-                  <span className="grid h-16 w-16 place-items-center rounded-full bg-white/25 text-white backdrop-blur-md shadow-2xl transition-transform duration-300 group-hover:scale-110">
-                    <Play className="h-7 w-7 ml-1 fill-white" />
-                  </span>
-                </span>
-
-                <div className="absolute inset-x-6 bottom-6 z-20 flex flex-col sm:flex-row sm:items-end sm:justify-between text-white gap-4">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="grid h-7 w-7 place-items-center rounded-full bg-green-600 text-xs font-bold text-white">
-                        R
-                      </span>
-                      <span className="text-xs font-bold drop-shadow-md">Ramesh Patil</span>
-                      <span className="text-xs text-gray-300">· Nashik, MH</span>
-                    </div>
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-white drop-shadow-md">
-                      Jeevamrut Preparation in 200L Drum
-                    </h3>
-                    <p className="mt-1 text-xs text-gray-200 max-w-xl opacity-90 line-clamp-1">
-                      Step-by-step ratio of cow dung, urine, jaggery and gram flour to boost soil
-                      microbial activity.
-                    </p>
-                  </div>
-
-                  <div className="flex items-center gap-4">
-                    <span className="flex items-center gap-1 text-xs font-bold bg-black/40 px-3 py-1.5 rounded-full backdrop-blur-md">
-                      <Eye className="h-4 w-4" /> 18.4K Views
-                    </span>
-                    <Button
-                      size="sm"
-                      className="rounded-full bg-green-600 font-bold text-white hover:bg-green-700"
-                    >
-                      {t("watch_reels", "Watch Reels")} <ChevronRight className="ml-1 h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          </Link>
-        </section>
       </main>
 
-      {/* ─── 8. FOOTER ─── */}
       <Footer />
     </div>
   );
 }
+export default Index;

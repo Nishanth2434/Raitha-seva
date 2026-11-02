@@ -11,12 +11,19 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as EquipmentRouteImport } from './routes/equipment'
+import { Route as HelpRouteImport } from './routes/help'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarketRouteImport } from './routes/market'
+import { Route as MarketPricesRouteImport } from './routes/market-prices'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as PestRouteImport } from './routes/pest'
+import { Route as PestAlertsRouteImport } from './routes/pest-alerts'
 import { Route as ReelsRouteImport } from './routes/reels'
 import { Route as SaathiRouteImport } from './routes/saathi'
+import { Route as VoiceAssistantRouteImport } from './routes/voice-assistant'
 import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 
@@ -29,6 +36,26 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EquipmentRoute = EquipmentRouteImport.update({
+  id: '/equipment',
+  path: '/equipment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -37,6 +64,11 @@ const LoginRoute = LoginRouteImport.update({
 const MarketRoute = MarketRouteImport.update({
   id: '/market',
   path: '/market',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketPricesRoute = MarketPricesRouteImport.update({
+  id: '/market-prices',
+  path: '/market-prices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OnboardingRoute = OnboardingRouteImport.update({
@@ -49,6 +81,11 @@ const PestRoute = PestRouteImport.update({
   path: '/pest',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PestAlertsRoute = PestAlertsRouteImport.update({
+  id: '/pest-alerts',
+  path: '/pest-alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReelsRoute = ReelsRouteImport.update({
   id: '/reels',
   path: '/reels',
@@ -57,6 +94,11 @@ const ReelsRoute = ReelsRouteImport.update({
 const SaathiRoute = SaathiRouteImport.update({
   id: '/saathi',
   path: '/saathi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VoiceAssistantRoute = VoiceAssistantRouteImport.update({
+  id: '/voice-assistant',
+  path: '/voice-assistant',
   getParentRoute: () => rootRouteImport,
 } as any)
 const WeatherRoute = WeatherRouteImport.update({
@@ -72,23 +114,37 @@ const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/dashboard': typeof DashboardRoute
+  '/equipment': typeof EquipmentRoute
+  '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
+  '/market-prices': typeof MarketPricesRoute
   '/onboarding': typeof OnboardingRoute
   '/pest': typeof PestRoute
+  '/pest-alerts': typeof PestAlertsRoute
   '/reels': typeof ReelsRoute
   '/saathi': typeof SaathiRoute
+  '/voice-assistant': typeof VoiceAssistantRoute
   '/weather': typeof WeatherRoute
   '/profile': typeof AuthenticatedProfileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assistant': typeof AssistantRoute
+  '/dashboard': typeof DashboardRoute
+  '/equipment': typeof EquipmentRoute
+  '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
+  '/market-prices': typeof MarketPricesRoute
   '/onboarding': typeof OnboardingRoute
   '/pest': typeof PestRoute
+  '/pest-alerts': typeof PestAlertsRoute
   '/reels': typeof ReelsRoute
   '/saathi': typeof SaathiRoute
+  '/voice-assistant': typeof VoiceAssistantRoute
   '/weather': typeof WeatherRoute
   '/profile': typeof AuthenticatedProfileRoute
 }
@@ -96,12 +152,19 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/assistant': typeof AssistantRoute
+  '/dashboard': typeof DashboardRoute
+  '/equipment': typeof EquipmentRoute
+  '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
+  '/market-prices': typeof MarketPricesRoute
   '/onboarding': typeof OnboardingRoute
   '/pest': typeof PestRoute
+  '/pest-alerts': typeof PestAlertsRoute
   '/reels': typeof ReelsRoute
   '/saathi': typeof SaathiRoute
+  '/voice-assistant': typeof VoiceAssistantRoute
   '/weather': typeof WeatherRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
 }
@@ -109,35 +172,56 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/assistant'
+    | '/dashboard'
+    | '/equipment'
+    | '/help'
     | '/login'
     | '/market'
+    | '/market-prices'
     | '/onboarding'
     | '/pest'
+    | '/pest-alerts'
     | '/reels'
     | '/saathi'
+    | '/voice-assistant'
     | '/weather'
     | '/profile'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/assistant'
+    | '/dashboard'
+    | '/equipment'
+    | '/help'
     | '/login'
     | '/market'
+    | '/market-prices'
     | '/onboarding'
     | '/pest'
+    | '/pest-alerts'
     | '/reels'
     | '/saathi'
+    | '/voice-assistant'
     | '/weather'
     | '/profile'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/assistant'
+    | '/dashboard'
+    | '/equipment'
+    | '/help'
     | '/login'
     | '/market'
+    | '/market-prices'
     | '/onboarding'
     | '/pest'
+    | '/pest-alerts'
     | '/reels'
     | '/saathi'
+    | '/voice-assistant'
     | '/weather'
     | '/_authenticated/profile'
   fileRoutesById: FileRoutesById
@@ -145,12 +229,19 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AssistantRoute: typeof AssistantRoute
+  DashboardRoute: typeof DashboardRoute
+  EquipmentRoute: typeof EquipmentRoute
+  HelpRoute: typeof HelpRoute
   LoginRoute: typeof LoginRoute
   MarketRoute: typeof MarketRoute
+  MarketPricesRoute: typeof MarketPricesRoute
   OnboardingRoute: typeof OnboardingRoute
   PestRoute: typeof PestRoute
+  PestAlertsRoute: typeof PestAlertsRoute
   ReelsRoute: typeof ReelsRoute
   SaathiRoute: typeof SaathiRoute
+  VoiceAssistantRoute: typeof VoiceAssistantRoute
   WeatherRoute: typeof WeatherRoute
 }
 
@@ -170,6 +261,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/equipment': {
+      id: '/equipment'
+      path: '/equipment'
+      fullPath: '/equipment'
+      preLoaderRoute: typeof EquipmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -182,6 +301,13 @@ declare module '@tanstack/react-router' {
       path: '/market'
       fullPath: '/market'
       preLoaderRoute: typeof MarketRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market-prices': {
+      id: '/market-prices'
+      path: '/market-prices'
+      fullPath: '/market-prices'
+      preLoaderRoute: typeof MarketPricesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/onboarding': {
@@ -198,6 +324,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PestRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pest-alerts': {
+      id: '/pest-alerts'
+      path: '/pest-alerts'
+      fullPath: '/pest-alerts'
+      preLoaderRoute: typeof PestAlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reels': {
       id: '/reels'
       path: '/reels'
@@ -210,6 +343,13 @@ declare module '@tanstack/react-router' {
       path: '/saathi'
       fullPath: '/saathi'
       preLoaderRoute: typeof SaathiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/voice-assistant': {
+      id: '/voice-assistant'
+      path: '/voice-assistant'
+      fullPath: '/voice-assistant'
+      preLoaderRoute: typeof VoiceAssistantRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/weather': {
@@ -243,12 +383,19 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AssistantRoute: AssistantRoute,
+  DashboardRoute: DashboardRoute,
+  EquipmentRoute: EquipmentRoute,
+  HelpRoute: HelpRoute,
   LoginRoute: LoginRoute,
   MarketRoute: MarketRoute,
+  MarketPricesRoute: MarketPricesRoute,
   OnboardingRoute: OnboardingRoute,
   PestRoute: PestRoute,
+  PestAlertsRoute: PestAlertsRoute,
   ReelsRoute: ReelsRoute,
   SaathiRoute: SaathiRoute,
+  VoiceAssistantRoute: VoiceAssistantRoute,
   WeatherRoute: WeatherRoute,
 }
 export const routeTree = rootRouteImport
