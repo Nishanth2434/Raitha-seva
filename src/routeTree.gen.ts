@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as EquipmentRouteImport } from './routes/equipment'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as MarketRouteImport } from './routes/market'
@@ -44,11 +43,6 @@ const AssistantRoute = AssistantRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EquipmentRoute = EquipmentRouteImport.update({
-  id: '/equipment',
-  path: '/equipment',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HelpRoute = HelpRouteImport.update({
@@ -116,7 +110,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
-  '/equipment': typeof EquipmentRoute
   '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
@@ -134,7 +127,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
-  '/equipment': typeof EquipmentRoute
   '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
@@ -154,7 +146,6 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/assistant': typeof AssistantRoute
   '/dashboard': typeof DashboardRoute
-  '/equipment': typeof EquipmentRoute
   '/help': typeof HelpRoute
   '/login': typeof LoginRoute
   '/market': typeof MarketRoute
@@ -174,7 +165,6 @@ export interface FileRouteTypes {
     | '/'
     | '/assistant'
     | '/dashboard'
-    | '/equipment'
     | '/help'
     | '/login'
     | '/market'
@@ -192,7 +182,6 @@ export interface FileRouteTypes {
     | '/'
     | '/assistant'
     | '/dashboard'
-    | '/equipment'
     | '/help'
     | '/login'
     | '/market'
@@ -211,7 +200,6 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/assistant'
     | '/dashboard'
-    | '/equipment'
     | '/help'
     | '/login'
     | '/market'
@@ -231,7 +219,6 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AssistantRoute: typeof AssistantRoute
   DashboardRoute: typeof DashboardRoute
-  EquipmentRoute: typeof EquipmentRoute
   HelpRoute: typeof HelpRoute
   LoginRoute: typeof LoginRoute
   MarketRoute: typeof MarketRoute
@@ -273,13 +260,6 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/equipment': {
-      id: '/equipment'
-      path: '/equipment'
-      fullPath: '/equipment'
-      preLoaderRoute: typeof EquipmentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/help': {
@@ -385,7 +365,6 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AssistantRoute: AssistantRoute,
   DashboardRoute: DashboardRoute,
-  EquipmentRoute: EquipmentRoute,
   HelpRoute: HelpRoute,
   LoginRoute: LoginRoute,
   MarketRoute: MarketRoute,

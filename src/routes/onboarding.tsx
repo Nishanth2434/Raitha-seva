@@ -10,7 +10,6 @@ import {
   Bug,
   TrendingUp,
   Mic,
-  Tractor,
   Clock,
   Sparkles,
   ArrowLeft,
@@ -298,27 +297,6 @@ export function OnboardingPage() {
               </div>
               <p className="mt-3 text-xs leading-relaxed text-gray-600">
                 ಧ್ವನಿ ಅಥವಾ ಸಂದೇಶದ ಮೂಲಕ ನಿಮ್ಮದೇ ಕನ್ನಡ ಭಾಷೆಯಲ್ಲಿ ಪ್ರಶ್ನಿಸಿ, ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರದ ತಜ್ಞರ ಆಧಾರಿತ ನಿಖರ ಸಲಹೆಗಳನ್ನು ತಕ್ಷಣ ಪಡೆಯಿರಿ.
-              </p>
-            </Card>
-
-            {/* Feature 5: Equipment Booking (Clearly labeled Coming Soon) */}
-            <Card className="rounded-2xl border border-dashed border-gray-300 bg-gray-50/70 p-4 sm:col-span-2">
-              <div className="flex items-start justify-between gap-2">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-200 text-gray-600">
-                    <Tractor className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-gray-700">ಕೃಷಿ ಉಪಕರಣಗಳ ಬುಕಿಂಗ್</h3>
-                    <p className="text-[11px] text-gray-500">Equipment Booking</p>
-                  </div>
-                </div>
-                <Badge variant="secondary" className="bg-amber-100 text-[10px] font-semibold text-amber-800 border-amber-200">
-                  <Clock className="mr-1 h-3 w-3 text-amber-600" /> ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿದೆ (Coming Soon)
-                </Badge>
-              </div>
-              <p className="mt-3 text-xs leading-relaxed text-gray-500">
-                ಸ್ಥಳೀಯ ರೈತರು ಮತ್ತು ಕಸ್ಟಮ್ ಹೈರಿಂಗ್ ಕೇಂದ್ರಗಳಿಂದ (CHC) ಟ್ರ್ಯಾಕ್ಟರ್, ಹಾರ್ವೆಸ್ಟರ್ ಹಾಗೂ ಡ್ರೋನ್ ಬಾಡಿಗೆ ಸೇವೆಗಳನ್ನು ಮುಂದಿನ ಹಂತದಲ್ಲಿ ಒದಗಿಸಲಾಗುವುದು.
               </p>
             </Card>
           </div>

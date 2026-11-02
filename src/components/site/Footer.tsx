@@ -16,7 +16,7 @@ export function Footer() {
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">
             {t(
               "hero_desc",
-              "An AI companion for Indian farmers — hyperlocal weather advice, pest prediction, live mandi intelligence and shared farm equipment.",
+              "An AI companion for Indian farmers — hyperlocal weather advice, pest prediction, live mandi intelligence and scientific agricultural advisory.",
             )}
           </p>
         </div>

@@ -13,7 +13,6 @@ import {
   Bug,
   TrendingUp,
   Mic,
-  Tractor,
   HelpCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -48,7 +47,6 @@ export function Navbar() {
     { to: "/pest-alerts", label: t("nav_pest", "Pest Alerts"), icon: Bug },
     { to: "/market-prices", label: t("nav_market", "Market Prices"), icon: TrendingUp },
     { to: "/voice-assistant", label: t("nav_voice", "Voice AI"), icon: Mic },
-    { to: "/equipment", label: t("nav_equipment", "Equipment"), icon: Tractor },
     { to: "/help", label: t("nav_help", "Help & Care"), icon: HelpCircle },
   ];
 
