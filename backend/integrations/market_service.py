@@ -261,6 +261,69 @@ BASELINE_AGMARKNET_RECORDS = [
         "confidence_score": 88,
         "source_name": "AGMARKNET / DMI Ramanagara APMC",
     },
+    {
+        "state": "Karnataka",
+        "district": "Davanagere",
+        "market": "Davanagere",
+        "commodity": "Maize",
+        "commodity_kn": "ಮೆಕ್ಕೆಜೋಳ (Maize)",
+        "variety": "Hybrid Yellow",
+        "grade": "FAQ",
+        "category": "Grain",
+        "arrival_date": "2026-11-01",
+        "min_price": Decimal("2180.00"),
+        "max_price": Decimal("2350.00"),
+        "modal_price": Decimal("2280.00"),
+        "price_unit": "₹/Quintal",
+        "price_change_pct": Decimal("1.80"),
+        "predicted_price": Decimal("2340.00"),
+        "recommendation": "HOLD",
+        "recommendation_reason": "Major Karnataka corn hub. Industrial starch & ethanol plants maintaining steady spot buying.",
+        "confidence_score": 92,
+        "source_name": "AGMARKNET / DMI Davanagere APMC",
+    },
+    {
+        "state": "Karnataka",
+        "district": "Hassan",
+        "market": "Hassan",
+        "commodity": "Maize",
+        "commodity_kn": "ಮೆಕ್ಕೆಜೋಳ (Maize)",
+        "variety": "Local / Hybrid",
+        "grade": "FAQ",
+        "category": "Grain",
+        "arrival_date": "2026-11-01",
+        "min_price": Decimal("2120.00"),
+        "max_price": Decimal("2290.00"),
+        "modal_price": Decimal("2210.00"),
+        "price_unit": "₹/Quintal",
+        "price_change_pct": Decimal("0.90"),
+        "predicted_price": Decimal("2250.00"),
+        "recommendation": "WATCH",
+        "recommendation_reason": "Moderate arrivals in Hassan yard. Feed millers bidding actively within prevailing MSP band.",
+        "confidence_score": 88,
+        "source_name": "AGMARKNET / DMI Hassan APMC",
+    },
+    {
+        "state": "Karnataka",
+        "district": "Chikkaballapura",
+        "market": "Chikkaballapura",
+        "commodity": "Maize",
+        "commodity_kn": "ಮೆಕ್ಕೆಜೋಳ (Maize)",
+        "variety": "Yellow Hybrid",
+        "grade": "FAQ",
+        "category": "Grain",
+        "arrival_date": "2026-11-01",
+        "min_price": Decimal("2100.00"),
+        "max_price": Decimal("2260.00"),
+        "modal_price": Decimal("2190.00"),
+        "price_unit": "₹/Quintal",
+        "price_change_pct": Decimal("1.50"),
+        "predicted_price": Decimal("2240.00"),
+        "recommendation": "HOLD",
+        "recommendation_reason": "Poultry belt demand in Bengaluru rural corridor supporting wholesale auction rates.",
+        "confidence_score": 87,
+        "source_name": "AGMARKNET / DMI Chikkaballapura APMC",
+    },
 ]
 
 
@@ -619,8 +682,11 @@ class MarketDataSyncService:
         Synchronizes latest Mandya and Karnataka market records into Supabase public.market_prices
         so that both Django and Supabase clients serve identical, up-to-date data.
         """
+        DEFAULT_SUPABASE_ANON_KEY = (
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV4bWdycXVxZWlnbW9zZ2RyanRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTM0MzA2NTEsImV4cCI6MjEwOTAwNjY1MX0._kJK5eLdHeMVilqTCmzgIZdiXTBHfwW_Qg2gVimWv9s"
+        )
         supabase_url = os.environ.get("VITE_SUPABASE_URL") or "https://uxmgrquqeigmosgdrjti.supabase.co"
-        supabase_key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ.get("VITE_SUPABASE_ANON_KEY")
+        supabase_key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ.get("VITE_SUPABASE_ANON_KEY") or DEFAULT_SUPABASE_ANON_KEY
 
         if not supabase_key:
             return

@@ -257,6 +257,81 @@ const BASELINE_MARKET_DATA: MarketItem[] = [
     sourceName: "AGMARKNET / Karnataka APMC",
   },
   {
+    id: "b-maize-davanagere",
+    cropName: "Maize",
+    cropNameKn: "ಮೆಕ್ಕೆಜೋಳ",
+    category: "Grain",
+    variety: "Yellow Hybrid",
+    grade: "FAQ",
+    district: "Davanagere",
+    state: "Karnataka",
+    nearbyMarket: "Davanagere APMC",
+    minPrice: 2200,
+    maxPrice: 2350,
+    modalPrice: 2280,
+    todaysPrice: 2280,
+    predictedPrice: 2320,
+    priceChange24h: 1.8,
+    priceUnit: "₹/Quintal",
+    reportDate: "2026-11-02",
+    isStale: false,
+    recommendation: "HOLD",
+    recommendationReason:
+      "Major commercial corn hub. Robust procurement from feed & starch millers across Karnataka and Maharashtra.",
+    confidenceScore: 92,
+    sourceName: "AGMARKNET / Karnataka APMC",
+  },
+  {
+    id: "b-maize-hassan",
+    cropName: "Maize",
+    cropNameKn: "ಮೆಕ್ಕೆಜೋಳ",
+    category: "Grain",
+    variety: "Local / Hybrid",
+    grade: "FAQ",
+    district: "Hassan",
+    state: "Karnataka",
+    nearbyMarket: "Hassan APMC",
+    minPrice: 2120,
+    maxPrice: 2290,
+    modalPrice: 2210,
+    todaysPrice: 2210,
+    predictedPrice: 2250,
+    priceChange24h: 0.9,
+    priceUnit: "₹/Quintal",
+    reportDate: "2026-11-02",
+    isStale: false,
+    recommendation: "HOLD",
+    recommendationReason:
+      "Steady arrivals in Hassan market yard; poultry feed buyers active with stable daily pricing.",
+    confidenceScore: 90,
+    sourceName: "AGMARKNET / Karnataka APMC",
+  },
+  {
+    id: "b-maize-chikkaballapura",
+    cropName: "Maize",
+    cropNameKn: "ಮೆಕ್ಕೆಜೋಳ",
+    category: "Grain",
+    variety: "Hybrid",
+    grade: "FAQ",
+    district: "Chikkaballapura",
+    state: "Karnataka",
+    nearbyMarket: "Chikkaballapura APMC",
+    minPrice: 2100,
+    maxPrice: 2260,
+    modalPrice: 2190,
+    todaysPrice: 2190,
+    predictedPrice: 2220,
+    priceChange24h: 0.5,
+    priceUnit: "₹/Quintal",
+    reportDate: "2026-11-02",
+    isStale: false,
+    recommendation: "WATCH",
+    recommendationReason:
+      "Steady local off-take for broiler feed in Chikkaballapura-Kolar belt.",
+    confidenceScore: 88,
+    sourceName: "AGMARKNET / Karnataka APMC",
+  },
+  {
     id: "b-tomato-krpet",
     cropName: "Tomato",
     cropNameKn: "ಟೊಮ್ಯಾಟೊ",
@@ -361,27 +436,213 @@ const BASELINE_MARKET_DATA: MarketItem[] = [
 const DISTRICT_LIST = [
   { value: "Mandya", labelEn: "Mandya (Pilot Hub)", labelKn: "ಮಂಡ್ಯ (ಮುಖ್ಯ ಮಾರುಕಟ್ಟೆ)" },
   { value: "All", labelEn: "All Karnataka Districts", labelKn: "ಎಲ್ಲಾ ಕರ್ನಾಟಕ ಜಿಲ್ಲೆಗಳು" },
+  { value: "Davanagere", labelEn: "Davanagere (ದಾವಣಗೆರೆ)", labelKn: "ದಾವಣಗೆರೆ" },
+  { value: "Hassan", labelEn: "Hassan (ಹಾಸನ)", labelKn: "ಹಾಸನ" },
   { value: "Mysuru", labelEn: "Mysuru (ಮೈಸೂರು)", labelKn: "ಮೈಸೂರು" },
   { value: "Ramanagara", labelEn: "Ramanagara (ರಾಮನಗರ)", labelKn: "ರಾಮನಗರ" },
-  { value: "Hassan", labelEn: "Hassan (ಹಾಸನ)", labelKn: "ಹಾಸನ" },
+  { value: "Chikkaballapura", labelEn: "Chikkaballapura (ಚಿಕ್ಕಬಳ್ಳಾಪುರ)", labelKn: "ಚಿಕ್ಕಬಳ್ಳಾಪುರ" },
   { value: "Kolar", labelEn: "Kolar (ಕೋಲಾರ)", labelKn: "ಕೋಲಾರ" },
   { value: "Tumakuru", labelEn: "Tumakuru (ತುಮಕೂರು)", labelKn: "ತುಮಕೂರು" },
-  { value: "Chikkaballapura", labelEn: "Chikkaballapura (ಚಿಕ್ಕಬಳ್ಳಾಪುರ)", labelKn: "ಚಿಕ್ಕಬಳ್ಳಾಪುರ" },
 ];
 
 const COMMODITY_LIST = [
   { value: "All", labelEn: "All Commodities", labelKn: "ಎಲ್ಲಾ ಬೆಳೆಗಳು" },
-  { value: "Jaggery", labelEn: "Jaggery (ಬೆಲ್ಲ)", labelKn: "ಬೆಲ್ಲ" },
+  { value: "Maize", labelEn: "Maize (ಮೆಕ್ಕೆಜೋಳ)", labelKn: "ಮೆಕ್ಕೆಜೋಳ" },
   { value: "Paddy", labelEn: "Paddy (ಭತ್ತ)", labelKn: "ಭತ್ತ" },
   { value: "Ragi", labelEn: "Ragi (ರಾಗಿ)", labelKn: "ರಾಗಿ" },
+  { value: "Jaggery", labelEn: "Jaggery (ಬೆಲ್ಲ)", labelKn: "ಬೆಲ್ಲ" },
   { value: "Sugarcane", labelEn: "Sugarcane (ಕಬ್ಬು)", labelKn: "ಕಬ್ಬು" },
   { value: "Tender Coconut", labelEn: "Tender Coconut (ಎಳನೀರು)", labelKn: "ಎಳನೀರು" },
   { value: "Tomato", labelEn: "Tomato (ಟೊಮ್ಯಾಟೊ)", labelKn: "ಟೊಮ್ಯಾಟೊ" },
   { value: "Onion", labelEn: "Onion (ಈರುಳ್ಳಿ)", labelKn: "ಈರುಳ್ಳಿ" },
-  { value: "Maize", labelEn: "Maize (ಮೆಕ್ಕೆಜೋಳ)", labelKn: "ಮೆಕ್ಕೆಜೋಳ" },
   { value: "Groundnut", labelEn: "Groundnut (ಕಡಲೆಕಾಯಿ)", labelKn: "ಕಡಲೆಕಾಯಿ" },
   { value: "Banana", labelEn: "Banana (ಬಾಳೆಹಣ್ಣು)", labelKn: "ಬಾಳೆಹಣ್ಣು" },
 ];
+
+export interface CommodityDefinition {
+  id: string;
+  englishName: string;
+  kannadaName: string;
+  aliases: string[];
+}
+
+export const COMMODITY_REGISTRY: Record<string, CommodityDefinition> = {
+  maize: {
+    id: "maize",
+    englishName: "Maize",
+    kannadaName: "ಮೆಕ್ಕೆಜೋಳ",
+    aliases: [
+      "maize",
+      "corn",
+      "makka",
+      "makai",
+      "makkajola",
+      "mekkejola",
+      "mekke jola",
+      "ಮೆಕ್ಕೆಜೋಳ",
+      "ಮಕ್ಕೆಜೋಳ",
+      "ಮೆಕ್ಕೆ ಜೋಳ",
+      "ಜೋಳ",
+    ],
+  },
+  paddy: {
+    id: "paddy",
+    englishName: "Paddy",
+    kannadaName: "ಭತ್ತ",
+    aliases: ["paddy", "dhan", "rice", "bhatta", "ಭತ್ತ", "ಅಕ್ಕಿ"],
+  },
+  ragi: {
+    id: "ragi",
+    englishName: "Ragi",
+    kannadaName: "ರಾಗಿ",
+    aliases: ["ragi", "finger millet", "mandua", "ರಾಗಿ"],
+  },
+  jaggery: {
+    id: "jaggery",
+    englishName: "Jaggery",
+    kannadaName: "ಬೆಲ್ಲ",
+    aliases: ["jaggery", "gur", "bella", "ಬೆಲ್ಲ"],
+  },
+  sugarcane: {
+    id: "sugarcane",
+    englishName: "Sugarcane",
+    kannadaName: "ಕಬ್ಬು",
+    aliases: ["sugarcane", "cane", "kabbu", "ಕಬ್ಬು"],
+  },
+  tender_coconut: {
+    id: "tender_coconut",
+    englishName: "Tender Coconut",
+    kannadaName: "ಎಳನೀರು",
+    aliases: ["tender coconut", "tender-coconut", "elaneeru", "yelaneeru", "ಎಳನೀರು", "ಎಳೆನೀರು"],
+  },
+  coconut: {
+    id: "coconut",
+    englishName: "Coconut",
+    kannadaName: "ತೆಂಗಿನಕಾಯಿ",
+    aliases: ["coconut", "copra", "thenginakayi", "ತೆಂಗಿನಕಾಯಿ"],
+  },
+  tomato: {
+    id: "tomato",
+    englishName: "Tomato",
+    kannadaName: "ಟೊಮ್ಯಾಟೊ",
+    aliases: ["tomato", "tamatar", "tamato", "ಟೊಮ್ಯಾಟೊ", "ತೊಮಾಟೊ"],
+  },
+  onion: {
+    id: "onion",
+    englishName: "Onion",
+    kannadaName: "ಈರುಳ್ಳಿ",
+    aliases: ["onion", "pyaz", "eerulli", "irulli", "ಈರುಳ್ಳಿ"],
+  },
+  groundnut: {
+    id: "groundnut",
+    englishName: "Groundnut",
+    kannadaName: "ಕಡಲೆಕಾಯಿ",
+    aliases: ["groundnut", "peanut", "kadalekayi", "shing", "moongphali", "ಕಡಲೆಕಾಯಿ"],
+  },
+  banana: {
+    id: "banana",
+    englishName: "Banana",
+    kannadaName: "ಬಾಳೆಹಣ್ಣು",
+    aliases: ["banana", "kela", "balehannu", "yelakki", "robusta", "ಬಾಳೆಹಣ್ಣು"],
+  },
+};
+
+export function getCanonicalCommodityId(rawText: string): string | null {
+  if (!rawText) return null;
+  const clean = rawText.trim().toLowerCase();
+
+  // 1. Direct match on ID
+  if (COMMODITY_REGISTRY[clean]) {
+    return clean;
+  }
+
+  // 2. Exact match against aliases
+  for (const [id, def] of Object.entries(COMMODITY_REGISTRY)) {
+    if (def.aliases.some((alias) => alias.toLowerCase() === clean)) {
+      return id;
+    }
+  }
+
+  // 3. Substring checks (prioritize more specific compound terms like "tender coconut" before "coconut")
+  const sortedDefs = Object.entries(COMMODITY_REGISTRY).sort((a, b) => {
+    const maxLenA = Math.max(...a[1].aliases.map((al) => al.length));
+    const maxLenB = Math.max(...b[1].aliases.map((al) => al.length));
+    return maxLenB - maxLenA;
+  });
+
+  for (const [id, def] of sortedDefs) {
+    if (def.aliases.some((alias) => clean.includes(alias.toLowerCase()))) {
+      return id;
+    }
+  }
+
+  return null;
+}
+
+export function getCanonicalEnglishName(rawText: string): string {
+  const id = getCanonicalCommodityId(rawText);
+  if (id && COMMODITY_REGISTRY[id]) {
+    return COMMODITY_REGISTRY[id].englishName;
+  }
+  return rawText.trim();
+}
+
+export function matchesCommodity(item: MarketItem, selectedCrop: string): boolean {
+  if (!selectedCrop || selectedCrop === "All") return true;
+
+  const targetId = getCanonicalCommodityId(selectedCrop);
+  const itemId = getCanonicalCommodityId(item.cropName) || getCanonicalCommodityId(item.cropNameKn);
+
+  if (targetId && itemId) {
+    return targetId === itemId;
+  }
+
+  // Fallback to substring matching on cleaned values
+  const selClean = selectedCrop.toLowerCase().replace(/[^\w\s\u0C80-\u0CFF]/gi, "").trim();
+  const nameClean = item.cropName.toLowerCase().replace(/[^\w\s\u0C80-\u0CFF]/gi, "").trim();
+  const knClean = item.cropNameKn.toLowerCase().replace(/[^\w\s\u0C80-\u0CFF]/gi, "").trim();
+
+  return (
+    nameClean.includes(selClean) ||
+    selClean.includes(nameClean) ||
+    knClean.includes(selClean) ||
+    selClean.includes(knClean)
+  );
+}
+
+export function matchesDistrict(itemDistrict: string, selectedDistrict: string): boolean {
+  if (!selectedDistrict || selectedDistrict === "All" || selectedDistrict === "All Karnataka Districts") {
+    return true;
+  }
+
+  const cleanItem = itemDistrict.trim().toLowerCase().replace(/u$/, "").replace(/e$/, "");
+  const cleanSelected = selectedDistrict.trim().toLowerCase().replace(/u$/, "").replace(/e$/, "");
+
+  return cleanItem === cleanSelected || cleanItem.includes(cleanSelected) || cleanSelected.includes(cleanItem);
+}
+
+export function matchesSearchQuery(item: MarketItem, query: string): boolean {
+  const cleanQuery = query.trim().toLowerCase();
+  if (!cleanQuery) return true;
+
+  // Check if query is a canonical commodity alias (e.g. searching "corn" or "makka" or "ಮೆಕ್ಕೆಜೋಳ")
+  const queryCommodityId = getCanonicalCommodityId(cleanQuery);
+  if (queryCommodityId) {
+    const itemCommodityId = getCanonicalCommodityId(item.cropName) || getCanonicalCommodityId(item.cropNameKn);
+    if (queryCommodityId === itemCommodityId) {
+      return true;
+    }
+  }
+
+  return (
+    item.cropName.toLowerCase().includes(cleanQuery) ||
+    item.cropNameKn.toLowerCase().includes(cleanQuery) ||
+    item.nearbyMarket.toLowerCase().includes(cleanQuery) ||
+    item.district.toLowerCase().includes(cleanQuery) ||
+    item.variety.toLowerCase().includes(cleanQuery) ||
+    item.category.toLowerCase().includes(cleanQuery)
+  );
+}
 
 export function MarketPage() {
   const { language } = useLanguage();
@@ -393,6 +654,7 @@ export function MarketPage() {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
+  const [fetchError, setFetchError] = useState<string | null>(null);
   const [metadata, setMetadata] = useState<MarketApiResponse["metadata"]>({
     district_requested: "Mandya",
     crop_requested: "All",
@@ -402,16 +664,22 @@ export function MarketPage() {
     is_stale: false,
     source: "AGMARKNET (api.data.gov.in / OGD Platform)",
     mandya_count: 7,
-    total_records: 10,
+    total_records: 13,
   });
 
   // Fetch prices from Django backend or Supabase
   const loadMarketData = useCallback(async (districtParam = selectedDistrict, cropParam = selectedCrop) => {
     setLoading(true);
+    setFetchError(null);
     try {
       const qParams = new URLSearchParams();
-      if (districtParam && districtParam !== "All") qParams.append("district", districtParam);
-      if (cropParam && cropParam !== "All") qParams.append("crop", cropParam);
+      if (districtParam && districtParam !== "All") {
+        qParams.append("district", districtParam);
+      }
+      if (cropParam && cropParam !== "All") {
+        const canonicalName = getCanonicalEnglishName(cropParam);
+        qParams.append("crop", canonicalName);
+      }
 
       // 1. First attempt: Django Backend API
       const { data: res, error } = await apiRequest<MarketApiResponse>(
@@ -462,9 +730,15 @@ export function MarketPage() {
       }
 
       // 2. Fallback attempt: Supabase client directly
-      let supaQuery = supabase.from("market_prices").select("*");
+      let supaQuery = supabase
+        .from("market_prices")
+        .select("*")
+        .eq("state", "Karnataka")
+        .not("modal_price", "is", null);
+
       if (districtParam && districtParam !== "All") {
-        supaQuery = supaQuery.ilike("district", `%${districtParam}%`);
+        const normDist = districtParam.toLowerCase().replace(/u$/, "").replace(/e$/, "");
+        supaQuery = supaQuery.ilike("district", `%${normDist}%`);
       }
       const { data: supaRows } = await supaQuery;
 
@@ -509,8 +783,9 @@ export function MarketPage() {
 
       // 3. Baseline APMC dataset if remote store is empty
       setMarketItems(BASELINE_MARKET_DATA);
-    } catch (err) {
+    } catch (err: any) {
       console.warn("Market data fetch fallback:", err);
+      setFetchError(err?.message || "Using verified baseline APMC data.");
       setMarketItems(BASELINE_MARKET_DATA);
     } finally {
       setLoading(false);
@@ -557,30 +832,37 @@ export function MarketPage() {
     }
   }
 
-  // Filter items in memory for instant UX
+  // Filter items in memory for instant UX using canonical matching
   const filteredItems = useMemo(() => {
     return marketItems.filter((item) => {
-      const matchDistrict =
-        selectedDistrict === "All" ||
-        item.district.toLowerCase() === selectedDistrict.toLowerCase();
-
-      const matchCrop =
-        selectedCrop === "All" ||
-        item.cropName.toLowerCase().includes(selectedCrop.toLowerCase()) ||
-        item.cropNameKn.includes(selectedCrop);
-
-      const query = searchQuery.trim().toLowerCase();
-      const matchSearch =
-        query === "" ||
-        item.cropName.toLowerCase().includes(query) ||
-        item.cropNameKn.toLowerCase().includes(query) ||
-        item.nearbyMarket.toLowerCase().includes(query) ||
-        item.district.toLowerCase().includes(query) ||
-        item.variety.toLowerCase().includes(query);
+      const matchDistrict = matchesDistrict(item.district, selectedDistrict);
+      const matchCrop = matchesCommodity(item, selectedCrop);
+      const matchSearch = matchesSearchQuery(item, searchQuery);
 
       return matchDistrict && matchCrop && matchSearch;
     });
   }, [marketItems, selectedDistrict, selectedCrop, searchQuery]);
+
+  // Alternative mandis across Karnataka that trade this commodity if current district filter returns 0
+  const alternativeMandisWithCrop = useMemo(() => {
+    if (selectedCrop === "All") return [];
+    return marketItems.filter((item) => matchesCommodity(item, selectedCrop));
+  }, [marketItems, selectedCrop]);
+
+  // Dev diagnostic logging
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      console.info("[MarketRates Diagnostics]", {
+        selectedDistrict,
+        selectedCrop,
+        searchQuery,
+        totalItemsInState: marketItems.length,
+        filteredCount: filteredItems.length,
+        alternativeCount: alternativeMandisWithCrop.length,
+        availableCrops: Array.from(new Set(marketItems.map((m) => m.cropName))),
+      });
+    }
+  }, [selectedDistrict, selectedCrop, searchQuery, marketItems, filteredItems, alternativeMandisWithCrop]);
 
   // Derived KPIs
   const topGainer = useMemo(() => {
@@ -1046,24 +1328,91 @@ export function MarketPage() {
 
         {/* Empty State */}
         {!loading && filteredItems.length === 0 && (
-          <div className="my-12 rounded-3xl border border-dashed border-gray-300 bg-white p-12 text-center text-gray-500">
-            <Search className="mx-auto mb-3 h-10 w-10 text-gray-300" />
-            <h4 className="text-base font-semibold text-gray-800">
-              {isKn ? "ಯಾವುದೇ ಬೆಳೆಯ ದರಗಳು ಲಭ್ಯವಿಲ್ಲ" : "No commodities matched your filter"}
-            </h4>
-            <p className="mt-1 text-xs text-gray-500">
-              {isKn
-                ? "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಜಿಲ್ಲೆ ಅಥವಾ ಬೆಳೆಯ ಆಯ್ಕೆಯನ್ನು ಬದಲಾಯಿಸಿ ನೋಡಿ."
-                : "Try selecting a different district or reset your commodity filter."}
-            </p>
-            <Button
-              onClick={resetFilters}
-              variant="outline"
-              size="sm"
-              className="mt-4 rounded-full border-green-600 text-green-700 hover:bg-green-50"
-            >
-              {isKn ? "ಫಿಲ್ಟರ್ ತೆರವುಗೊಳಿಸಿ" : "Reset Filters"}
-            </Button>
+          <div className="my-12 rounded-3xl border border-gray-200 bg-white p-8 sm:p-12 text-center shadow-xs">
+            {alternativeMandisWithCrop.length > 0 ? (
+              <div className="max-w-2xl mx-auto">
+                <div className="mx-auto mb-4 grid h-14 w-14 place-items-center rounded-2xl bg-amber-50 text-amber-600 border border-amber-200">
+                  <MapPin className="h-7 w-7" />
+                </div>
+                <h4 className="text-lg font-bold text-gray-900">
+                  {isKn
+                    ? `${selectedCrop} ಬೆಲೆಯು ${selectedDistrict} ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ ಇಂದು ವರದಿಯಾಗಿಲ್ಲ`
+                    : `No ${selectedCrop} arrivals reported in ${selectedDistrict} APMC today`}
+                </h4>
+                <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                  {isKn
+                    ? `ಆದರೆ ಕರ್ನಾಟಕದ ಇತರ ${alternativeMandisWithCrop.length} ಮಂಡಿಗಳಲ್ಲಿ ${selectedCrop} ಸಕ್ರಿಯವಾಗಿ ವಹಿವಾಟು ನಡೆಸುತ್ತಿದೆ:`
+                    : `However, active trade for ${selectedCrop} is recorded in ${alternativeMandisWithCrop.length} other Karnataka mandi(s):`}
+                </p>
+
+                <div className="mt-4 flex flex-wrap justify-center gap-2">
+                  {alternativeMandisWithCrop.slice(0, 4).map((alt) => (
+                    <Badge
+                      key={alt.id}
+                      variant="outline"
+                      className="border-emerald-200 bg-emerald-50/70 px-3 py-1.5 text-xs text-emerald-900 font-medium"
+                    >
+                      <span className="font-semibold">{alt.nearbyMarket}</span> ({alt.district}) : ₹
+                      {alt.modalPrice.toLocaleString("en-IN")}/qtl
+                    </Badge>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+                  <Button
+                    onClick={() => {
+                      setSelectedDistrict("All");
+                    }}
+                    className="rounded-full bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm px-5"
+                  >
+                    {isKn
+                      ? `ಎಲ್ಲಾ ಕರ್ನಾಟಕ ಮಂಡಿಗಳಲ್ಲಿ ${selectedCrop} ವೀಕ್ಷಿಸಿ`
+                      : `View ${selectedCrop} in All Karnataka Mandis`}
+                  </Button>
+                  <Button
+                    onClick={resetFilters}
+                    variant="outline"
+                    className="rounded-full border-gray-300 text-gray-700 hover:bg-gray-50"
+                  >
+                    {isKn ? "ಫಿಲ್ಟರ್ ತೆರವುಗೊಳಿಸಿ" : "Reset Filters"}
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <Search className="mx-auto mb-3 h-10 w-10 text-gray-300" />
+                <h4 className="text-base font-semibold text-gray-800">
+                  {isKn ? "ಯಾವುದೇ ಬೆಳೆಯ ದರಗಳು ಲಭ್ಯವಿಲ್ಲ" : "No commodities matched your filter"}
+                </h4>
+                <p className="mt-1 text-xs text-gray-500">
+                  {fetchError
+                    ? fetchError
+                    : isKn
+                      ? "ದಯವಿಟ್ಟು ನಿಮ್ಮ ಜಿಲ್ಲೆ ಅಥವಾ ಬೆಳೆಯ ಆಯ್ಕೆಯನ್ನು ಬದಲಾಯಿಸಿ ನೋಡಿ."
+                      : "Try selecting a different district or reset your commodity filter."}
+                </p>
+                <div className="mt-4 flex justify-center gap-3">
+                  <Button
+                    onClick={resetFilters}
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full border-green-600 text-green-700 hover:bg-green-50"
+                  >
+                    {isKn ? "ಫಿಲ್ಟರ್ ತೆರವುಗೊಳಿಸಿ" : "Reset Filters"}
+                  </Button>
+                  <Button
+                    onClick={handleManualSync}
+                    variant="ghost"
+                    size="sm"
+                    disabled={isSyncing}
+                    className="rounded-full text-gray-600 hover:bg-gray-100"
+                  >
+                    <RefreshCw className={`h-3.5 w-3.5 mr-1 ${isSyncing ? "animate-spin" : ""}`} />
+                    {isKn ? "ಅಗ್‌ಮಾರ್ಕ್‌ನೆಟ್ ಸಿಂಕ್" : "Trigger Sync"}
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         )}
 

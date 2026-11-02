@@ -168,19 +168,55 @@ class MarketPriceViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         qs = MarketPrice.objects.all()
 
-        # District filter
+        # District filter with spelling normalization
         district = self.request.query_params.get('district')
-        if district and district.lower() != 'all':
-            qs = qs.filter(district__icontains=district.strip())
+        if district and district.lower() not in ['all', 'all karnataka', 'all karnataka districts']:
+            d = district.strip()
+            if d.lower() in ["mysuru", "mysore"]:
+                qs = qs.filter(Q(district__icontains="Mysuru") | Q(district__icontains="Mysore"))
+            elif d.lower() in ["tumakuru", "tumkur"]:
+                qs = qs.filter(Q(district__icontains="Tumakuru") | Q(district__icontains="Tumkur"))
+            elif d.lower() in ["chikkaballapura", "chikkaballapur"]:
+                qs = qs.filter(Q(district__icontains="Chikkaballapura") | Q(district__icontains="Chikkaballapur"))
+            elif d.lower() in ["shivamogga", "shimoga"]:
+                qs = qs.filter(Q(district__icontains="Shivamogga") | Q(district__icontains="Shimoga"))
+            elif d.lower() in ["davanagere", "davangere"]:
+                qs = qs.filter(Q(district__icontains="Davanagere") | Q(district__icontains="Davangere"))
+            else:
+                qs = qs.filter(district__icontains=d)
 
-        # Crop filter
+        # Crop filter with robust normalization and alias matching (e.g. Maize vs Corn vs Makka)
         crop = self.request.query_params.get('crop')
         if crop and crop.lower() != 'all':
-            c = crop.strip().lower()
-            qs = qs.filter(
-                Q(crop_name__icontains=c) |
-                Q(crop_name_kn__icontains=c)
-            )
+            raw_c = crop.strip()
+            c = raw_c.lower()
+
+            if any(k in c for k in ["maize", "corn", "makka", "ಮೆಕ್ಕೆಜೋಳ", "ಮಕ್ಕೆಜೋಳ"]):
+                crop_q = Q(crop_name__icontains="Maize") | Q(crop_name__icontains="Corn") | Q(crop_name_kn__icontains="ಮೆಕ್ಕೆಜೋಳ")
+            elif any(k in c for k in ["paddy", "dhan", "rice", "ಭತ್ತ"]):
+                crop_q = Q(crop_name__icontains="Paddy") | Q(crop_name__icontains="Dhan") | Q(crop_name__icontains="Rice") | Q(crop_name_kn__icontains="ಭತ್ತ")
+            elif any(k in c for k in ["ragi", "finger millet", "ರಾಗಿ"]):
+                crop_q = Q(crop_name__icontains="Ragi") | Q(crop_name__icontains="Finger Millet") | Q(crop_name_kn__icontains="ರಾಗಿ")
+            elif any(k in c for k in ["tender coconut", "tender", "ಎಳನೀರು"]):
+                crop_q = Q(crop_name__icontains="Tender Coconut") | Q(crop_name_kn__icontains="ಎಳನೀರು")
+            elif any(k in c for k in ["coconut", "ತೆಂಗಿನಕಾಯಿ", "ತೆಂಗು"]):
+                crop_q = (Q(crop_name__iexact="Coconut") | Q(crop_name_kn__icontains="ತೆಂಗಿನಕಾಯಿ") | Q(crop_name_kn__icontains="ತೆಂಗು")) & ~Q(crop_name__icontains="Tender")
+            elif any(k in c for k in ["sugarcane", "sugar cane", "cane", "ಕಬ್ಬು"]):
+                crop_q = Q(crop_name__icontains="Sugarcane") | Q(crop_name__icontains="Cane") | Q(crop_name_kn__icontains="ಕಬ್ಬು")
+            elif any(k in c for k in ["jaggery", "gur", "ಬೆಲ್ಲ"]):
+                crop_q = Q(crop_name__icontains="Jaggery") | Q(crop_name_kn__icontains="ಬೆಲ್ಲ")
+            elif any(k in c for k in ["tomato", "tamatar", "ಟೊಮ್ಯಾಟೊ", "ಟೊಮೇಟೊ", "ಟೊಮೆಟೊ"]):
+                crop_q = Q(crop_name__icontains="Tomato") | Q(crop_name_kn__icontains="ಟೊಮ್ಯಾಟೊ") | Q(crop_name_kn__icontains="ಟೊಮೇಟೊ")
+            elif any(k in c for k in ["onion", "pyaz", "ಈರುಳ್ಳಿ"]):
+                crop_q = Q(crop_name__icontains="Onion") | Q(crop_name_kn__icontains="ಈರುಳ್ಳಿ")
+            elif any(k in c for k in ["groundnut", "peanut", "shenga", "ಕಡಲೆಕಾಯಿ"]):
+                crop_q = Q(crop_name__icontains="Groundnut") | Q(crop_name_kn__icontains="ಕಡಲೆಕಾಯಿ")
+            elif any(k in c for k in ["banana", "yelakki", "ಬಾಳೆಹಣ್ಣು"]):
+                crop_q = Q(crop_name__icontains="Banana") | Q(crop_name_kn__icontains="ಬಾಳೆಹಣ್ಣು")
+            else:
+                crop_q = Q(crop_name__icontains=c) | Q(crop_name_kn__icontains=c)
+
+            qs = qs.filter(crop_q)
 
         # Market / Mandi filter
         mandi = self.request.query_params.get('mandi') or self.request.query_params.get('market')
