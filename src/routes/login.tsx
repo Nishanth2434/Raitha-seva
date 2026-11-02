@@ -1,6 +1,6 @@
 import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState, useCallback } from "react";
-import { Leaf, Loader2, ArrowLeft, Eye, EyeOff, CheckCircle2, XCircle, Mail, ShieldCheck, RotateCw } from "lucide-react";
+import { Leaf, Loader2, ArrowLeft, Eye, EyeOff, CheckCircle2, XCircle, Mail, ShieldCheck, RotateCw, Check, Globe } from "lucide-react";
 import { toast } from "sonner";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/login")({
 function LoginPage() {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { t } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -99,6 +99,7 @@ function LoginPage() {
         data: {
           full_name: fullName,
           username: email.split("@")[0],
+          preferred_language: language,
         },
       },
     });
@@ -117,6 +118,7 @@ function LoginPage() {
         email: data.user.email,
         full_name: fullName,
         username: email.split("@")[0],
+        preferred_language: language,
         is_admin: false,
       });
 
@@ -170,21 +172,65 @@ function LoginPage() {
         </div>
 
         <Card className="rounded-3xl border border-gray-100 bg-white p-2 shadow-xl shadow-gray-100">
-          <CardHeader className="text-center pb-4">
-            <CardTitle className="text-2xl font-bold text-gray-900">Welcome</CardTitle>
+          <CardHeader className="text-center pb-3">
+            <CardTitle className="text-2xl font-bold text-gray-900">
+              {language === "kn" ? "ಸ್ವಾಗತ (Welcome)" : "Welcome"}
+            </CardTitle>
             <CardDescription className="text-xs text-gray-500">
-              Sign in to access weather advisories, pest alerts, and mandi market prices.
+              {language === "kn"
+                ? "ಹವಾಮಾನ, ಕೀಟ ಬಾಧೆ ಎಚ್ಚರಿಕೆ ಮತ್ತು ಮಂಡಿ ಬೆಲೆಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಲಾಗಿನ್ ಅಥವಾ ಸೈನ್ ಅಪ್ ಮಾಡಿ."
+                : "Sign in to access weather advisories, pest alerts, and mandi market prices."}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
+            {/* Language Selection: English or Kannada */}
+            <div className="rounded-2xl border border-green-200 bg-linear-to-r from-green-50/90 to-emerald-50/90 p-3 shadow-xs">
+              <div className="mb-2 flex items-center justify-between">
+                <span className="flex items-center gap-1.5 text-xs font-extrabold text-gray-800">
+                  <Globe className="h-4 w-4 text-green-700" />
+                  {language === "kn" ? "ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ:" : "Choose your language:"}
+                </span>
+                <span className="rounded-full bg-green-100 px-2 py-0.5 text-[10px] font-bold text-green-800">
+                  {language === "kn" ? "ಕನ್ನಡ ಸಕ್ರಿಯ" : "English Active"}
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <button
+                  type="button"
+                  onClick={() => setLanguage("kn")}
+                  className={`flex items-center justify-center gap-1.5 rounded-xl py-2 px-3 text-xs font-bold transition-all cursor-pointer ${
+                    language === "kn"
+                      ? "bg-green-600 text-white shadow-md shadow-green-200"
+                      : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-100"
+                  }`}
+                  aria-pressed={language === "kn"}
+                >
+                  {language === "kn" && <Check className="h-3.5 w-3.5" />}
+                  <span>ಕನ್ನಡ (Kannada)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLanguage("en")}
+                  className={`flex items-center justify-center gap-1.5 rounded-xl py-2 px-3 text-xs font-bold transition-all cursor-pointer ${
+                    language === "en"
+                      ? "bg-green-600 text-white shadow-md shadow-green-200"
+                      : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-100"
+                  }`}
+                  aria-pressed={language === "en"}
+                >
+                  {language === "en" && <Check className="h-3.5 w-3.5" />}
+                  <span>English</span>
+                </button>
+              </div>
+            </div>
 
             <Tabs defaultValue="signin">
               <TabsList className="grid w-full grid-cols-2 rounded-2xl bg-gray-100 p-1">
                 <TabsTrigger value="signin" className="rounded-xl text-xs font-semibold">
-                  Sign in
+                  {language === "kn" ? "ಲಾಗಿನ್ (Sign in)" : "Sign in"}
                 </TabsTrigger>
                 <TabsTrigger value="signup" className="rounded-xl text-xs font-semibold">
-                  Create account
+                  {language === "kn" ? "ಖಾತೆ ರಚಿಸಿ (Sign up)" : "Create account"}
                 </TabsTrigger>
               </TabsList>
 
@@ -193,13 +239,13 @@ function LoginPage() {
                 <form onSubmit={signIn} className="space-y-4 pt-3">
                   <div className="space-y-1.5">
                     <Label htmlFor="e1" className="text-xs font-semibold text-gray-700">
-                      Email or Username
+                      {language === "kn" ? "ಇಮೇಲ್ ಅಥವಾ ಬಳಕೆದಾರ ಹೆಸರು" : "Email or Username"}
                     </Label>
                     <Input
                       id="e1"
                       type="text"
                       required
-                      placeholder="farmer@example.com or username"
+                      placeholder={language === "kn" ? "farmer@example.com ಅಥವಾ ಹೆಸರು" : "farmer@example.com or username"}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="h-11 rounded-2xl border-gray-200 bg-white text-sm shadow-sm"
@@ -208,7 +254,7 @@ function LoginPage() {
 
                   <div className="space-y-1.5">
                     <Label htmlFor="p1" className="text-xs font-semibold text-gray-700">
-                      Password
+                      {language === "kn" ? "ಪಾಸ್‌ವರ್ಡ್ (Password)" : "Password"}
                     </Label>
                     <div className="relative">
                       <Input
@@ -235,7 +281,8 @@ function LoginPage() {
                     disabled={loading}
                     className="h-12 w-full rounded-2xl bg-green-600 font-bold text-white shadow-lg shadow-green-200 hover:bg-green-700"
                   >
-                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />} Sign In
+                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {language === "kn" ? "ಲಾಗಿನ್ ಮಾಡಿ (Sign In)" : "Sign In"}
                   </Button>
                 </form>
               </TabsContent>
@@ -243,14 +290,50 @@ function LoginPage() {
               {/* Sign Up Form */}
               <TabsContent value="signup">
                 <form onSubmit={signUp} className="space-y-4 pt-3">
+                  {/* In-form language preference picker */}
+                  <div className="space-y-1.5 rounded-2xl border border-gray-100 bg-gray-50/80 p-2.5">
+                    <Label className="text-xs font-bold text-gray-800 flex items-center justify-between">
+                      <span>{language === "kn" ? "ಆದ್ಯತೆಯ ಭಾಷೆ (Language)" : "Preferred Language"}</span>
+                      <span className="text-[10px] text-green-700 font-semibold">
+                        {language === "kn" ? "ಕನ್ನಡ ಅಥವಾ English" : "Kannada or English"}
+                      </span>
+                    </Label>
+                    <div className="grid grid-cols-2 gap-2 pt-1">
+                      <button
+                        type="button"
+                        onClick={() => setLanguage("kn")}
+                        className={`flex items-center justify-center gap-1.5 rounded-xl py-2 px-3 text-xs font-bold transition-all cursor-pointer ${
+                          language === "kn"
+                            ? "bg-green-600 text-white shadow-sm ring-2 ring-green-600"
+                            : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-100"
+                        }`}
+                      >
+                        {language === "kn" && <Check className="h-3.5 w-3.5" />}
+                        <span>ಕನ್ನಡ (Kannada)</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setLanguage("en")}
+                        className={`flex items-center justify-center gap-1.5 rounded-xl py-2 px-3 text-xs font-bold transition-all cursor-pointer ${
+                          language === "en"
+                            ? "bg-green-600 text-white shadow-sm ring-2 ring-green-600"
+                            : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-100"
+                        }`}
+                      >
+                        {language === "en" && <Check className="h-3.5 w-3.5" />}
+                        <span>English</span>
+                      </button>
+                    </div>
+                  </div>
+
                   <div className="space-y-1.5">
                     <Label htmlFor="n2" className="text-xs font-semibold text-gray-700">
-                      Full Name
+                      {language === "kn" ? "ಪೂರ್ಣ ಹೆಸರು (Full Name)" : "Full Name"}
                     </Label>
                     <Input
                       id="n2"
                       required
-                      placeholder="Ramesh Patil"
+                      placeholder={language === "kn" ? "ರಮೇಶ್ ಪಾಟೀಲ್" : "Ramesh Patil"}
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
                       className="h-11 rounded-2xl border-gray-200 bg-white text-sm shadow-sm"
@@ -259,7 +342,7 @@ function LoginPage() {
 
                   <div className="space-y-1.5">
                     <Label htmlFor="e2" className="text-xs font-semibold text-gray-700">
-                      Email Address
+                      {language === "kn" ? "ಇಮೇಲ್ ವಿಳಾಸ (Email)" : "Email Address"}
                     </Label>
                     <Input
                       id="e2"
@@ -274,7 +357,7 @@ function LoginPage() {
 
                   <div className="space-y-1.5">
                     <Label htmlFor="p2" className="text-xs font-semibold text-gray-700">
-                      Password (min 8 characters)
+                      {language === "kn" ? "ಪಾಸ್‌ವರ್ಡ್ (ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳು)" : "Password (min 8 characters)"}
                     </Label>
                     <div className="relative">
                       <Input
@@ -299,7 +382,7 @@ function LoginPage() {
 
                   <div className="space-y-1.5">
                     <Label htmlFor="cp2" className="text-xs font-semibold text-gray-700">
-                      Confirm Password
+                      {language === "kn" ? "ಪಾಸ್‌ವರ್ಡ್ ದೃಢೀಕರಿಸಿ" : "Confirm Password"}
                     </Label>
                     <div className="relative">
                       <Input
@@ -307,7 +390,7 @@ function LoginPage() {
                         type={showConfirmPassword ? "text" : "password"}
                         required
                         minLength={8}
-                        placeholder="Confirm your password"
+                        placeholder={language === "kn" ? "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ" : "Confirm your password"}
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         className="h-11 rounded-2xl border-gray-200 bg-white pr-10 text-sm shadow-sm"
@@ -325,11 +408,13 @@ function LoginPage() {
                       <div className="mt-1 flex items-center gap-1.5 text-xs font-medium">
                         {password === confirmPassword ? (
                           <span className="flex items-center gap-1 text-emerald-600">
-                            <CheckCircle2 className="h-3.5 w-3.5" /> Passwords match
+                            <CheckCircle2 className="h-3.5 w-3.5" />
+                            {language === "kn" ? "ಪಾಸ್‌ವರ್ಡ್ ಹೊಂದಿಕೆಯಾಗಿದೆ" : "Passwords match"}
                           </span>
                         ) : (
                           <span className="flex items-center gap-1 text-rose-500">
-                            <XCircle className="h-3.5 w-3.5" /> Passwords do not match
+                            <XCircle className="h-3.5 w-3.5" />
+                            {language === "kn" ? "ಪಾಸ್‌ವರ್ಡ್ ಹೊಂದಿಕೆಯಾಗುತ್ತಿಲ್ಲ" : "Passwords do not match"}
                           </span>
                         )}
                       </div>
@@ -341,7 +426,8 @@ function LoginPage() {
                     disabled={loading || (confirmPassword.length > 0 && password !== confirmPassword)}
                     className="h-12 w-full rounded-2xl bg-green-600 font-bold text-white shadow-lg shadow-green-200 hover:bg-green-700 disabled:opacity-50"
                   >
-                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />} Create Account
+                    {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {language === "kn" ? "ಖಾತೆ ರಚಿಸಿ (Create Account)" : "Create Account"}
                   </Button>
 
                   <p className="text-center text-[10px] text-transparent">
