@@ -183,3 +183,85 @@ class PestReport(models.Model):
 
     def __str__(self):
         return f"Pest Report: {self.disease_name} on {self.crop_name}"
+
+
+class OfficialPestAlert(models.Model):
+    SOURCE_CHOICES = [
+        ('UAS_BANGALORE', 'University of Agricultural Sciences, Bengaluru (UASB)'),
+        ('ICAR', 'Indian Council of Agricultural Research (ICAR)'),
+        ('RAITAMITRA_KSDA', 'Karnataka Department of Agriculture / Raitamitra (KSDA)'),
+    ]
+
+    SEVERITY_CHOICES = [
+        ('LOW', 'Low Risk / Advisory'),
+        ('MODERATE', 'Moderate Risk / Alert'),
+        ('HIGH', 'High Outbreak Risk'),
+        ('CRITICAL', 'Critical Epidemic Alert'),
+    ]
+
+    REVIEW_CHOICES = [
+        ('VERIFIED', 'Verified Official Advisory'),
+        ('PENDING_REVIEW', 'Pending Expert Verification'),
+        ('EXPIRED', 'Expired / Archived'),
+    ]
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    source_id = models.CharField(max_length=255, unique=True, db_index=True)
+    source_org = models.CharField(max_length=50, choices=SOURCE_CHOICES, db_index=True)
+    title = models.CharField(max_length=500)
+    description = models.TextField()
+    crop = models.CharField(max_length=100, db_index=True)
+    crop_display = models.CharField(max_length=255, default='All Crops / ಎಲ್ಲಾ ಬೆಳೆಗಳು')
+    pest_name = models.CharField(max_length=255, db_index=True)
+    scientific_name = models.CharField(max_length=255, blank=True, null=True)
+    district = models.CharField(max_length=100, default='All Karnataka', db_index=True)
+    region = models.CharField(max_length=255, blank=True, null=True)
+    symptoms = models.TextField(blank=True, null=True)
+    preventive_measures = models.TextField(blank=True, null=True)
+    chemical_treatment = models.TextField(blank=True, null=True)
+    organic_treatment = models.TextField(blank=True, null=True)
+    severity = models.CharField(max_length=20, choices=SEVERITY_CHOICES, default='MODERATE')
+    source_url = models.URLField(max_length=1024)
+    document_url = models.URLField(max_length=1024, blank=True, null=True)
+    publication_date = models.DateField(null=True, blank=True, db_index=True)
+    retrieved_at = models.DateTimeField(default=timezone.now)
+    expires_at = models.DateField(null=True, blank=True, db_index=True)
+    is_active = models.BooleanField(default=True, db_index=True)
+    is_weather_risk = models.BooleanField(default=False)
+    review_status = models.CharField(max_length=30, choices=REVIEW_CHOICES, default='VERIFIED')
+    confidence_score = models.FloatField(default=1.0)
+    content_kn = models.TextField(blank=True, null=True)
+    content_en = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-publication_date', '-created_at']
+
+    def __str__(self):
+        return f"[{self.source_org}] {self.pest_name} on {self.crop} ({self.district})"
+
+
+class SourceSyncLog(models.Model):
+    STATUS_CHOICES = [
+        ('SUCCESS', 'Success'),
+        ('PARTIAL', 'Partial Success'),
+        ('FAILED', 'Failed'),
+    ]
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    source_org = models.CharField(max_length=50, db_index=True)
+    access_method = models.CharField(max_length=100)
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='SUCCESS')
+    items_synced = models.IntegerField(default=0)
+    items_new = models.IntegerField(default=0)
+    last_sync = models.DateTimeField(default=timezone.now)
+    error_message = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-last_sync']
+
+    def __str__(self):
+        return f"{self.source_org} sync at {self.last_sync} ({self.status})"
+

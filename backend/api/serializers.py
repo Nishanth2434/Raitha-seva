@@ -2,7 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import (
     Profile, Equipment, OwnerRequest, Booking,
-    Advertisement, Reel, WeatherCache, MarketPrice, PestReport
+    Advertisement, Reel, WeatherCache, MarketPrice, PestReport,
+    OfficialPestAlert, SourceSyncLog
 )
 
 
@@ -126,3 +127,20 @@ class PestReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = PestReport
         fields = '__all__'
+
+
+class OfficialPestAlertSerializer(serializers.ModelSerializer):
+    source_org_display = serializers.CharField(source='get_source_org_display', read_only=True)
+    severity_display = serializers.CharField(source='get_severity_display', read_only=True)
+    review_status_display = serializers.CharField(source='get_review_status_display', read_only=True)
+
+    class Meta:
+        model = OfficialPestAlert
+        fields = '__all__'
+
+
+class SourceSyncLogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SourceSyncLog
+        fields = '__all__'
+

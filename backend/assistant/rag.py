@@ -226,6 +226,92 @@ class RaithaSevaRAG:
             "safety_status": "VERIFIED_SAFE"
         }
 
+    def get_active_pest_advisories(
+        self,
+        crop: Optional[str] = None,
+        district: Optional[str] = None,
+        language: str = "kn"
+    ) -> Dict[str, Any]:
+        """
+        Retrieves active, authorized pest advisories from UASB, ICAR, and KSDA.
+        Provides a farmer-friendly bilingual summary with citations and disclaimers.
+        """
+        from datetime import date
+        from django.db.models import Q
+        from api.models import OfficialPestAlert
+
+        today = date.today()
+        qs = OfficialPestAlert.objects.filter(is_active=True).filter(
+            Q(expires_at__gte=today) | Q(expires_at__isnull=True)
+        )
+
+        if crop and crop.lower() != "all":
+            qs = qs.filter(crop__iexact=crop.strip().lower())
+
+        if district and district.lower() != "all":
+            qs = qs.filter(
+                Q(district__icontains=district.strip()) |
+                Q(district__iexact="All Karnataka") |
+                Q(district__iexact="Statewide")
+            )
+
+        alerts = list(qs.order_by("-publication_date", "-created_at"))
+
+        if not alerts:
+            if language == "kn":
+                crop_text = f"'{crop}' ಬೆಳೆಗೆ" if crop and crop != "all" else "ಆಯ್ಕೆಮಾಡಿದ ಬೆಳೆಗೆ"
+                dist_text = f" {district} ಜಿಲ್ಲೆಯಲ್ಲಿ" if district and district != "all" else ""
+                message = (
+                    f"✅ ಪ್ರಸ್ತುತ {dist_text} {crop_text} ಯಾವುದೇ ಗಂಭೀರ ಕೀಟ ಅಥವಾ ರೋಗ ಬಾಧೆಯ ಅಧಿಕೃತ ಎಚ್ಚರಿಕೆ ದಾಖಲಾಗಿಲ್ಲ.\n\n"
+                    f"ನಿಮ್ಮ ಹೊಲದಲ್ಲಿ ಹೊಸ ಲಕ್ಷಣಗಳು ಕಂಡುಬಂದರೆ, ಕೃಷಿ ಅಧಿಕಾರಿಯನ್ನು ಅಥವಾ ಕೃಷಿ ವಿಜ್ಞಾನ ಕೇಂದ್ರ ಮಂಡ್ಯ (KVK Mandya: 08232-277456) ಸಂಪರ್ಕಿಸಿ."
+                )
+            else:
+                crop_text = f"for '{crop}'" if crop and crop != "all" else "for the selected crop"
+                dist_text = f" in {district}" if district and district != "all" else ""
+                message = (
+                    f"✅ Currently, there are no active verified pest or disease outbreak alerts {crop_text}{dist_text}.\n\n"
+                    f"If you notice unusual symptoms on your farm, please consult your nearest Agricultural Officer or KVK Mandya (08232-277456)."
+                )
+            return {
+                "status": "success",
+                "count": 0,
+                "crop": crop,
+                "district": district,
+                "message": message,
+                "alerts": []
+            }
+
+        return {
+            "status": "success",
+            "count": len(alerts),
+            "crop": crop,
+            "district": district,
+            "alerts": [
+                {
+                    "id": str(a.id),
+                    "source_id": a.source_id,
+                    "source_org": a.source_org,
+                    "source_org_display": a.get_source_org_display(),
+                    "title": a.title,
+                    "crop": a.crop,
+                    "crop_display": a.crop_display,
+                    "pest_name": a.pest_name,
+                    "severity": a.severity,
+                    "district": a.district,
+                    "symptoms": a.symptoms,
+                    "preventive_measures": a.preventive_measures,
+                    "chemical_treatment": a.chemical_treatment,
+                    "organic_treatment": a.organic_treatment,
+                    "source_url": a.source_url,
+                    "publication_date": str(a.publication_date or ""),
+                    "content_kn": a.content_kn,
+                    "content_en": a.content_en,
+                }
+                for a in alerts
+            ]
+        }
+
+
 # Global singleton instance
 rag_engine = RaithaSevaRAG()
 

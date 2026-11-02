@@ -6,7 +6,8 @@ from rest_framework_simplejwt.views import (
 from .views import (
     RegisterView, CustomTokenObtainPairView, CurrentProfileView, ProfileViewSet, EquipmentViewSet,
     OwnerRequestViewSet, BookingViewSet, AdvertisementViewSet,
-    ReelViewSet, WeatherCacheViewSet, MarketPriceViewSet, PestReportViewSet
+    ReelViewSet, WeatherCacheViewSet, MarketPriceViewSet, PestReportViewSet,
+    OfficialPestAlertViewSet, PestSourcesStatusView, PestAlertSyncView, PestAlertManualUploadView
 )
 
 router = DefaultRouter()
@@ -19,11 +20,15 @@ router.register(r'reels', ReelViewSet, basename='reel')
 router.register(r'weather', WeatherCacheViewSet, basename='weather')
 router.register(r'market-prices', MarketPriceViewSet, basename='market-price')
 router.register(r'pest-reports', PestReportViewSet, basename='pest-report')
+router.register(r'pest-alerts', OfficialPestAlertViewSet, basename='official-pest-alert')
 
 urlpatterns = [
     path('auth/register/', RegisterView.as_view(), name='auth_register'),
     path('auth/login/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('auth/me/', CurrentProfileView.as_view(), name='auth_me'),
+    path('pest-alerts/sources/', PestSourcesStatusView.as_view(), name='pest_sources_status'),
+    path('pest-alerts/sync/', PestAlertSyncView.as_view(), name='pest_alerts_sync'),
+    path('pest-alerts/upload/', PestAlertManualUploadView.as_view(), name='pest_alerts_upload'),
     path('', include(router.urls)),
 ]
