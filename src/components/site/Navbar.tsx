@@ -91,7 +91,7 @@ export function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur-md">
-        <nav className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between gap-2 px-3 sm:px-6">
+        <nav id="tutorial-navbar" className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between gap-2 px-3 sm:px-6">
           {/* Logo & Complete Brand Name on One Line */}
           <div className="flex shrink-0 items-center gap-2">
             {!isHome && (
@@ -184,6 +184,24 @@ export function Navbar() {
                     </DropdownMenuItem>
                   );
                 })}
+
+                <div className="h-px bg-gray-100 my-1" />
+                <DropdownMenuItem
+                  onClick={() => {
+                    sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
+                    if (location.pathname === "/" || location.pathname === "/dashboard") {
+                      window.location.reload();
+                    } else {
+                      navigate({ to: "/" });
+                    }
+                  }}
+                  className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-bold text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 cursor-pointer"
+                >
+                  <Sparkles className="h-4 w-4 text-emerald-600 shrink-0" />
+                  <span className="whitespace-nowrap">
+                    {language === "kn" ? "ಕಲಿಕಾ ಪಾಠ (Tutorial)" : "Voice Tutorial"}
+                  </span>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -341,6 +359,26 @@ export function Navbar() {
                   </Link>
                 );
               })}
+
+              {/* Mobile Voice Tutorial Button */}
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
+                  if (location.pathname === "/" || location.pathname === "/dashboard") {
+                    window.location.reload();
+                  } else {
+                    navigate({ to: "/" });
+                  }
+                }}
+                className="flex items-center gap-2.5 rounded-2xl p-2.5 text-xs font-bold transition-all min-h-[48px] bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100"
+              >
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-emerald-600 text-white shadow-2xs">
+                  <Sparkles className="h-4 w-4" />
+                </span>
+                <span className="truncate">ಕಲಿಕಾ ಪಾಠ</span>
+              </button>
             </div>
 
             {/* Mobile Profile & Logout Actions */}

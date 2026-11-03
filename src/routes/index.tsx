@@ -45,6 +45,7 @@ import {
   AgriculturalUpdateNotification,
   BASELINE_AGRICULTURAL_UPDATES,
 } from "@/lib/agricultural-notifications";
+import { KannadaVoiceTutorial } from "@/components/tutorial/KannadaVoiceTutorial";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,6 +70,21 @@ export function Index() {
   const [agriculturalUpdates, setAgriculturalUpdates] = useState<AgriculturalUpdateNotification[]>(
     BASELINE_AGRICULTURAL_UPDATES
   );
+
+  const [showTutorial, setShowTutorial] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const shouldTrigger =
+      sessionStorage.getItem("raitha_seva_trigger_tutorial") === "true" ||
+      !localStorage.getItem("raitha_seva_tutorial_completed");
+    if (!shouldTrigger) return;
+
+    const timer = setTimeout(() => {
+      setShowTutorial(true);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -155,7 +171,7 @@ export function Index() {
 
       <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 space-y-8 flex-1">
         {/* ─── 1. PERSONALIZED WELCOME BANNER ─── */}
-        <section className="rounded-3xl border border-green-200 bg-linear-to-r from-green-50 via-emerald-50/70 to-teal-50 p-6 sm:p-8 shadow-xs">
+        <section id="tutorial-welcome" className="rounded-3xl border border-green-200 bg-linear-to-r from-green-50 via-emerald-50/70 to-teal-50 p-6 sm:p-8 shadow-xs">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2">
@@ -237,7 +253,7 @@ export function Index() {
         {/* ─── 3. FEATURE SUMMARY CARDS (CLEAN SUMMARIES WITH VIEW DETAILS LINKS) ─── */}
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* Summary Card 1: Weather Overview */}
-          <Card className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
+          <Card id="tutorial-weather" className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
             <div className="space-y-3">
               <div className="flex items-center justify-between border-b border-gray-100 pb-3">
                 <div className="flex items-center gap-2">
@@ -302,7 +318,7 @@ export function Index() {
           </Card>
 
           {/* Summary Card 2: Recent Pest Alert */}
-          <Card className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
+          <Card id="tutorial-pest" className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
             <div className="space-y-3">
               <div className="flex items-center justify-between border-b border-gray-100 pb-3">
                 <div className="flex items-center gap-2">
@@ -354,7 +370,7 @@ export function Index() {
           </Card>
 
           {/* Summary Card 3: Mandi Market Prices */}
-          <Card className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
+          <Card id="tutorial-market" className="rounded-3xl border border-gray-200/90 bg-white p-5 shadow-sm flex flex-col justify-between">
             <div className="space-y-3">
               <div className="flex items-center justify-between border-b border-gray-100 pb-3">
                 <div className="flex items-center gap-2">
@@ -414,7 +430,7 @@ export function Index() {
         {/* ─── 4. AI PROMPT BANNER & DIRECT HELPLINE ─── */}
         <section className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Ask AI Assistant Prompt Box */}
-          <Card className="rounded-3xl border-2 border-green-300 bg-linear-to-br from-green-50 via-white to-emerald-50 p-6 shadow-sm space-y-4">
+          <Card id="tutorial-assistant" className="rounded-3xl border-2 border-green-300 bg-linear-to-br from-green-50 via-white to-emerald-50 p-6 shadow-sm space-y-4">
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-green-600 text-white shadow-md shadow-green-200">
                 <Sparkles className="h-6 w-6" />
@@ -444,7 +460,7 @@ export function Index() {
           </Card>
 
           {/* Temporary Helpline Support Banner */}
-          <Card className="rounded-3xl border border-gray-200/90 bg-white p-6 shadow-sm flex flex-col justify-between">
+          <Card id="tutorial-help" className="rounded-3xl border border-gray-200/90 bg-white p-6 shadow-sm flex flex-col justify-between">
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
@@ -500,7 +516,7 @@ export function Index() {
         </section>
 
         {/* ─── 5. GOVERNMENT SCHEMES, SUBSIDIES & LOANS + LINK SCANNER ─── */}
-        <section className="space-y-4">
+        <section id="tutorial-schemes" className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div className="flex items-center gap-2">
               <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-100 text-blue-700">
@@ -693,7 +709,7 @@ export function Index() {
         </section>
 
         {/* ─── 5. RECENT AGRICULTURAL ACTIVITIES & ADVISORIES ─── */}
-        <section className="space-y-3">
+        <section id="tutorial-updates" className="space-y-3">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-green-700" />
@@ -779,7 +795,7 @@ export function Index() {
         </section>
 
         {/* ─── 6. 🎥 AGRI REELS & FARMING PRACTICAL VIDEOS ─── */}
-        <section className="space-y-4">
+        <section id="tutorial-reels" className="space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <div className="flex items-center gap-2">
               <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
@@ -912,6 +928,12 @@ export function Index() {
           </div>
         </section>
       </main>
+
+      {/* Kannada Voice-Guided Raitha Seva Interactive Tutorial */}
+      <KannadaVoiceTutorial
+        isOpen={showTutorial}
+        onClose={() => setShowTutorial(false)}
+      />
 
       <Footer />
     </div>

@@ -184,3 +184,19 @@
 @utility animate-fade-up {
   animation: km-fade-up 0.6s ease-out both;
 }
+
+/* Kannada Voice Guided Tutorial Spotlight Highlight */
+.tutorial-highlight-target {
+  position: relative !important;
+  z-index: 45 !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 4px #10b981, 0 0 30px rgba(16, 185, 129, 0.6) !important;
+  transition: all 0.3s ease-in-out !important;
+  animation: tutorial-pulse 2s infinite !important;
+}
+
+@keyframes tutorial-pulse {
+  0% { box-shadow: 0 0 0 4px #10b981, 0 0 20px rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 0 6px #34d399, 0 0 35px rgba(16, 185, 129, 0.8); }
+  100% { box-shadow: 0 0 0 4px #10b981, 0 0 20px rgba(16, 185, 129, 0.4); }
+}

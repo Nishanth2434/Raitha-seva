@@ -61,6 +61,7 @@ export function OnboardingPage() {
       if (typeof window !== "undefined") {
         sessionStorage.removeItem("raitha_seva_is_new_signup");
         localStorage.setItem("raitha_seva_onboarding_completed", "true");
+        sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
         if (authUser?.id) {
           localStorage.setItem(`raitha_seva_onboarding_completed_${authUser.id}`, "true");
         }

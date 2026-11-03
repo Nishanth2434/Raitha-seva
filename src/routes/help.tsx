@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   Phone,
@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   ArrowRight,
   BookOpen,
+  Volume2,
 } from "lucide-react";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
@@ -47,6 +48,7 @@ export const Route = createFileRoute("/help")({
 });
 
 export function HelpPage() {
+  const navigate = useNavigate();
   const { language, t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
@@ -96,6 +98,42 @@ export function HelpPage() {
         }
       >
         <div className="space-y-6">
+          {/* Kannada Voice Tutorial Interactive Replay Card */}
+          <Card className="overflow-hidden rounded-3xl border-2 border-emerald-500/80 bg-linear-to-r from-emerald-900 via-slate-900 to-slate-950 p-6 sm:p-7 text-white shadow-xl">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-5">
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-500 text-white shadow-lg shadow-emerald-500/40">
+                  <Volume2 className="h-7 w-7 animate-pulse" />
+                </div>
+                <div className="space-y-1">
+                  <Badge className="bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 text-[10px] font-bold">
+                    {language === "kn" ? "ಧ್ವನಿ ಮಾರ್ಗದರ್ಶಿ" : "Kannada Voice Guide"}
+                  </Badge>
+                  <h3 className="text-xl sm:text-2xl font-black text-white">
+                    {language === "kn" ? "ರೈತ ಸೇವಾ ಧ್ವನಿ ಕಲಿಕಾ ಪಾಠ" : "Interactive Kannada Voice Tutorial"}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 max-w-xl">
+                    {language === "kn"
+                      ? "ಪ್ರತಿಯೊಂದು ಕೃಷಿ ಸೌಲಭ್ಯವನ್ನು ಕನ್ನಡದಲ್ಲೇ ಮಾತನಾಡಿ ವಿವರಿಸುವ ಧ್ವನಿ ಮಾರ್ಗದರ್ಶಿಯನ್ನು ಪುನಃ ಕೇಳಿ."
+                      : "Listen to the friendly assistant explain each feature step-by-step in natural spoken Kannada."}
+                  </p>
+                </div>
+              </div>
+
+              <Button
+                size="lg"
+                onClick={() => {
+                  sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
+                  navigate({ to: "/" });
+                }}
+                className="w-full md:w-auto shrink-0 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm px-6 h-12 shadow-lg shadow-emerald-600/50 cursor-pointer"
+              >
+                <Sparkles className="mr-2 h-4 w-4 fill-slate-950" />
+                <span>{language === "kn" ? "ಪಾಠ ಪ್ರಾರಂಭಿಸಿ (Start Voice Tour)" : "Start Voice Tutorial"}</span>
+              </Button>
+            </div>
+          </Card>
+
           {/* Main Customer Care Card */}
           <Card className="overflow-hidden rounded-3xl border-2 border-green-500 bg-linear-to-br from-green-50 via-white to-emerald-50 p-6 sm:p-8 shadow-xl">
             <div className="text-center max-w-xl mx-auto space-y-3">
