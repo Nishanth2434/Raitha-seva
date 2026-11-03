@@ -27,6 +27,7 @@ export interface TutorialStep {
   titleEn: string;
   speechKn: string;
   summaryKn: string;
+  linkTo?: string;
   iconName?: string;
 }
 
@@ -37,6 +38,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೧",
     titleKn: "ಮುಖ್ಯಪುಟ ಮತ್ತು ಮೆನು",
     titleEn: "Dashboard & Navigation",
+    linkTo: "/dashboard",
     speechKn:
       "ಇದು ರೈತ ಸೇವಾದ ಮುಖ್ಯಪುಟ ಮತ್ತು ಮೇಲ್ಭಾಗದ ಮೆನು. ಇಲ್ಲಿಂದ ಬೆಳೆ ರೋಗ ಪತ್ತೆ, ಹವಾಮಾನ, ಮಾರುಕಟ್ಟೆ ಬೆಲೆ ಮತ್ತು ಕೃಷಿ ಸಲಹೆಗಳಂತಹ ಸೌಲಭ್ಯಗಳನ್ನು ಬಳಸಬಹುದು. ಈಗ ಒಂದೊಂದಾಗಿ ಪ್ರಮುಖ ಸೌಲಭ್ಯಗಳನ್ನು ನೋಡೋಣ.",
     summaryKn:
@@ -48,6 +50,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೨",
     titleKn: "ಬೆಳೆ ರೋಗ ಪತ್ತೆ ಸ್ಕ್ಯಾನ್",
     titleEn: "Crop Disease Diagnosis",
+    linkTo: "/pest-alerts",
     speechKn:
       "ನಿಮ್ಮ ಬೆಳೆಯ ಎಲೆಗಳಲ್ಲಿ ಕಲೆಗಳು ಅಥವಾ ಬೇರೆ ಲಕ್ಷಣಗಳು ಕಂಡುಬಂದರೆ, ಅದರ ಸ್ಪಷ್ಟವಾದ ಫೋಟೋ ತೆಗೆದು ಇಲ್ಲಿ ಅಪ್ಲೋಡ್ ಮಾಡಿ. ಆ್ಯಪ್ ಚಿತ್ರವನ್ನು ಪರಿಶೀಲಿಸಿ ಸಾಧ್ಯವಾದ ಸಮಸ್ಯೆ ಮತ್ತು ಸೂಕ್ತ ಮುಂದಿನ ಕ್ರಮಗಳ ಬಗ್ಗೆ ಮಾಹಿತಿ ನೀಡುತ್ತದೆ. ಫಲಿತಾಂಶವನ್ನು ಖಚಿತ ನಿರ್ಣಯವೆಂದು ಭಾವಿಸದೆ, ಅಗತ್ಯವಿದ್ದರೆ ಕೃಷಿ ತಜ್ಞರ ಸಲಹೆಯನ್ನೂ ಪಡೆಯಿರಿ.",
     summaryKn:
@@ -59,6 +62,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೩",
     titleKn: "ಕೃಷಿ ಸಲಹೆ ಮತ್ತು ಕೀಟ ಎಚ್ಚರಿಕೆ",
     titleEn: "Pest Warnings & POP",
+    linkTo: "/pest-alerts",
     speechKn:
       "ನಿಮ್ಮ ಬೆಳೆಗೆ ಸಂಬಂಧಿಸಿದ ಕೃಷಿ ಸಲಹೆಗಳು ಮತ್ತು ಕೀಟಗಳ ಎಚ್ಚರಿಕೆಗಳನ್ನು ಇಲ್ಲಿ ನೋಡಬಹುದು. ಇವು ಬೆಂಗಳೂರು ಕೃಷಿ ವಿಶ್ವವಿದ್ಯಾಲಯ ಮತ್ತು ಐಸಿಎಆರ್ ಪ್ಯಾಕೇಜ್ ಆಫ್ ಪ್ರಾಕ್ಟೀಸಸ್ ಆಧಾರಿತವಾಗಿವೆ. ಸಲಹೆಯನ್ನು ಅನುಸರಿಸುವ ಮೊದಲು ಅದು ನಿಮ್ಮ ಬೆಳೆ ಮತ್ತು ಸ್ಥಳಕ್ಕೆ ಅನ್ವಯಿಸುತ್ತದೆಯೇ ಎಂದು ಪರಿಶೀಲಿಸಿ.",
     summaryKn:
@@ -70,6 +74,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೪",
     titleKn: "ಹವಾಮಾನ ಮತ್ತು ಸಿಂಪಡಣೆ ಸಲಹೆ",
     titleEn: "Hyperlocal Weather & Spray",
+    linkTo: "/weather",
     speechKn:
       "ಇಲ್ಲಿ ನಿಮ್ಮ ಪ್ರದೇಶದ ಹವಾಮಾನ ಮಾಹಿತಿಯನ್ನು ನೋಡಬಹುದು. ಮಳೆ ಬರುವ ಸಾಧ್ಯತೆ, ಗಾಳಿ ಮತ್ತು ತಾಪಮಾನವನ್ನು ಪರಿಶೀಲಿಸಿ ಕೃಷಿ ಕೆಲಸಗಳನ್ನು ಯೋಜಿಸಿ. ಔಷಧ ಸಿಂಪಡಿಸುವ ಮೊದಲು ಹವಾಮಾನ ಮತ್ತು ಔಷಧದ ಲೇಬಲ್ ಸೂಚನೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ.",
     summaryKn:
@@ -81,6 +86,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೫",
     titleKn: "ಮಾರುಕಟ್ಟೆ ಮಂಡಿ ಬೆಲೆಗಳು",
     titleEn: "APMC Mandi Market Rates",
+    linkTo: "/market-prices",
     speechKn:
       "ನೀವು ಮಾರಾಟ ಮಾಡಲು ಬಯಸುವ ಬೆಳೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಿ. ಲಭ್ಯವಿದ್ದರೆ ವಿವಿಧ ಮಾರುಕಟ್ಟೆಗಳ ಕನಿಷ್ಠ, ಗರಿಷ್ಠ ಮತ್ತು ಮಾದರಿ ಬೆಲೆಗಳನ್ನು ಇಲ್ಲಿ ನೋಡಬಹುದು. ಬೆಲೆಯ ವರದಿ ದಿನಾಂಕವನ್ನು ಪರಿಶೀಲಿಸಿ. ಇಲ್ಲಿ ಕಾಣುವ ಬೆಲೆ ನಿಮಗೆ ಖಚಿತವಾಗಿ ಸಿಗುವ ಮಾರಾಟ ಬೆಲೆ ಎಂದರ್ಥವಲ್ಲ.",
     summaryKn:
@@ -92,6 +98,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೬",
     titleKn: "ಕನ್ನಡ ಧ್ವನಿ ಮತ್ತು ಎಐ ಸಹಾಯಕ",
     titleEn: "AI Farming Assistant & Voice",
+    linkTo: "/assistant",
     speechKn:
       "ನಿಮಗೆ ಕೃಷಿಗೆ ಸಂಬಂಧಿಸಿದ ಯಾವುದೇ ಪ್ರಶ್ನೆ ಇದ್ದರೆ ಇಲ್ಲಿ ಕೇಳಬಹುದು. ಮೈಕ್ರೋಫೋನ್ ಬಟನ್ ಒತ್ತಿ ನಿಮ್ಮ ಪ್ರಶ್ನೆಯನ್ನು ಕನ್ನಡದಲ್ಲಿ ಹೇಳಿ, ಅಥವಾ ಪ್ರಶ್ನೆಯನ್ನು ಟೈಪ್ ಮಾಡಿ. ಉತ್ತರವನ್ನು ಕೇಳಬಹುದು ಮತ್ತು ಅರ್ಥವಾಗದಿದ್ದರೆ ಮತ್ತೆ ವಿವರಿಸಲು ಕೇಳಬಹುದು.",
     summaryKn:
@@ -103,6 +110,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೭",
     titleKn: "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳು & ಲಿಂಕ್ ಸ್ಕ್ಯಾನರ್",
     titleEn: "Govt Schemes & Link Scanner",
+    linkTo: "/schemes",
     speechKn:
       "ಸರ್ಕಾರಿ ಯೋಜನೆಗಳ ಮಾಹಿತಿಯನ್ನು ಇಲ್ಲಿ ಪರಿಶೀಲಿಸಬಹುದು. ಅನುಮಾನಾಸ್ಪದ ಸಂದೇಶದಲ್ಲಿ ಬಂದ ಲಿಂಕ್‌ಗಳನ್ನು ಪರಿಶೀಲಿಸದೆ ವೈಯಕ್ತಿಕ ಮಾಹಿತಿ, ಬ್ಯಾಂಕ್ ವಿವರಗಳು ಅಥವಾ ಒಟಿಪಿಯನ್ನು ಹಂಚಿಕೊಳ್ಳಬೇಡಿ. ಈ ಲಿಂಕ್ ಸ್ಕ್ಯಾನರ್ ಎಚ್ಚರಿಕೆ ನೀಡುತ್ತದೆ ಆದರೆ ಪ್ರತಿಯೊಂದು ಲಿಂಕ್ ಸುರಕ್ಷಿತವೆಂದು ಸಂಪೂರ್ಣ ಖಾತರಿ ನೀಡಲು ಸಾಧ್ಯವಿಲ್ಲ.",
     summaryKn:
@@ -114,6 +122,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೮",
     titleKn: "ಕೃಷಿ ಕಲಿಕಾ ವೀಡಿಯೊಗಳು (ರೀಲ್ಸ್)",
     titleEn: "Agri Reels — Practical Farming",
+    linkTo: "/reels",
     speechKn:
       "ಇಲ್ಲಿ ಕೃಷಿಗೆ ಸಂಬಂಧಿಸಿದ ಕಲಿಕಾ ವೀಡಿಯೊಗಳನ್ನು ನೋಡಬಹುದು. ಸಾವಯವ ಕೃಷಿ, ಜೀವಾಮೃತ ತಯಾರಿಕೆ ಮತ್ತು ಉಪಕರಣ ಬಳಕೆಯಂತಹ ನಿಮ್ಮ ಕೆಲಸಕ್ಕೆ ಸಂಬಂಧಿಸಿದ ವಿಷಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಹಂತ ಹಂತವಾಗಿ ಕಲಿಯಿರಿ.",
     summaryKn:
@@ -125,6 +134,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೯",
     titleKn: "ಕೃಷಿ ಉಪಕರಣಗಳು & ಸಬ್ಸಿಡಿ",
     titleEn: "Machinery & Equipment Subsidies",
+    linkTo: "/schemes",
     speechKn:
       "ಕೃಷಿ ಉಪಕರಣಗಳ ಸಬ್ಸಿಡಿ ವಿವರಗಳು ಇಲ್ಲಿ ಲಭ್ಯವಿವೆ. ಟ್ರ್ಯಾಕ್ಟರ್, ಟಿಲ್ಲರ್ ಮತ್ತು ಡ್ರೋನ್‌ಗಳಿಗೆ ಶೇಕಡಾ ನಲವತ್ತರಿಂದ ಐವತ್ತರವರೆಗಿನ ಸಬ್ಸಿಡಿ ಪಡೆಯುವ ವಿಧಾನ ನೋಡಿ. ಮುಂಬರುವ ದಿನಗಳಲ್ಲಿ ನೇರ ಬಾಡಿಗೆ ಬುಕ್ಕಿಂಗ್ ಸೌಲಭ್ಯವೂ ಸೇರ್ಪಡೆಯಾಗಲಿದೆ.",
     summaryKn:
@@ -136,6 +146,7 @@ export const TUTORIAL_STEPS: TutorialStep[] = [
     stepNumKn: "೧೦",
     titleKn: "ಭಾಷೆ, ಪ್ರೊಫೈಲ್ ಮತ್ತು ಸಹಾಯವಾಣಿ",
     titleEn: "Language, Profile & Helpline",
+    linkTo: "/help",
     speechKn:
       "ನಿಮಗೆ ಬೇಕಾದ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆ ಮಾಡಬಹುದು. ನಿಮ್ಮ ಪ್ರೊಫೈಲ್ ಮತ್ತು ಅಧಿಸೂಚನೆಗಳನ್ನು ಪರಿಶೀಲಿಸಬಹುದು. ಯಾವುದೇ ತೊಂದರೆ ಇದ್ದರೆ ನಮ್ಮ ಉಚಿತ ಕಿಸಾನ್ ಕಾಲ್ ಸೆಂಟರ್ ಅಥವಾ ನೇರ ಗ್ರಾಹಕ ಸೇವೆ ಸಹಾಯವಾಣಿ ಸಂಖ್ಯೆಗೆ ಕರೆ ಮಾಡಿ.",
     summaryKn:
@@ -454,13 +465,28 @@ export function KannadaVoiceTutorial({
 
     let targetEl: HTMLElement | null = null;
 
+    // Clean up any existing floating beacon from previous step
+    const oldBeacon = document.getElementById("tutorial-floating-beacon");
+    if (oldBeacon) oldBeacon.remove();
+
     if (currentStepIndex >= 0 && currentStepIndex < TUTORIAL_STEPS.length) {
       const step = TUTORIAL_STEPS[currentStepIndex];
       if (step) {
         targetEl = document.getElementById(step.targetId);
         if (targetEl) {
-          targetEl.scrollIntoView({ behavior: "smooth", block: "center" });
           targetEl.classList.add("tutorial-highlight-target");
+
+          // Inject visual floating pointer beacon directly onto the active element
+          const beacon = document.createElement("div");
+          beacon.id = "tutorial-floating-beacon";
+          beacon.className = "tutorial-floating-beacon";
+          beacon.innerHTML = `<span>🎯</span><span>ಈ ಸೌಲಭ್ಯ ನೋಡಿ: <strong>${step.titleKn}</strong> (${step.titleEn})</span> <span>👇</span>`;
+          targetEl.prepend(beacon);
+
+          // Scroll smoothly with top offset so header and element are fully visible above bottom tour bar
+          const rect = targetEl.getBoundingClientRect();
+          const targetY = rect.top + window.pageYOffset - 85;
+          window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
         }
         speak(step.speechKn);
       }
@@ -480,6 +506,8 @@ export function KannadaVoiceTutorial({
     }
 
     return () => {
+      const b = document.getElementById("tutorial-floating-beacon");
+      if (b) b.remove();
       if (targetEl) {
         targetEl.classList.remove("tutorial-highlight-target");
       }
@@ -493,7 +521,9 @@ export function KannadaVoiceTutorial({
       recognitionRef.current.stop();
       setIsListening(false);
     }
-    // Remove any remaining highlight from DOM
+    // Remove any remaining highlight and beacon from DOM
+    const b = document.getElementById("tutorial-floating-beacon");
+    if (b) b.remove();
     document.querySelectorAll(".tutorial-highlight-target").forEach((el) => {
       el.classList.remove("tutorial-highlight-target");
     });
@@ -627,15 +657,15 @@ export function KannadaVoiceTutorial({
       ? TUTORIAL_STEPS[currentStepIndex]
       : null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-xs transition-opacity animate-in fade-in duration-200">
-      {/* ─── 1. STEP -1: WELCOME & PERMISSION PROMPT ─── */}
-      {currentStepIndex === -1 && (
+  // ─── 1. STEP -1: WELCOME & PERMISSION PROMPT (Centered Modal Dialog) ───
+  if (currentStepIndex === -1) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity animate-in fade-in duration-200">
         <div className="relative w-full max-w-lg rounded-3xl border-2 border-emerald-500/80 bg-slate-950 p-6 sm:p-8 text-white shadow-2xl shadow-emerald-950/60 transition-all">
           <button
             type="button"
             onClick={handleClose}
-            className="absolute top-4 right-4 rounded-full p-2 text-gray-400 hover:bg-slate-800 hover:text-white transition-colors"
+            className="absolute top-4 right-4 rounded-full p-2 text-gray-400 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer"
             title="ಮುಚ್ಚಿ (Close)"
           >
             <X className="h-5 w-5" />
@@ -734,172 +764,14 @@ export function KannadaVoiceTutorial({
             </Button>
           </div>
         </div>
-      )}
+      </div>
+    );
+  }
 
-      {/* ─── 2. ACTIVE STEPS (0 TO 9) ─── */}
-      {currentStep && (
-        <div className="relative w-full max-w-2xl rounded-3xl border-2 border-emerald-500/90 bg-slate-950 p-5 sm:p-7 text-white shadow-2xl shadow-emerald-950/80 transition-all">
-          {/* Header Bar */}
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800 gap-2">
-            <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-600 text-white font-black text-sm shadow-md shadow-emerald-700/50">
-                {currentStep.stepNumKn}
-              </span>
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
-                  ಹಂತ {currentStepIndex + 1} / {TUTORIAL_STEPS.length}
-                </span>
-                <h3 className="text-base sm:text-lg font-black text-white">
-                  {currentStep.titleKn}
-                </h3>
-              </div>
-            </div>
-
-            {/* Audio Waveform Indicator & Close */}
-            <div className="flex items-center gap-3">
-              <div className="hidden sm:flex items-center gap-1 h-6 bg-slate-900 rounded-lg px-2.5 border border-slate-800">
-                {waveformBars.map((height, i) => (
-                  <span
-                    key={i}
-                    style={{ height: `${height}%` }}
-                    className="w-1 bg-emerald-400 rounded-full transition-all duration-150"
-                  />
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={handleClose}
-                className="rounded-full p-1.5 text-gray-400 hover:bg-slate-800 hover:text-white transition-colors"
-                title="ನಿಲ್ಲಿಸಿ ಮತ್ತು ನಿರ್ಗಮಿಸಿ (Exit)"
-              >
-                <X className="h-5 w-5" />
-              </button>
-            </div>
-          </div>
-
-          {/* Progress Bar */}
-          <div className="w-full bg-slate-800 h-1.5 rounded-full my-3 overflow-hidden">
-            <div
-              className="bg-emerald-500 h-full rounded-full transition-all duration-300"
-              style={{
-                width: `${((currentStepIndex + 1) / TUTORIAL_STEPS.length) * 100}%`,
-              }}
-            />
-          </div>
-
-          {/* Spoken Speech Display Box with Large Kannada Text */}
-          <div className="rounded-2xl bg-linear-to-br from-slate-900 to-slate-950 border border-slate-800 p-4 sm:p-5 text-slate-100 space-y-2">
-            <p className="text-sm sm:text-base leading-relaxed font-medium">
-              “{currentStep.speechKn}”
-            </p>
-            <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-emerald-400 font-semibold">
-              <span>ಸಾರಾಂಶ: {currentStep.summaryKn}</span>
-            </div>
-          </div>
-
-          {/* Voice Recognition Command Bar (Active Listening Indicator) */}
-          {isListening && (
-            <div className="mt-3 flex items-center justify-between bg-emerald-950/70 border border-emerald-500/50 rounded-xl px-3 py-1.5 text-xs text-emerald-300">
-              <span className="flex items-center gap-2 font-bold animate-pulse">
-                <Mic className="h-4 w-4 text-emerald-400" />
-                <span>ಆಲಿಸಲಾಗುತ್ತಿದೆ... "ಮುಂದೆ", "ಹಿಂದೆ", "ಮತ್ತೆ ಹೇಳಿ" ಎಂದು ಹೇಳಿ</span>
-              </span>
-              <button
-                type="button"
-                onClick={toggleVoiceCommands}
-                className="text-[10px] underline text-slate-300 hover:text-white"
-              >
-                ಆಫ್ ಮಾಡಿ
-              </button>
-            </div>
-          )}
-
-          {/* Bottom Controls Bar */}
-          <div className="mt-5 flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800">
-            {/* Left Controls: Repeat & Voice Command Mic */}
-            <div className="flex items-center gap-2">
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={repeatCurrentSpeech}
-                className="rounded-xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold gap-1.5 h-10 px-3"
-                title="ಮತ್ತೆ ಹೇಳಿ (Repeat Audio)"
-              >
-                <RotateCcw className="h-3.5 w-3.5 text-amber-400" />
-                <span>ಮತ್ತೆ ಹೇಳಿ (Repeat)</span>
-              </Button>
-
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={togglePauseResume}
-                className="rounded-xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold gap-1.5 h-10 px-3"
-                title={isSpeaking && !isPaused ? "ವಿರಾಮ (Pause)" : "ಮುಂದುವರಿಸಿ (Resume)"}
-              >
-                {isSpeaking && !isPaused ? (
-                  <>
-                    <Pause className="h-3.5 w-3.5 text-sky-400" />
-                    <span>ವಿರಾಮ</span>
-                  </>
-                ) : (
-                  <>
-                    <Play className="h-3.5 w-3.5 text-emerald-400 fill-emerald-400" />
-                    <span>ಕೇಳಿ</span>
-                  </>
-                )}
-              </Button>
-
-              {recognitionSupported && (
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={toggleVoiceCommands}
-                  className={`rounded-xl border-slate-700 text-xs font-bold gap-1.5 h-10 px-3 ${
-                    isListening
-                      ? "bg-emerald-600 text-white border-emerald-500 animate-pulse"
-                      : "bg-slate-900 hover:bg-slate-800 text-slate-300"
-                  }`}
-                  title="ಕನ್ನಡ ಧ್ವನಿ ಆಜ್ಞೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
-                >
-                  {isListening ? <Mic className="h-3.5 w-3.5" /> : <MicOff className="h-3.5 w-3.5 text-gray-400" />}
-                  <span className="hidden sm:inline">ಧ್ವನಿ ಆಜ್ಞೆ</span>
-                </Button>
-              )}
-            </div>
-
-            {/* Right Controls: Back, Next & Exit */}
-            <div className="flex items-center gap-2 ml-auto">
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={handleBack}
-                disabled={currentStepIndex === 0}
-                className="rounded-xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-bold gap-1 h-10 px-3 disabled:opacity-40"
-              >
-                <ArrowLeft className="h-3.5 w-3.5" />
-                <span>ಹಿಂದೆ (Back)</span>
-              </Button>
-
-              <Button
-                size="sm"
-                onClick={handleNext}
-                className="rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold gap-1.5 h-10 px-4 shadow-md shadow-emerald-700/40"
-              >
-                <span>
-                  {currentStepIndex === TUTORIAL_STEPS.length - 1
-                    ? "ಮುಗಿಸಿ (Finish)"
-                    : "ಮುಂದೆ (Next)"}
-                </span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ─── 3. COMPLETION SCREEN ─── */}
-      {currentStepIndex === TUTORIAL_STEPS.length && (
+  // ─── 3. COMPLETION SCREEN (Centered Modal Dialog) ───
+  if (currentStepIndex === TUTORIAL_STEPS.length) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity animate-in fade-in duration-200">
         <div className="relative w-full max-w-lg rounded-3xl border-2 border-emerald-500 bg-slate-950 p-6 sm:p-8 text-white shadow-2xl shadow-emerald-950/80 text-center transition-all">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-3xl bg-linear-to-br from-emerald-400 to-green-600 text-white shadow-xl shadow-emerald-500/30 mb-4">
             <CheckCircle2 className="h-9 w-9" />
@@ -923,7 +795,7 @@ export function KannadaVoiceTutorial({
             <Button
               size="lg"
               onClick={handleClose}
-              className="flex-1 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-700/40 h-12"
+              className="flex-1 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-700/40 h-12 cursor-pointer"
             >
               <span>ಆ್ಯಪ್ ಬಳಸಲು ಪ್ರಾರಂಭಿಸಿ (Start App)</span>
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -935,14 +807,217 @@ export function KannadaVoiceTutorial({
                 stopSpeech();
                 setCurrentStepIndex(0);
               }}
-              className="rounded-2xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs sm:text-sm h-12"
+              className="rounded-2xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs sm:text-sm h-12 cursor-pointer"
             >
               <RotateCcw className="mr-1.5 h-4 w-4 text-amber-400" />
               <span>ಮತ್ತೆ ಪಾಠ ಕೇಳಿ (Replay)</span>
             </Button>
           </div>
         </div>
-      )}
+      </div>
+    );
+  }
+
+  // ─── 2. ACTIVE STEPS (0 TO 9) — BOTTOM DOCKED TOUR DOCK (NO SCREEN-BLOCKING BACKDROP!) ───
+  if (!currentStep) return null;
+
+  return (
+    <div className="fixed bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 w-[calc(100%-1.25rem)] max-w-2xl z-50 pointer-events-auto transition-all animate-in slide-in-from-bottom-8 duration-300">
+      <div className="relative w-full rounded-3xl border-2 border-emerald-500 bg-slate-950/95 p-4 sm:p-5 text-white shadow-2xl shadow-emerald-950/90 backdrop-blur-md">
+        {/* Spotlight Notification Banner pointing to the exact highlighted feature on screen */}
+        <div className="flex items-center justify-between gap-2 mb-3 bg-emerald-950/90 border border-emerald-500/50 rounded-2xl px-3.5 py-2">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-slate-950 font-black text-xs shadow-sm animate-bounce">
+              👇
+            </span>
+            <div className="min-w-0">
+              <span className="text-[10px] text-emerald-400 uppercase font-black tracking-wider block">
+                ಪರದೆಯಲ್ಲಿ ಗುರುತಿಸಲಾದ ಸೌಲಭ್ಯ (Active Feature):
+              </span>
+              <p className="font-extrabold text-white text-xs sm:text-sm truncate">
+                {currentStep.titleKn}{" "}
+                <span className="text-emerald-300 font-medium">({currentStep.titleEn})</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 shrink-0">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => {
+                const targetEl = document.getElementById(currentStep.targetId);
+                if (targetEl) {
+                  const rect = targetEl.getBoundingClientRect();
+                  const targetY = rect.top + window.pageYOffset - 85;
+                  window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+                }
+              }}
+              className="h-8 rounded-xl border-emerald-500/40 bg-emerald-900/60 hover:bg-emerald-800 text-emerald-200 text-xs font-bold px-2.5 cursor-pointer"
+              title="ಸೌಲಭ್ಯದ ಸ್ಥಳಕ್ಕೆ ಸ್ಕ್ರೋಲ್ ಮಾಡಿ"
+            >
+              <span>ಇಲ್ಲಿ ನೋಡಿ (Show)</span>
+            </Button>
+          </div>
+        </div>
+
+        {/* Header Bar with Step Counter & Waveform */}
+        <div className="flex items-center justify-between pb-2.5 border-b border-slate-800 gap-2">
+          <div className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-600 text-white font-black text-xs shadow-md shadow-emerald-700/50">
+              {currentStep.stepNumKn}
+            </span>
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                ಹಂತ {currentStepIndex + 1} / {TUTORIAL_STEPS.length}
+              </span>
+              <h3 className="text-sm sm:text-base font-black text-white">
+                {currentStep.titleKn}
+              </h3>
+            </div>
+          </div>
+
+          {/* Audio Waveform Indicator & Close */}
+          <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-1 h-6 bg-slate-900 rounded-lg px-2 border border-slate-800">
+              {waveformBars.map((height, i) => (
+                <span
+                  key={i}
+                  style={{ height: `${height}%` }}
+                  className="w-1 bg-emerald-400 rounded-full transition-all duration-150"
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={handleClose}
+              className="rounded-full p-1.5 text-gray-400 hover:bg-slate-800 hover:text-white transition-colors cursor-pointer"
+              title="ನಿಲ್ಲಿಸಿ ಮತ್ತು ನಿರ್ಗಮಿಸಿ (Exit)"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="w-full bg-slate-800 h-1.5 rounded-full my-2.5 overflow-hidden">
+          <div
+            className="bg-emerald-500 h-full rounded-full transition-all duration-300"
+            style={{
+              width: `${((currentStepIndex + 1) / TUTORIAL_STEPS.length) * 100}%`,
+            }}
+          />
+        </div>
+
+        {/* Spoken Speech Display Box with Large Kannada Text */}
+        <div className="rounded-2xl bg-linear-to-br from-slate-900 to-slate-950 border border-slate-800 p-3.5 sm:p-4 text-slate-100 space-y-1.5">
+          <p className="text-xs sm:text-sm leading-relaxed font-medium">
+            “{currentStep.speechKn}”
+          </p>
+          <div className="pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-emerald-400 font-semibold">
+            <span>ಸಾರಾಂಶ: {currentStep.summaryKn}</span>
+          </div>
+        </div>
+
+        {/* Voice Recognition Command Bar (Active Listening Indicator) */}
+        {isListening && (
+          <div className="mt-2.5 flex items-center justify-between bg-emerald-950/70 border border-emerald-500/50 rounded-xl px-3 py-1.5 text-xs text-emerald-300">
+            <span className="flex items-center gap-2 font-bold animate-pulse">
+              <Mic className="h-4 w-4 text-emerald-400" />
+              <span>ಆಲಿಸಲಾಗುತ್ತಿದೆ... "ಮುಂದೆ", "ಹಿಂದೆ", "ಮತ್ತೆ ಹೇಳಿ" ಎಂದು ಹೇಳಿ</span>
+            </span>
+            <button
+              type="button"
+              onClick={toggleVoiceCommands}
+              className="text-[10px] underline text-slate-300 hover:text-white cursor-pointer"
+            >
+              ಆಫ್ ಮಾಡಿ
+            </button>
+          </div>
+        )}
+
+        {/* Bottom Controls Bar */}
+        <div className="mt-3.5 flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800">
+          {/* Left Controls: Repeat & Voice Command Mic */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={repeatCurrentSpeech}
+              className="rounded-xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold gap-1 h-9 px-2.5 cursor-pointer"
+              title="ಮತ್ತೆ ಹೇಳಿ (Repeat Audio)"
+            >
+              <RotateCcw className="h-3 w-3 text-amber-400" />
+              <span>ಮತ್ತೆ ಹೇಳಿ</span>
+            </Button>
+
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={togglePauseResume}
+              className="rounded-xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-200 text-xs font-bold gap-1 h-9 px-2.5 cursor-pointer"
+              title={isSpeaking && !isPaused ? "ವಿರಾಮ (Pause)" : "ಮುಂದುವರಿಸಿ (Resume)"}
+            >
+              {isSpeaking && !isPaused ? (
+                <>
+                  <Pause className="h-3 w-3 text-sky-400" />
+                  <span>ವಿರಾಮ</span>
+                </>
+              ) : (
+                <>
+                  <Play className="h-3 w-3 text-emerald-400 fill-emerald-400" />
+                  <span>ಕೇಳಿ</span>
+                </>
+              )}
+            </Button>
+
+            {recognitionSupported && (
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={toggleVoiceCommands}
+                className={`rounded-xl border-slate-700 text-xs font-bold gap-1 h-9 px-2.5 cursor-pointer ${
+                  isListening
+                    ? "bg-emerald-600 text-white border-emerald-500 animate-pulse"
+                    : "bg-slate-900 hover:bg-slate-800 text-slate-300"
+                }`}
+                title="ಕನ್ನಡ ಧ್ವನಿ ಆಜ್ಞೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"
+              >
+                {isListening ? <Mic className="h-3 w-3" /> : <MicOff className="h-3 w-3 text-gray-400" />}
+                <span className="hidden sm:inline">ಧ್ವನಿ ಆಜ್ಞೆ</span>
+              </Button>
+            )}
+          </div>
+
+          {/* Right Controls: Back, Next & Exit */}
+          <div className="flex items-center gap-1.5 sm:gap-2 ml-auto">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={handleBack}
+              disabled={currentStepIndex === 0}
+              className="rounded-xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-bold gap-1 h-9 px-2.5 disabled:opacity-40 cursor-pointer"
+            >
+              <ArrowLeft className="h-3 w-3" />
+              <span>ಹಿಂದೆ (Back)</span>
+            </Button>
+
+            <Button
+              size="sm"
+              onClick={handleNext}
+              className="rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold gap-1 h-9 px-3.5 shadow-md shadow-emerald-700/40 cursor-pointer"
+            >
+              <span>
+                {currentStepIndex === TUTORIAL_STEPS.length - 1
+                  ? "ಮುಗಿಸಿ (Finish)"
+                  : "ಮುಂದೆ (Next)"}
+              </span>
+              <ArrowRight className="h-3 w-3" />
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

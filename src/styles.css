@@ -188,15 +188,42 @@
 /* Kannada Voice Guided Tutorial Spotlight Highlight */
 .tutorial-highlight-target {
   position: relative !important;
-  z-index: 45 !important;
-  border-color: #10b981 !important;
-  box-shadow: 0 0 0 4px #10b981, 0 0 30px rgba(16, 185, 129, 0.6) !important;
-  transition: all 0.3s ease-in-out !important;
-  animation: tutorial-pulse 2s infinite !important;
+  z-index: 30 !important;
+  outline: 4px solid #10b981 !important;
+  outline-offset: 6px !important;
+  box-shadow: 0 0 0 10px rgba(16, 185, 129, 0.35), 0 20px 50px rgba(16, 185, 129, 0.4) !important;
+  transition: all 0.4s ease-in-out !important;
+  animation: tutorial-pulse 1.8s infinite !important;
+  border-radius: 1.5rem !important;
 }
 
 @keyframes tutorial-pulse {
-  0% { box-shadow: 0 0 0 4px #10b981, 0 0 20px rgba(16, 185, 129, 0.4); }
-  50% { box-shadow: 0 0 0 6px #34d399, 0 0 35px rgba(16, 185, 129, 0.8); }
-  100% { box-shadow: 0 0 0 4px #10b981, 0 0 20px rgba(16, 185, 129, 0.4); }
+  0% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.35), 0 10px 30px rgba(16, 185, 129, 0.25);
+    outline-color: #10b981;
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(16, 185, 129, 0.6), 0 25px 60px rgba(16, 185, 129, 0.5);
+    outline-color: #34d399;
+  }
+  100% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0.35), 0 10px 30px rgba(16, 185, 129, 0.25);
+    outline-color: #10b981;
+  }
+}
+
+.tutorial-floating-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #064e3b;
+  color: #a7f3d0;
+  border: 1px solid #10b981;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.45);
+  animation: km-fade-up 0.3s ease-out;
 }
