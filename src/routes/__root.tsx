@@ -86,14 +86,14 @@ export const Route = createRootRouteWithContext<{
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "KrishiMitra AI — Smart Farming Companion" },
+      { title: "Raitha Seva AI — Smart Farming Companion" },
       {
         name: "description",
         content:
           "AI weather advisories, pest prediction, and live mandi prices for Indian farmers.",
       },
-      { name: "author", content: "KrishiMitra AI" },
-      { property: "og:title", content: "KrishiMitra AI — Smart Farming Companion" },
+      { name: "author", content: "Raitha Seva AI" },
+      { property: "og:title", content: "Raitha Seva AI — Smart Farming Companion" },
       {
         property: "og:description",
         content: "AI weather advisories, pest prediction, and live mandi prices.",

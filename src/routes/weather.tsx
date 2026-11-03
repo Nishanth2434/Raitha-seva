@@ -51,13 +51,13 @@ export const Route = createFileRoute("/weather")({
   beforeLoad: requireAuth,
   head: () => ({
     meta: [
-      { title: "7-Day High Precision Weather & Crop Report | KrishiMitra AI" },
+      { title: "7-Day High Precision Weather & Crop Report | Raitha Seva AI" },
       {
         name: "description",
         content:
           "Satellite GPS precision location lock & Open-Meteo 7-day weather report and AI crop advisories.",
       },
-      { property: "og:title", content: "Pinpoint Precision Weather | KrishiMitra AI" },
+      { property: "og:title", content: "Pinpoint Precision Weather | Raitha Seva AI" },
       {
         property: "og:description",
         content: "Exact GPS Satellite Location detection & 7-day Open-Meteo weather report.",

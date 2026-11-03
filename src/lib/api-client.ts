@@ -1,6 +1,6 @@
 import { supabase } from "@/lib/supabase";
 
-// Django API Client for KrishiMitra AI Frontend
+// Django API Client for Raitha Seva AI Frontend
 
 const env = import.meta.env as Record<string, string | undefined>;
 const API_BASE_URL = env["VITE_DJANGO_API_URL"] || "http://localhost:8000/api";

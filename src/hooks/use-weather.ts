@@ -8,7 +8,7 @@ import {
   GeocodingResult,
 } from "@/lib/open-meteo";
 
-const STORAGE_KEY = "krishimitra_stable_location";
+const STORAGE_KEY = "raitha_seva_stable_location";
 
 const DEFAULT_LAT = 20.5937;
 const DEFAULT_LON = 78.9629;

@@ -24,13 +24,13 @@ export const Route = createFileRoute("/login")({
   },
   head: () => ({
     meta: [
-      { title: "Sign in | KrishiMitra AI" },
+      { title: "Sign in | Raitha Seva AI" },
       {
         name: "description",
-        content: "Sign in or create your KrishiMitra AI farmer account using Email or Google.",
+        content: "Sign in or create your Raitha Seva AI farmer account using Email or Google.",
       },
-      { property: "og:title", content: "Sign in | KrishiMitra AI" },
-      { property: "og:description", content: "Sign in or create a free KrishiMitra AI account." },
+      { property: "og:title", content: "Sign in | Raitha Seva AI" },
+      { property: "og:description", content: "Sign in or create a free Raitha Seva AI account." },
     ],
   }),
   component: LoginPage,
@@ -188,7 +188,7 @@ function LoginPage() {
 
         <div className="mb-6 flex flex-col items-center">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="KrishiMitra AI" className="h-24 w-24 sm:h-32 sm:w-32 object-contain" />
+            <img src="/logo.png" alt="Raitha Seva AI" className="h-24 w-24 sm:h-32 sm:w-32 object-contain" />
             <span className="text-2xl font-extrabold tracking-tight text-gray-900">
               Krishi<span className="text-green-600">Mitra</span> AI
             </span>

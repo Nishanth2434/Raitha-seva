@@ -1,13 +1,13 @@
 @echo off
 echo ===================================================
-echo   Starting KrishiMitra AI - Local Full Stack App
+echo   Starting Raitha Seva AI - Local Full Stack App
 echo ===================================================
 echo.
 echo [1/2] Starting Django REST Backend on http://localhost:8000 ...
-start "KrishiMitra Backend" cmd /k "cd /d %~dp0backend && .\venv\Scripts\python.exe manage.py runserver 8000"
+start "Raitha Seva Backend" cmd /k "cd /d %~dp0backend && .\venv\Scripts\python.exe manage.py runserver 8000"
 
 echo [2/2] Starting Vite Frontend on http://localhost:5173 ...
-start "KrishiMitra Frontend" cmd /k "cd /d %~dp0 && npx.cmd vite --port 5173"
+start "Raitha Seva Frontend" cmd /k "cd /d %~dp0 && npx.cmd vite --port 5173"
 
 echo.
 echo Both servers started!

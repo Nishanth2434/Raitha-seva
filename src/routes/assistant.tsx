@@ -173,7 +173,7 @@ export function AssistantPage() {
             ? "ಕನ್ನಡ ಎಐ ಕೃಷಿ ಸಹಾಯಕ"
             : isHi
             ? "कृषि मित्र एआई सहायक"
-            : "KrishiMitra AI Assistant"
+            : "Raitha Seva AI Assistant"
         }
         description={
           isKn

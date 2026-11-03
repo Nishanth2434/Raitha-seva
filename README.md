@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="public/logo.png" alt="KrishiMitra AI logo" width="320" />
+<img src="public/logo.png" alt="Raitha Seva AI logo" width="320" />
 
-#  KrishiMitra AI
+#  Raitha Seva AI
 
 ### A modern agricultural intelligence platform — hyperlocal weather, pest AI, live markets, and expert farmer assistance in one place.
 
@@ -49,7 +49,7 @@
 
 <b>🏠 Home — Weather forecasts, quick actions, and market insights</b>
 
-<img src="docs/screenshots/home.png" alt="KrishiMitra AI home page" width="100%" />
+<img src="docs/screenshots/home.png" alt="Raitha Seva AI home page" width="100%" />
 
 </div>
 

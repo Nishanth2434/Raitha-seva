@@ -90,7 +90,7 @@ export const translations: Record<LanguageCode, Record<string, string>> = {
       "Collateral-free up to ₹2 lakh. Apply via any bank branch, Kisan Rin Portal, or e-KCC digital process. Covers crop production & allied activities.",
 
     // Chatbot & Voice AI
-    chat_title: "KrishiMitra AI",
+    chat_title: "Raitha Seva AI",
     chat_subtitle: "Trilingual Farming Assistant",
     chat_thinking: "Thinking...",
     chat_listen: "Listen",
@@ -275,7 +275,9 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 function getInitialLanguage(): LanguageCode {
   if (typeof window !== "undefined") {
     try {
-      const saved = localStorage.getItem("krishimitra_lang");
+      const saved =
+        localStorage.getItem("raitha_seva_lang") ||
+        localStorage.getItem("krishimitra_lang");
       if (saved === "kn" || saved === "hi" || saved === "en") {
         return saved;
       }
@@ -292,7 +294,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("krishimitra_lang");
+        const saved =
+          localStorage.getItem("raitha_seva_lang") ||
+          localStorage.getItem("krishimitra_lang");
         if ((saved === "kn" || saved === "hi" || saved === "en") && saved !== language) {
           setLanguageState(saved);
         }
@@ -306,6 +310,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLanguageState(lang);
     if (typeof window !== "undefined") {
       try {
+        localStorage.setItem("raitha_seva_lang", lang);
         localStorage.setItem("krishimitra_lang", lang);
       } catch (e) {
         console.warn("Could not save language preference:", e);

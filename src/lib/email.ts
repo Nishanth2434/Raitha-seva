@@ -1,7 +1,7 @@
 import emailjs from "@emailjs/browser";
 
 // Standard EmailJS configuration initialized from env or defaults
-const EMAILJS_SERVICE_ID = import.meta.env?.["VITE_EMAILJS_SERVICE_ID"] || "service_krishimitra";
+const EMAILJS_SERVICE_ID = import.meta.env?.["VITE_EMAILJS_SERVICE_ID"] || "service_raithaseva";
 const EMAILJS_TEMPLATE_ID = import.meta.env?.["VITE_EMAILJS_TEMPLATE_ID"] || "template_welcome";
 const EMAILJS_PUBLIC_KEY = import.meta.env?.["VITE_EMAILJS_PUBLIC_KEY"] || "public_key_demo";
 
@@ -22,8 +22,8 @@ export async function sendEmail(params: SendEmailParams): Promise<{ success: boo
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID,
       {
-        message: "Welcome to KrishiMitra AI Platform!",
-        subject: "KrishiMitra AI Notification",
+        message: "Welcome to Raitha Seva AI Platform!",
+        subject: "Raitha Seva AI Notification",
         ...params,
       },
       EMAILJS_PUBLIC_KEY

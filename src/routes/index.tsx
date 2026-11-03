@@ -180,7 +180,7 @@ export function Index() {
       categoryHi: "सरकारी योजनाएं",
       thumbnail: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
       views: "42.8K",
-      author: "KrishiMitra Govt Desk",
+      author: "Raitha Seva Govt Desk",
       location: "New Delhi",
     },
   ];

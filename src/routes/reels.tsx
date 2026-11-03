@@ -129,7 +129,7 @@ const mockReelsList: AgriReel[] = [
       "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80",
     views: "42.8K",
     likes: 5120,
-    author: "KrishiMitra Govt Desk",
+    author: "Raitha Seva Govt Desk",
     location: "New Delhi",
   },
   {
@@ -318,7 +318,7 @@ function ReelsPage() {
       navigator
         .share({
           title: reel.title,
-          text: `${reel.title} - Watch on KrishiMitra AI`,
+          text: `${reel.title} - Watch on Raitha Seva AI`,
           url: window.location.href,
         })
         .catch(() => {});

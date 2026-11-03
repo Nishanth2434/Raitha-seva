@@ -72,9 +72,9 @@ const trilingualData: Record<
 > = {
   en: {
     welcome:
-      "Namaste! 🙏 Welcome to **KrishiMitra AI Assistant**.\n\nHow can I help you today? Please choose an option below or type your farming query:",
+      "Namaste! 🙏 Welcome to **Raitha Seva AI Assistant**.\n\nHow can I help you today? Please choose an option below or type your farming query:",
     speechGreeting:
-      "Namaste! Welcome to KrishiMitra AI Assistant. How can I help you today? Please select an option or ask a question.",
+      "Namaste! Welcome to Raitha Seva AI Assistant. How can I help you today? Please select an option or ask a question.",
     placeholder: "Ask in English, Kannada (ಕನ್ನಡ), or Hindi (हिन्दी)...",
     actionAckPrefix: "OK! Opening",
     connectionError: "Connection error. Please try again or call Kisan Call Centre 1800-180-1551.",
@@ -361,7 +361,7 @@ export function GeminiChatbot() {
   const [isLangSelected, setIsLangSelected] = useState<boolean>(() => {
     if (typeof window !== "undefined") {
       try {
-        const saved = localStorage.getItem("krishimitra_lang");
+        const saved = localStorage.getItem("raitha_seva_lang");
         return saved === "kn" || saved === "hi" || saved === "en";
       } catch {
         return false;
@@ -430,8 +430,8 @@ export function GeminiChatbot() {
       setIsLangSelected(true);
       if (typeof window !== "undefined") {
         try {
-          localStorage.setItem("krishimitra_lang", code);
-          localStorage.setItem("krishimitra_lang_selected", "true");
+          localStorage.setItem("raitha_seva_lang", code);
+          localStorage.setItem("raitha_seva_lang_selected", "true");
         } catch (e) {
           console.warn("Storage error:", e);
         }
@@ -703,7 +703,7 @@ export function GeminiChatbot() {
                       ? "ಕೃಷಿಮಿತ್ರ ಎಐ"
                       : authoritativeLang === "hi"
                       ? "कृषि मित्र एआई"
-                      : "KrishiMitra AI"}
+                      : "Raitha Seva AI"}
                   </h3>
                   <p className="text-[10px] text-green-100/90 font-medium">
                     {authoritativeLang === "kn"
@@ -1127,7 +1127,7 @@ async function fetchGeminiResponse(
       ? "MANDATORY REQUIREMENT: Respond STRICTLY in authentic, grammatically correct Hindi script (हिन्दी). Even if the user asks in English or conversation history has English, your ENTIRE advisory MUST be in Hindi script."
       : "MANDATORY REQUIREMENT: Respond in clear, simple English.";
 
-  const systemPromptText = `You are KrishiMitra AI — the expert, evidence-grounded conversational AI assistant for Indian farmers.
+  const systemPromptText = `You are Raitha Seva AI — the expert, evidence-grounded conversational AI assistant for Indian farmers.
 Your goal is to provide clear, simple, farmer-friendly answers.
 
 ${langInstruction}
@@ -1510,7 +1510,7 @@ Early Shoot Borer (*Chilo infuscatellus*) causes dead hearts during formative cr
 💡 **चेतावनी**: किसी भी कीटनाशक के प्रयोग से पहले सुरक्षात्मक दस्ताने और मास्क अवश्य पहनें।`;
   }
 
-  return `👨‍🌾 **KrishiMitra AI Comprehensive Farming Guide for "${topicName}"**
+  return `👨‍🌾 **Raitha Seva AI Comprehensive Farming Guide for "${topicName}"**
 
 **Simple Overview:**
 Managing farm operations effectively requires understanding soil moisture, crop nutrition, pest cycles, and timely harvesting.

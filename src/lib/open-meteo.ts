@@ -395,7 +395,7 @@ export async function reverseGeocode(lat: number, lon: number): Promise<string> 
     const res = await fetch(
       `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=en&zoom=18&addressdetails=1`,
       {
-        headers: { "User-Agent": "KrishiMitra-AgriApp/1.0" },
+        headers: { "User-Agent": "RaithaSeva-AgriApp/1.0" },
         signal: controller.signal,
       }
     );

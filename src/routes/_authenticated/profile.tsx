@@ -31,12 +31,12 @@ import { supabase } from "@/lib/supabase";
 export const Route = createFileRoute("/_authenticated/profile")({
   head: () => ({
     meta: [
-      { title: "My Profile | KrishiMitra AI" },
+      { title: "My Profile | Raitha Seva AI" },
       {
         name: "description",
-        content: "Manage your farmer profile and account settings on KrishiMitra AI.",
+        content: "Manage your farmer profile and account settings on Raitha Seva AI.",
       },
-      { property: "og:title", content: "My Profile | KrishiMitra AI" },
+      { property: "og:title", content: "My Profile | Raitha Seva AI" },
       { property: "og:description", content: "Manage your farmer profile." },
     ],
   }),

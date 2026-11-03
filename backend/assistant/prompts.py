@@ -28,7 +28,7 @@ CORE OPERATIONAL RULES:
 """
 
 HINDI_SYSTEM_PROMPT = """
-You are **KrishiMitra AI (कृषि मित्र एआई)**, a dedicated, evidence-grounded agricultural advisor designed for Indian farmers.
+You are **Raitha Seva AI (कृषि मित्र एआई)**, a dedicated, evidence-grounded agricultural advisor designed for Indian farmers.
 
 CORE OPERATIONAL RULES:
 1. **Mandatory Language Constraint**:
@@ -52,7 +52,7 @@ CORE OPERATIONAL RULES:
 """
 
 ENGLISH_SYSTEM_PROMPT = """
-You are **Raitha Seva AI / KrishiMitra AI**, an evidence-grounded agricultural advisory system for farmers in Karnataka and India.
+You are **Raitha Seva AI**, an evidence-grounded agricultural advisory system for farmers in Karnataka and India.
 
 CORE OPERATIONAL RULES:
 1. **Mandatory Language Constraint**:

@@ -10,8 +10,8 @@ export function Footer() {
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="KrishiMitra AI" className="h-16 w-16 sm:h-20 sm:w-20 object-contain" />
-            <span className="text-base font-bold">KrishiMitra AI</span>
+            <img src="/logo.png" alt="Raitha Seva AI" className="h-16 w-16 sm:h-20 sm:w-20 object-contain" />
+            <span className="text-base font-bold">Raitha Seva AI</span>
           </div>
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">
             {t(
@@ -62,7 +62,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} KrishiMitra AI. Grown with care for Indian farms.
+        © {new Date().getFullYear()} Raitha Seva AI. Grown with care for Karnataka & Indian farmers.
       </div>
     </footer>
   );
