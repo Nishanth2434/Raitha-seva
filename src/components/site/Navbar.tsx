@@ -60,6 +60,7 @@ export function Navbar() {
   const primaryLinks = [
     { to: user ? "/dashboard" : "/", label: t("nav_home", "Home"), icon: LayoutDashboard },
     { to: "/assistant", label: t("nav_ai", "AI"), icon: Sparkles },
+    { to: "/reels", label: t("nav_reels", "Reels"), icon: Film },
     { to: "/weather", label: t("nav_weather_short", "Weather"), icon: CloudSun },
     { to: "/pest-alerts", label: t("nav_pests", "Pests"), icon: Bug },
     { to: "/market-prices", label: t("nav_prices", "Prices"), icon: TrendingUp },
@@ -69,7 +70,6 @@ export function Navbar() {
   const secondaryLinks = [
     { to: "/schemes", label: t("nav_schemes_short", "Schemes"), icon: Landmark },
     { to: "/voice-assistant", label: t("nav_voice_short", "Voice"), icon: Mic },
-    { to: "/reels", label: t("nav_reels", "Reels"), icon: Film },
     { to: "/help", label: t("nav_help_short", "Help"), icon: HelpCircle },
   ];
 
@@ -423,56 +423,66 @@ export function Navbar() {
       </header>
 
       {/* Mobile Bottom Quick Bar for farmers on handheld devices */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200/80 bg-white/95 px-2 py-1.5 backdrop-blur-md lg:hidden">
-        <div className="grid grid-cols-5 items-center justify-around gap-1">
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200/80 bg-white/95 px-1.5 py-1.5 backdrop-blur-md lg:hidden">
+        <div className="grid grid-cols-6 items-center justify-around gap-0.5">
           <Link
             to={user ? "/dashboard" : "/"}
-            className={`flex flex-col items-center py-1 text-[10px] font-bold ${
+            className={`flex flex-col items-center py-1 text-[9px] font-bold ${
               isLinkActive(user ? "/dashboard" : "/") ? "text-green-600" : "text-gray-500 hover:text-gray-900"
             }`}
           >
             <LayoutDashboard className="h-4 w-4 mb-0.5" />
-            <span className="truncate max-w-[60px]">{t("nav_home", "Home")}</span>
+            <span className="truncate max-w-[50px]">{t("nav_home", "Home")}</span>
           </Link>
 
           <Link
             to="/assistant"
-            className={`flex flex-col items-center py-1 text-[10px] font-bold ${
+            className={`flex flex-col items-center py-1 text-[9px] font-bold ${
               isLinkActive("/assistant") ? "text-green-600" : "text-gray-500 hover:text-gray-900"
             }`}
           >
             <Sparkles className="h-4 w-4 mb-0.5" />
-            <span className="truncate max-w-[60px]">{t("nav_ai", "AI")}</span>
+            <span className="truncate max-w-[50px]">{t("nav_ai", "AI")}</span>
+          </Link>
+
+          <Link
+            to="/reels"
+            className={`flex flex-col items-center py-1 text-[9px] font-bold ${
+              isLinkActive("/reels") ? "text-green-600" : "text-gray-500 hover:text-gray-900"
+            }`}
+          >
+            <Film className="h-4 w-4 mb-0.5" />
+            <span className="truncate max-w-[50px]">{t("nav_reels", "Reels")}</span>
           </Link>
 
           <Link
             to="/weather"
-            className={`flex flex-col items-center py-1 text-[10px] font-bold ${
+            className={`flex flex-col items-center py-1 text-[9px] font-bold ${
               isLinkActive("/weather") ? "text-green-600" : "text-gray-500 hover:text-gray-900"
             }`}
           >
             <CloudSun className="h-4 w-4 mb-0.5" />
-            <span className="truncate max-w-[60px]">{t("nav_weather_short", "Weather")}</span>
+            <span className="truncate max-w-[50px]">{t("nav_weather_short", "Weather")}</span>
           </Link>
 
           <Link
             to="/pest-alerts"
-            className={`flex flex-col items-center py-1 text-[10px] font-bold ${
+            className={`flex flex-col items-center py-1 text-[9px] font-bold ${
               isLinkActive("/pest-alerts") ? "text-green-600" : "text-gray-500 hover:text-gray-900"
             }`}
           >
             <Bug className="h-4 w-4 mb-0.5" />
-            <span className="truncate max-w-[60px]">{t("nav_pests", "Pests")}</span>
+            <span className="truncate max-w-[50px]">{t("nav_pests", "Pests")}</span>
           </Link>
 
           <Link
             to="/help"
-            className={`flex flex-col items-center py-1 text-[10px] font-bold ${
+            className={`flex flex-col items-center py-1 text-[9px] font-bold ${
               isLinkActive("/help") ? "text-green-600" : "text-gray-500 hover:text-gray-900"
             }`}
           >
             <HelpCircle className="h-4 w-4 mb-0.5" />
-            <span className="truncate max-w-[60px]">{t("nav_help_short", "Help")}</span>
+            <span className="truncate max-w-[50px]">{t("nav_help_short", "Help")}</span>
           </Link>
         </div>
       </div>

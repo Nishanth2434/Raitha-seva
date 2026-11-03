@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   Heart,
   Eye,
@@ -13,6 +13,8 @@ import {
   ChevronRight,
   Flame,
   Sparkles,
+  Plus,
+  Upload,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Navbar } from "@/components/site/Navbar";
@@ -22,6 +24,9 @@ import { AdBanner } from "@/components/site/AdBanner";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { UploadReelDialog } from "@/components/reels/UploadReelDialog";
+import { supabase } from "@/lib/supabase";
+import { useLanguage } from "@/context/language-context";
 
 import { requireAuth } from "@/lib/auth-guard";
 import { AuthGuard } from "@/components/auth/AuthGuard";
@@ -30,13 +35,13 @@ export const Route = createFileRoute("/reels")({
   beforeLoad: requireAuth,
   head: () => ({
     meta: [
-      { title: "Agri Reels | KrishiMitra AI" },
+      { title: "Agri Reels | Raitha Seva AI — ಕೃಷಿ ರೀಲ್ಸ್‌ಗಳು" },
       {
         name: "description",
         content:
           "Short practical farming videos on organic farming, machinery, crop care, weather, pest control, government schemes and market tips.",
       },
-      { property: "og:title", content: "Agri Reels | KrishiMitra AI" },
+      { property: "og:title", content: "Agri Reels | Raitha Seva AI" },
       {
         property: "og:description",
         content: "Short practical farming reels from farmers across India.",
@@ -68,6 +73,7 @@ export interface AgriReel {
   likes: number;
   author: string;
   location: string;
+  isUserUploaded?: boolean;
 }
 
 const categoriesList = [
@@ -187,6 +193,9 @@ const mockReelsList: AgriReel[] = [
 ];
 
 function ReelsPage() {
+  const { language } = useLanguage();
+  const [allReels, setAllReels] = useState<AgriReel[]>(mockReelsList);
+  const [uploadOpen, setUploadOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("All Categories");
   const [activePlayingId, setActivePlayingId] = useState<string | null>(null);
   const [likedMap, setLikedMap] = useState<Record<string, boolean>>({});
@@ -199,10 +208,81 @@ function ReelsPage() {
   });
   const [isMuted, setIsMuted] = useState(true);
 
+  // Load published community reels from Supabase and localStorage
+  useEffect(() => {
+    async function loadCommunityReels() {
+      try {
+        const { data: dbReels } = await supabase
+          .from("reels")
+          .select("*")
+          .eq("is_published", true)
+          .order("created_at", { ascending: false });
+
+        const fallbackThumb = "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?w=600";
+        const mappedDbReels: AgriReel[] = (dbReels || []).map((r: any) => ({
+          id: r.id,
+          title: r.title,
+          description: r.description || "",
+          category: (r.category as AgriReel["category"]) || "Crop Care",
+          videoUrl: r.video_url,
+          thumbnail: r.thumbnail_url || fallbackThumb,
+          views: `${r.views_count || 1} views`,
+          likes: r.likes_count || 0,
+          author: r.author_name || (language === "kn" ? "ರೈತ ಮಿತ್ರ" : "Community Farmer"),
+          location: r.location || (language === "kn" ? "ಕರ್ನಾಟಕ" : "Karnataka"),
+          isUserUploaded: true,
+        }));
+
+        let localReels: AgriReel[] = [];
+        try {
+          const cached = localStorage.getItem("raitha_seva_user_reels");
+          if (cached) {
+            localReels = JSON.parse(cached);
+          }
+        } catch {
+          // ignore
+        }
+
+        const seenIds = new Set<string>();
+        const combined: AgriReel[] = [];
+
+        [...mappedDbReels, ...localReels, ...mockReelsList].forEach((reel) => {
+          if (!seenIds.has(reel.id)) {
+            seenIds.add(reel.id);
+            combined.push(reel);
+          }
+        });
+
+        setAllReels(combined);
+
+        setLikeCounts((prev) => {
+          const updated = { ...prev };
+          combined.forEach((r) => {
+            if (updated[r.id] === undefined) {
+              updated[r.id] = r.likes;
+            }
+          });
+          return updated;
+        });
+      } catch (err) {
+        console.error("Failed to load community reels:", err);
+      }
+    }
+
+    loadCommunityReels();
+  }, [language]);
+
+  function handleReelUploaded(newReel: AgriReel) {
+    setAllReels((prev) => [newReel, ...prev]);
+    setLikeCounts((prev) => ({ ...prev, [newReel.id]: newReel.likes }));
+    setActivePlayingId(newReel.id);
+  }
+
   // Horizontal scroll refs for smooth navigation
   const scrollRefAll = useRef<HTMLDivElement>(null);
   const scrollRefOrganic = useRef<HTMLDivElement>(null);
   const scrollRefMachinery = useRef<HTMLDivElement>(null);
+  const scrollRefCommunity = useRef<HTMLDivElement>(null);
 
   function scroll(ref: React.RefObject<HTMLDivElement | null>, direction: "left" | "right") {
     if (ref.current) {
@@ -212,9 +292,11 @@ function ReelsPage() {
   }
 
   // Filtered reels list
-  const filteredReels = mockReelsList.filter(
+  const filteredReels = allReels.filter(
     (reel) => selectedCategory === "All Categories" || reel.category === selectedCategory,
   );
+
+  const communityReels = allReels.filter((r) => r.isUserUploaded);
 
   function togglePlay(id: string) {
     setActivePlayingId((prev) => (prev === id ? null : id));
@@ -278,10 +360,15 @@ function ReelsPage() {
 
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/30" />
 
-          <div className="absolute top-4 left-4 z-10">
+          <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5">
             <Badge className="bg-white/20 text-white backdrop-blur-md border-0 text-[10px] font-semibold">
               {reel.category}
             </Badge>
+            {reel.isUserUploaded && (
+              <Badge className="bg-emerald-600/90 text-white backdrop-blur-md border-0 text-[9px] font-bold">
+                {language === "kn" ? "ರೈತರ ವೀಡಿಯೊ" : "Farmer Upload"}
+              </Badge>
+            )}
           </div>
 
           {isPlaying && (
@@ -375,6 +462,40 @@ function ReelsPage() {
         title="Agri Reels"
         description="Swipe left to right to watch reels after reels. Short practical farming lessons, machinery demos, and expert advice."
       >
+        {/* Community Upload & Share Banner */}
+        <div className="mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-3xl border border-green-200 bg-gradient-to-r from-emerald-50 via-green-50 to-teal-50 p-5 shadow-xs">
+          <div className="flex items-center gap-3.5">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-green-600 text-white shadow-md shadow-green-200">
+              <Upload className="h-6 w-6" />
+            </div>
+            <div>
+              <h2 className="text-base sm:text-lg font-bold text-gray-900">
+                {language === "kn" ? "ನಿಮ್ಮ ಕೃಷಿ ವೀಡಿಯೊ ಹಂಚಿಕೊಳ್ಳಿ" : "Share Your Farming Video with Farmers"}
+              </h2>
+              <p className="text-xs text-gray-600">
+                {language === "kn"
+                  ? "ಹೊಲದ ಅನುಭವ, ಸಾವಯವ ಕೃಷಿ ಪದ್ಧತಿ ಅಥವಾ ಯಂತ್ರೋಪಕರಣ ಬಳಕೆಯ ವೀಡಿಯೊ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ."
+                  : "Upload practical farming demos, organic methods, or implement techniques to help fellow farmers."}
+              </p>
+            </div>
+          </div>
+
+          <Button
+            onClick={() => setUploadOpen(true)}
+            className="w-full sm:w-auto shrink-0 rounded-2xl bg-green-600 hover:bg-green-700 text-white font-bold text-sm shadow-md shadow-green-200 px-5 h-11 cursor-pointer"
+          >
+            <Plus className="mr-1.5 h-4 w-4" />
+            <span>{language === "kn" ? "ಹೊಸ ರೀಲ್ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ" : "Upload Reel"}</span>
+          </Button>
+        </div>
+
+        {/* Upload Reel Dialog */}
+        <UploadReelDialog
+          open={uploadOpen}
+          onOpenChange={setUploadOpen}
+          onReelUploaded={handleReelUploaded}
+        />
+
         {/* ─── Category Filter Bar ─── */}
         <div className="mb-8 overflow-x-auto pb-2">
           <div className="flex items-center gap-2">
@@ -477,7 +598,7 @@ function ReelsPage() {
               className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 pt-2"
               style={{ scrollbarWidth: "none" }}
             >
-              {mockReelsList
+              {allReels
                 .filter((r) => r.category === "Organic Farming" || r.category === "Crop Care")
                 .map((reel) => (
                   <ReelCard key={reel.id} reel={reel} />
