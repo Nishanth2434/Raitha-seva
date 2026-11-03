@@ -171,28 +171,100 @@ export function KannadaVoiceTutorial({
   const [waveformBars, setWaveformBars] = useState<number[]>([40, 70, 30, 85, 50]);
 
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const chunksQueueRef = useRef<string[]>([]);
+  const currentChunkIndexRef = useRef<number>(0);
   const recognitionRef = useRef<any>(null);
   const animationTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Check voice synthesis support and detect Kannada voice
-  useEffect(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      setSpeechSupported(false);
+  // Helper to split text into short conversational Kannada audio chunks (under 140 chars)
+  const splitIntoAudioChunks = (text: string, maxLen = 140): string[] => {
+    const sentences = text.match(/[^.!?।,]+[.!?।,]?|\s+/g) || [text];
+    const chunks: string[] = [];
+    let cur = "";
+    for (const s of sentences) {
+      if ((cur + s).length > maxLen) {
+        if (cur.trim()) chunks.push(cur.trim());
+        cur = s;
+      } else {
+        cur += s;
+      }
+    }
+    if (cur.trim()) chunks.push(cur.trim());
+    return chunks.length > 0 ? chunks : [text];
+  };
+
+  // Play audio chunk sequence using Google Translate TTS endpoint
+  const playAudioChunkSequence = useCallback((chunks: string[], index = 0) => {
+    if (index >= chunks.length) {
+      setIsSpeaking(false);
+      setIsPaused(false);
       return;
     }
 
-    const checkVoices = () => {
-      const voices = window.speechSynthesis.getVoices();
-      const kn = voices.find(
-        (v) =>
-          v.lang.toLowerCase().startsWith("kn") ||
-          v.name.toLowerCase().includes("kannada")
-      );
-      setHasKnVoice(!!kn);
+    chunksQueueRef.current = chunks;
+    currentChunkIndexRef.current = index;
+
+    const chunk = chunks[index];
+    if (!chunk) {
+      setIsSpeaking(false);
+      setIsPaused(false);
+      return;
+    }
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=kn&client=tw-ob&q=${encodeURIComponent(chunk)}`;
+
+    if (!audioRef.current) {
+      audioRef.current = new Audio();
+    }
+    const audio = audioRef.current;
+    audio.src = url;
+    audio.playbackRate = 1.0;
+
+    audio.onplay = () => {
+      setIsSpeaking(true);
+      setIsPaused(false);
     };
 
-    checkVoices();
-    window.speechSynthesis.onvoiceschanged = checkVoices;
+    audio.onended = () => {
+      playAudioChunkSequence(chunks, index + 1);
+    };
+
+    audio.onerror = () => {
+      if (index + 1 < chunks.length) {
+        playAudioChunkSequence(chunks, index + 1);
+      } else {
+        setIsSpeaking(false);
+        setIsPaused(false);
+      }
+    };
+
+    audio.play().catch(() => {
+      setIsSpeaking(false);
+      setIsPaused(false);
+    });
+  }, []);
+
+  // Check voice synthesis support and detect Kannada voice
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (!("speechSynthesis" in window)) {
+      setSpeechSupported(false);
+    } else {
+      const checkVoices = () => {
+        const voices = window.speechSynthesis.getVoices();
+        const kn = voices.find(
+          (v) =>
+            v.lang.toLowerCase().replace("_", "-") === "kn-in" ||
+            v.lang.toLowerCase().startsWith("kn") ||
+            v.name.toLowerCase().includes("kannada")
+        );
+        setHasKnVoice(!!kn);
+      };
+
+      checkVoices();
+      window.speechSynthesis.onvoiceschanged = checkVoices;
+    }
 
     // Check SpeechRecognition support
     const SpeechRecognition =
@@ -202,6 +274,10 @@ export function KannadaVoiceTutorial({
     return () => {
       if (window.speechSynthesis) {
         window.speechSynthesis.cancel();
+      }
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
       }
     };
   }, []);
@@ -228,60 +304,82 @@ export function KannadaVoiceTutorial({
     };
   }, [isSpeaking, isPaused]);
 
-  // Voice speech synthesis execution
-  const speak = useCallback((text: string) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      setIsSpeaking(false);
-      return;
-    }
-
-    // Cancel existing speech
-    window.speechSynthesis.cancel();
-    setIsPaused(false);
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "kn-IN";
-    utterance.rate = 0.92; // Slightly measured, respectful farmer pace
-    utterance.pitch = 1.0;
-
-    const voices = window.speechSynthesis.getVoices();
-    const knVoice = voices.find(
-      (v) =>
-        v.lang.toLowerCase().replace("_", "-") === "kn-in" ||
-        v.lang.toLowerCase().startsWith("kn") ||
-        v.name.toLowerCase().includes("kannada")
-    );
-
-    if (knVoice) {
-      utterance.voice = knVoice;
-    }
-
-    utterance.onstart = () => {
-      setIsSpeaking(true);
-      setIsPaused(false);
-    };
-
-    utterance.onend = () => {
-      setIsSpeaking(false);
-      setIsPaused(false);
-    };
-
-    utterance.onerror = (e) => {
-      // Ignore user cancellation error
-      if (e.error !== "canceled" && e.error !== "interrupted") {
+  // Voice speech execution: native kn voice if available, otherwise crystal clear audio fallback
+  const speak = useCallback(
+    (text: string) => {
+      if (typeof window === "undefined") {
         setIsSpeaking(false);
-        setIsPaused(false);
+        return;
       }
-    };
 
-    utteranceRef.current = utterance;
-    window.speechSynthesis.speak(utterance);
-  }, []);
+      // Stop any active utterance or audio
+      if (window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+      setIsPaused(false);
+
+      const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+      const knVoice = voices.find(
+        (v) =>
+          v.lang.toLowerCase().replace("_", "-") === "kn-in" ||
+          v.lang.toLowerCase().startsWith("kn") ||
+          v.name.toLowerCase().includes("kannada")
+      );
+
+      // If client has a native Kannada voice installed, use SpeechSynthesis
+      if (knVoice && window.speechSynthesis) {
+        try {
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.voice = knVoice;
+          utterance.lang = "kn-IN";
+          utterance.rate = 0.92;
+          utterance.pitch = 1.0;
+
+          utterance.onstart = () => {
+            setIsSpeaking(true);
+            setIsPaused(false);
+          };
+
+          utterance.onend = () => {
+            setIsSpeaking(false);
+            setIsPaused(false);
+          };
+
+          utterance.onerror = (e) => {
+            if (e.error !== "canceled" && e.error !== "interrupted") {
+              // Fallback to audio chunks if synthesis encounters language or driver error
+              const chunks = splitIntoAudioChunks(text);
+              playAudioChunkSequence(chunks, 0);
+            }
+          };
+
+          utteranceRef.current = utterance;
+          window.speechSynthesis.speak(utterance);
+          return;
+        } catch {
+          // Fall through to audio chunks
+        }
+      }
+
+      // Universal fallback: Stream authentic Kannada speech audio
+      const chunks = splitIntoAudioChunks(text);
+      playAudioChunkSequence(chunks, 0);
+    },
+    [playAudioChunkSequence]
+  );
 
   // Stop current speech
   const stopSpeech = useCallback(() => {
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
+    }
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
     }
     setIsSpeaking(false);
     setIsPaused(false);
@@ -289,13 +387,23 @@ export function KannadaVoiceTutorial({
 
   // Pause / Resume speech
   const togglePauseResume = useCallback(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    if (typeof window === "undefined") return;
 
     if (isSpeaking && !isPaused) {
-      window.speechSynthesis.pause();
+      if (window.speechSynthesis && window.speechSynthesis.speaking) {
+        window.speechSynthesis.pause();
+      }
+      if (audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+      }
       setIsPaused(true);
     } else if (isPaused) {
-      window.speechSynthesis.resume();
+      if (window.speechSynthesis && window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      }
+      if (audioRef.current && audioRef.current.paused) {
+        audioRef.current.play().catch(() => {});
+      }
       setIsPaused(false);
     } else {
       // If stopped, repeat current
@@ -357,8 +465,8 @@ export function KannadaVoiceTutorial({
         speak(step.speechKn);
       }
     } else if (currentStepIndex === -1) {
-      // Welcome popup
-      speak(WELCOME_SPEECH_KN);
+      // For the initial welcome prompt, we avoid unprompted autoplay so browsers do not mute or block audio.
+      // Audio starts seamlessly upon user gesture (clicking "ಹೌದು, ಪ್ರಾರಂಭಿಸಿ" or "ಧ್ವನಿ ಕೇಳಿ").
     } else if (currentStepIndex === TUTORIAL_STEPS.length) {
       // Completion screen
       speak(COMPLETION_SPEECH_KN);
@@ -585,26 +693,44 @@ export function KannadaVoiceTutorial({
             </p>
           </div>
 
-          {/* Buttons */}
-          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+          {/* Action Buttons with User Gesture Audio Initiation */}
+          <div className="mt-6 flex flex-col sm:flex-row gap-2.5">
             <Button
               size="lg"
               onClick={() => {
                 stopSpeech();
                 setCurrentStepIndex(0);
               }}
-              className="flex-1 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-700/40 h-12"
+              className="flex-1 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-700/40 h-12 cursor-pointer"
             >
               <Play className="mr-2 h-5 w-5 fill-white" />
               <span>ಹೌದು, ಪ್ರಾರಂಭಿಸಿ (Start Tutorial)</span>
             </Button>
+
             <Button
               size="lg"
               variant="outline"
-              onClick={handleClose}
-              className="rounded-2xl border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold text-xs sm:text-sm h-12"
+              onClick={() => {
+                if (isSpeaking) {
+                  stopSpeech();
+                } else {
+                  speak(WELCOME_SPEECH_KN);
+                }
+              }}
+              className="rounded-2xl border-emerald-700 bg-slate-900 hover:bg-slate-800 text-emerald-300 font-bold text-xs sm:text-sm h-12 cursor-pointer"
+              title="ಸ್ವಾಗತ ಸಂದೇಶವನ್ನು ಧ್ವನಿಯಲ್ಲಿ ಕೇಳಿ"
             >
-              <span>ನಂತರ ಕಲಿಯುವೆ (Skip)</span>
+              <Volume2 className="mr-1.5 h-4 w-4 text-emerald-400" />
+              <span>{isSpeaking ? "ಧ್ವನಿ ನಿಲ್ಲಿಸಿ" : "ಧ್ವನಿ ಕೇಳಿ (Preview)"}</span>
+            </Button>
+
+            <Button
+              size="lg"
+              variant="ghost"
+              onClick={handleClose}
+              className="rounded-2xl text-slate-400 hover:bg-slate-900 hover:text-slate-200 font-semibold text-xs sm:text-sm h-12 cursor-pointer"
+            >
+              <span>ದಾಟಿಸಿ (Skip)</span>
             </Button>
           </div>
         </div>

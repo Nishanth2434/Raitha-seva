@@ -188,11 +188,13 @@ export function Navbar() {
                 <div className="h-px bg-gray-100 my-1" />
                 <DropdownMenuItem
                   onClick={() => {
-                    sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
-                    if (location.pathname === "/" || location.pathname === "/dashboard") {
-                      window.location.reload();
-                    } else {
-                      navigate({ to: "/" });
+                    if (typeof window !== "undefined") {
+                      sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
+                      if (location.pathname === "/" || location.pathname === "/dashboard") {
+                        window.dispatchEvent(new CustomEvent("raitha_seva_start_tutorial"));
+                      } else {
+                        navigate({ to: "/dashboard", search: { tutorial: "true" } as any });
+                      }
                     }
                   }}
                   className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-bold text-emerald-800 bg-emerald-50/70 hover:bg-emerald-100 cursor-pointer"
@@ -365,14 +367,16 @@ export function Navbar() {
                 type="button"
                 onClick={() => {
                   setOpen(false);
-                  sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
-                  if (location.pathname === "/" || location.pathname === "/dashboard") {
-                    window.location.reload();
-                  } else {
-                    navigate({ to: "/" });
+                  if (typeof window !== "undefined") {
+                    sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
+                    if (location.pathname === "/" || location.pathname === "/dashboard") {
+                      window.dispatchEvent(new CustomEvent("raitha_seva_start_tutorial"));
+                    } else {
+                      navigate({ to: "/dashboard", search: { tutorial: "true" } as any });
+                    }
                   }
                 }}
-                className="flex items-center gap-2.5 rounded-2xl p-2.5 text-xs font-bold transition-all min-h-[48px] bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100"
+                className="flex items-center gap-2.5 rounded-2xl p-2.5 text-xs font-bold transition-all min-h-[48px] bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100 cursor-pointer"
               >
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-emerald-600 text-white shadow-2xs">
                   <Sparkles className="h-4 w-4" />

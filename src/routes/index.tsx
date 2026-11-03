@@ -75,15 +75,35 @@ export function Index() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    const shouldTrigger =
-      sessionStorage.getItem("raitha_seva_trigger_tutorial") === "true" ||
-      !localStorage.getItem("raitha_seva_tutorial_completed");
-    if (!shouldTrigger) return;
 
-    const timer = setTimeout(() => {
+    // Listen for custom start event dispatched anywhere across the app
+    const handleStartTutorial = () => {
       setShowTutorial(true);
-    }, 1000);
-    return () => clearTimeout(timer);
+    };
+    window.addEventListener("raitha_seva_start_tutorial", handleStartTutorial);
+
+    // Check URL query param, session flag, or first-time visitor
+    const urlParams = new URLSearchParams(window.location.search);
+    const hasTutorialParam = urlParams.get("tutorial") === "true";
+    const hasSessionTrigger = sessionStorage.getItem("raitha_seva_trigger_tutorial") === "true";
+    const isFirstTime = !localStorage.getItem("raitha_seva_tutorial_completed");
+
+    if (hasTutorialParam || hasSessionTrigger || isFirstTime) {
+      if (hasSessionTrigger) {
+        sessionStorage.removeItem("raitha_seva_trigger_tutorial");
+      }
+      const timer = setTimeout(() => {
+        setShowTutorial(true);
+      }, 400);
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("raitha_seva_start_tutorial", handleStartTutorial);
+      };
+    }
+
+    return () => {
+      window.removeEventListener("raitha_seva_start_tutorial", handleStartTutorial);
+    };
   }, []);
 
   useEffect(() => {

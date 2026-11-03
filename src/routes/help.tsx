@@ -123,8 +123,10 @@ export function HelpPage() {
               <Button
                 size="lg"
                 onClick={() => {
-                  sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
-                  navigate({ to: "/" });
+                  if (typeof window !== "undefined") {
+                    sessionStorage.setItem("raitha_seva_trigger_tutorial", "true");
+                  }
+                  navigate({ to: "/dashboard", search: { tutorial: "true" } as any });
                 }}
                 className="w-full md:w-auto shrink-0 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm px-6 h-12 shadow-lg shadow-emerald-600/50 cursor-pointer"
               >

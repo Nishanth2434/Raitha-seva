@@ -55,8 +55,8 @@ export function OnboardingPage() {
   const isKn = language === "kn";
   const [copied, setCopied] = useState(false);
 
-  // Mark onboarding completed and navigate to dashboard
-  const completeOnboardingAndProceed = async (targetRoute = "/") => {
+  // Mark onboarding completed and navigate to dashboard with tutorial trigger
+  const completeOnboardingAndProceed = async (targetRoute = "/dashboard") => {
     try {
       if (typeof window !== "undefined") {
         sessionStorage.removeItem("raitha_seva_is_new_signup");
@@ -80,7 +80,7 @@ export function OnboardingPage() {
       // Ignore storage errors
     }
 
-    navigate({ to: targetRoute as any, replace: true });
+    navigate({ to: targetRoute as any, search: { tutorial: "true" } as any, replace: true });
   };
 
   const handleCopyPhone = async () => {
@@ -108,10 +108,10 @@ export function OnboardingPage() {
         {/* Top Navigation Bar with Back & Skip & Language Toggle */}
         <div className="mb-6 flex items-center justify-between gap-3">
           <Link
-            to="/"
+            to="/dashboard"
             onClick={(e) => {
               e.preventDefault();
-              completeOnboardingAndProceed("/");
+              completeOnboardingAndProceed("/dashboard");
             }}
             className="group inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white/90 px-3.5 py-1.5 text-xs font-semibold text-gray-700 shadow-xs transition-all hover:bg-green-50 hover:text-green-700 sm:text-sm"
           >
@@ -145,7 +145,7 @@ export function OnboardingPage() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => completeOnboardingAndProceed("/")}
+              onClick={() => completeOnboardingAndProceed("/dashboard")}
               className="text-xs font-semibold text-gray-600 hover:bg-gray-100 hover:text-gray-900"
             >
               {isKn ? "ದಾಟಿಸಿ (Skip)" : "Skip to Dashboard"}
@@ -379,7 +379,7 @@ export function OnboardingPage() {
         <div className="mt-10 pb-8 text-center">
           <Button
             size="lg"
-            onClick={() => completeOnboardingAndProceed("/")}
+            onClick={() => completeOnboardingAndProceed("/dashboard")}
             className="h-14 w-full max-w-md rounded-2xl bg-green-600 px-8 text-base font-extrabold text-white shadow-xl shadow-green-200 hover:bg-green-700 active:scale-98"
           >
             <span>{isKn ? CUSTOMER_CARE_CONFIG.skipButtonKn : CUSTOMER_CARE_CONFIG.skipButtonEn}</span>
