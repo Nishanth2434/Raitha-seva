@@ -31,7 +31,7 @@ export default defineConfig({
     outDir: "dist-capacitor",
     emptyOutDir: true,
     rollupOptions: {
-      input: "./index.html",
+      input: "./capacitor-spa/index.html",
       output: {
         // In rolldown/Vite 8, manualChunks must be a function
         manualChunks(id: string) {

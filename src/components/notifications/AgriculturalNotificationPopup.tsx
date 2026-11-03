@@ -42,33 +42,33 @@ export function AgriculturalNotificationPopup() {
   // Load updates on mount and initialize queue
   useEffect(() => {
     let isMounted = true;
-    async function load() {
-      try {
-        const all = await fetchAgriculturalUpdates();
+    let firstTimer: ReturnType<typeof setTimeout> | undefined;
+
+    fetchAgriculturalUpdates()
+      .then((all) => {
         if (!isMounted) return;
         const candidateQueue = getQueueableNotifications(all);
         if (candidateQueue.length > 0) {
           setQueue(candidateQueue);
           // Show first after a short introductory delay (1.5s) so page is ready
-          const firstTimer = setTimeout(() => {
+          firstTimer = setTimeout(() => {
             if (isMounted && candidateQueue.length > 0) {
               const [first, ...rest] = candidateQueue;
-              setCurrent(first);
-              setQueue(rest);
-              setIsVisible(true);
-              incrementSessionPopupCount();
+              if (first) {
+                setCurrent(first);
+                setQueue(rest);
+                setIsVisible(true);
+                incrementSessionPopupCount();
+              }
             }
           }, 1500);
-          return () => clearTimeout(firstTimer);
         }
-      } catch {
-        // Safe fallback
-      }
-    }
+      })
+      .catch(() => {});
 
-    load();
     return () => {
       isMounted = false;
+      if (firstTimer) clearTimeout(firstTimer);
     };
   }, []);
 
@@ -89,11 +89,15 @@ export function AgriculturalNotificationPopup() {
       const nextTimer = setTimeout(() => {
         if (queue.length > 0) {
           const [next, ...rest] = queue;
-          setCurrent(next);
-          setQueue(rest);
-          setIsVisible(true);
-          setProgress(100);
-          incrementSessionPopupCount();
+          if (next) {
+            setCurrent(next);
+            setQueue(rest);
+            setIsVisible(true);
+            setProgress(100);
+            incrementSessionPopupCount();
+          } else {
+            setCurrent(null);
+          }
         } else {
           setCurrent(null);
         }

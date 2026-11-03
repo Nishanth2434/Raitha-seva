@@ -16,9 +16,11 @@ import { validateRedirectUrl } from "@/lib/auth-guard";
 
 export const Route = createFileRoute("/login")({
   validateSearch: (search: Record<string, unknown>): { redirect?: string } => {
-    return {
-      redirect: typeof search.redirect === "string" ? search.redirect : undefined,
-    };
+    const target = search["redirect"];
+    if (typeof target === "string" && target.length > 0) {
+      return { redirect: target };
+    }
+    return {};
   },
   head: () => ({
     meta: [

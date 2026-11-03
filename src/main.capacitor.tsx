@@ -30,28 +30,28 @@ const router = getRouter();
 
 function CapacitorAppRoot() {
   useEffect(() => {
-    if (Capacitor.isNativePlatform()) {
-      // 1. Android Status Bar styling
-      StatusBar.setStyle({ style: Style.Light }).catch(() => {});
-      StatusBar.setBackgroundColor({ color: "#16a34a" }).catch(() => {});
+    if (!Capacitor.isNativePlatform()) return;
 
-      // 2. Hide splash screen after app mounts
-      SplashScreen.hide().catch(() => {});
+    // 1. Android Status Bar styling
+    StatusBar.setStyle({ style: Style.Light }).catch(() => {});
+    StatusBar.setBackgroundColor({ color: "#16a34a" }).catch(() => {});
 
-      // 3. Android hardware / gesture back button handling
-      const backListener = CapApp.addListener("backButton", ({ canGoBack }) => {
-        if (canGoBack) {
-          window.history.back();
-        } else {
-          // If on root page, exit or minimize
-          CapApp.exitApp();
-        }
-      });
+    // 2. Hide splash screen after app mounts
+    SplashScreen.hide().catch(() => {});
 
-      return () => {
-        backListener.then((sub) => sub.remove()).catch(() => {});
-      };
-    }
+    // 3. Android hardware / gesture back button handling
+    const backListener = CapApp.addListener("backButton", ({ canGoBack }) => {
+      if (canGoBack) {
+        window.history.back();
+      } else {
+        // If on root page, exit or minimize
+        CapApp.exitApp();
+      }
+    });
+
+    return () => {
+      backListener.then((sub) => sub.remove()).catch(() => {});
+    };
   }, []);
 
   return <RouterProvider router={router} />;

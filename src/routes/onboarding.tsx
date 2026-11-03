@@ -68,12 +68,12 @@ export function OnboardingPage() {
 
       // Record in Supabase profile if possible (graceful fallback if column not present)
       if (authUser?.id) {
-        supabase
-          .from("profiles")
-          .update({ updated_at: new Date().toISOString() })
-          .eq("id", authUser.id)
-          .then(() => {})
-          .catch(() => {});
+        Promise.resolve(
+          supabase
+            .from("profiles")
+            .update({ updated_at: new Date().toISOString() })
+            .eq("id", authUser.id)
+        ).catch(() => {});
       }
     } catch {
       // Ignore storage errors

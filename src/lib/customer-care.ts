@@ -6,7 +6,7 @@
 export const CUSTOMER_CARE_CONFIG = {
   // Configurable via env var VITE_CUSTOMER_CARE_PHONE, defaulting to 6360997180
   rawPhone:
-    (typeof import.meta !== "undefined" && import.meta.env?.VITE_CUSTOMER_CARE_PHONE) ||
+    (typeof import.meta !== "undefined" && import.meta.env?.["VITE_CUSTOMER_CARE_PHONE"]) ||
     "6360997180",
   countryCode: "+91",
   get formattedPhone(): string {

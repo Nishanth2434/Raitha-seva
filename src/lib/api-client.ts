@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 // Django API Client for KrishiMitra AI Frontend
 
 const env = import.meta.env as Record<string, string | undefined>;
-const API_BASE_URL = env.VITE_DJANGO_API_URL || "http://localhost:8000/api";
+const API_BASE_URL = env["VITE_DJANGO_API_URL"] || "http://localhost:8000/api";
 
 export const getAuthToken = (): string | null => {
   return localStorage.getItem("access_token");
@@ -66,7 +66,7 @@ export async function apiRequest<T = unknown>(
           const errData = (await retryResponse.json().catch(() => ({}))) as Record<string, string>;
           return {
             data: null,
-            error: errData.detail || errData.error || `HTTP ${retryResponse.status}`,
+            error: errData["detail"] || errData["error"] || `HTTP ${retryResponse.status}`,
           };
         }
         const data = (await retryResponse.json()) as T;
@@ -81,7 +81,7 @@ export async function apiRequest<T = unknown>(
       const errData = (await response.json().catch(() => ({}))) as Record<string, string>;
       return {
         data: null,
-        error: errData.detail || errData.error || JSON.stringify(errData) || `HTTP ${response.status}`,
+        error: errData["detail"] || errData["error"] || JSON.stringify(errData) || `HTTP ${response.status}`,
       };
     }
 
